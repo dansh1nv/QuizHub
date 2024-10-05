@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="deploymentTargetDropDown">
+    <value>
+      <entry key="app">
+        <State />
+      </entry>
+      <entry key="feature-profile">
+        <State />
+      </entry>
+      <entry key="feature-quiz-detail">
+        <State />
+      </entry>
+      <entry key="feature-quiz-list">
+        <State />
+      </entry>
+      <entry key="quiz-api">
+        <State />
+      </entry>
+      <entry key="quizapi">
+        <State />
+      </entry>
+    </value>
+  </component>
+</project>

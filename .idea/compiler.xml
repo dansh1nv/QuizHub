@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="21">
+      <module name="QuizHub.feature-profile" target="17" />
+      <module name="QuizHub.feature-quiz-detail" target="17" />
+      <module name="QuizHub.feature-quiz-list" target="17" />
+      <module name="QuizHub.quiz-api" target="17" />
+      <module name="QuizHub.quiz-list" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
