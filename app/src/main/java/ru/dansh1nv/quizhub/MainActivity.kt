@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import cafe.adriel.voyager.navigator.Navigator
+import ru.dansh1nv.designsystem.theme.QuizHubTheme
 import ru.dansh1nv.quiz.list.presentation.QuizListScreen
-import ru.dansh1nv.quizhub.ui.theme.QuizHubTheme
 
 
 class MainActivity : ComponentActivity() {
@@ -16,14 +16,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            QuizHubTheme(
-                darkTheme = true
-            ) {
+            QuizHubTheme(darkTheme = true) {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.surface
+                    color = QuizHubTheme.colorScheme.surface
                 ) {
-                    QuizListScreen()
+                    Navigator(
+                        screen = QuizListScreen(),
+                    )
                 }
             }
         }

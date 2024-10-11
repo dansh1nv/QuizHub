@@ -25,7 +25,7 @@ val SQUIZ_KTOR = named("SQUIZ_KTOR")
 val SHAKER_QUIZ_KTOR = named("SHAKER_QUIZ_KTOR")
 val WOW_QUIZ_KTOR = named("WOW_QUIZ_KTOR")
 
-val apiModule = module {
+fun apiModule() = module {
 
     single<HttpClientFactory> { HttpClientFactory() }
     single<Json> {

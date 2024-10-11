@@ -4,9 +4,9 @@ import ru.dansh1nv.common.orZero
 import ru.dansh1nv.quiz.list.models.Location
 import ru.dansh1nv.quiz.list.models.QuizPleaseUI
 import ru.dansh1nv.quiz.list.models.GameDateUI
-import ru.dansh1nv.quiz_list_domain.models.quizPlease.QuizPlease
+import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 
-object QuizPleaseMapper {
+class QuizPleaseMapper {
 
     fun mapToQuizPlease(entities: List<QuizPlease>): List<QuizPleaseUI> {
         return entities.map(::mapToQuizPlease)

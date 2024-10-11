@@ -2,10 +2,10 @@ package ru.dansh1nv.quiz.data.mappers
 
 import ru.dansh1nv.quiz.data.Constants
 import ru.dansh1nv.quiz.data.utils.DayOfTheWeekUtils
-import ru.dansh1nv.quiz_list_domain.models.squiz.GameDate
-import ru.dansh1nv.quiz_list_domain.models.squiz.GameFormat
-import ru.dansh1nv.quiz_list_domain.models.squiz.GameType
-import ru.dansh1nv.quiz_list_domain.models.squiz.SQuiz
+import ru.dansh1nv.quiz_list_domain.models.GameDate
+import ru.dansh1nv.quiz_list_domain.models.GameFormat
+import ru.dansh1nv.quiz_list_domain.models.GameType
+import ru.dansh1nv.quiz_list_domain.models.SQuiz
 import ru.dansh1nv.quizapi.model.squiz.Characteristic
 import ru.dansh1nv.quizapi.model.squiz.SquizDTO
 
@@ -43,7 +43,7 @@ object SquizMapper {
         val img = quiz.galleryImage
             ?.substringAfter(":\"")
             ?.dropLast(3)
-            ?.replace("\\/","\\")
+            ?.replace("\\/", "\\")
         return SQuiz(
             id = quiz.id,
             city = quiz.cityId.orEmpty(),

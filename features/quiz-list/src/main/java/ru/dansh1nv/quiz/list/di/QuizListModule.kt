@@ -6,8 +6,8 @@ import ru.dansh1nv.quiz.list.mappers.QuizPleaseMapper
 import ru.dansh1nv.quiz.list.mappers.SquizMapper
 import ru.dansh1nv.quiz.list.presentation.QuizListViewModel
 
-val quizListModule = module {
-    factory { SquizMapper }
-    factory { QuizPleaseMapper }
+fun quizListModule() = module {
+    factory { SquizMapper(resourceManager = get()) }
+    factory { QuizPleaseMapper() }
     viewModelOf(::QuizListViewModel)
 }

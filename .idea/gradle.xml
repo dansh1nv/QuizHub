@@ -10,11 +10,13 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/buildConfig" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/data-profile" />
             <option value="$PROJECT_DIR$/data-quiz-details" />
             <option value="$PROJECT_DIR$/data-quiz-list" />
             <option value="$PROJECT_DIR$/database" />
+            <option value="$PROJECT_DIR$/designSystem" />
             <option value="$PROJECT_DIR$/domain-profile" />
             <option value="$PROJECT_DIR$/domain-quiz-details" />
             <option value="$PROJECT_DIR$/domain-quiz-list" />
@@ -22,6 +24,7 @@
             <option value="$PROJECT_DIR$/features/profile" />
             <option value="$PROJECT_DIR$/features/quiz-details" />
             <option value="$PROJECT_DIR$/features/quiz-list" />
+            <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/quizapi" />
           </set>
         </option>

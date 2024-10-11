@@ -11,7 +11,7 @@ import ru.dansh1nv.quiz.data.repositories.QuizPleaseRepository
 import ru.dansh1nv.quiz_list_domain.repository.IQuizPleaseRepository
 import ru.dansh1nv.quiz_list_domain.repository.ISQuizRepository
 
-val quizDataModule = module {
+fun quizDataModule() = module {
 
     factory<SquizMapper> { SquizMapper }
 

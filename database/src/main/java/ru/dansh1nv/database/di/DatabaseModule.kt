@@ -8,7 +8,7 @@ import ru.dansh1nv.database.QuizDatabase
 import ru.dansh1nv.database.RoomQuizDatabase
 import ru.dansh1nv.database.dao.QuizDao
 
-val databaseModule = module {
+fun databaseModule() = module {
     single<QuizDatabase> {
         val application = get<Application>()
         val quizRoomDatabase = Room.databaseBuilder(

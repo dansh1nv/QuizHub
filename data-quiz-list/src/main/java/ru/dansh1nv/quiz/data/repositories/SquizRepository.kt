@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import ru.dansh1nv.quiz.data.datasource.squiz.SquizRemoteDataSource
 import ru.dansh1nv.quiz.data.mappers.SquizMapper
-import ru.dansh1nv.quiz_list_domain.models.squiz.SQuiz
+import ru.dansh1nv.quiz_list_domain.models.SQuiz
 import ru.dansh1nv.quiz_list_domain.repository.ISQuizRepository
 
 class SquizRepository(

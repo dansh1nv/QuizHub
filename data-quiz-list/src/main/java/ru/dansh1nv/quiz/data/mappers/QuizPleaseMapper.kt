@@ -1,9 +1,9 @@
 package ru.dansh1nv.quiz.data.mappers
 
-import ru.dansh1nv.quiz_list_domain.models.quizPlease.GameFormat
-import ru.dansh1nv.quiz_list_domain.models.quizPlease.PaymentMethod
-import ru.dansh1nv.quiz_list_domain.models.quizPlease.QuizPlease
-import ru.dansh1nv.quiz_list_domain.models.quizPlease.Status
+import ru.dansh1nv.quiz_list_domain.models.GameFormat
+import ru.dansh1nv.quiz_list_domain.models.PaymentMethod
+import ru.dansh1nv.quiz_list_domain.models.QuizPlease
+import ru.dansh1nv.quiz_list_domain.models.Status
 import ru.dansh1nv.quizapi.model.quizplease.QuizPleaseDTO
 import ru.dansh1nv.quizapi.model.quizplease.StatusDTO
 

@@ -5,21 +5,23 @@ core-ktx = "1.13.1"
 junit = "4.13.2"
 androidx-test-ext-junit = "1.2.1"
 espresso-core = "3.6.1"
-androidx-lifecycle = "2.8.2"
-activity-compose = "1.9.0"
-compose-bom = "2024.06.00"
+androidx-lifecycle = "2.8.6"
+activity-compose = "1.9.2"
+compose-bom = "2024.09.03"
 kotlin-serialization = "1.7.1"
 jsoup = "1.17.2"
-koin = "3.5.6"
+koin = "4.0.0"
 koin-annotations = "1.3.1"
 ksp = "2.0.0-1.0.22"
 ktor-client = "2.3.12"
-kotlin-coroutines = "1.8.0"
+kotlin-coroutines = "1.8.1"
 appcompat = "1.7.0"
-material = "1.12.0"
 room = "2.6.1"
 coil = "2.7.0"
-ui-text-google-fonts = "1.7.1"
+ui-text-google-fonts = "1.7.3"
+voyager = "1.1.0-beta03"
+material-version = "1.12.0"
+timber = "5.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -31,7 +33,6 @@ androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmode
 androidx-lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "androidx-lifecycle" }
 
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
@@ -73,6 +74,16 @@ androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "ui-text-google-fonts" }
 
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+voyager-screenmodel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
+voyager-bottom-sheet-navigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
+voyager-tab-navigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
+voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material-version" }
+
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
@@ -83,4 +94,44 @@ org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kot
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 [bundles]
+navigation = [
+    "voyager-navigator",
+    "voyager-screenmodel",
+    "voyager-bottom-sheet-navigator",
+    "voyager-tab-navigator",
+    "voyager-koin",
+    "voyager-transitions",
+]
 
+network = [
+    "ktor-client",
+    "ktor-client-cio",
+    "ktor-client-content-negotiation",
+    "ktor-client-json",
+    "ktor-client-logging",
+    "ktor-client-serialization",
+    "ktor-client-okhttp",
+    "koin-ktor",
+    "ktor-serialization-kotlinx-json",
+]
+
+ui = [
+    "compose-bom",
+    "androidx-ui",
+    "androidx-ui-graphics",
+    "androidx-ui-tooling",
+    "androidx-ui-tooling-preview",
+    "androidx-material3",
+    "androidx-lifecycle-compose",
+    "androidx-lifecycle-viewmodel",
+    "koin-android",
+    "koin-android-compose",
+    "coil",
+    "coil-compose",
+    "androidx-core-ktx",
+]
+
+koin = [
+    "koin-core",
+    "koin-annotations",
+]

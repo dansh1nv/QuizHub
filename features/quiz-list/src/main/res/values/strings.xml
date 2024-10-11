@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="quiz_item_price_for_people">с человека</string>
+    <string name="quiz_item_price_for_team">с команды</string>
 </resources>

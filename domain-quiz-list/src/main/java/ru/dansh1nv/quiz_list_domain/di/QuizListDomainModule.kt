@@ -5,7 +5,7 @@ import ru.dansh1nv.quiz_list_domain.interactors.QuizListInteractor
 import ru.dansh1nv.quiz_list_domain.interactors.QuizPleaseInteractor
 import ru.dansh1nv.quiz_list_domain.interactors.SquizInteractor
 
-val quizListDomainModule = module {
+fun quizListDomainModule() = module {
 
     factory<SquizInteractor> {
         SquizInteractor(

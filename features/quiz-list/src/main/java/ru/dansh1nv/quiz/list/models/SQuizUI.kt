@@ -1,7 +1,7 @@
 package ru.dansh1nv.quiz.list.models
 
-import ru.dansh1nv.quiz_list_domain.models.squiz.GameFormat
-import ru.dansh1nv.quiz_list_domain.models.squiz.GameType
+import ru.dansh1nv.quiz_list_domain.models.GameFormat
+import ru.dansh1nv.quiz_list_domain.models.GameType
 
 data class SQuizUI(
     val id: Long,
@@ -15,8 +15,9 @@ data class SQuizUI(
     val additionDescription: String,
     val image: String,
     val location: String,
-    val gameDate: GameDateUI,
+    override val gameDate: GameDateUI,
     val address: String,
     val price: String,
+    val priceAdditionalText: String,
     val organization: String,
-) : QuizUI()
+) : QuizUI(gameDate)

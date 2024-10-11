@@ -1,10 +1,38 @@
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("java-library")
-    alias(libs.plugins.org.jetbrains.kotlin.jvm)
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.kotlinAndroid)
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+android {
+    namespace = "ru.dansh1nv.common"
+    compileSdk = 34
+
+    defaultConfig {
+        minSdk = 24
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+    kotlinOptions {
+        jvmTarget = "21"
+    }
+}
+
+dependencies {
+    implementation(libs.androidx.core.ktx)
 }
