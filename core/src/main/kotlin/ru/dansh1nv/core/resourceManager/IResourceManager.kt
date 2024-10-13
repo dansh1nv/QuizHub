@@ -1,4 +1,4 @@
-package ru.dansh1nv.common.resourceManager
+package ru.dansh1nv.core.resourceManager
 
 import androidx.annotation.StringRes
 

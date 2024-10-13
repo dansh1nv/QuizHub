@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -14,13 +13,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import cafe.adriel.voyager.core.registry.ScreenRegistry
-import cafe.adriel.voyager.core.registry.rememberScreen
 import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.currentOrThrow
-import org.koin.androidx.compose.koinViewModel
-import ru.dansh1nv.navigation.SharedScreen
+import cafe.adriel.voyager.koin.koinScreenModel
 import ru.dansh1nv.quiz.list.models.CityModel
 import ru.dansh1nv.quiz.list.presentation.composable.Header
 import ru.dansh1nv.quiz.list.presentation.composable.QuizListContent
@@ -30,9 +24,9 @@ class QuizListScreen : Screen {
 
     @Composable
     override fun Content() {
-        val viewModel = koinViewModel<QuizListViewModel>()
+        val viewModel = koinScreenModel<QuizListViewModel>()
         val screenState by viewModel.state.collectAsStateWithLifecycle()
-        val uiEvent = viewModel::onUIEvent
+        val onUIEvent = viewModel::onUIEvent
 
         Box {
             when (screenState) {
@@ -55,19 +49,17 @@ class QuizListScreen : Screen {
 
                 }
 
-                is State.Success -> {
-                    val state = (screenState as State.Success)
+                is State.Loaded -> {
+                    val state = (screenState as State.Loaded)
                     Column {
                         Header(
                             city = CityModel("Ваш город", 2L),
-                            onEvent = uiEvent
+                            onEvent = onUIEvent
                         )
-                        HorizontalDivider()
                         TabLayout(
-                            tabs = listOf("SQuiz", "Квиз, Плиз!"),
-                            onEvent = uiEvent
+                            selectedTabIndex = state.selectedTabIndex,
+                            onEvent = onUIEvent
                         )
-                        HorizontalDivider()
                         QuizListContent(state.quizList)
                     }
                 }

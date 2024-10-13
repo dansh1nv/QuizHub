@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.dansh1nv.profile"
+    namespace = "ru.dansh1nv.core"
     compileSdk = 34
 
     defaultConfig {
@@ -24,22 +24,18 @@ android {
             )
         }
     }
-    buildFeatures {
-        compose = true
-    }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "21"
+        jvmTarget = "1.8"
     }
 }
 
 dependencies {
-    implementation(platform(libs.compose.bom))
-    implementation(libs.kotlin.coroutines.android)
-    implementation(libs.bundles.ui)
+    implementation(libs.androidx.core.ktx)
     implementation(libs.bundles.common)
     implementation(libs.bundles.navigation)
+    implementation(libs.bundles.ui)
 }

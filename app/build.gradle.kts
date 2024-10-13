@@ -57,12 +57,13 @@ dependencies {
     implementation(libs.activity.compose)
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.bundles.ui)
-    implementation(libs.bundles.koin)
+    implementation(libs.bundles.common)
     implementation(libs.bundles.navigation)
 
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.androidx.ui.text.google.fonts)
 
+    implementation(project(":core"))
     implementation(project(":designSystem"))
     implementation(project(":common"))
     implementation(project(":navigation"))

@@ -40,6 +40,6 @@ dependencies {
     implementation(platform(libs.compose.bom))
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.bundles.ui)
-    implementation(libs.bundles.koin)
+    implementation(libs.bundles.common)
     implementation(libs.bundles.navigation)
 }

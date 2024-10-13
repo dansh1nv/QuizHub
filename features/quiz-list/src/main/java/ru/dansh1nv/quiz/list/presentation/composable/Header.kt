@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -21,26 +20,25 @@ import androidx.compose.ui.unit.dp
 import ru.dansh1nv.designsystem.theme.QuizHubTheme
 import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.models.CityModel
-import ru.dansh1nv.quiz.list.presentation.UIEvent
+import ru.dansh1nv.quiz.list.presentation.ScreenEvent
 
 @Composable
 internal fun Header(
     city: CityModel,
-    onEvent: (UIEvent) -> Unit,
+    onEvent: (ScreenEvent) -> Unit,
 ) {
     Row(
         modifier = Modifier
-            .background(color = QuizHubTheme.colorScheme.surfaceContainer)
+            .background(color = QuizHubTheme.colorScheme.surface)
             .fillMaxWidth()
             .height(56.dp)
             .padding(start = 12.dp, top = 8.dp, end = 12.dp, bottom = 4.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
-
-        ) {
+    ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
-            modifier = Modifier.clickable { onEvent(UIEvent.OnLocationClick) }
+            modifier = Modifier.clickable { onEvent(ScreenEvent.OnLocationClick) }
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_location),
@@ -54,24 +52,30 @@ internal fun Header(
                 maxLines = 1,
             )
         }
-        Spacer(modifier = Modifier.weight(1f))
-        Box(
-            modifier = Modifier.size(32.dp),
-            contentAlignment = Alignment.Center,
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_filters),
-                contentDescription = null,
-            )
-        }
-        Box(
-            modifier = Modifier.size(32.dp),
-            contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.ic_sort),
-                contentDescription = null,
-            )
+            Box(
+                modifier = Modifier.size(32.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_filters),
+                    contentDescription = null,
+                    tint = QuizHubTheme.colorScheme.onSurface,
+
+                )
+            }
+            Box(
+                modifier = Modifier.size(32.dp),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_sort),
+                    contentDescription = null,
+                    tint = QuizHubTheme.colorScheme.onSurface,
+                )
+            }
         }
     }
 }

@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    implementation(libs.bundles.koin)
+    implementation(libs.bundles.common)
     implementation(libs.kotlin.coroutines.android)
     testImplementation(libs.junit)
 }

@@ -2,4 +2,6 @@
 <resources>
     <string name="quiz_item_price_for_people">с человека</string>
     <string name="quiz_item_price_for_team">с команды</string>
+    <string name="tab_item_all">Все</string>
+    <string name="tab_item_favourite">Избранное</string>
 </resources>

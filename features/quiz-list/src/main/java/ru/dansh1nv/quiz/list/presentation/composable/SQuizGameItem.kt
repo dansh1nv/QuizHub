@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -48,7 +49,7 @@ internal fun SQuizGameItem(quizGame: SQuizUI) {
             )
             .background(
                 shape = QuizHubTheme.shapes.small,
-                color = QuizHubTheme.colorScheme.surfaceContainer
+                color = QuizHubTheme.colorScheme.surfaceContainerLow
             )
             .padding(12.dp)
             .clickable { navigator push (screen) }

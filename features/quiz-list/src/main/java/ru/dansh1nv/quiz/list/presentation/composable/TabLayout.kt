@@ -1,52 +1,44 @@
 package ru.dansh1nv.quiz.list.presentation.composable
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.SecondaryTabRow
+import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import ru.dansh1nv.designsystem.theme.QuizHubTheme
-import ru.dansh1nv.quiz.list.presentation.UIEvent
+import ru.dansh1nv.quiz.list.models.TabModel
+import ru.dansh1nv.quiz.list.presentation.ScreenEvent
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun TabLayout(
-    tabs: List<String>,
-    onEvent: (UIEvent) -> Unit,
+    selectedTabIndex: Int,
+    onEvent: (ScreenEvent) -> Unit,
 ) {
-    LazyRow(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier
-            .background(QuizHubTheme.colorScheme.surfaceContainer)
-            .wrapContentHeight()
-            .fillMaxWidth()
-            .padding(horizontal = 12.dp, vertical = 8.dp),
-    ) {
-        items(tabs) {
-            Tab(it)
+    SecondaryTabRow(selectedTabIndex = selectedTabIndex) {
+        TabModel.entries.forEach { tab ->
+            Tab(
+                selected = selectedTabIndex == tab.index,
+                selectedContentColor = QuizHubTheme.colorScheme.primary,
+                unselectedContentColor = QuizHubTheme.colorScheme.onSurface,
+                onClick = { onEvent(ScreenEvent.OnTabClick(tab.index)) },
+            ) {
+                Text(
+                    text = stringResource(id = tab.titleRes),
+                    style = QuizHubTheme.typography.bodyLarge,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(8.dp)
+                )
+            }
         }
-    }
-}
-
-@Composable
-internal fun Tab(title: String) {
-    Card {
-        Text(
-            text = title,
-            color = QuizHubTheme.colorScheme.onSurface,
-            style = QuizHubTheme.typography.bodyMedium,
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis,
-            modifier = Modifier.padding(8.dp)
-        )
     }
 }

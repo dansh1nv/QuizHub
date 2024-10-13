@@ -10,13 +10,14 @@ dependencies {
     implementation(platform(libs.compose.bom))
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.bundles.ui)
-    implementation(libs.bundles.koin)
+    implementation(libs.bundles.common)
     implementation(libs.bundles.navigation)
 
     implementation(project(":domain-quiz-list"))
     implementation(project(":common"))
     implementation(project(":designSystem"))
     implementation(project(":navigation"))
+    implementation(project(":core"))
 }
 
 //Разбить на функции и сделать конфиги для других модулей

@@ -1,7 +1,7 @@
 package ru.dansh1nv.quiz.list.mappers
 
 import ru.dansh1nv.common.orZero
-import ru.dansh1nv.common.resourceManager.IResourceManager
+import ru.dansh1nv.core.resourceManager.IResourceManager
 import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.models.GameDateUI
 import ru.dansh1nv.quiz.list.models.SQuizUI
@@ -10,7 +10,7 @@ import ru.dansh1nv.quiz_list_domain.models.GameType
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
 
 class SquizMapper(
-    private val resourceManager: IResourceManager
+    private val resourceManager: ru.dansh1nv.core.resourceManager.IResourceManager
 ) {
 
     fun mapToQuizUI(quizzes: List<SQuiz>): List<SQuizUI> {

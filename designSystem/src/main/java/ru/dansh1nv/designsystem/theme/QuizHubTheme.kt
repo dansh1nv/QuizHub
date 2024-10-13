@@ -2,7 +2,6 @@ package ru.dansh1nv.designsystem.theme
 
 import android.app.Activity
 import android.os.Build
-import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
@@ -77,8 +76,8 @@ private fun QuizHubTheme(
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
+        darkTheme -> darkScheme
+        else -> lightScheme
     }
     val tintColor = colorScheme.onSurfaceVariant
     val view = LocalView.current
@@ -104,3 +103,7 @@ private fun QuizHubTheme(
         }
     }
 }
+
+val unspecified_scheme = ColorFamily(
+    Color.Unspecified, Color.Unspecified, Color.Unspecified, Color.Unspecified
+)
