@@ -8,7 +8,7 @@ data class QuizPlease(
     val image: String?,
     val gameFormat: GameFormat?,
     val datetime: String?,
-    val formatDate: String?,
+    val formatDate: GameDate?,
     val formatTime: String?,
     val price: Int?,
     val formatPrice: String?,

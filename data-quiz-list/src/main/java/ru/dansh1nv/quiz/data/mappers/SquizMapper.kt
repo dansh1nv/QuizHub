@@ -8,6 +8,8 @@ import ru.dansh1nv.quiz_list_domain.models.GameType
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
 import ru.dansh1nv.quizapi.model.squiz.Characteristic
 import ru.dansh1nv.quizapi.model.squiz.SquizDTO
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 object SquizMapper {
 
@@ -92,7 +94,10 @@ object SquizMapper {
         time: String,
         dayWithMonth: String,
     ): GameDate {
+        //TODO: Заменить на дату
+        val date = LocalDate.of(2024, 10, day.toInt())
         return GameDate(
+            localDate = date,
             day = day,
             month = month,
             dayOfTheWeek = DayOfTheWeekUtils.formatFullDayName(dayOfTheWeek),

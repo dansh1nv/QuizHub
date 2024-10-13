@@ -1,11 +1,14 @@
 package ru.dansh1nv.quiz.data.mappers
 
+import ru.dansh1nv.quiz.data.utils.DayOfTheWeekUtils
+import ru.dansh1nv.quiz_list_domain.models.GameDate
 import ru.dansh1nv.quiz_list_domain.models.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.PaymentMethod
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 import ru.dansh1nv.quiz_list_domain.models.Status
 import ru.dansh1nv.quizapi.model.quizplease.QuizPleaseDTO
 import ru.dansh1nv.quizapi.model.quizplease.StatusDTO
+import java.time.LocalDate
 
 object QuizPleaseMapper {
 
@@ -18,6 +21,7 @@ object QuizPleaseMapper {
     }
 
     private fun map(dto: QuizPleaseDTO): QuizPlease {
+        val dateParts = dto.formatDate?.split(" ") ?: emptyList()
         return QuizPlease(
             id = dto.id,
             title = dto.title,
@@ -26,7 +30,7 @@ object QuizPleaseMapper {
             image = BASE_URL + dto.image,
             gameFormat = dto.gameFormat?.let { mapGameFormat(it) },
             datetime = dto.datetime,
-            formatDate = dto.formatDate,
+            formatDate = mapGameDate(dateParts),
             formatTime = dto.formatTime,
             price = dto.price,
             formatPrice = dto.formatPrice,
@@ -58,6 +62,21 @@ object QuizPleaseMapper {
             .find(difficulty)
             ?.groupValues
             ?.getOrNull(1)
+    }
+
+    private fun mapGameDate(
+       dateParts: List<String>
+    ): GameDate {
+        //TODO: Заменить на дату
+        val date = LocalDate.of(dateParts[2].toInt(), 10, dateParts[0].toInt())
+        return GameDate(
+            localDate = date,
+            day = dateParts.getOrNull(0).orEmpty(),
+            month = "октября",
+            dayOfTheWeek = "",
+            time = "",
+            dayWithMonth = "",
+        )
     }
 
 }

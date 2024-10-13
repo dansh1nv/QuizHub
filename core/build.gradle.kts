@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.dansh1nv.profile_data"
+    namespace = "ru.dansh1nv.core"
     compileSdk = 34
 
     defaultConfig {
@@ -34,4 +34,11 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    implementation(project(":designSystem"))
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.espresso.core)
 }

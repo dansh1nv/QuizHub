@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "ru.dansh1nv.quizhub"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -57,7 +57,7 @@ dependencies {
     implementation(libs.activity.compose)
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.bundles.ui)
-    implementation(libs.bundles.koin)
+    implementation(libs.bundles.common)
     implementation(libs.bundles.navigation)
 
     implementation(libs.kotlin.coroutines.android)

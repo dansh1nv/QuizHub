@@ -9,7 +9,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 24
+        minSdk = 26
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -40,6 +40,6 @@ dependencies {
     implementation(platform(libs.compose.bom))
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.bundles.ui)
-    implementation(libs.bundles.koin)
+    implementation(libs.bundles.common)
     implementation(libs.bundles.navigation)
 }

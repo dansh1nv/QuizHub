@@ -56,7 +56,9 @@ internal fun Header(
         }
         Spacer(modifier = Modifier.weight(1f))
         Box(
-            modifier = Modifier.size(32.dp),
+            modifier = Modifier
+                .size(32.dp)
+                .clickable { onEvent(UIEvent.OnFiltersClick) },
             contentAlignment = Alignment.Center,
         ) {
             Icon(
@@ -65,7 +67,9 @@ internal fun Header(
             )
         }
         Box(
-            modifier = Modifier.size(32.dp),
+            modifier = Modifier
+                .size(32.dp)
+                .clickable { onEvent(UIEvent.OnSortClick) },
             contentAlignment = Alignment.Center,
         ) {
             Icon(

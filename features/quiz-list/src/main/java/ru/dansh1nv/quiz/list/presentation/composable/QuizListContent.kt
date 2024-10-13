@@ -8,9 +8,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ru.dansh1nv.quiz.list.models.QuizPleaseUI
 import ru.dansh1nv.quiz.list.models.QuizUI
-import ru.dansh1nv.quiz.list.models.SQuizUI
+import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizCard
 
 @Composable
 internal fun QuizListContent(quizList: List<QuizUI>) {
@@ -21,10 +20,7 @@ internal fun QuizListContent(quizList: List<QuizUI>) {
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(quizList) { quiz ->
-            when (quiz) {
-                is QuizPleaseUI -> QuizPleaseItem(quiz)
-                is SQuizUI -> SQuizGameItem(quiz)
-            }
+            QuizCard(quiz)
         }
     }
 }
