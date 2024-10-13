@@ -56,7 +56,8 @@ internal fun Header(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             Box(
-                modifier = Modifier.size(32.dp),
+                modifier = Modifier.size(32.dp)
+                    .clickable { onEvent(ScreenEvent.OnFiltersClick) },
                 contentAlignment = Alignment.Center,
             ) {
                 Icon(
@@ -67,7 +68,8 @@ internal fun Header(
                 )
             }
             Box(
-                modifier = Modifier.size(32.dp),
+                modifier = Modifier.size(32.dp)
+                    .clickable { onEvent(ScreenEvent.OnSortClick) },
                 contentAlignment = Alignment.Center,
             ) {
                 Icon(

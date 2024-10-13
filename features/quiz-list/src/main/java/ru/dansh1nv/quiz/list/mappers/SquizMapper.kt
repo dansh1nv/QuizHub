@@ -4,26 +4,32 @@ import ru.dansh1nv.common.orZero
 import ru.dansh1nv.core.resourceManager.IResourceManager
 import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.models.GameDateUI
-import ru.dansh1nv.quiz.list.models.SQuizUI
+import ru.dansh1nv.quiz.list.models.Location
+import ru.dansh1nv.quiz.list.models.Organization
+import ru.dansh1nv.quiz.list.models.QuizUI
 import ru.dansh1nv.quiz_list_domain.models.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.GameType
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
+import java.time.LocalDate
+import java.time.OffsetDateTime
+import java.time.ZoneId
 
 class SquizMapper(
     private val resourceManager: ru.dansh1nv.core.resourceManager.IResourceManager
 ) {
 
-    fun mapToQuizUI(quizzes: List<SQuiz>): List<SQuizUI> {
+    fun mapToQuizUI(quizzes: List<SQuiz>): List<QuizUI> {
         return quizzes.map(::mapToQuizUI)
     }
 
-    fun mapToQuizUI(squiz: SQuiz): SQuizUI {
+    fun mapToQuizUI(squiz: SQuiz): QuizUI {
         val gameFormat = squiz.format ?: GameFormat.OFFLINE
         return with(squiz) {
-            SQuizUI(
+            QuizUI(
                 id = id.orZero(),
                 city = city.orEmpty(),
-                gameDate = GameDateUI(
+                formattedDate = GameDateUI(
+                    date = gameDate?.localDate ?: LocalDate.now(),
                     dateText = gameDate?.dayWithMonth.orEmpty(),
                     timeWithDay = buildString {
                         gameDate?.time?.let { append("$it, ") }
@@ -38,9 +44,9 @@ class SquizMapper(
                 description = description.orEmpty(),
                 additionDescription = additionDescription.orEmpty(),
                 image = image.orEmpty(),
-                location = location.orEmpty(),
+                place = location.orEmpty(),
                 address = address.orEmpty(),
-                price = price.orEmpty(),
+                formatPrice = price.orEmpty(),
                 priceAdditionalText = when (gameFormat) {
                     GameFormat.ONLINE -> {
                         resourceManager.getStringById(R.string.quiz_item_price_for_team)
@@ -52,7 +58,10 @@ class SquizMapper(
 
                     else -> ""
                 },
-                organization = organization.orEmpty(),
+                organization = Organization.SQUIZ,
+                location = Location.EMPTY,
+                difficulty = "",
+                paymentMethod = "",
             )
         }
     }
