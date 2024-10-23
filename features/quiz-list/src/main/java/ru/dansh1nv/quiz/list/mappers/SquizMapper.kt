@@ -10,12 +10,9 @@ import ru.dansh1nv.quiz.list.models.QuizUI
 import ru.dansh1nv.quiz_list_domain.models.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.GameType
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
-import java.time.LocalDate
-import java.time.OffsetDateTime
-import java.time.ZoneId
 
 class SquizMapper(
-    private val resourceManager: ru.dansh1nv.core.resourceManager.IResourceManager
+    private val resourceManager: IResourceManager
 ) {
 
     fun mapToQuizUI(quizzes: List<SQuiz>): List<QuizUI> {
@@ -29,8 +26,8 @@ class SquizMapper(
                 id = id.orZero(),
                 city = city.orEmpty(),
                 formattedDate = GameDateUI(
-                    date = gameDate?.localDate ?: LocalDate.now(),
-                    dateText = gameDate?.dayWithMonth.orEmpty(),
+                    date = gameDate?.dateTime,
+                    dateText = "${gameDate?.day} ${gameDate?.month}",
                     timeWithDay = buildString {
                         gameDate?.time?.let { append("$it, ") }
                         gameDate?.dayOfTheWeek?.let { append(it) }
@@ -44,7 +41,7 @@ class SquizMapper(
                 description = description.orEmpty(),
                 additionDescription = additionDescription.orEmpty(),
                 image = image.orEmpty(),
-                place = location.orEmpty(),
+                place = place.orEmpty(),
                 address = address.orEmpty(),
                 formatPrice = price.orEmpty(),
                 priceAdditionalText = when (gameFormat) {

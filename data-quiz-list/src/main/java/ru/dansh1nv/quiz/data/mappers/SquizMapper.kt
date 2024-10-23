@@ -1,15 +1,17 @@
 package ru.dansh1nv.quiz.data.mappers
 
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.LocalTime
 import ru.dansh1nv.quiz.data.Constants
 import ru.dansh1nv.quiz.data.utils.DayOfTheWeekUtils
+import ru.dansh1nv.quiz.data.utils.MonthConverter
 import ru.dansh1nv.quiz_list_domain.models.GameDate
 import ru.dansh1nv.quiz_list_domain.models.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.GameType
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
 import ru.dansh1nv.quizapi.model.squiz.Characteristic
 import ru.dansh1nv.quizapi.model.squiz.SquizDTO
-import java.time.LocalDate
-import java.time.LocalDateTime
 
 object SquizMapper {
 
@@ -54,7 +56,6 @@ object SquizMapper {
                 month = month,
                 dayOfTheWeek = dayOfTheWeek,
                 time = time,
-                dayWithMonth = dayWithMonth,
             ),
             type = gameType,
             format = gameFormat,
@@ -63,11 +64,10 @@ object SquizMapper {
             description = description,
             additionDescription = additionDescription,
             image = img,
-            location = address.getOrNull(0) ?: "Онлайн",
+            place = address.getOrNull(0) ?: "Онлайн",
             address = address.getOrNull(1).orEmpty(),
             price = price.toString(),
             status = status,
-            organization = "SQUIZ",
         )
     }
 
@@ -92,17 +92,27 @@ object SquizMapper {
         month: String,
         dayOfTheWeek: String,
         time: String,
-        dayWithMonth: String,
     ): GameDate {
-        //TODO: Заменить на дату
-        val date = LocalDate.of(2024, 10, day.toInt())
+        val timeArray = time.trim().split(":", limit = 2)
+        //TODO: Подумать откуда взять бы год
+        val localDate = LocalDate(
+            year = 2024,
+            monthNumber = MonthConverter.getMonthByName(month),
+            dayOfMonth = day.toInt()
+        )
+        val localTime = LocalTime(
+            hour = timeArray[0].toInt(),
+            minute = timeArray[1].toInt(),
+        )
         return GameDate(
-            localDate = date,
+            dateTime = LocalDateTime(
+                date = localDate,
+                time = localTime,
+            ),
             day = day,
             month = month,
             dayOfTheWeek = DayOfTheWeekUtils.formatFullDayName(dayOfTheWeek),
             time = time.trim(),
-            dayWithMonth = dayWithMonth,
         )
     }
 

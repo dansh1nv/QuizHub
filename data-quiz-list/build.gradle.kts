@@ -38,9 +38,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlin.coroutines.android)
 
-    implementation(libs.koin.core)
-    implementation(libs.koin.annotations)
-
+    implementation(libs.bundles.common)
     implementation(libs.serialization)
 
    // ksp(libs.ksp)

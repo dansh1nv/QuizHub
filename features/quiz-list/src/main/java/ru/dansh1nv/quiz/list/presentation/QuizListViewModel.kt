@@ -59,7 +59,7 @@ internal class QuizListViewModel(
                 .onEach {
                     val quizList = quizMap.values
                         .flatten()
-                        .sortedBy { quiz -> quiz.formattedDate.date }
+                        .sortedBy { it.formattedDate.date }
                     _state.update {
                         State.Loaded(
                             quizList = quizList

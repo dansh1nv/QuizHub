@@ -1,6 +1,9 @@
 package ru.dansh1nv.quiz.data.mappers
 
-import ru.dansh1nv.quiz.data.utils.DayOfTheWeekUtils
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.LocalTime
+import ru.dansh1nv.quiz.data.utils.MonthConverter
 import ru.dansh1nv.quiz_list_domain.models.GameDate
 import ru.dansh1nv.quiz_list_domain.models.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.PaymentMethod
@@ -8,7 +11,6 @@ import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 import ru.dansh1nv.quiz_list_domain.models.Status
 import ru.dansh1nv.quizapi.model.quizplease.QuizPleaseDTO
 import ru.dansh1nv.quizapi.model.quizplease.StatusDTO
-import java.time.LocalDate
 
 object QuizPleaseMapper {
 
@@ -30,7 +32,7 @@ object QuizPleaseMapper {
             image = BASE_URL + dto.image,
             gameFormat = dto.gameFormat?.let { mapGameFormat(it) },
             datetime = dto.datetime,
-            formatDate = mapGameDate(dateParts),
+            formatDate = mapGameDate(dto.datetime.orEmpty()),
             formatTime = dto.formatTime,
             price = dto.price,
             formatPrice = dto.formatPrice,
@@ -41,7 +43,7 @@ object QuizPleaseMapper {
             longitude = dto.longitude,
             difficulty = dto.difficulty?.let { mapDifficulty(it) },
             status = mapStatus(dto.status),
-            paymentMethod = dto.paymentMethod?.let { mapPaymentMethod(it) } ,
+            paymentMethod = dto.paymentMethod?.let { mapPaymentMethod(it) },
         )
     }
 
@@ -57,26 +59,46 @@ object QuizPleaseMapper {
         return PaymentMethod.entries.firstOrNull { it.id == paymentMethod }
     }
 
-    private fun mapDifficulty(difficulty: String) : String? {
-        return Regex(""""$DIFFICULTY_TAG (.*?)""")
+    private fun mapDifficulty(difficulty: String): String? {
+        return Regex("""$DIFFICULTY_TAG (.*?)""")
             .find(difficulty)
             ?.groupValues
             ?.getOrNull(1)
     }
 
+    //"23.10.24 19:30"
     private fun mapGameDate(
-       dateParts: List<String>
+        datetime: String
     ): GameDate {
-        //TODO: Заменить на дату
-        val date = LocalDate.of(dateParts[2].toInt(), 10, dateParts[0].toInt())
+        val (date, time) = datetime.split(" ", limit = 2)
+        val timeArray = time.split(":", limit = 2)
+        val dateArray = date.split(".", limit = 3)
+        val day = dateArray.getOrNull(0)?.toInt() ?: 1
+        val month = dateArray.getOrNull(1)?.toInt() ?: 1
+        val localTime = LocalTime(
+            hour = timeArray[0].toInt(),
+            minute = timeArray[1].toInt(),
+        )
+        val localDate = LocalDate(
+            year = "20${dateArray[2]}".toInt(),
+            monthNumber = month,
+            dayOfMonth = day,
+        )
+        val localDateTime = LocalDateTime(
+            date = localDate,
+            time = localTime,
+        )
         return GameDate(
-            localDate = date,
-            day = dateParts.getOrNull(0).orEmpty(),
-            month = "октября",
+            dateTime = localDateTime,
+            day = day.toString(),
+            month = MonthConverter.getMonthNameByNumber(month),
             dayOfTheWeek = "",
-            time = "",
-            dayWithMonth = "",
+            time = time,
         )
     }
 
+}
+
+object DateFormatter {
+    const val DATE_FORMAT_DD_MM_YY_HH_MM = "dd.MM.yy HH:mm"
 }

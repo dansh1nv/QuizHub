@@ -11,9 +11,8 @@ data class SQuiz(
     val description: String?,
     val additionDescription: String?,
     val image: String?,
-    val location: String?,
+    val place: String?,
     val address: String?,
     val price: String?,
     val status: String?,
-    val organization: String?,
 ): Quiz
