@@ -18,7 +18,7 @@ import ru.dansh1nv.quiz.list.models.QuizUI
 import ru.dansh1nv.quiz.list.presentation.composable.TextCell
 
 @Composable
-fun QuizLocationElement(quizGame: QuizUI, modifier: Modifier) {
+internal fun QuizLocationElement(quizGame: QuizUI, modifier: Modifier) {
     Row(modifier = modifier) {
         Box {
             Icon(

@@ -16,9 +16,10 @@ import androidx.compose.ui.unit.dp
 import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.models.QuizUI
 import ru.dansh1nv.quiz.list.presentation.composable.TextCell
+import ru.dansh1nv.quiz_list_domain.models.GameFormat
 
 @Composable
-fun QuizPriceElement(quizGame: QuizUI, modifier: Modifier) {
+internal fun QuizPriceElement(quizGame: QuizUI, modifier: Modifier) {
     Row(
         modifier = modifier
     ) {
@@ -39,7 +40,7 @@ fun QuizPriceElement(quizGame: QuizUI, modifier: Modifier) {
             )
 
             TextCell(
-                text = stringResource(id = R.string.quiz_item_price_for_people)
+                text = quizGame.priceAdditionalText
             )
         }
     }

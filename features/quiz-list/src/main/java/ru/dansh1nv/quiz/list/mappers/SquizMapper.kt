@@ -11,7 +11,7 @@ import ru.dansh1nv.quiz_list_domain.models.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.GameType
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
 
-class SquizMapper(
+internal class SquizMapper(
     private val resourceManager: IResourceManager
 ) {
 

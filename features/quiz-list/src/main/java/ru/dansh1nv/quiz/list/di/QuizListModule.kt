@@ -7,7 +7,7 @@ import ru.dansh1nv.quiz.list.presentation.QuizListViewModel
 
 fun quizListModule() = module {
     factory { SquizMapper(resourceManager = get()) }
-    factory { QuizPleaseMapper() }
+    factory { QuizPleaseMapper(resourceManager = get()) }
     factory {
         QuizListViewModel(
             interactor = get(),

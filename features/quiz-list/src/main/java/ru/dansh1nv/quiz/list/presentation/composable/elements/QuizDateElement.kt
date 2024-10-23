@@ -10,7 +10,7 @@ import ru.dansh1nv.quiz.list.models.GameDateUI
 import ru.dansh1nv.quiz.list.presentation.composable.TextCell
 
 @Composable
-fun QuizDateElement(gameDate: GameDateUI, modifier: Modifier) {
+internal fun QuizDateElement(gameDate: GameDateUI, modifier: Modifier) {
     Column(
         verticalArrangement = Arrangement.spacedBy(4.dp),
         modifier = modifier

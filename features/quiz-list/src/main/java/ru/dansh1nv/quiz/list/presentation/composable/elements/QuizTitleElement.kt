@@ -9,7 +9,7 @@ import ru.dansh1nv.quiz.list.models.QuizUI
 import ru.dansh1nv.quiz.list.presentation.composable.TextCell
 
 @Composable
-fun QuizTitleElement(quizGame: QuizUI, modifier: Modifier) {
+internal fun QuizTitleElement(quizGame: QuizUI, modifier: Modifier) {
     Column(modifier = modifier) {
         Row {
             TextCell(

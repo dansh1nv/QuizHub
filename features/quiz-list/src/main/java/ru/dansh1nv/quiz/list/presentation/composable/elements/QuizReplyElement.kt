@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import ru.dansh1nv.quiz.list.presentation.composable.TextCell
 
 @Composable
-fun QuizReplyElement(additionDescription: String, modifier: Modifier) {
+internal fun QuizReplyElement(additionDescription: String, modifier: Modifier) {
     Column(modifier = modifier) {
         TextCell(
             text = additionDescription,

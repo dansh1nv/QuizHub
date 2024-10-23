@@ -1,6 +1,8 @@
 package ru.dansh1nv.quiz.list.mappers
 
 import ru.dansh1nv.common.orZero
+import ru.dansh1nv.core.resourceManager.IResourceManager
+import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.models.GameDateUI
 import ru.dansh1nv.quiz.list.models.Location
 import ru.dansh1nv.quiz.list.models.Organization
@@ -9,7 +11,9 @@ import ru.dansh1nv.quiz_list_domain.models.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.GameType
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 
-class QuizPleaseMapper {
+internal class QuizPleaseMapper(
+    private val resourceManager: IResourceManager
+) {
 
     fun mapToQuizPlease(entities: List<QuizPlease>): List<QuizUI> {
         return entities.map(::mapToQuizPlease)
@@ -47,7 +51,17 @@ class QuizPleaseMapper {
             status = entity.status?.title.orEmpty(),
             organization = Organization.QUIZ_PLEASE,
             additionDescription = "",
-            priceAdditionalText = "",
+            priceAdditionalText = when (entity.gameFormat) {
+                GameFormat.ONLINE -> {
+                    resourceManager.getStringById(R.string.quiz_item_price_for_team)
+                }
+
+                GameFormat.OFFLINE -> {
+                    resourceManager.getStringById(R.string.quiz_item_price_for_people)
+                }
+
+                else -> ""
+            },
             type = GameType.CLASSIC,
         )
     }
