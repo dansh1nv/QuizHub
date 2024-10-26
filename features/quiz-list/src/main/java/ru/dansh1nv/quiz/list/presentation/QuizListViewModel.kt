@@ -91,25 +91,57 @@ internal class QuizListViewModel(
 
     override fun onUIEvent(event: ScreenEvent) {
         when (event) {
-            is ScreenEvent.OnSortClick -> {}
+            is ScreenEvent.OnSortClick -> showSorting()
             is ScreenEvent.OnLocationClick -> {}
-            is ScreenEvent.OnFiltersClick -> showFilters()
+            is ScreenEvent.OnFiltersClick -> showFilters(event.isShow)
             is ScreenEvent.OnTabClick -> updateCurrentTab(event.index)
             is ScreenEvent.OnRefresh -> fetchQuizList()
+            is ScreenEvent.BottomSheetDismiss -> {}
+            is ScreenEvent.FilterClick -> applyFilters(event.organization)
         }
     }
 
-    private fun showFilters() {
+    private fun showFilters(isShow: Boolean) {
+        _state.update { screenState ->
+            (screenState as State.Loaded).copy(isFiltersShow = isShow)
+        }
+    }
 
+    private fun showSorting() {
+//        _state.update { screenState ->
+//            (screenState as State.Loaded).copy(bottomSheet = BottomSheet.SortBottomSheet())
+//        }
+    }
+
+    private fun applyFilters(organization: Organization?) {
+        showQuizList(organization)
+    }
+
+    private fun showQuizList(organization: Organization?) {
+        val quizList = quizMap.getOrDefault(
+            key = organization,
+            defaultValue = quizMap.values
+                .flatten()
+                .sortedBy { it.formattedDate.date }
+        )
+        _state.update {
+            State.Loaded(
+                quizList = quizList
+            )
+        }
     }
 
 }
 
-sealed class State {
+internal sealed class State {
     data object Loading : State()
     data object Error : State()
     data class Loaded(
         val selectedTabIndex: Int = 0,
         val quizList: List<QuizUI> = emptyList(),
+        val isFavouriteFeatureEnabled: Boolean = false,
+        val isFiltersFeatureEnabled: Boolean = true,
+        val isSortFeatureEnabled: Boolean = false,
+        val isFiltersShow: Boolean = false,
     ) : State()
 }

@@ -20,7 +20,6 @@ import ru.dansh1nv.quiz.list.presentation.composable.Header
 import ru.dansh1nv.quiz.list.presentation.composable.QuizListContent
 import ru.dansh1nv.quiz.list.presentation.composable.TabLayout
 import ru.dansh1nv.quiz.list.presentation.composable.placeholder.ErrorPlaceholder
-import kotlin.reflect.KFunction1
 
 class QuizListScreen : Screen {
 
@@ -74,10 +73,12 @@ internal fun BaseScreen(
             }
 
             is State.Loaded -> {
-                TabLayout(
-                    selectedTabIndex = screenState.selectedTabIndex,
-                    onEvent = onUIEvent
-                )
+                if (screenState.isFavouriteFeatureEnabled) {
+                    TabLayout(
+                        selectedTabIndex = screenState.selectedTabIndex,
+                        onEvent = onUIEvent,
+                    )
+                }
                 QuizListContent(screenState.quizList)
             }
         }

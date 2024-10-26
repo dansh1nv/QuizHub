@@ -38,6 +38,4 @@ dependencies {
     implementation(libs.bundles.common)
     implementation(libs.bundles.navigation)
     implementation(libs.bundles.ui)
-
-    implementation(project(":designSystem"))
 }
