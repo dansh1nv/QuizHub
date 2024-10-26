@@ -9,10 +9,14 @@ class QuizListInteractor(
     private val quizPleaseInteractor: QuizPleaseInteractor,
 ) {
 
-    suspend fun getAllQuizList(): Flow<List<Quiz>> {
+    suspend fun getAllQuizList(cityId: Int): Flow<List<Quiz>> {
         return merge(
             squizInteractor.getQuizList(),
-            quizPleaseInteractor.getQuizList(),
+            quizPleaseInteractor.getQuizList(
+                cityId = cityId,
+                pageNumber = 1,
+                pageSize = 100
+            ),
         )
     }
 }

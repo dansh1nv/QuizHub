@@ -5,12 +5,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import ru.dansh1nv.core.presentation.BaseScreenModel
 import ru.dansh1nv.quiz.list.mappers.QuizPleaseMapper
 import ru.dansh1nv.quiz.list.mappers.SquizMapper
@@ -19,13 +21,13 @@ import ru.dansh1nv.quiz.list.models.QuizUI
 import ru.dansh1nv.quiz_list_domain.interactors.QuizListInteractor
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
+import timber.log.Timber
 
 internal class QuizListViewModel(
     private val interactor: QuizListInteractor,
     private val squizMapper: SquizMapper,
     private val quizPleaseMapper: QuizPleaseMapper,
-//    private val bottomSheetController: BottomSheetController,
-) : BaseScreenModel<ScreenEvent>()/*, BottomSheetController by bottomSheetController*/ {
+) : BaseScreenModel<ScreenEvent>() {
 
     private val _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
 
@@ -35,39 +37,48 @@ internal class QuizListViewModel(
     private val quizMap = mutableMapOf<Organization, MutableList<QuizUI>>()
 
     init {
-        screenModelScope.launch {
-            Organization.entries.forEach { organization ->
-                quizMap[organization] = mutableListOf()
-            }
-            interactor.getAllQuizList()
-                .map { quizList ->
-                    quizList.mapNotNull { quiz ->
-                        when (quiz) {
-                            is QuizPlease -> quizMap[Organization.QUIZ_PLEASE]?.add(
-                                quizPleaseMapper.mapToQuizPlease(quiz)
-                            )
+        Organization.entries.forEach { organization ->
+            quizMap[organization] = mutableListOf()
+        }
+        fetchQuizList()
+    }
 
-                            is SQuiz -> quizMap[Organization.SQUIZ]?.add(
-                                squizMapper.mapToQuizUI(quiz)
-                            )
+    private fun fetchQuizList() = screenModelScope.launch(Dispatchers.Default) {
+        interactor.getAllQuizList(17)
+            .map { quizList ->
+                quizList.mapNotNull { quiz ->
+                    when (quiz) {
+                        is QuizPlease -> quizMap[Organization.QUIZ_PLEASE]?.add(
+                            quizPleaseMapper.mapToQuizPlease(quiz)
+                        )
 
-                            else -> null
-                        }
+                        is SQuiz -> quizMap[Organization.SQUIZ]?.add(
+                            squizMapper.mapToQuizUI(quiz)
+                        )
+
+                        else -> null
                     }
                 }
-                .flowOn(Dispatchers.Default)
-                .onEach {
-                    val quizList = quizMap.values
-                        .flatten()
-                        .sortedBy { it.formattedDate.date }
+            }
+            .map {
+                quizMap.values
+                    .flatten()
+                    .sortedBy { it.formattedDate.date }
+            }
+            .catch { ex ->
+                Timber.e(ex)
+                _state.update { State.Error }
+            }
+            .flowOn(Dispatchers.Default)
+            .onEach { quizList ->
+                withContext(Dispatchers.Main) {
                     _state.update {
                         State.Loaded(
                             quizList = quizList
                         )
                     }
                 }
-                .collect()
-        }
+            }.collect()
     }
 
     private fun updateCurrentTab(index: Int) {
@@ -84,6 +95,7 @@ internal class QuizListViewModel(
             is ScreenEvent.OnLocationClick -> {}
             is ScreenEvent.OnFiltersClick -> showFilters()
             is ScreenEvent.OnTabClick -> updateCurrentTab(event.index)
+            is ScreenEvent.OnRefresh -> fetchQuizList()
         }
     }
 

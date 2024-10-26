@@ -4,4 +4,7 @@
     <string name="quiz_item_price_for_team">с команды</string>
     <string name="tab_item_all">Все</string>
     <string name="tab_item_favourite">Избранное</string>
+    <string name="empty_placeholder_text">Список пуст</string>
+    <string name="vpn_warning">Для корректной работы отключите VPN</string>
+    <string name="refresh">Обновить</string>
 </resources>

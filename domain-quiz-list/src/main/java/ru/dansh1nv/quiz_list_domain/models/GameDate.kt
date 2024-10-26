@@ -6,6 +6,5 @@ data class GameDate(
     val dateTime: LocalDateTime,
     val day: String,
     val month: String,
-    val dayOfTheWeek: String,
     val time: String,
 )

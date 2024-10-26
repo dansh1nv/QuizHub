@@ -1,5 +1,6 @@
 package ru.dansh1nv.quiz.data.mappers
 
+import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
@@ -11,6 +12,8 @@ import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 import ru.dansh1nv.quiz_list_domain.models.Status
 import ru.dansh1nv.quizapi.model.quizplease.QuizPleaseDTO
 import ru.dansh1nv.quizapi.model.quizplease.StatusDTO
+import java.time.OffsetDateTime
+import java.util.Calendar
 
 object QuizPleaseMapper {
 
@@ -22,30 +25,27 @@ object QuizPleaseMapper {
         return dtos.map(::map)
     }
 
-    private fun map(dto: QuizPleaseDTO): QuizPlease {
-        val dateParts = dto.formatDate?.split(" ") ?: emptyList()
-        return QuizPlease(
-            id = dto.id,
-            title = dto.title,
-            packageNumber = dto.packageNumber,
-            description = dto.description,
-            image = BASE_URL + dto.image,
-            gameFormat = dto.gameFormat?.let { mapGameFormat(it) },
-            datetime = dto.datetime,
-            formatDate = mapGameDate(dto.datetime.orEmpty()),
-            formatTime = dto.formatTime,
-            price = dto.price,
-            formatPrice = dto.formatPrice,
-            location = dto.location,
-            address = dto.address,
-            city = dto.city,
-            latitude = dto.latitude,
-            longitude = dto.longitude,
-            difficulty = dto.difficulty?.let { mapDifficulty(it) },
-            status = mapStatus(dto.status),
-            paymentMethod = dto.paymentMethod?.let { mapPaymentMethod(it) },
-        )
-    }
+    private fun map(dto: QuizPleaseDTO) = QuizPlease(
+        id = dto.id,
+        title = dto.title,
+        packageNumber = dto.packageNumber,
+        description = dto.description,
+        image = BASE_URL + dto.image,
+        gameFormat = dto.gameFormat?.let { mapGameFormat(it) },
+        datetime = dto.datetime,
+        formatDate = mapGameDate(dto.datetime.orEmpty()),
+        formatTime = dto.formatTime,
+        price = dto.price,
+        formatPrice = dto.formatPrice,
+        location = dto.location,
+        address = dto.address,
+        city = dto.city,
+        latitude = dto.latitude,
+        longitude = dto.longitude,
+        difficulty = dto.difficulty?.let { mapDifficulty(it) },
+        status = mapStatus(dto.status),
+        paymentMethod = dto.paymentMethod?.let { mapPaymentMethod(it) },
+    )
 
     private fun mapStatus(status: StatusDTO?): Status? {
         return Status.entries.firstOrNull { it.id == status?.id }
@@ -66,7 +66,6 @@ object QuizPleaseMapper {
             ?.getOrNull(1)
     }
 
-    //"23.10.24 19:30"
     private fun mapGameDate(
         datetime: String
     ): GameDate {
@@ -80,6 +79,7 @@ object QuizPleaseMapper {
             minute = timeArray[1].toInt(),
         )
         val localDate = LocalDate(
+            //TODO: Поправить подсчет даты
             year = "20${dateArray[2]}".toInt(),
             monthNumber = month,
             dayOfMonth = day,
@@ -92,13 +92,7 @@ object QuizPleaseMapper {
             dateTime = localDateTime,
             day = day.toString(),
             month = MonthConverter.getMonthNameByNumber(month),
-            dayOfTheWeek = "",
             time = time,
         )
     }
-
-}
-
-object DateFormatter {
-    const val DATE_FORMAT_DD_MM_YY_HH_MM = "dd.MM.yy HH:mm"
 }

@@ -111,7 +111,6 @@ object SquizMapper {
             ),
             day = day,
             month = month,
-            dayOfTheWeek = DayOfTheWeekUtils.formatFullDayName(dayOfTheWeek),
             time = time.trim(),
         )
     }

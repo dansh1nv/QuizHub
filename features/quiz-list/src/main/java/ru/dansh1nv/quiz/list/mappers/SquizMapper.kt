@@ -1,6 +1,7 @@
 package ru.dansh1nv.quiz.list.mappers
 
 import ru.dansh1nv.common.orZero
+import ru.dansh1nv.common.utils.localeDate.localeDay
 import ru.dansh1nv.core.resourceManager.IResourceManager
 import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.models.GameDateUI
@@ -30,7 +31,7 @@ internal class SquizMapper(
                     dateText = "${gameDate?.day} ${gameDate?.month}",
                     timeWithDay = buildString {
                         gameDate?.time?.let { append("$it, ") }
-                        gameDate?.dayOfTheWeek?.let { append(it) }
+                        gameDate?.dateTime?.dayOfWeek?.let { append(localeDay(it)) }
                     }
                 ),
                 type = type ?: GameType.CLASSIC,

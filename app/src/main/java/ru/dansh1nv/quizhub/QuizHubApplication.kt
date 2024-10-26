@@ -15,6 +15,7 @@ import ru.dansh1nv.quiz.list.presentation.QuizListScreen
 import ru.dansh1nv.quiz_list_domain.di.quizListDomainModule
 import ru.dansh1nv.quizapi.di.apiModule
 import ru.dansh1nv.quizhub.di.appModule
+import timber.log.Timber
 
 class QuizHubApplication : Application() {
 
@@ -22,6 +23,7 @@ class QuizHubApplication : Application() {
         super.onCreate()
         initKoin()
         initNavigation()
+        initTimber()
     }
 
     override fun onTerminate() {
@@ -53,6 +55,10 @@ class QuizHubApplication : Application() {
                 QuizDetailsScreen()
             }
         }
+    }
+
+    private fun initTimber() {
+        Timber.plant()
     }
 
 }

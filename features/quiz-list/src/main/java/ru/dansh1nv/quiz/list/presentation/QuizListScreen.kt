@@ -19,6 +19,8 @@ import ru.dansh1nv.quiz.list.models.CityModel
 import ru.dansh1nv.quiz.list.presentation.composable.Header
 import ru.dansh1nv.quiz.list.presentation.composable.QuizListContent
 import ru.dansh1nv.quiz.list.presentation.composable.TabLayout
+import ru.dansh1nv.quiz.list.presentation.composable.placeholder.ErrorPlaceholder
+import kotlin.reflect.KFunction1
 
 class QuizListScreen : Screen {
 
@@ -28,41 +30,55 @@ class QuizListScreen : Screen {
         val screenState by viewModel.state.collectAsStateWithLifecycle()
         val onUIEvent = viewModel::onUIEvent
 
-        Box {
-            when (screenState) {
-                is State.Loading -> {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .fillMaxHeight(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        CircularProgressIndicator(
-                            strokeWidth = 2.dp,
-                            modifier = Modifier.size(60.dp),
-                            color = MaterialTheme.colorScheme.secondary,
-                        )
-                    }
-                }
+        BaseScreen(
+            screenState = screenState,
+            onUIEvent = onUIEvent
+        )
+    }
+}
 
-                is State.Error -> {
-
+@Composable
+internal fun BaseScreen(
+    screenState: State,
+    onUIEvent: (ScreenEvent) -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+    ) {
+        Header(
+            //TODO:Заменить заглушку города на список с городами
+            //TODO:Подключить геолокацию
+            city = CityModel("Санкт-Петербург", 2L),
+            onEvent = onUIEvent
+        )
+        when (screenState) {
+            is State.Loading -> {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .fillMaxHeight(),
+                    contentAlignment = Alignment.Center
+                ) {
+                    CircularProgressIndicator(
+                        strokeWidth = 2.dp,
+                        modifier = Modifier.size(60.dp),
+                        color = MaterialTheme.colorScheme.secondary,
+                    )
                 }
+            }
 
-                is State.Loaded -> {
-                    val state = (screenState as State.Loaded)
-                    Column {
-                        Header(
-                            city = CityModel("Ваш город", 2L),
-                            onEvent = onUIEvent
-                        )
-                        TabLayout(
-                            selectedTabIndex = state.selectedTabIndex,
-                            onEvent = onUIEvent
-                        )
-                        QuizListContent(state.quizList)
-                    }
-                }
+            is State.Error -> {
+                ErrorPlaceholder(onUIEvent = onUIEvent)
+            }
+
+            is State.Loaded -> {
+                TabLayout(
+                    selectedTabIndex = screenState.selectedTabIndex,
+                    onEvent = onUIEvent
+                )
+                QuizListContent(screenState.quizList)
             }
         }
     }

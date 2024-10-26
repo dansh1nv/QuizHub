@@ -7,4 +7,5 @@ internal sealed interface ScreenEvent: UIEvent {
     data object OnSortClick : ScreenEvent
     data object OnLocationClick : ScreenEvent
     data class OnTabClick(val index: Int) : ScreenEvent
+    data object OnRefresh : ScreenEvent
 }

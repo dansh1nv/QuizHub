@@ -5,6 +5,10 @@ import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 
 interface IQuizPleaseRepository {
 
-    suspend fun getQuizList(): Flow<List<QuizPlease>>
+    suspend fun getQuizList(
+        cityId: Int,
+        pageNumber: Int,
+        pageSize: Int,
+    ): Flow<List<QuizPlease>>
 
 }

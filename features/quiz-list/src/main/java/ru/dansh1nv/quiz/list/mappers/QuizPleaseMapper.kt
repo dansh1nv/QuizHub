@@ -1,6 +1,7 @@
 package ru.dansh1nv.quiz.list.mappers
 
 import ru.dansh1nv.common.orZero
+import ru.dansh1nv.common.utils.localeDate.localeDay
 import ru.dansh1nv.core.resourceManager.IResourceManager
 import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.models.GameDateUI
@@ -10,6 +11,8 @@ import ru.dansh1nv.quiz.list.models.QuizUI
 import ru.dansh1nv.quiz_list_domain.models.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.GameType
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
+import java.time.format.TextStyle
+import java.util.Locale
 
 internal class QuizPleaseMapper(
     private val resourceManager: IResourceManager
@@ -30,9 +33,12 @@ internal class QuizPleaseMapper(
                 entity.packageNumber?.let { append(it) }
             },
             formattedDate = GameDateUI(
-                dateText = "${entity.formatDate?.day} ${entity.formatDate?.month}",
-                timeWithDay = entity.formatTime.orEmpty(),
                 date = entity.formatDate?.dateTime,
+                dateText = "${entity.formatDate?.day} ${entity.formatDate?.month}",
+                timeWithDay = buildString {
+                    entity.formatTime?.let { append("$it, ") }
+                    entity.formatDate?.dateTime?.dayOfWeek?.let { append(localeDay(it)) }
+                },
             ),
             formatPrice = entity.formatPrice.orEmpty(),
             description = entity.description.orEmpty(),
