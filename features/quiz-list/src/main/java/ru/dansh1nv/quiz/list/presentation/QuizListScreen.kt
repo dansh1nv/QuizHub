@@ -53,13 +53,16 @@ class QuizListScreen : Screen {
                     val state = (screenState as State.Loaded)
                     Column {
                         Header(
-                            city = CityModel("Ваш город", 2L),
-                            onEvent = onUIEvent
+                            screenState = state,
+                            city = CityModel("Санкт-Петербург", 17),
+                            onUIEvent = onUIEvent,
                         )
-                        TabLayout(
-                            selectedTabIndex = state.selectedTabIndex,
-                            onEvent = onUIEvent
-                        )
+                        if (state.isFavouriteFeatureEnabled) {
+                            TabLayout(
+                                selectedTabIndex = state.selectedTabIndex,
+                                onEvent = onUIEvent
+                            )
+                        }
                         QuizListContent(state.quizList)
                     }
                 }
