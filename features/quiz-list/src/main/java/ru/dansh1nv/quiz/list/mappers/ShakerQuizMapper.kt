@@ -1,10 +1,12 @@
 package ru.dansh1nv.quiz.list.mappers
 
 import ru.dansh1nv.common.orZero
+import ru.dansh1nv.common.utils.localeDate.localeDay
 import ru.dansh1nv.quiz.list.models.item.GameDateUI
 import ru.dansh1nv.quiz.list.models.item.Organization
 import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz_list_domain.models.ShakerQuiz
+import ru.dansh1nv.quiz_list_domain.models.common.GameDate
 import ru.dansh1nv.quiz_list_domain.models.common.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.common.GameType
 
@@ -54,9 +56,16 @@ class ShakerQuizMapper(
         }
     }
 
-    //TODO:Добавить обработку даты
-    private fun mapToGameDateUI(eventTime: String): GameDateUI? {
-        return null
+    private fun mapToGameDateUI(gameDate: GameDate): GameDateUI {
+        return GameDateUI(
+            date = gameDate.dateTime,
+            dateText = "${gameDate.day} ${gameDate.month}",
+            timeWithDay = buildString {
+                append(gameDate.time)
+                append(", ")
+                append(localeDay(gameDate.dateTime.dayOfWeek))
+            }
+        )
     }
 
     private fun mapPrice(entity: ShakerQuiz): String {

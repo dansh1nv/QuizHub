@@ -1,11 +1,19 @@
 package ru.dansh1nv.quiz.data.mappers
 
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.LocalTime
+import kotlinx.datetime.format
+import kotlinx.datetime.format.DateTimeFormat
+import ru.dansh1nv.quiz.data.utils.MonthConverter
 import ru.dansh1nv.quiz_list_domain.models.ShakerQuiz
 import ru.dansh1nv.quiz_list_domain.models.Status
+import ru.dansh1nv.quiz_list_domain.models.common.GameDate
 import ru.dansh1nv.quiz_list_domain.models.common.Location
 import ru.dansh1nv.quizapi.model.shakerquiz.LocationDTO
 import ru.dansh1nv.quizapi.model.shakerquiz.ShakerQuizItemDTO
 import java.math.BigDecimal
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
 
 class ShakerQuizDataMapper {
 
@@ -18,7 +26,7 @@ class ShakerQuizDataMapper {
                 description = dto.description,
                 shortDescription = dto.shortDescription,
                 status = mapStatus(dto.status),
-                eventTime = dto.eventTime,
+                eventTime = mapToGameDate(dto.eventTime.orEmpty()),
                 formatTime = dto.location?.gameTime,
                 price = dto.price?.toInt(),
                 currency = dto.currency,
@@ -46,6 +54,16 @@ class ShakerQuizDataMapper {
                 dto.houseNumber?.let(::append)
             },
             city = dto.city?.name,
+        )
+    }
+
+    private fun mapToGameDate(eventTime: String): GameDate {
+        val date = LocalDateTime.parse(eventTime)
+        return GameDate(
+            dateTime = date,
+            day = date.date.dayOfMonth.toString(),
+            month = MonthConverter.getMonthNameByNumber(date.monthNumber),
+            time = date.time.toString(),
         )
     }
 }

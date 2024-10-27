@@ -1,5 +1,6 @@
 package ru.dansh1nv.quiz_list_domain.models
 
+import ru.dansh1nv.quiz_list_domain.models.common.GameDate
 import ru.dansh1nv.quiz_list_domain.models.common.Location
 
 data class ShakerQuiz(
@@ -9,7 +10,7 @@ data class ShakerQuiz(
     val description: String?,
     val shortDescription: String?,
     val status: Status?,
-    val eventTime: String?, // 2024-10-27T19:30:00
+    val eventTime: GameDate?,
     val formatTime: String?,
     val price: Int?,
     val currency: String?,
