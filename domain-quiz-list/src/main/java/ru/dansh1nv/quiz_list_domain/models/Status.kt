@@ -1,19 +1,24 @@
 package ru.dansh1nv.quiz_list_domain.models
 
 enum class Status(
-    val id: Int,
-    val title: String,
+    val quizPleaseId: Int,
+    val shakerId: String,
+    val squizId: String,
 ) {
     WRITE_TO_GAME(
-        id = 1,
-        title = "Записаться на игру"
+        quizPleaseId = 1,
+        shakerId = "PUBLISHED",
+        squizId = "Запись на игру",
+
     ),
     WRITE_TO_RESERVE(
-        id = 2,
-        title = "Записаться в резерв"
+        quizPleaseId = 2,
+        shakerId = "IS_RESERVE",
+        squizId = "",
     ),
     RESERVATION_CLOSE(
-        id = 3,
-        title = "Регистрация закрыта"
+        quizPleaseId = 3,
+        shakerId = "CLOSED",
+        squizId = "",
     );
 }

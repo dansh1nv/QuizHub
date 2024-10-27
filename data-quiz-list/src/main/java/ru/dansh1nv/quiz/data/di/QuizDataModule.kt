@@ -2,18 +2,22 @@ package ru.dansh1nv.quiz.data.di
 
 import org.koin.dsl.module
 import ru.dansh1nv.quiz.data.datasource.quizPlease.QuizPleaseRemoteDataSource
-import ru.dansh1nv.quiz.data.repositories.SquizRepository
+import ru.dansh1nv.quiz.data.datasource.shakerQuiz.ShakerQuizRemoteDataSource
 import ru.dansh1nv.quiz.data.datasource.squiz.LocalDataSource
 import ru.dansh1nv.quiz.data.datasource.squiz.SquizRemoteDataSource
-import ru.dansh1nv.quiz.data.mappers.QuizPleaseMapper
-import ru.dansh1nv.quiz.data.mappers.SquizMapper
+import ru.dansh1nv.quiz.data.mappers.QuizPleaseDataMapper
+import ru.dansh1nv.quiz.data.mappers.ShakerQuizDataMapper
+import ru.dansh1nv.quiz.data.mappers.SquizDataMapper
 import ru.dansh1nv.quiz.data.repositories.QuizPleaseRepository
+import ru.dansh1nv.quiz.data.repositories.ShakerQuizRepository
+import ru.dansh1nv.quiz.data.repositories.SquizRepository
 import ru.dansh1nv.quiz_list_domain.repository.IQuizPleaseRepository
 import ru.dansh1nv.quiz_list_domain.repository.ISQuizRepository
+import ru.dansh1nv.quiz_list_domain.repository.IShakerQuizRepository
 
 fun quizDataModule() = module {
 
-    factory<SquizMapper> { SquizMapper }
+    factory<SquizDataMapper> { SquizDataMapper() }
 
     factory<LocalDataSource> {
         LocalDataSource(database = get())
@@ -31,7 +35,7 @@ fun quizDataModule() = module {
         )
     }
 
-    factory<QuizPleaseMapper> { QuizPleaseMapper }
+    factory<QuizPleaseDataMapper> { QuizPleaseDataMapper() }
 
     factory<QuizPleaseRemoteDataSource> { QuizPleaseRemoteDataSource(api = get()) }
 
@@ -39,6 +43,15 @@ fun quizDataModule() = module {
         QuizPleaseRepository(
             remoteDataSource = get(),
             mapper = get(),
+        )
+    }
+
+    factory<ShakerQuizDataMapper> { ShakerQuizDataMapper() }
+    factory<ShakerQuizRemoteDataSource> { ShakerQuizRemoteDataSource(api = get()) }
+    single<IShakerQuizRepository> {
+        ShakerQuizRepository(
+            remoteDataSource = get(),
+            mapper = get()
         )
     }
 

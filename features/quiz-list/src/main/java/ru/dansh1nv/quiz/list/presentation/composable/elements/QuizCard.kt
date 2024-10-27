@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import ru.dansh1nv.designsystem.theme.QuizHubTheme
-import ru.dansh1nv.quiz.list.models.QuizUI
+import ru.dansh1nv.quiz.list.models.item.QuizUI
 
 @Composable
 internal fun QuizCard(quizGame: QuizUI) {
@@ -49,12 +49,12 @@ internal fun QuizCard(quizGame: QuizUI) {
                 .padding(start = 12.dp, end = 12.dp, bottom = 12.dp)
                 .clip(QuizHubTheme.shapes.large),
         )
-        QuizDateElement(quizGame.formattedDate, modifier)
+        quizGame.formattedDate?.let { QuizDateElement(quizGame.formattedDate, modifier) }
         quizGame.takeIf { it.additionDescription.isNotBlank() }?.let {
             QuizReplyElement(quizGame.additionDescription, modifier)
         }
         QuizTitleElement(quizGame, modifier)
-        QuizLocationElement(quizGame, modifier)
+        quizGame.location?.let { QuizLocationElement(quizGame.location, modifier) }
         QuizPriceElement(quizGame, modifier)
     }
 }

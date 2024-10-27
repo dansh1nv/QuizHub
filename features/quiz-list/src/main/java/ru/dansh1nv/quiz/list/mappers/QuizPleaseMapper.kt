@@ -1,74 +1,61 @@
 package ru.dansh1nv.quiz.list.mappers
 
-import ru.dansh1nv.common.orZero
 import ru.dansh1nv.common.utils.localeDate.localeDay
 import ru.dansh1nv.core.resourceManager.IResourceManager
-import ru.dansh1nv.quiz.list.R
-import ru.dansh1nv.quiz.list.models.GameDateUI
-import ru.dansh1nv.quiz.list.models.Location
-import ru.dansh1nv.quiz.list.models.Organization
-import ru.dansh1nv.quiz.list.models.QuizUI
-import ru.dansh1nv.quiz_list_domain.models.GameFormat
-import ru.dansh1nv.quiz_list_domain.models.GameType
+import ru.dansh1nv.quiz.list.models.item.GameDateUI
+import ru.dansh1nv.quiz.list.models.item.Organization
+import ru.dansh1nv.quiz.list.models.item.QuizUI
+import ru.dansh1nv.quiz_list_domain.models.common.GameFormat
+import ru.dansh1nv.quiz_list_domain.models.common.GameType
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
-import java.time.format.TextStyle
-import java.util.Locale
+import ru.dansh1nv.quiz_list_domain.models.common.GameDate
 
 internal class QuizPleaseMapper(
-    private val resourceManager: IResourceManager
+    private val resourceManager: IResourceManager,
+    private val commonMapper: CommonMapper,
 ) {
 
-    fun mapToQuizPlease(entities: List<QuizPlease>): List<QuizUI> {
-        return entities.map(::mapToQuizPlease)
+    fun mapToQuizUI(entities: List<QuizPlease>): List<QuizUI> {
+        return entities.map(::mapToQuizUI)
     }
 
-    fun mapToQuizPlease(entity: QuizPlease): QuizUI {
+    fun mapToQuizUI(entity: QuizPlease): QuizUI {
         return QuizUI(
-            id = entity.id.orZero(),
-            city = entity.city.orEmpty(),
+            id = entity.id.orEmpty(),
             theme = buildString {
                 entity.title?.let {
                     append("$it, ")
                 }
                 entity.packageNumber?.let { append(it) }
             },
-            formattedDate = GameDateUI(
-                date = entity.formatDate?.dateTime,
-                dateText = "${entity.formatDate?.day} ${entity.formatDate?.month}",
-                timeWithDay = buildString {
-                    entity.formatTime?.let { append("$it, ") }
-                    entity.formatDate?.dateTime?.dayOfWeek?.let { append(localeDay(it)) }
-                },
-            ),
+            formattedDate = entity.formatDate?.let(::mapGameDateUI),
             formatPrice = entity.formatPrice.orEmpty(),
             description = entity.description.orEmpty(),
-            place = entity.location.orEmpty(),
             image = entity.image.orEmpty(),
-            address = entity.address.orEmpty(),
             difficulty = entity.difficulty.orEmpty(),
-            location = Location(
-                latitude = entity.latitude.orEmpty(),
-                longitude = entity.longitude.orEmpty(),
-                locationText = "${entity.latitude.orEmpty()},${entity.longitude.orEmpty()}"
-            ),
+            location = entity.location?.let(commonMapper::mapLocationUI),
+            //TODO: Уточнить по правилам
+            teamSize = commonMapper.mapTeamSizeUI(minMembersCount = 2, maxMemberCount = 9),
             format = entity.gameFormat ?: GameFormat.OFFLINE,
             packageNumber = entity.packageNumber.orEmpty(),
             paymentMethod = entity.paymentMethod?.title.orEmpty(),
-            status = entity.status?.title.orEmpty(),
+            status = entity.status?.let (commonMapper::mapToStatusUI),
             organization = Organization.QUIZ_PLEASE,
             additionDescription = "",
-            priceAdditionalText = when (entity.gameFormat) {
-                GameFormat.ONLINE -> {
-                    resourceManager.getStringById(R.string.quiz_item_price_for_team)
-                }
-
-                GameFormat.OFFLINE -> {
-                    resourceManager.getStringById(R.string.quiz_item_price_for_people)
-                }
-
-                else -> ""
-            },
+            priceAdditionalText = entity.gameFormat
+                ?.let(commonMapper::mapPriceAdditionalText).orEmpty(),
             type = GameType.CLASSIC,
+        )
+    }
+
+    private fun mapGameDateUI(gameDate: GameDate) : GameDateUI {
+        return GameDateUI(
+            date = gameDate.dateTime,
+            dateText = "${gameDate.day} ${gameDate.month}",
+            timeWithDay = buildString {
+                append("${gameDate.time}, ")
+                append(localeDay(gameDate.dateTime.dayOfWeek))
+            },
         )
     }
 }

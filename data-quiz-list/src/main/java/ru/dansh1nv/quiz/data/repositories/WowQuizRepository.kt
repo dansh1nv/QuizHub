@@ -1,7 +1,7 @@
 package ru.dansh1nv.quiz.data.repositories
 
 import kotlinx.coroutines.flow.Flow
-import ru.dansh1nv.quiz_list_domain.models.wowQuiz.WowQuiz
+import ru.dansh1nv.quiz_list_domain.models.WowQuiz
 import ru.dansh1nv.quiz_list_domain.repository.IWowQuizRepository
 
 class WowQuizRepository: IWowQuizRepository {

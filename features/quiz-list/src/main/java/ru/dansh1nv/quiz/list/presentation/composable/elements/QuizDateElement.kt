@@ -6,7 +6,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ru.dansh1nv.quiz.list.models.GameDateUI
+import ru.dansh1nv.quiz.list.models.item.GameDateUI
 import ru.dansh1nv.quiz.list.presentation.composable.TextCell
 
 @Composable

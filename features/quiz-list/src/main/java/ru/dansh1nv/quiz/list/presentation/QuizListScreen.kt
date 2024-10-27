@@ -50,10 +50,11 @@ internal fun BaseScreen(
             //TODO:Заменить заглушку города на список с городами
             //TODO:Подключить геолокацию
             city = CityModel("Санкт-Петербург", 2L),
-            onEvent = onUIEvent
+            screenState = screenState,
+            onUIEvent = onUIEvent,
         )
         when (screenState) {
-            is State.Loading -> {
+            State.Loading -> {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -68,12 +69,12 @@ internal fun BaseScreen(
                 }
             }
 
-            is State.Error -> {
+            State.Error -> {
                 ErrorPlaceholder(onUIEvent = onUIEvent)
             }
 
             is State.Loaded -> {
-                if (screenState.isFavouriteFeatureEnabled) {
+                if (screenState.featureToggle.isFavouriteFeatureEnabled) {
                     TabLayout(
                         selectedTabIndex = screenState.selectedTabIndex,
                         onEvent = onUIEvent,

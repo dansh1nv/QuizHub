@@ -4,16 +4,17 @@ import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 import ru.dansh1nv.quiz.data.Constants
-import ru.dansh1nv.quiz.data.utils.DayOfTheWeekUtils
 import ru.dansh1nv.quiz.data.utils.MonthConverter
-import ru.dansh1nv.quiz_list_domain.models.GameDate
-import ru.dansh1nv.quiz_list_domain.models.GameFormat
-import ru.dansh1nv.quiz_list_domain.models.GameType
+import ru.dansh1nv.quiz_list_domain.models.common.GameDate
+import ru.dansh1nv.quiz_list_domain.models.common.GameFormat
+import ru.dansh1nv.quiz_list_domain.models.common.GameType
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
+import ru.dansh1nv.quiz_list_domain.models.Status
+import ru.dansh1nv.quiz_list_domain.models.common.Location
 import ru.dansh1nv.quizapi.model.squiz.Characteristic
 import ru.dansh1nv.quizapi.model.squiz.SquizDTO
 
-object SquizMapper {
+class SquizDataMapper {
 
     fun map(quizzes: List<SquizDTO>): List<SQuiz> {
         return quizzes.mapNotNull(::mapToQuiz)
@@ -49,12 +50,17 @@ object SquizMapper {
             ?.dropLast(3)
             ?.replace("\\/", "\\")
         return SQuiz(
-            id = quiz.id,
-            city = quiz.cityId.orEmpty(),
+            id = quiz.id.toString(),
+            location = Location(
+                name = address.getOrNull(0) ?: "Онлайн",
+                city = quiz.cityId.orEmpty(),
+                address = address.getOrNull(1).orEmpty(),
+                latitude = null,
+                longitude = null,
+            ),
             gameDate = mapGameDate(
                 day = day,
                 month = month,
-                dayOfTheWeek = dayOfTheWeek,
                 time = time,
             ),
             type = gameType,
@@ -64,10 +70,8 @@ object SquizMapper {
             description = description,
             additionDescription = additionDescription,
             image = img,
-            place = address.getOrNull(0) ?: "Онлайн",
-            address = address.getOrNull(1).orEmpty(),
-            price = price.toString(),
-            status = status,
+            price = price?.toString(),
+            status = mapToStatus(status),
         )
     }
 
@@ -87,10 +91,13 @@ object SquizMapper {
         }
     }
 
+    private fun mapToStatus(status: String?): Status? {
+        return Status.entries.firstOrNull { it.squizId == status }
+    }
+
     private fun mapGameDate(
         day: String,
         month: String,
-        dayOfTheWeek: String,
         time: String,
     ): GameDate {
         val timeArray = time.trim().split(":", limit = 2)

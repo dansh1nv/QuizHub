@@ -1,32 +1,32 @@
 package ru.dansh1nv.quiz.data.mappers
 
-import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 import ru.dansh1nv.quiz.data.utils.MonthConverter
-import ru.dansh1nv.quiz_list_domain.models.GameDate
-import ru.dansh1nv.quiz_list_domain.models.GameFormat
-import ru.dansh1nv.quiz_list_domain.models.PaymentMethod
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 import ru.dansh1nv.quiz_list_domain.models.Status
+import ru.dansh1nv.quiz_list_domain.models.common.GameDate
+import ru.dansh1nv.quiz_list_domain.models.common.GameFormat
+import ru.dansh1nv.quiz_list_domain.models.common.Location
+import ru.dansh1nv.quiz_list_domain.models.common.PaymentMethod
 import ru.dansh1nv.quizapi.model.quizplease.QuizPleaseDTO
 import ru.dansh1nv.quizapi.model.quizplease.StatusDTO
-import java.time.OffsetDateTime
-import java.util.Calendar
 
-object QuizPleaseMapper {
+class QuizPleaseDataMapper {
 
-    private const val DIFFICULTY_TAG =
-        """<div class=\\"badge-difficulty__title badge-difficulty__title_registration\\">\\n"""
-    private const val BASE_URL = "https://quizplease.ru"
+    companion object {
+        private const val DIFFICULTY_TAG =
+            """<div class=\\"badge-difficulty__title badge-difficulty__title_registration\\">\\n"""
+        private const val BASE_URL = "https://quizplease.ru"
+    }
 
     fun mapToQuiz(dtos: List<QuizPleaseDTO>): List<QuizPlease> {
         return dtos.map(::map)
     }
 
     private fun map(dto: QuizPleaseDTO) = QuizPlease(
-        id = dto.id,
+        id = dto.id?.toString().orEmpty(),
         title = dto.title,
         packageNumber = dto.packageNumber,
         description = dto.description,
@@ -37,18 +37,20 @@ object QuizPleaseMapper {
         formatTime = dto.formatTime,
         price = dto.price,
         formatPrice = dto.formatPrice,
-        location = dto.location,
-        address = dto.address,
-        city = dto.city,
-        latitude = dto.latitude,
-        longitude = dto.longitude,
+        location = Location(
+            city = dto.city,
+            latitude = dto.latitude?.toDouble(),
+            longitude = dto.longitude?.toDouble(),
+            address = dto.address,
+            name = dto.location,
+        ),
         difficulty = dto.difficulty?.let { mapDifficulty(it) },
         status = mapStatus(dto.status),
         paymentMethod = dto.paymentMethod?.let { mapPaymentMethod(it) },
     )
 
     private fun mapStatus(status: StatusDTO?): Status? {
-        return Status.entries.firstOrNull { it.id == status?.id }
+        return Status.entries.firstOrNull { it.quizPleaseId == status?.id }
     }
 
     private fun mapGameFormat(gameFormat: Int): GameFormat? {

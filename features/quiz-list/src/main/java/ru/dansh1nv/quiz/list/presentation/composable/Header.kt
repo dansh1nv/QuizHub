@@ -29,7 +29,7 @@ import ru.dansh1nv.quiz.list.presentation.composable.filters.FiltersView
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun Header(
-    screenState: State.Loaded,
+    screenState: State,
     city: CityModel,
     onUIEvent: (ScreenEvent) -> Unit,
 ) {
@@ -62,41 +62,43 @@ internal fun Header(
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            if (screenState.isFiltersFeatureEnabled) {
-                Box(
-                    modifier = Modifier
-                        .size(32.dp)
-                        .clickable { onUIEvent(ScreenEvent.OnFiltersClick(true)) },
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_filters),
-                        contentDescription = null,
-                        tint = QuizHubTheme.colorScheme.onSurface,
+            if (screenState is State.Loaded) {
+                if (screenState.featureToggle.isFiltersFeatureEnabled) {
+                    Box(
+                        modifier = Modifier
+                            .size(32.dp)
+                            .clickable { onUIEvent(ScreenEvent.OnFiltersClick(true)) },
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_filters),
+                            contentDescription = null,
+                            tint = QuizHubTheme.colorScheme.onSurface,
 
+                            )
+                    }
+                }
+                if (screenState.featureToggle.isSortFeatureEnabled) {
+                    Box(
+                        modifier = Modifier
+                            .size(32.dp)
+                            .clickable { onUIEvent(ScreenEvent.OnSortClick(true)) },
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_sort),
+                            contentDescription = null,
+                            tint = QuizHubTheme.colorScheme.onSurface,
                         )
+                    }
                 }
-            }
-            if (screenState.isSortFeatureEnabled) {
-                Box(
-                    modifier = Modifier
-                        .size(32.dp)
-                        .clickable { onUIEvent(ScreenEvent.OnSortClick(true)) },
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_sort),
-                        contentDescription = null,
-                        tint = QuizHubTheme.colorScheme.onSurface,
-                    )
-                }
-            }
 
-            FiltersView(
-                isFiltersShow = screenState.isFiltersShow,
-                sheetState = sheetState,
-                onUIEvent = onUIEvent
-            )
+                FiltersView(
+                    isFiltersShow = screenState.isFiltersShow,
+                    sheetState = sheetState,
+                    onUIEvent = onUIEvent
+                )
+            }
         }
     }
 }

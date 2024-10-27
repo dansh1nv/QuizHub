@@ -7,6 +7,7 @@ import ru.dansh1nv.quiz_list_domain.models.Quiz
 class QuizListInteractor(
     private val squizInteractor: SquizInteractor,
     private val quizPleaseInteractor: QuizPleaseInteractor,
+    private val shakerQuizInteractor: ShakerQuizInteractor,
 ) {
 
     suspend fun getAllQuizList(cityId: Int): Flow<List<Quiz>> {
@@ -17,6 +18,7 @@ class QuizListInteractor(
                 pageNumber = 1,
                 pageSize = 100
             ),
+            shakerQuizInteractor.fetchQuizzes(),
         )
     }
 }

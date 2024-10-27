@@ -15,18 +15,21 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.dansh1nv.core.presentation.BaseScreenModel
 import ru.dansh1nv.quiz.list.mappers.QuizPleaseMapper
+import ru.dansh1nv.quiz.list.mappers.ShakerQuizMapper
 import ru.dansh1nv.quiz.list.mappers.SquizMapper
-import ru.dansh1nv.quiz.list.models.Organization
-import ru.dansh1nv.quiz.list.models.QuizUI
+import ru.dansh1nv.quiz.list.models.item.Organization
+import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz_list_domain.interactors.QuizListInteractor
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
+import ru.dansh1nv.quiz_list_domain.models.ShakerQuiz
 import timber.log.Timber
 
 internal class QuizListViewModel(
     private val interactor: QuizListInteractor,
     private val squizMapper: SquizMapper,
     private val quizPleaseMapper: QuizPleaseMapper,
+    private val shakerQuizMapper: ShakerQuizMapper,
 ) : BaseScreenModel<ScreenEvent>() {
 
     private val _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
@@ -49,11 +52,15 @@ internal class QuizListViewModel(
                 quizList.mapNotNull { quiz ->
                     when (quiz) {
                         is QuizPlease -> quizMap[Organization.QUIZ_PLEASE]?.add(
-                            quizPleaseMapper.mapToQuizPlease(quiz)
+                            quizPleaseMapper.mapToQuizUI(quiz)
                         )
 
                         is SQuiz -> quizMap[Organization.SQUIZ]?.add(
                             squizMapper.mapToQuizUI(quiz)
+                        )
+
+                        is ShakerQuiz -> quizMap[Organization.SHAKER_QUIZ]?.add(
+                            shakerQuizMapper.mapToQuizUI(quiz)
                         )
 
                         else -> null
@@ -63,7 +70,7 @@ internal class QuizListViewModel(
             .map {
                 quizMap.values
                     .flatten()
-                    .sortedBy { it.formattedDate.date }
+                    .sortedBy { it.formattedDate?.date }
             }
             .catch { ex ->
                 Timber.e(ex)
@@ -122,7 +129,7 @@ internal class QuizListViewModel(
             key = organization,
             defaultValue = quizMap.values
                 .flatten()
-                .sortedBy { it.formattedDate.date }
+                .sortedBy { it.formattedDate?.date }
         )
         _state.update {
             State.Loaded(
@@ -139,9 +146,13 @@ internal sealed class State {
     data class Loaded(
         val selectedTabIndex: Int = 0,
         val quizList: List<QuizUI> = emptyList(),
-        val isFavouriteFeatureEnabled: Boolean = false,
-        val isFiltersFeatureEnabled: Boolean = true,
-        val isSortFeatureEnabled: Boolean = false,
+        val featureToggle: FeatureToggle = FeatureToggle(),
         val isFiltersShow: Boolean = false,
     ) : State()
 }
+
+internal data class FeatureToggle(
+    val isFavouriteFeatureEnabled: Boolean = false,
+    val isFiltersFeatureEnabled: Boolean = true,
+    val isSortFeatureEnabled: Boolean = false,
+)

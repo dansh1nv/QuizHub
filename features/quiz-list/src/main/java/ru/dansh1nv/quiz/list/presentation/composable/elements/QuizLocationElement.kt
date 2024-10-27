@@ -14,11 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import ru.dansh1nv.quiz.list.R
-import ru.dansh1nv.quiz.list.models.QuizUI
+import ru.dansh1nv.quiz.list.models.item.LocationUI
+import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz.list.presentation.composable.TextCell
 
 @Composable
-internal fun QuizLocationElement(quizGame: QuizUI, modifier: Modifier) {
+internal fun QuizLocationElement(model: LocationUI, modifier: Modifier) {
     Row(modifier = modifier) {
         Box {
             Icon(
@@ -32,8 +33,8 @@ internal fun QuizLocationElement(quizGame: QuizUI, modifier: Modifier) {
         }
         Spacer(modifier = Modifier.width(8.dp))
         Column {
-            TextCell(text = quizGame.place)
-            TextCell(text = quizGame.address)
+            TextCell(text = model.place)
+            TextCell(text = model.address)
         }
     }
 }

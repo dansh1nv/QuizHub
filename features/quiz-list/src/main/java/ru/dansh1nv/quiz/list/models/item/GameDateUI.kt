@@ -1,4 +1,4 @@
-package ru.dansh1nv.quiz.list.models
+package ru.dansh1nv.quiz.list.models.item
 
 import kotlinx.datetime.LocalDateTime
 

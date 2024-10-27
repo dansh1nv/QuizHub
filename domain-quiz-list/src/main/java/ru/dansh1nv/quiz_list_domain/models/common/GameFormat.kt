@@ -1,4 +1,4 @@
-package ru.dansh1nv.quiz_list_domain.models
+package ru.dansh1nv.quiz_list_domain.models.common
 
 enum class GameFormat(
     val id: Int,
