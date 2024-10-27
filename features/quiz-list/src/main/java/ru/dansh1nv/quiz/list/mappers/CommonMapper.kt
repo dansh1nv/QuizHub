@@ -1,12 +1,17 @@
 package ru.dansh1nv.quiz.list.mappers
 
+import ru.dansh1nv.common.StringDividerType
+import ru.dansh1nv.common.formatStringsWithDividerPoints
+import ru.dansh1nv.common.utils.localeDate.localeDay
 import ru.dansh1nv.core.resourceManager.IResourceManager
 import ru.dansh1nv.quiz.list.R
+import ru.dansh1nv.quiz.list.models.item.GameDateUI
 import ru.dansh1nv.quiz.list.models.item.GeoLocationUI
 import ru.dansh1nv.quiz.list.models.item.LocationUI
 import ru.dansh1nv.quiz.list.models.item.StatusUI
 import ru.dansh1nv.quiz.list.models.item.TeamSizeUI
 import ru.dansh1nv.quiz_list_domain.models.Status
+import ru.dansh1nv.quiz_list_domain.models.common.GameDate
 import ru.dansh1nv.quiz_list_domain.models.common.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.common.Location
 
@@ -56,6 +61,20 @@ class CommonMapper(
             latitude = latitude,
             longitude = longitude,
             locationText = "${latitude},${longitude}"
+        )
+    }
+
+    fun mapToGameDateUI(gameDate: GameDate): GameDateUI {
+        return GameDateUI(
+            date = gameDate.dateTime,
+            dateText = formatStringsWithDividerPoints(
+                arrayOf(gameDate.day, gameDate.month),
+                StringDividerType.Space
+            ),
+            timeWithDay = formatStringsWithDividerPoints(
+                arrayOf(gameDate.time, localeDay(gameDate.dateTime.dayOfWeek)),
+                StringDividerType.PointWithSpace
+            )
         )
     }
 

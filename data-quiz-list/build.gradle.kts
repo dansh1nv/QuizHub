@@ -45,5 +45,6 @@ dependencies {
 
     implementation(project(":database"))
     implementation(project(":quizapi"))
+    implementation(project(":common"))
     implementation(project(":domain-quiz-list"))
 }

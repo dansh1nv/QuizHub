@@ -2,12 +2,12 @@ package ru.dansh1nv.quiz.list.presentation.composable.elements
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import ru.dansh1nv.designsystem.theme.QuizHubTheme
+import ru.dansh1nv.designsystem.theme.elements.TextCell
 import ru.dansh1nv.quiz.list.models.item.GameDateUI
-import ru.dansh1nv.quiz.list.presentation.composable.TextCell
 
 @Composable
 internal fun QuizDateElement(gameDate: GameDateUI, modifier: Modifier) {
@@ -17,11 +17,11 @@ internal fun QuizDateElement(gameDate: GameDateUI, modifier: Modifier) {
     ) {
         TextCell(
             text = gameDate.dateText,
-            style = MaterialTheme.typography.labelLarge
+            style = QuizHubTheme.typography.labelLarge
         )
         TextCell(
             text = gameDate.timeWithDay,
-            style = MaterialTheme.typography.labelLarge,
+            style = QuizHubTheme.typography.labelLarge,
         )
     }
 }

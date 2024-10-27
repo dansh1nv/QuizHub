@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -15,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
+import ru.dansh1nv.designsystem.theme.QuizHubTheme
 import ru.dansh1nv.quiz.list.models.CityModel
 import ru.dansh1nv.quiz.list.presentation.composable.Header
 import ru.dansh1nv.quiz.list.presentation.composable.QuizListContent
@@ -64,7 +64,7 @@ internal fun BaseScreen(
                     CircularProgressIndicator(
                         strokeWidth = 2.dp,
                         modifier = Modifier.size(60.dp),
-                        color = MaterialTheme.colorScheme.secondary,
+                        color = QuizHubTheme.colorScheme.secondary,
                     )
                 }
             }

@@ -1,12 +1,13 @@
-package ru.dansh1nv.quiz.list.presentation.composable.elements
+package ru.dansh1nv.quiz.list.presentation.composable.card
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -18,6 +19,13 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import ru.dansh1nv.designsystem.theme.QuizHubTheme
 import ru.dansh1nv.quiz.list.models.item.QuizUI
+import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizDateElement
+import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizLocationElement
+import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizPriceElement
+import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizReplyElement
+import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizTagElement
+import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizTeamElement
+import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizTitleElement
 
 @Composable
 internal fun QuizCard(quizGame: QuizUI) {
@@ -31,7 +39,7 @@ internal fun QuizCard(quizGame: QuizUI) {
             )
             .background(
                 shape = QuizHubTheme.shapes.small,
-                color = MaterialTheme.colorScheme.surfaceContainer
+                color = QuizHubTheme.colorScheme.surfaceContainer
             )
             .padding(12.dp)
     ) {
@@ -49,11 +57,19 @@ internal fun QuizCard(quizGame: QuizUI) {
                 .padding(start = 12.dp, end = 12.dp, bottom = 12.dp)
                 .clip(QuizHubTheme.shapes.large),
         )
+        QuizTagElement(
+            model = quizGame.tag,
+            modifier = modifier,
+        )
+        Spacer(modifier = Modifier.size(8.dp))
         quizGame.formattedDate?.let { QuizDateElement(quizGame.formattedDate, modifier) }
         quizGame.takeIf { it.additionDescription.isNotBlank() }?.let {
             QuizReplyElement(quizGame.additionDescription, modifier)
         }
         QuizTitleElement(quizGame, modifier)
+        quizGame.teamSize?.teamSizeText?.let {
+            QuizTeamElement(teamSizeUI = quizGame.teamSize, modifier = modifier)
+        }
         quizGame.location?.let { QuizLocationElement(quizGame.location, modifier) }
         QuizPriceElement(quizGame, modifier)
     }

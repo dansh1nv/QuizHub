@@ -1,8 +1,7 @@
 package ru.dansh1nv.quiz.list.mappers
 
-import ru.dansh1nv.common.utils.localeDate.localeDay
 import ru.dansh1nv.core.resourceManager.IResourceManager
-import ru.dansh1nv.quiz.list.models.item.GameDateUI
+import ru.dansh1nv.quiz.list.models.TagModel
 import ru.dansh1nv.quiz.list.models.item.Organization
 import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
@@ -23,15 +22,9 @@ internal class SquizMapper(
         return with(squiz) {
             QuizUI(
                 id = id.orEmpty(),
-                formattedDate = GameDateUI(
-                    date = gameDate?.dateTime,
-                    dateText = "${gameDate?.day} ${gameDate?.month}",
-                    timeWithDay = buildString {
-                        gameDate?.time?.let { append("$it, ") }
-                        gameDate?.dateTime?.dayOfWeek?.let { append(localeDay(it)) }
-                    }
-                ),
+                formattedDate = gameDate?.let(commonMapper::mapToGameDateUI),
                 type = type ?: GameType.CLASSIC,
+                tag = TagModel.SQUIZ,
                 format = gameFormat,
                 theme = theme.orEmpty(),
                 status = status?.let(commonMapper::mapToStatusUI),

@@ -4,6 +4,8 @@ import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.format
 import kotlinx.datetime.format.DateTimeFormat
+import ru.dansh1nv.common.StringDividerType
+import ru.dansh1nv.common.formatStringsWithDividerPoints
 import ru.dansh1nv.quiz.data.utils.MonthConverter
 import ru.dansh1nv.quiz_list_domain.models.ShakerQuiz
 import ru.dansh1nv.quiz_list_domain.models.Status
@@ -48,11 +50,10 @@ class ShakerQuizDataMapper {
             name = dto.name,
             latitude = dto.latitude,
             longitude = dto.longitude,
-            address = buildString {
-                dto.street?.let(::append)
-                append(", ")
-                dto.houseNumber?.let(::append)
-            },
+            address = formatStringsWithDividerPoints(
+                arrayOf(dto.street, dto.houseNumber),
+                StringDividerType.CommaSpace
+            ),
             city = dto.city?.name,
         )
     }
