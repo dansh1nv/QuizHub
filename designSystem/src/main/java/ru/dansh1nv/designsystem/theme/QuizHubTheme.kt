@@ -27,7 +27,7 @@ internal val LocalColorScheme = staticCompositionLocalOf { lightColorScheme() }
 internal val LocalTypography = staticCompositionLocalOf { QuizHubTypography }
 internal val LocalShapes = staticCompositionLocalOf { Shapes() }
 internal val LocalIconTintColor = compositionLocalOf { Color.Black }
-internal val LocalTagColor = compositionLocalOf { tagColor() }
+internal val LocalTagColor = compositionLocalOf { customColor() }
 
 object QuizHubTheme {
     val colorScheme: ColorScheme
@@ -50,7 +50,7 @@ object QuizHubTheme {
         @ReadOnlyComposable
         get() = LocalIconTintColor.current
 
-    val tagColor: TagColorScheme
+    val customColor: CustomColorScheme
         @Composable
         @ReadOnlyComposable
         get() = LocalTagColor.current

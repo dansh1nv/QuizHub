@@ -16,4 +16,8 @@
     <string name="filter_id_shaker_quiz">Шейкер квиз</string>
 
     <string name="sorting_title">Сортировка</string>
+
+    <string name="quiz_status_open">Регистрация открыта</string>
+    <string name="quiz_status_reserve">Запись в резерв</string>
+    <string name="quiz_status_close">Регистрация закрыта</string>
 </resources>
