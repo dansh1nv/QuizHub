@@ -17,8 +17,10 @@ import ru.dansh1nv.core.presentation.BaseScreenModel
 import ru.dansh1nv.quiz.list.mappers.QuizPleaseMapper
 import ru.dansh1nv.quiz.list.mappers.ShakerQuizMapper
 import ru.dansh1nv.quiz.list.mappers.SquizMapper
+import ru.dansh1nv.quiz.list.models.filters.Filters
 import ru.dansh1nv.quiz.list.models.item.Organization
 import ru.dansh1nv.quiz.list.models.item.QuizUI
+import ru.dansh1nv.quiz.list.models.sorting.Sort
 import ru.dansh1nv.quiz_list_domain.interactors.QuizListInteractor
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
@@ -30,7 +32,7 @@ internal class QuizListViewModel(
     private val squizMapper: SquizMapper,
     private val quizPleaseMapper: QuizPleaseMapper,
     private val shakerQuizMapper: ShakerQuizMapper,
-) : BaseScreenModel<ScreenEvent>() {
+) : BaseScreenModel<QuizListEvent>() {
 
     private val _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
 
@@ -96,16 +98,34 @@ internal class QuizListViewModel(
         }
     }
 
-    override fun onUIEvent(event: ScreenEvent) {
+    override fun onUIEvent(event: QuizListEvent) {
         when (event) {
-            is ScreenEvent.OnSortClick -> showSorting()
+            is ScreenEvent -> onScreenEvent(event)
+            is BottomSheetEvent -> onBottomSheetEvent(event)
+        }
+    }
+
+    private fun onScreenEvent(event: ScreenEvent) {
+        when (event) {
+            is ScreenEvent.OnSortButtonClick -> showSorting(event.isShow)
             is ScreenEvent.OnLocationClick -> {}
-            is ScreenEvent.OnFiltersClick -> showFilters(event.isShow)
+            is ScreenEvent.OnFiltersButtonClick -> showFilters(event.isShow)
             is ScreenEvent.OnTabClick -> updateCurrentTab(event.index)
             is ScreenEvent.OnRefresh -> fetchQuizList()
             is ScreenEvent.BottomSheetDismiss -> {}
-            is ScreenEvent.FilterClick -> applyFilters(event.organization)
         }
+    }
+
+    private fun onBottomSheetEvent(event: BottomSheetEvent) {
+        when (event) {
+            is BottomSheetEvent.OnFilterClick -> applyFilters(event.organization)
+            is BottomSheetEvent.OnSortClick -> applySorting(event.sort)
+        }
+    }
+
+    private fun applySorting(sort: Sort) {
+        _state.update { screenState -> (screenState as State.Loaded).copy(sort = sort) }
+        showQuizList()
     }
 
     private fun showFilters(isShow: Boolean) {
@@ -114,26 +134,41 @@ internal class QuizListViewModel(
         }
     }
 
-    private fun showSorting() {
-//        _state.update { screenState ->
-//            (screenState as State.Loaded).copy(bottomSheet = BottomSheet.SortBottomSheet())
-//        }
+    private fun showSorting(isShow: Boolean) {
+        _state.update { screenState ->
+            (screenState as State.Loaded).copy(isSortingShow = isShow)
+        }
     }
 
     private fun applyFilters(organization: Organization?) {
-        showQuizList(organization)
+        _state.update { screenState ->
+            (screenState as State.Loaded).copy(
+                filters = Filters.entries.firstOrNull { filter ->
+                    filter.organization == organization
+                }
+            )
+        }
+        showQuizList()
     }
 
-    private fun showQuizList(organization: Organization?) {
+    private fun showQuizList() {
+        if (state.value !is State.Loaded) return
+
+        val filters = (state.value as State.Loaded).filters
+        val sort = (state.value as State.Loaded).sort
+
         val quizList = quizMap.getOrDefault(
-            key = organization,
-            defaultValue = quizMap.values
-                .flatten()
-                .sortedBy { it.formattedDate?.date }
+            key = filters?.organization,
+            defaultValue = quizMap.values.flatten()
         )
+
+        val sortedList = when (sort) {
+            Sort.ASC_DATE -> quizList.sortedBy { it.formattedDate?.date }
+            Sort.DESC_DATE -> quizList.sortedByDescending { it.formattedDate?.date }
+        }
         _state.update {
             State.Loaded(
-                quizList = quizList
+                quizList = sortedList
             )
         }
     }
@@ -147,12 +182,15 @@ internal sealed class State {
         val selectedTabIndex: Int = 0,
         val quizList: List<QuizUI> = emptyList(),
         val featureToggle: FeatureToggle = FeatureToggle(),
+        val filters: Filters? = null,
+        val sort: Sort = Sort.ASC_DATE,
         val isFiltersShow: Boolean = false,
+        val isSortingShow: Boolean = false,
     ) : State()
 }
 
 internal data class FeatureToggle(
     val isFavouriteFeatureEnabled: Boolean = false,
     val isFiltersFeatureEnabled: Boolean = true,
-    val isSortFeatureEnabled: Boolean = false,
+    val isSortFeatureEnabled: Boolean = true,
 )

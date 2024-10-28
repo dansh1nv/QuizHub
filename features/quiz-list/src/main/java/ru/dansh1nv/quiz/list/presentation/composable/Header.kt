@@ -22,16 +22,18 @@ import androidx.compose.ui.unit.dp
 import ru.dansh1nv.designsystem.theme.QuizHubTheme
 import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.models.CityModel
+import ru.dansh1nv.quiz.list.presentation.QuizListEvent
 import ru.dansh1nv.quiz.list.presentation.ScreenEvent
 import ru.dansh1nv.quiz.list.presentation.State
 import ru.dansh1nv.quiz.list.presentation.composable.filters.FiltersView
+import ru.dansh1nv.quiz.list.presentation.composable.sorting.SortingView
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun Header(
     screenState: State,
     city: CityModel,
-    onUIEvent: (ScreenEvent) -> Unit,
+    onUIEvent: (QuizListEvent) -> Unit,
 ) {
     val sheetState = rememberModalBottomSheetState()
     Row(
@@ -67,7 +69,7 @@ internal fun Header(
                     Box(
                         modifier = Modifier
                             .size(32.dp)
-                            .clickable { onUIEvent(ScreenEvent.OnFiltersClick(true)) },
+                            .clickable { onUIEvent(ScreenEvent.OnFiltersButtonClick(true)) },
                         contentAlignment = Alignment.Center,
                     ) {
                         Icon(
@@ -82,7 +84,7 @@ internal fun Header(
                     Box(
                         modifier = Modifier
                             .size(32.dp)
-                            .clickable { onUIEvent(ScreenEvent.OnSortClick(true)) },
+                            .clickable { onUIEvent(ScreenEvent.OnSortButtonClick(true)) },
                         contentAlignment = Alignment.Center,
                     ) {
                         Icon(
@@ -96,7 +98,13 @@ internal fun Header(
                 FiltersView(
                     isFiltersShow = screenState.isFiltersShow,
                     sheetState = sheetState,
-                    onUIEvent = onUIEvent
+                    onUIEvent = onUIEvent,
+                )
+
+                SortingView(
+                    isSortingShow = screenState.isSortingShow,
+                    sheetState = sheetState,
+                    onUIEvent = onUIEvent,
                 )
             }
         }

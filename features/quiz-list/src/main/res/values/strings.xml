@@ -16,6 +16,8 @@
     <string name="filter_id_shaker_quiz">Шейкер квиз</string>
 
     <string name="sorting_title">Сортировка</string>
+    <string name="sorting_asc_date">По возрастанию даты</string>
+    <string name="sorting_desc_date">По убыванию даты</string>
     <string name="quiz_online">Онлайн</string>
     <string name="quiz_offline">Игры в баре</string>
 

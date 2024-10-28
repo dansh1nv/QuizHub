@@ -39,7 +39,7 @@ class QuizListScreen : Screen {
 @Composable
 internal fun BaseScreen(
     screenState: State,
-    onUIEvent: (ScreenEvent) -> Unit,
+    onUIEvent: (QuizListEvent) -> Unit,
 ) {
     Column(
         modifier = Modifier

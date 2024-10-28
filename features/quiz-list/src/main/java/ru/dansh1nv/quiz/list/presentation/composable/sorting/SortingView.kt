@@ -1,10 +1,9 @@
-package ru.dansh1nv.quiz.list.presentation.composable.filters
+package ru.dansh1nv.quiz.list.presentation.composable.sorting
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
@@ -22,21 +21,22 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ru.dansh1nv.designsystem.theme.QuizHubTheme
 import ru.dansh1nv.quiz.list.R
+import ru.dansh1nv.quiz.list.models.sorting.Sort
 import ru.dansh1nv.quiz.list.presentation.BottomSheetEvent
 import ru.dansh1nv.quiz.list.presentation.QuizListEvent
 import ru.dansh1nv.quiz.list.presentation.ScreenEvent
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun FiltersView(
-    isFiltersShow: Boolean,
+internal fun SortingView(
+    isSortingShow: Boolean,
     sheetState: SheetState,
     onUIEvent: (QuizListEvent) -> Unit,
 ) {
-    if (isFiltersShow) {
+    if (isSortingShow) {
         ModalBottomSheet(
             onDismissRequest = {
-                onUIEvent(ScreenEvent.OnFiltersButtonClick(false))
+                onUIEvent(ScreenEvent.OnSortButtonClick(false))
             },
             sheetState = sheetState
         ) {
@@ -55,28 +55,21 @@ internal fun FiltersView(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        text = stringResource(id = R.string.filter_title),
+                        text = stringResource(id = R.string.sorting_title),
                         style = QuizHubTheme.typography.titleLarge,
-                    )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Text(
-                        text = stringResource(id = R.string.filter_reset),
-                        modifier = Modifier.clickable {
-                            onUIEvent(BottomSheetEvent.OnFilterClick(null))
-                        }
                     )
                 }
                 HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp))
                 LazyColumn(
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    items(ru.dansh1nv.quiz.list.models.filters.Filters.entries) { item ->
+                    items(Sort.entries) { item ->
                         Text(
                             text = stringResource(id = item.titleRes),
                             style = QuizHubTheme.typography.titleMedium,
                             modifier = Modifier
                                 .clickable {
-                                    onUIEvent(BottomSheetEvent.OnFilterClick(item.organization))
+                                    onUIEvent(BottomSheetEvent.OnSortClick(item))
                                 }
                                 .fillMaxWidth()
                                 .wrapContentHeight()
