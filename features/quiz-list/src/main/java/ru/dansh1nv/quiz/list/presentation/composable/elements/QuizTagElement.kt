@@ -26,7 +26,7 @@ internal fun QuizTagElement(
                 color = model.tag.toBackgroundColor(),
                 shape = QuizHubTheme.shapes.small,
             )
-            .padding(all = 4.dp)
+            .padding(horizontal = 8.dp, vertical = 4.dp)
     ) {
         TextCell(
             text = stringResource(id = model.title),

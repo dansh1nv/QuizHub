@@ -22,13 +22,14 @@ internal fun QuizStatusElement(
 ) {
     Column(
         modifier = Modifier
+            .padding(start = 8.dp, top = 8.dp, bottom = 8.dp)
             .fillMaxWidth()
             .wrapContentHeight()
-            .padding(all = 4.dp)
             .background(
                 color = status.tag.toBackgroundColor(),
-                shape = QuizHubTheme.shapes.medium,
-            ),
+                shape = QuizHubTheme.shapes.small,
+            )
+            .padding(all = 8.dp),
     ) {
         TextCell(
             text = stringResource(id = status.titleRes),
