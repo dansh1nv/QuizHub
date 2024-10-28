@@ -11,10 +11,19 @@ enum class TagColor {
 }
 
 @Composable
-fun TagColor.toColor(): Color {
+fun TagColor.toBackgroundColor(): Color {
     return when(this) {
-        TagColor.ORANGE -> QuizHubTheme.tagColor.orange
-        TagColor.PURPLE -> QuizHubTheme.tagColor.purple
-        TagColor.BLUE -> QuizHubTheme.tagColor.blue
+        TagColor.ORANGE -> QuizHubTheme.customColor.orange
+        TagColor.PURPLE -> QuizHubTheme.customColor.purple
+        TagColor.BLUE -> QuizHubTheme.customColor.blue
+    }
+}
+
+@Composable
+fun TagColor.toTextColor(): Color {
+    return when(this) {
+        TagColor.ORANGE -> QuizHubTheme.customColor.darkPurple
+        TagColor.PURPLE -> QuizHubTheme.customColor.white
+        TagColor.BLUE -> QuizHubTheme.customColor.white
     }
 }

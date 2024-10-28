@@ -23,6 +23,7 @@ import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizDateElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizLocationElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizPriceElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizReplyElement
+import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizStatusElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizTagElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizTeamElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizTitleElement
@@ -72,5 +73,6 @@ internal fun QuizCard(quizGame: QuizUI) {
         }
         quizGame.location?.let { QuizLocationElement(quizGame.location, modifier) }
         QuizPriceElement(quizGame, modifier)
+        quizGame.status?.let { QuizStatusElement(status = quizGame.status) }
     }
 }
