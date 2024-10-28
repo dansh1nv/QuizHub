@@ -1,9 +1,6 @@
 package ru.dansh1nv.quiz.data.mappers
 
 import kotlinx.datetime.LocalDateTime
-import kotlinx.datetime.LocalTime
-import kotlinx.datetime.format
-import kotlinx.datetime.format.DateTimeFormat
 import ru.dansh1nv.common.StringDividerType
 import ru.dansh1nv.common.formatStringsWithDividerPoints
 import ru.dansh1nv.quiz.data.utils.MonthConverter
@@ -13,9 +10,6 @@ import ru.dansh1nv.quiz_list_domain.models.common.GameDate
 import ru.dansh1nv.quiz_list_domain.models.common.Location
 import ru.dansh1nv.quizapi.model.shakerquiz.LocationDTO
 import ru.dansh1nv.quizapi.model.shakerquiz.ShakerQuizItemDTO
-import java.math.BigDecimal
-import java.time.OffsetDateTime
-import java.time.format.DateTimeFormatter
 
 class ShakerQuizDataMapper {
 

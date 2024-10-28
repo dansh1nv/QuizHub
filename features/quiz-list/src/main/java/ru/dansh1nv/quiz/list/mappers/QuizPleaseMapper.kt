@@ -17,6 +17,8 @@ internal class QuizPleaseMapper(
 
     companion object {
         private const val SUBSTRING_TEXT = "Будьте внимательны, чтобы не попасть на такой же пакет"
+        private const val MIN_MEMBERS_COUNT = 2
+        private const val MAX_MEMBERS_COUNT = 9
     }
 
     fun mapToQuizUI(entities: List<QuizPlease>): List<QuizUI> {
@@ -24,6 +26,7 @@ internal class QuizPleaseMapper(
     }
 
     fun mapToQuizUI(entity: QuizPlease): QuizUI {
+        val gameFormat = entity.gameFormat ?: GameFormat.OFFLINE
         return QuizUI(
             id = entity.id.orEmpty(),
             theme = formatStringsWithDividerPoints(
@@ -36,10 +39,15 @@ internal class QuizPleaseMapper(
             description = entity.description?.substringBefore(SUBSTRING_TEXT).orEmpty(),
             image = entity.image.orEmpty(),
             difficulty = entity.difficulty.orEmpty(),
-            location = entity.location?.let(commonMapper::mapLocationUI),
+            location = entity.location?.let { model ->
+                commonMapper.mapLocationUI(model, gameFormat)
+            },
             //TODO: Уточнить по правилам
-            teamSize = commonMapper.mapTeamSizeUI(minMembersCount = 2, maxMemberCount = 9),
-            format = entity.gameFormat ?: GameFormat.OFFLINE,
+            teamSize = commonMapper.mapTeamSizeUI(
+                minMembersCount = MIN_MEMBERS_COUNT,
+                maxMemberCount = MAX_MEMBERS_COUNT
+            ),
+            format = gameFormat,
             packageNumber = entity.packageNumber.orEmpty(),
             paymentMethod = entity.paymentMethod?.title.orEmpty(),
             status = entity.status?.let(commonMapper::mapToStatusUI),

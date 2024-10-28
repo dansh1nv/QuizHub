@@ -19,6 +19,8 @@ class ShakerQuizMapper(
     }
 
     fun mapToQuizUI(entity: ShakerQuiz): QuizUI {
+        //У Шейкера только офлайн игры
+        val gameFormat = GameFormat.OFFLINE
         return QuizUI(
             id = entity.id.orEmpty(),
             organization = Organization.SHAKER_QUIZ,
@@ -31,8 +33,7 @@ class ShakerQuizMapper(
             description = entity.shortDescription.orEmpty(),
             additionDescription = "",
             image = entity.image.orEmpty(),
-            //У Шейкера только офлайн игры
-            format = GameFormat.OFFLINE,
+            format = gameFormat,
             type = mapGameType(entity.theme.orEmpty()),
             formattedDate = entity.eventTime?.let(commonMapper::mapToGameDateUI),
             formatPrice = mapPrice(entity),
@@ -44,7 +45,9 @@ class ShakerQuizMapper(
                 minMembersCount = entity.minMembersCount.orZero(),
                 maxMemberCount = entity.maxMembersCount.orZero()
             ),
-            location = entity.location?.let(commonMapper::mapLocationUI),
+            location = entity.location?.let { model ->
+                commonMapper.mapLocationUI(model, gameFormat)
+            },
         )
     }
 

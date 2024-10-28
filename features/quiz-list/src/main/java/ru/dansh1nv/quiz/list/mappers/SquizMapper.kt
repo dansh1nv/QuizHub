@@ -13,6 +13,11 @@ internal class SquizMapper(
     private val commonMapper: CommonMapper,
 ) {
 
+    companion object {
+        private const val MIN_MEMBERS_COUNT = 2
+        private const val MAX_MEMBERS_COUNT = 8
+    }
+
     fun mapToQuizUI(quizzes: List<SQuiz>): List<QuizUI> {
         return quizzes.map(::mapToQuizUI)
     }
@@ -35,8 +40,13 @@ internal class SquizMapper(
                 formatPrice = price.orEmpty(),
                 priceAdditionalText = commonMapper.mapPriceAdditionalText(gameFormat),
                 organization = Organization.SQUIZ,
-                location = location?.let(commonMapper::mapLocationUI),
-                teamSize = commonMapper.mapTeamSizeUI(minMembersCount = 2, maxMemberCount = 8),
+                location = location?.let { model ->
+                    commonMapper.mapLocationUI(model, gameFormat)
+                },
+                teamSize = commonMapper.mapTeamSizeUI(
+                    minMembersCount = MIN_MEMBERS_COUNT,
+                    maxMemberCount = MAX_MEMBERS_COUNT
+                ),
                 difficulty = "",
                 paymentMethod = "",
             )

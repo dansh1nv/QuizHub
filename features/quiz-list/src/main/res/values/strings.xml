@@ -16,4 +16,6 @@
     <string name="filter_id_shaker_quiz">Шейкер квиз</string>
 
     <string name="sorting_title">Сортировка</string>
+    <string name="quiz_online">Онлайн</string>
+    <string name="quiz_offline">Игры в баре</string>
 </resources>

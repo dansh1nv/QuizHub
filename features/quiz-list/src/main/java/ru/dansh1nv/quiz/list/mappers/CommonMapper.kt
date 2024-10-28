@@ -41,9 +41,16 @@ class CommonMapper(
         )
     }
 
-    fun mapLocationUI(location: Location): LocationUI {
+    fun mapLocationUI(
+        location: Location,
+        gameFormat: GameFormat,
+    ): LocationUI {
         return LocationUI(
-            place = location.name.orEmpty(),
+            place = if (gameFormat == GameFormat.OFFLINE) {
+                location.name.orEmpty()
+            } else {
+                resourceManager.getStringById(R.string.quiz_online)
+            },
             address = location.address.orEmpty(),
             city = location.city.orEmpty(),
             geolocation = mapGeoLocation(

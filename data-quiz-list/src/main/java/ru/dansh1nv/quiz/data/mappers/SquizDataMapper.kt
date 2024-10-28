@@ -52,7 +52,7 @@ class SquizDataMapper {
         return SQuiz(
             id = quiz.id.toString(),
             location = Location(
-                name = address.getOrNull(0) ?: "Онлайн",
+                name = address.getOrNull(0),
                 city = quiz.cityId.orEmpty(),
                 address = address.getOrNull(1).orEmpty(),
                 latitude = null,
