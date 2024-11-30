@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import ru.dansh1nv.database.QuizDatabase
 import ru.dansh1nv.database.models.QuizDBO
 
-class LocalDataSource(
+class SquizLocalDataSource(
     private val database: QuizDatabase,
 ) {
 

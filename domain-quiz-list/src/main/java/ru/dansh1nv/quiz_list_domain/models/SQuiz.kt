@@ -4,6 +4,7 @@ import ru.dansh1nv.quiz_list_domain.models.common.GameDate
 import ru.dansh1nv.quiz_list_domain.models.common.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.common.GameType
 import ru.dansh1nv.quiz_list_domain.models.common.Location
+import ru.dansh1nv.quiz_list_domain.models.common.Status
 
 data class SQuiz(
     val id: String?,
@@ -18,4 +19,4 @@ data class SQuiz(
     val price: String?,
     val location: Location?,
     val status: Status?,
-): Quiz
+): Quiz()

@@ -2,6 +2,7 @@ package ru.dansh1nv.quiz_list_domain.models
 
 import ru.dansh1nv.quiz_list_domain.models.common.GameDate
 import ru.dansh1nv.quiz_list_domain.models.common.Location
+import ru.dansh1nv.quiz_list_domain.models.common.Status
 
 data class ShakerQuiz(
     val id: String?,
@@ -16,7 +17,7 @@ data class ShakerQuiz(
     val currency: String?,
     val minMembersCount: Int?,
     val maxMembersCount: Int?,
-    val location: Location? = null,
-    val image: String? = null,
+    val location: Location?,
+    val image: String?,
     val capacityStatus: String?,
-): Quiz
+): Quiz()

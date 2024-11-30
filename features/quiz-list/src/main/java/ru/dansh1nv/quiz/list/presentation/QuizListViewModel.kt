@@ -7,31 +7,31 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flatMapMerge
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.forEach
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.dansh1nv.core.presentation.BaseScreenModel
-import ru.dansh1nv.quiz.list.mappers.QuizPleaseMapper
-import ru.dansh1nv.quiz.list.mappers.ShakerQuizMapper
-import ru.dansh1nv.quiz.list.mappers.SquizMapper
+import ru.dansh1nv.quiz.list.mappers.QuizMapper
 import ru.dansh1nv.quiz.list.models.filters.Filters
 import ru.dansh1nv.quiz.list.models.item.Organization
 import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz.list.models.sorting.Sort
 import ru.dansh1nv.quiz_list_domain.interactors.QuizListInteractor
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
+import ru.dansh1nv.quiz_list_domain.models.RudaGames
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
 import ru.dansh1nv.quiz_list_domain.models.ShakerQuiz
 import timber.log.Timber
 
 internal class QuizListViewModel(
     private val interactor: QuizListInteractor,
-    private val squizMapper: SquizMapper,
-    private val quizPleaseMapper: QuizPleaseMapper,
-    private val shakerQuizMapper: ShakerQuizMapper,
+    private val quizMapper: QuizMapper,
 ) : BaseScreenModel<QuizListEvent>() {
 
     private val _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
@@ -51,22 +51,15 @@ internal class QuizListViewModel(
     private fun fetchQuizList() = screenModelScope.launch(Dispatchers.Default) {
         interactor.getAllQuizList(17)
             .map { quizList ->
-                quizList.mapNotNull { quiz ->
-                    when (quiz) {
-                        is QuizPlease -> quizMap[Organization.QUIZ_PLEASE]?.add(
-                            quizPleaseMapper.mapToQuizUI(quiz)
-                        )
-
-                        is SQuiz -> quizMap[Organization.SQUIZ]?.add(
-                            squizMapper.mapToQuizUI(quiz)
-                        )
-
-                        is ShakerQuiz -> quizMap[Organization.SHAKER_QUIZ]?.add(
-                            shakerQuizMapper.mapToQuizUI(quiz)
-                        )
-
-                        else -> null
+                quizList.forEach { quiz ->
+                    val key = when (quiz) {
+                        is QuizPlease -> Organization.QUIZ_PLEASE
+                        is SQuiz -> Organization.SQUIZ
+                        is ShakerQuiz -> Organization.SHAKER_QUIZ
+                        is RudaGames -> Organization.RUDA_GAMES
                     }
+                    val quizUI = quizMapper.mapToQuizUI(quiz)
+                    quizMap[key]?.add(quizUI)
                 }
             }
             .map {

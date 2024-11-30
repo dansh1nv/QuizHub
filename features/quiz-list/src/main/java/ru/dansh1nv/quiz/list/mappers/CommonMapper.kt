@@ -10,7 +10,7 @@ import ru.dansh1nv.quiz.list.models.item.GeoLocationUI
 import ru.dansh1nv.quiz.list.models.item.LocationUI
 import ru.dansh1nv.quiz.list.models.item.StatusUI
 import ru.dansh1nv.quiz.list.models.item.TeamSizeUI
-import ru.dansh1nv.quiz_list_domain.models.Status
+import ru.dansh1nv.quiz_list_domain.models.common.Status
 import ru.dansh1nv.quiz_list_domain.models.common.GameDate
 import ru.dansh1nv.quiz_list_domain.models.common.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.common.Location

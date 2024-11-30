@@ -9,7 +9,7 @@ import ru.dansh1nv.quiz_list_domain.models.common.GameDate
 import ru.dansh1nv.quiz_list_domain.models.common.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.common.GameType
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
-import ru.dansh1nv.quiz_list_domain.models.Status
+import ru.dansh1nv.quiz_list_domain.models.common.Status
 import ru.dansh1nv.quiz_list_domain.models.common.Location
 import ru.dansh1nv.quizapi.model.squiz.Characteristic
 import ru.dansh1nv.quizapi.model.squiz.SquizDTO

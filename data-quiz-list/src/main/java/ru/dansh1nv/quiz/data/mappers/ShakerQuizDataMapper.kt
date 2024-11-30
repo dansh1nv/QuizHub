@@ -5,7 +5,7 @@ import ru.dansh1nv.common.StringDividerType
 import ru.dansh1nv.common.formatStringsWithDividerPoints
 import ru.dansh1nv.quiz.data.utils.MonthConverter
 import ru.dansh1nv.quiz_list_domain.models.ShakerQuiz
-import ru.dansh1nv.quiz_list_domain.models.Status
+import ru.dansh1nv.quiz_list_domain.models.common.Status
 import ru.dansh1nv.quiz_list_domain.models.common.GameDate
 import ru.dansh1nv.quiz_list_domain.models.common.Location
 import ru.dansh1nv.quizapi.model.shakerquiz.LocationDTO

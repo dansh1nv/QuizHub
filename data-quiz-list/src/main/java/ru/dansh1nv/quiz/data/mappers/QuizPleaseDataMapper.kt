@@ -5,7 +5,7 @@ import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 import ru.dansh1nv.quiz.data.utils.MonthConverter
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
-import ru.dansh1nv.quiz_list_domain.models.Status
+import ru.dansh1nv.quiz_list_domain.models.common.Status
 import ru.dansh1nv.quiz_list_domain.models.common.GameDate
 import ru.dansh1nv.quiz_list_domain.models.common.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.common.Location
