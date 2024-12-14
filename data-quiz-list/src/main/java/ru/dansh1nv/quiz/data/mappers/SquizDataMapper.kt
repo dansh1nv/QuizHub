@@ -13,6 +13,7 @@ import ru.dansh1nv.quiz_list_domain.models.Status
 import ru.dansh1nv.quiz_list_domain.models.common.Location
 import ru.dansh1nv.quizapi.model.squiz.Characteristic
 import ru.dansh1nv.quizapi.model.squiz.SquizDTO
+import java.time.OffsetDateTime
 
 class SquizDataMapper {
 
@@ -102,8 +103,16 @@ class SquizDataMapper {
     ): GameDate {
         val timeArray = time.trim().split(":", limit = 2)
         //TODO: Подумать откуда взять бы год
+        val currentDate = OffsetDateTime.now()
+        val currentMonth = currentDate.month
+        val quizMonth = MonthConverter.getMonthByName(month)
+        val year = if (currentMonth.name.lowercase() == "december" && quizMonth == 1) {
+            currentDate.year + 1
+        } else {
+            currentDate.year
+        }
         val localDate = LocalDate(
-            year = 2024,
+            year = year,
             monthNumber = MonthConverter.getMonthByName(month),
             dayOfMonth = day.toInt()
         )
