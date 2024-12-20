@@ -47,7 +47,7 @@ internal class SquizMapper(
                     minMembersCount = MIN_MEMBERS_COUNT,
                     maxMemberCount = MAX_MEMBERS_COUNT
                 ),
-                difficulty = "",
+                difficulty = squiz.difficult.orEmpty(),
                 paymentMethod = "",
             )
         }

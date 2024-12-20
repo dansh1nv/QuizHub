@@ -17,7 +17,8 @@ class QuizPleaseDataMapper {
 
     companion object {
         private const val DIFFICULTY_TAG =
-            """<div class=\\"badge-difficulty__title badge-difficulty__title_registration\\">\\n"""
+            """<div class="badge-difficulty__title badge-difficulty__title_registration">"""
+        private const val CLOSE_TAG = "</div>"
         private const val BASE_URL = "https://quizplease.ru"
     }
 
@@ -61,11 +62,10 @@ class QuizPleaseDataMapper {
         return PaymentMethod.entries.firstOrNull { it.id == paymentMethod }
     }
 
-    private fun mapDifficulty(difficulty: String): String? {
-        return Regex("""$DIFFICULTY_TAG (.*?)""")
-            .find(difficulty)
-            ?.groupValues
-            ?.getOrNull(1)
+    private fun mapDifficulty(difficulty: String): String {
+        return difficulty.substringAfter(DIFFICULTY_TAG)
+            .substringBefore(CLOSE_TAG)
+            .trim()
     }
 
     private fun mapGameDate(

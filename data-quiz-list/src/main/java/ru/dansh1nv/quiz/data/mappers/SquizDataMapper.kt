@@ -46,6 +46,7 @@ class SquizDataMapper {
 
         val packageNumber = quiz.packageNumber.orEmpty()
         val status = Regex("""SMS: "(.*?)"""").find(text)?.groupValues?.getOrNull(1)
+        val difficult = Regex("""Сложность:"(.*?)"""").find(text)?.groupValues?.getOrNull(1)
         val img = quiz.galleryImage
             ?.substringAfter(":\"")
             ?.dropLast(3)
@@ -73,6 +74,7 @@ class SquizDataMapper {
             image = img,
             price = price?.toString(),
             status = mapToStatus(status),
+            difficult = difficult
         )
     }
 

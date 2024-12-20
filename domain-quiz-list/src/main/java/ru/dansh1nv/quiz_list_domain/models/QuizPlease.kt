@@ -18,7 +18,7 @@ data class QuizPlease(
     val price: Int?,
     val formatPrice: String?,
     val location: Location?,
-    val difficulty: String?, //<div class=\"badge-difficulty__title badge-difficulty__title_registration\"
+    val difficulty: String?,
     val status: Status?,
     val paymentMethod: PaymentMethod?,
 ) : Quiz

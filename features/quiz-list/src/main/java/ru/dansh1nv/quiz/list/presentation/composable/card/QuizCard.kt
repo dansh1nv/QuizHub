@@ -20,6 +20,7 @@ import coil.request.ImageRequest
 import ru.dansh1nv.designsystem.theme.QuizHubTheme
 import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizDateElement
+import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizDifficultElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizLocationElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizPriceElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizReplyElement
@@ -68,6 +69,9 @@ internal fun QuizCard(quizGame: QuizUI) {
             QuizReplyElement(quizGame.additionDescription, modifier)
         }
         QuizTitleElement(quizGame, modifier)
+        if (quizGame.difficulty.isNotBlank()) {
+            QuizDifficultElement(quizGame.difficulty, modifier)
+        }
         quizGame.teamSize?.teamSizeText?.let {
             QuizTeamElement(teamSizeUI = quizGame.teamSize, modifier = modifier)
         }

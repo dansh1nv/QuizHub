@@ -14,11 +14,11 @@ enum class Status(
     WRITE_TO_RESERVE(
         quizPleaseId = 2,
         shakerId = "IS_RESERVE",
-        squizId = "",
+        squizId = "Запись в резерв",
     ),
     RESERVATION_CLOSE(
         quizPleaseId = 3,
         shakerId = "CLOSED",
-        squizId = "",
+        squizId = "Регистрация закрыта",
     );
 }
