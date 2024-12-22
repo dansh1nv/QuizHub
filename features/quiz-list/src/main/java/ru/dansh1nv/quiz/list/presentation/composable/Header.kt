@@ -9,10 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
-import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,17 +23,13 @@ import ru.dansh1nv.quiz.list.models.CityModel
 import ru.dansh1nv.quiz.list.presentation.QuizListEvent
 import ru.dansh1nv.quiz.list.presentation.ScreenEvent
 import ru.dansh1nv.quiz.list.presentation.State
-import ru.dansh1nv.quiz.list.presentation.composable.filters.FiltersView
-import ru.dansh1nv.quiz.list.presentation.composable.sorting.SortingView
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun Header(
     screenState: State,
     city: CityModel,
     onUIEvent: (QuizListEvent) -> Unit,
 ) {
-    val sheetState = rememberModalBottomSheetState()
     Row(
         modifier = Modifier
             .background(color = QuizHubTheme.colorScheme.surface)
@@ -65,47 +59,31 @@ internal fun Header(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             if (screenState is State.Loaded) {
-                if (screenState.featureToggle.isFiltersFeatureEnabled) {
-                    Box(
-                        modifier = Modifier
-                            .size(32.dp)
-                            .clickable { onUIEvent(ScreenEvent.OnFiltersButtonClick(true)) },
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_filters),
-                            contentDescription = null,
-                            tint = QuizHubTheme.colorScheme.onSurface,
-
-                            )
-                    }
-                }
-                if (screenState.featureToggle.isSortFeatureEnabled) {
-                    Box(
-                        modifier = Modifier
-                            .size(32.dp)
-                            .clickable { onUIEvent(ScreenEvent.OnSortButtonClick(true)) },
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_sort),
-                            contentDescription = null,
-                            tint = QuizHubTheme.colorScheme.onSurface,
-                        )
-                    }
+                Box(
+                    modifier = Modifier
+                        .size(32.dp)
+                        .clickable { onUIEvent(ScreenEvent.OnFiltersButtonClick) },
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_filters),
+                        contentDescription = null,
+                        tint = QuizHubTheme.colorScheme.onSurface,
+                    )
                 }
 
-                FiltersView(
-                    isFiltersShow = screenState.isFiltersShow,
-                    sheetState = sheetState,
-                    onUIEvent = onUIEvent,
-                )
-
-                SortingView(
-                    isSortingShow = screenState.isSortingShow,
-                    sheetState = sheetState,
-                    onUIEvent = onUIEvent,
-                )
+                Box(
+                    modifier = Modifier
+                        .size(32.dp)
+                        .clickable { onUIEvent(ScreenEvent.OnSortButtonClick) },
+                    contentAlignment = Alignment.Center,
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_sort),
+                        contentDescription = null,
+                        tint = QuizHubTheme.colorScheme.onSurface,
+                    )
+                }
             }
         }
     }

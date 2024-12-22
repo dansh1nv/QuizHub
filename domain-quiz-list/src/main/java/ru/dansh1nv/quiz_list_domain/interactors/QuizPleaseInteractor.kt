@@ -6,7 +6,7 @@ class QuizPleaseInteractor(
     private val repository: IQuizPleaseRepository,
 ) {
     suspend fun getQuizList(
-        cityId: Int,
+        cityId: Long,
         pageNumber: Int,
         pageSize: Int,
     ) = repository.getQuizList(

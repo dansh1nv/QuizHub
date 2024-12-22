@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
@@ -17,6 +18,8 @@ import ru.dansh1nv.core.presentation.BaseScreenModel
 import ru.dansh1nv.quiz.list.mappers.QuizPleaseMapper
 import ru.dansh1nv.quiz.list.mappers.ShakerQuizMapper
 import ru.dansh1nv.quiz.list.mappers.SquizMapper
+import ru.dansh1nv.quiz.list.models.CityModel
+import ru.dansh1nv.quiz.list.models.bottomsheet.BottomSheet
 import ru.dansh1nv.quiz.list.models.filters.Filters
 import ru.dansh1nv.quiz.list.models.item.Organization
 import ru.dansh1nv.quiz.list.models.item.QuizUI
@@ -49,7 +52,13 @@ internal class QuizListViewModel(
     }
 
     private fun fetchQuizList() = screenModelScope.launch(Dispatchers.Default) {
-        interactor.getAllQuizList(17)
+        val city = if(state.value is State.Loaded) {
+            (state.value as State.Loaded).city ?: CityModel("Санкт-Петербург", 17L)
+        } else {
+            CityModel("Санкт-Петербург", 17L)
+        }
+        _state.update { State.Loading }
+        interactor.getAllQuizList(city.id)
             .map { quizList ->
                 quizList.mapNotNull { quiz ->
                     when (quiz) {
@@ -87,7 +96,8 @@ internal class QuizListViewModel(
                         )
                     }
                 }
-            }.collect()
+            }
+            .collect()
     }
 
     private fun updateCurrentTab(index: Int) {
@@ -107,12 +117,16 @@ internal class QuizListViewModel(
 
     private fun onScreenEvent(event: ScreenEvent) {
         when (event) {
-            is ScreenEvent.OnSortButtonClick -> showSorting(event.isShow)
-            is ScreenEvent.OnLocationClick -> {}
-            is ScreenEvent.OnFiltersButtonClick -> showFilters(event.isShow)
+            is ScreenEvent.OnSortButtonClick -> showSorting()
+            is ScreenEvent.OnLocationClick -> showLocation()
+            is ScreenEvent.OnFiltersButtonClick -> showFilters()
             is ScreenEvent.OnTabClick -> updateCurrentTab(event.index)
             is ScreenEvent.OnRefresh -> fetchQuizList()
-            is ScreenEvent.BottomSheetDismiss -> {}
+            is ScreenEvent.BottomSheetDismiss -> {
+                _state.update { screenState ->
+                    (screenState as State.Loaded).copy(bottomSheet = null)
+                }
+            }
         }
     }
 
@@ -120,6 +134,7 @@ internal class QuizListViewModel(
         when (event) {
             is BottomSheetEvent.OnFilterClick -> applyFilters(event.organization)
             is BottomSheetEvent.OnSortClick -> applySorting(event.sort)
+            is BottomSheetEvent.OnLocationClick -> setupCity(event.city)
         }
     }
 
@@ -128,21 +143,39 @@ internal class QuizListViewModel(
         showQuizList()
     }
 
-    private fun showFilters(isShow: Boolean) {
+    private fun setupCity(city: CityModel) {
         _state.update { screenState ->
-            (screenState as State.Loaded).copy(isFiltersShow = isShow)
+            if (screenState !is State.Loaded) return
+            screenState.copy(city = city)
+        }
+        fetchQuizList()
+    }
+
+    private fun showFilters() {
+        _state.update { screenState ->
+            if (screenState !is State.Loaded) return
+            screenState.copy(bottomSheet = BottomSheet.FiltersBottomSheet)
         }
     }
 
-    private fun showSorting(isShow: Boolean) {
+    private fun showSorting() {
         _state.update { screenState ->
-            (screenState as State.Loaded).copy(isSortingShow = isShow)
+            if (screenState !is State.Loaded) return
+            screenState.copy(bottomSheet = BottomSheet.SortingBottomSheet)
+        }
+    }
+
+    private fun showLocation() {
+        _state.update { screenState ->
+            if (screenState !is State.Loaded) return
+            screenState.copy(bottomSheet = BottomSheet.LocationBottomSheet)
         }
     }
 
     private fun applyFilters(organization: Organization?) {
         _state.update { screenState ->
-            (screenState as State.Loaded).copy(
+            if (screenState !is State.Loaded) return
+            screenState.copy(
                 filters = Filters.entries.firstOrNull { filter ->
                     filter.organization == organization
                 }
@@ -184,13 +217,11 @@ internal sealed class State {
         val featureToggle: FeatureToggle = FeatureToggle(),
         val filters: Filters? = null,
         val sort: Sort = Sort.ASC_DATE,
-        val isFiltersShow: Boolean = false,
-        val isSortingShow: Boolean = false,
+        val city: CityModel? = null,
+        val bottomSheet: BottomSheet? = null,
     ) : State()
 }
 
 internal data class FeatureToggle(
     val isFavouriteFeatureEnabled: Boolean = false,
-    val isFiltersFeatureEnabled: Boolean = true,
-    val isSortFeatureEnabled: Boolean = true,
 )

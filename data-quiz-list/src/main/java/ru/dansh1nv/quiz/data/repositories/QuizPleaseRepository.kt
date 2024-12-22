@@ -12,7 +12,7 @@ class QuizPleaseRepository(
     private val mapper: QuizPleaseDataMapper,
 ) : IQuizPleaseRepository {
     override suspend fun getQuizList(
-        cityId: Int,
+        cityId: Long,
         pageNumber: Int,
         pageSize: Int,
     ): Flow<List<QuizPlease>> {

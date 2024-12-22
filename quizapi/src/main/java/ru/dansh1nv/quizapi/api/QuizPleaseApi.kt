@@ -17,7 +17,7 @@ class QuizPleaseApi(
 ) {
 
     suspend fun getQuizzes(
-        cityId: Int,
+        cityId: Long,
         pageNumber: Int,
         pageSize: Int,
     ) = flow {

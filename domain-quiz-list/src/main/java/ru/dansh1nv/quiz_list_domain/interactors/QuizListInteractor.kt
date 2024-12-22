@@ -10,7 +10,7 @@ class QuizListInteractor(
     private val shakerQuizInteractor: ShakerQuizInteractor,
 ) {
 
-    suspend fun getAllQuizList(cityId: Int): Flow<List<Quiz>> {
+    suspend fun getAllQuizList(cityId: Long): Flow<List<Quiz>> {
         return merge(
             squizInteractor.getQuizList(),
             quizPleaseInteractor.getQuizList(
