@@ -26,6 +26,7 @@ datetime = "0.6.1"
 orbit = "9.0.0"
 material3 = "1.3.0"
 androidx_compose = "1.7.3"
+leak-canary = "2.14"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -93,6 +94,7 @@ dateTime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "d
 orbit-core = { module = "org.orbit-mvi:orbit-core", version.ref = "orbit"}
 orbit-compose = { module = "org.orbit-mvi:orbit-compose", version.ref = "orbit"}
 orbit-viewmodel = { module = "org.orbit-mvi:orbit-viewmodel", version.ref = "orbit"}
+leak-canary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leak-canary"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
