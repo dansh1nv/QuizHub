@@ -11,9 +11,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
+import org.orbitmvi.orbit.compose.collectAsState
+import ru.dansh1nv.core.presentation.model.UIStatus
 import ru.dansh1nv.designsystem.theme.QuizHubTheme
 import ru.dansh1nv.quiz.list.models.CityModel
 import ru.dansh1nv.quiz.list.presentation.composable.Header
@@ -26,8 +27,8 @@ class QuizListScreen : Screen {
     @Composable
     override fun Content() {
         val viewModel = koinScreenModel<QuizListViewModel>()
-        val screenState by viewModel.state.collectAsStateWithLifecycle()
-        val onUIEvent = viewModel::onUIEvent
+        val screenState by viewModel.collectAsState()
+        val onUIEvent = viewModel::handleEvent
 
         BaseScreen(
             screenState = screenState,
@@ -38,7 +39,7 @@ class QuizListScreen : Screen {
 
 @Composable
 internal fun BaseScreen(
-    screenState: State,
+    screenState: QuizListState,
     onUIEvent: (QuizListEvent) -> Unit,
 ) {
     Column(
@@ -53,8 +54,8 @@ internal fun BaseScreen(
             screenState = screenState,
             onUIEvent = onUIEvent,
         )
-        when (screenState) {
-            State.Loading -> {
+        when (screenState.uiStatus) {
+            UIStatus.Loading -> {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -69,11 +70,11 @@ internal fun BaseScreen(
                 }
             }
 
-            State.Error -> {
+            UIStatus.Error -> {
                 ErrorPlaceholder(onUIEvent = onUIEvent)
             }
 
-            is State.Loaded -> {
+            UIStatus.Loaded -> {
                 if (screenState.featureToggle.isFavouriteFeatureEnabled) {
                     TabLayout(
                         selectedTabIndex = screenState.selectedTabIndex,

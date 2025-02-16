@@ -19,19 +19,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import ru.dansh1nv.core.presentation.model.UIStatus
 import ru.dansh1nv.designsystem.theme.QuizHubTheme
 import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.models.CityModel
 import ru.dansh1nv.quiz.list.presentation.QuizListEvent
+import ru.dansh1nv.quiz.list.presentation.QuizListState
 import ru.dansh1nv.quiz.list.presentation.ScreenEvent
-import ru.dansh1nv.quiz.list.presentation.State
 import ru.dansh1nv.quiz.list.presentation.composable.filters.FiltersView
 import ru.dansh1nv.quiz.list.presentation.composable.sorting.SortingView
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun Header(
-    screenState: State,
+    screenState: QuizListState,
     city: CityModel,
     onUIEvent: (QuizListEvent) -> Unit,
 ) {
@@ -64,7 +65,7 @@ internal fun Header(
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            if (screenState is State.Loaded) {
+            if (screenState.uiStatus == UIStatus.Loaded) {
                 if (screenState.featureToggle.isFiltersFeatureEnabled) {
                     Box(
                         modifier = Modifier
