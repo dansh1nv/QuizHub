@@ -2,18 +2,15 @@ package ru.dansh1nv.quiz.list.presentation
 
 import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import ru.dansh1nv.core.presentation.BaseScreenModel
+import ru.dansh1nv.core.presentation.BaseMviScreenModel
+import ru.dansh1nv.core.presentation.model.UIStatus
 import ru.dansh1nv.quiz.list.mappers.QuizPleaseMapper
 import ru.dansh1nv.quiz.list.mappers.ShakerQuizMapper
 import ru.dansh1nv.quiz.list.mappers.SquizMapper
@@ -32,12 +29,9 @@ internal class QuizListViewModel(
     private val squizMapper: SquizMapper,
     private val quizPleaseMapper: QuizPleaseMapper,
     private val shakerQuizMapper: ShakerQuizMapper,
-) : BaseScreenModel<QuizListEvent>() {
-
-    private val _state: MutableStateFlow<State> = MutableStateFlow(State.Loading)
-
-    val state: StateFlow<State>
-        get() = _state.asStateFlow()
+) : BaseMviScreenModel<QuizListState, QuizListSideEffect, QuizListEvent>(
+    initialState = QuizListState()
+) {
 
     private val quizMap = mutableMapOf<Organization, MutableList<QuizUI>>()
 
@@ -48,7 +42,14 @@ internal class QuizListViewModel(
         fetchQuizList()
     }
 
-    private fun fetchQuizList() = screenModelScope.launch(Dispatchers.Default) {
+    override fun handleEvent(event: QuizListEvent) {
+        when (event) {
+            is ScreenEvent -> onScreenEvent(event)
+            is BottomSheetEvent -> onBottomSheetEvent(event)
+        }
+    }
+
+    private fun fetchQuizList() = screenModelScope.launch {
         interactor.getAllQuizList(17)
             .map { quizList ->
                 quizList.mapNotNull { quiz ->
@@ -76,33 +77,29 @@ internal class QuizListViewModel(
             }
             .catch { ex ->
                 Timber.e(ex)
-                _state.update { State.Error }
+                updateState { state ->
+                    state.copy(uiStatus = UIStatus.Error)
+                }
             }
             .flowOn(Dispatchers.Default)
             .onEach { quizList ->
                 withContext(Dispatchers.Main) {
-                    _state.update {
-                        State.Loaded(
-                            quizList = quizList
+                    updateState { state ->
+                        state.copy(
+                            quizList = quizList,
+                            uiStatus = if (quizList.isEmpty()) {
+                                UIStatus.Loading
+                            } else {
+                                UIStatus.Loaded
+                            }
                         )
                     }
                 }
             }.collect()
     }
 
-    private fun updateCurrentTab(index: Int) {
-        if (state.value is State.Loaded) {
-            _state.update { state ->
-                (state as State.Loaded).copy(selectedTabIndex = index)
-            }
-        }
-    }
-
-    override fun onUIEvent(event: QuizListEvent) {
-        when (event) {
-            is ScreenEvent -> onScreenEvent(event)
-            is BottomSheetEvent -> onBottomSheetEvent(event)
-        }
+    private fun updateCurrentTab(index: Int) = updateState { state ->
+        state.copy(selectedTabIndex = index)
     }
 
     private fun onScreenEvent(event: ScreenEvent) {
@@ -124,25 +121,25 @@ internal class QuizListViewModel(
     }
 
     private fun applySorting(sort: Sort) {
-        _state.update { screenState -> (screenState as State.Loaded).copy(sort = sort) }
+        updateState { state ->
+            state.copy(
+                sort = sort
+            )
+        }
         showQuizList()
     }
 
-    private fun showFilters(isShow: Boolean) {
-        _state.update { screenState ->
-            (screenState as State.Loaded).copy(isFiltersShow = isShow)
-        }
+    private fun showFilters(isShow: Boolean) = updateState { state ->
+        state.copy(isFiltersShow = isShow)
     }
 
-    private fun showSorting(isShow: Boolean) {
-        _state.update { screenState ->
-            (screenState as State.Loaded).copy(isSortingShow = isShow)
-        }
+    private fun showSorting(isShow: Boolean) = updateState { state ->
+        state.copy(isSortingShow = isShow)
     }
 
     private fun applyFilters(organization: Organization?) {
-        _state.update { screenState ->
-            (screenState as State.Loaded).copy(
+        updateState { state ->
+            state.copy(
                 filters = Filters.entries.firstOrNull { filter ->
                     filter.organization == organization
                 }
@@ -151,43 +148,36 @@ internal class QuizListViewModel(
         showQuizList()
     }
 
-    private fun showQuizList() {
-        if (state.value !is State.Loaded) return
-
-        val filters = (state.value as State.Loaded).filters
-        val sort = (state.value as State.Loaded).sort
+    private fun showQuizList() = updateState { state ->
+        if (state.uiStatus != UIStatus.Loaded) return@updateState state
 
         val quizList = quizMap.getOrDefault(
-            key = filters?.organization,
+            key = state.filters?.organization,
             defaultValue = quizMap.values.flatten()
         )
 
-        val sortedList = when (sort) {
+        val sortedList = when (state.sort) {
             Sort.ASC_DATE -> quizList.sortedBy { it.formattedDate?.date }
             Sort.DESC_DATE -> quizList.sortedByDescending { it.formattedDate?.date }
         }
-        _state.update {
-            State.Loaded(
-                quizList = sortedList
-            )
-        }
+        state.copy(
+            quizList = sortedList
+        )
     }
 
+
 }
 
-internal sealed class State {
-    data object Loading : State()
-    data object Error : State()
-    data class Loaded(
-        val selectedTabIndex: Int = 0,
-        val quizList: List<QuizUI> = emptyList(),
-        val featureToggle: FeatureToggle = FeatureToggle(),
-        val filters: Filters? = null,
-        val sort: Sort = Sort.ASC_DATE,
-        val isFiltersShow: Boolean = false,
-        val isSortingShow: Boolean = false,
-    ) : State()
-}
+internal data class QuizListState(
+    val uiStatus: UIStatus = UIStatus.Loading,
+    val selectedTabIndex: Int = 0,
+    val quizList: List<QuizUI> = emptyList(),
+    val featureToggle: FeatureToggle = FeatureToggle(),
+    val filters: Filters? = null,
+    val sort: Sort = Sort.ASC_DATE,
+    val isFiltersShow: Boolean = false,
+    val isSortingShow: Boolean = false,
+)
 
 internal data class FeatureToggle(
     val isFavouriteFeatureEnabled: Boolean = false,
