@@ -87,10 +87,10 @@ internal class QuizListViewModel(
                     updateState { state ->
                         state.copy(
                             quizList = quizList,
-                            uiStatus = if (quizList.isEmpty()) {
-                                UIStatus.Loading
-                            } else {
+                            uiStatus = if (quizMap.values.isNotEmpty()) {
                                 UIStatus.Loaded
+                            } else {
+                                UIStatus.Loading
                             }
                         )
                     }
@@ -164,8 +164,6 @@ internal class QuizListViewModel(
             quizList = sortedList
         )
     }
-
-
 }
 
 internal data class QuizListState(
