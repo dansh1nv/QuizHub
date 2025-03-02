@@ -11,6 +11,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import ru.dansh1nv.core.presentation.BaseMviScreenModel
 import ru.dansh1nv.core.presentation.model.UIStatus
+import ru.dansh1nv.core.resourceManager.IResourceManager
+import ru.dansh1nv.designsystem.theme.bottomsheet.controller.BottomSheetController
+import ru.dansh1nv.designsystem.theme.bottomsheet.model.QuizBottomSheetModel.Toolbar
+import ru.dansh1nv.designsystem.theme.bottomsheet.model.QuizBottomSheetModel.Toolbar.IconModel
+import ru.dansh1nv.designsystem.theme.utils.`typealias`.UIDrawable
+import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.mappers.QuizPleaseMapper
 import ru.dansh1nv.quiz.list.mappers.ShakerQuizMapper
 import ru.dansh1nv.quiz.list.mappers.SquizMapper
@@ -18,6 +24,7 @@ import ru.dansh1nv.quiz.list.models.filters.Filters
 import ru.dansh1nv.quiz.list.models.item.Organization
 import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz.list.models.sorting.Sort
+import ru.dansh1nv.quiz.list.presentation.composable.bottomsheet.BottomSheetModels
 import ru.dansh1nv.quiz_list_domain.interactors.QuizListInteractor
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
@@ -29,9 +36,11 @@ internal class QuizListViewModel(
     private val squizMapper: SquizMapper,
     private val quizPleaseMapper: QuizPleaseMapper,
     private val shakerQuizMapper: ShakerQuizMapper,
+    private val resourceManager: IResourceManager,
+    private val bottomSheetController: BottomSheetController,
 ) : BaseMviScreenModel<QuizListState, QuizListSideEffect, QuizListEvent>(
     initialState = QuizListState()
-) {
+), BottomSheetController by bottomSheetController {
 
     private val quizMap = mutableMapOf<Organization, MutableList<QuizUI>>()
 
@@ -129,8 +138,21 @@ internal class QuizListViewModel(
         showQuizList()
     }
 
-    private fun showFilters(isShow: Boolean) = updateState { state ->
-        state.copy(isFiltersShow = isShow)
+    private fun showFilters(isShow: Boolean) {
+        bottomSheetController.show(
+            BottomSheetModels.FilterBottomSheetModel(
+                toolbar = Toolbar(
+                    title = resourceManager.getStringById(R.string.filter_title),
+                    trailIcon = IconModel(
+                        UIDrawable.ic_clear,
+                        onClick = { dismiss() }
+                    )
+                )
+            )
+        )
+//        updateState { state ->
+//            state.copy(isFiltersShow = isShow)
+//        }
     }
 
     private fun showSorting(isShow: Boolean) = updateState { state ->

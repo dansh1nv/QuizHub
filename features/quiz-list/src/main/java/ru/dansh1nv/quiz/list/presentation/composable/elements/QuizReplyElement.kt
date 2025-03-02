@@ -3,7 +3,7 @@ package ru.dansh1nv.quiz.list.presentation.composable.elements
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import ru.dansh1nv.designsystem.theme.QuizHubTheme
+import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.designsystem.theme.elements.TextCell
 
 @Composable

@@ -1,6 +1,6 @@
 package ru.dansh1nv.designsystem.theme.bottomsheet.model
 
-data class BottomSheetLayer(
-    val model: BottomSheetModel? = null,
+data class QuizBottomSheetLayer(
+    val model: QuizBottomSheetModel? = null,
     val isVisible: Boolean = false,
 )

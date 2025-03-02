@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
-import ru.dansh1nv.designsystem.theme.QuizHubTheme
+import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 
 @Composable
 fun TextCell(

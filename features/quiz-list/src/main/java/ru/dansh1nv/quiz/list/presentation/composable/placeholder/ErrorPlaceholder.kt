@@ -12,9 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import ru.dansh1nv.designsystem.theme.QuizHubTheme
+import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.presentation.ScreenEvent
+import ru.dansh1nv.quiz_list_domain.models.Quiz
 
 @Composable
 internal fun ErrorPlaceholder(
@@ -38,11 +39,13 @@ internal fun ErrorPlaceholder(
                 text = stringResource(id = R.string.empty_placeholder_text),
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 textAlign = TextAlign.Center,
+                color = QuizHubTheme.colorScheme.onBackground
             )
             Text(
                 style = QuizHubTheme.typography.titleMedium,
                 text = stringResource(id = R.string.vpn_warning),
                 textAlign = TextAlign.Center,
+                color = QuizHubTheme.colorScheme.onBackground
             )
             Button(
                 modifier = Modifier

@@ -6,12 +6,13 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
+import ru.dansh1nv.core.di.uiModule
 import ru.dansh1nv.database.di.databaseModule
 import ru.dansh1nv.navigation.SharedScreen
 import ru.dansh1nv.quiz.data.di.quizDataModule
 import ru.dansh1nv.quiz.details.presentation.QuizDetailsScreen
 import ru.dansh1nv.quiz.list.di.quizListModule
-import ru.dansh1nv.quiz.list.presentation.QuizListScreen
+import ru.dansh1nv.quiz.list.presentation.composable.QuizListScreen
 import ru.dansh1nv.quiz_list_domain.di.quizListDomainModule
 import ru.dansh1nv.quizapi.di.apiModule
 import ru.dansh1nv.quizhub.di.appModule
@@ -37,6 +38,7 @@ class QuizHubApplication : Application() {
             androidContext(this@QuizHubApplication)
             modules(
                 appModule(),
+                uiModule(),
                 databaseModule(),
                 quizListModule(),
                 quizListDomainModule(),
