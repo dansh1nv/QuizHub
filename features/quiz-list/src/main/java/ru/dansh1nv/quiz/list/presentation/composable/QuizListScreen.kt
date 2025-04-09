@@ -21,10 +21,10 @@ import ru.dansh1nv.quiz.list.models.CityModel
 import ru.dansh1nv.quiz.list.presentation.QuizListEvent
 import ru.dansh1nv.quiz.list.presentation.QuizListState
 import ru.dansh1nv.quiz.list.presentation.QuizListViewModel
-import ru.dansh1nv.quiz.list.presentation.composable.bottomsheet.BottomSheetModels
-import ru.dansh1nv.quiz.list.presentation.composable.filters.FiltersBottomSheet
+import ru.dansh1nv.quiz.list.models.bottomsheet.BottomSheetModels
+import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.FiltersBottomSheet
 import ru.dansh1nv.quiz.list.presentation.composable.placeholder.ErrorPlaceholder
-import ru.dansh1nv.quiz.list.presentation.composable.sorting.SortingBottomSheet
+import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.SortingBottomSheet
 
 class QuizListScreen : Screen {
 
@@ -97,12 +97,10 @@ internal fun BaseScreen(
         customBottomSheetContent = { bottomSheet ->
             when(bottomSheet) {
                 is BottomSheetModels.FilterBottomSheetModel -> {
-                    FiltersBottomSheet(
-                        onUIEvent = onUIEvent,
-                    )
+                    FiltersBottomSheet(onUIEvent = onUIEvent)
                 }
                 is BottomSheetModels.SortingBottomSheetModel -> {
-                    SortingBottomSheet(onUIEvent = onUIEvent,)
+                    SortingBottomSheet(onUIEvent = onUIEvent)
                 }
             }
         }

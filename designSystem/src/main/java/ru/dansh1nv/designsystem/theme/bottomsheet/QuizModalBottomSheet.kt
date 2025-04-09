@@ -172,7 +172,7 @@ private fun BottomSheetContent(
         modifier = Modifier
             .fillMaxWidth()
             .background(
-                color = QuizHubTheme.colorScheme.primaryContainer,
+                color = QuizHubTheme.colorScheme.surfaceContainer,
                 shape = QuizHubTheme.shapes.shapeTop16dp,
             )
             .condition(

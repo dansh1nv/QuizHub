@@ -29,7 +29,6 @@
             <option value="$PROJECT_DIR$/quizapi" />
           </set>
         </option>
-        <option name="resolveExternalAnnotations" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

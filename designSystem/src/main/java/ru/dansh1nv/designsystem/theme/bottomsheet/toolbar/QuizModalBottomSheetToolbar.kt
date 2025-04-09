@@ -14,6 +14,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import ru.dansh1nv.designsystem.theme.bottomsheet.model.QuizBottomSheetModel
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
+import ru.dansh1nv.designsystem.theme.utils.color.toIconColor
 import ru.dansh1nv.designsystem.theme.utils.modifier.condition
 
 @Composable
@@ -39,7 +40,7 @@ internal fun QuizModalBottomSheetToolbar(
                         ifTrue = { clickable(onClick = { icon.onClick?.invoke() }) },
                     ),
                 painter = painterResource(icon.iconRes),
-                tint = icon.color,
+                tint = icon.color.toIconColor(),
                 contentDescription = null,
             )
         }
@@ -49,7 +50,7 @@ internal fun QuizModalBottomSheetToolbar(
             style = model.titleType.textStyle,
             maxLines = model.titleType.maxLines,
             overflow = TextOverflow.Ellipsis,
-            color = QuizHubTheme.colorScheme.onBackground,
+            color = QuizHubTheme.colorScheme.onSurface,
         )
         model.trailIcon?.let { icon ->
             Icon(
@@ -61,7 +62,7 @@ internal fun QuizModalBottomSheetToolbar(
                         ifTrue = { clickable(onClick = { icon.onClick?.invoke() }) },
                     ),
                 painter = painterResource(icon.iconRes),
-                tint = icon.color,
+                tint = icon.color.toIconColor(),
                 contentDescription = null,
             )
         }

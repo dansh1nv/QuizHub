@@ -65,7 +65,7 @@ internal fun Header(
                     Box(
                         modifier = Modifier
                             .size(32.dp)
-                            .clickable { onUIEvent(ScreenEvent.OnFiltersButtonClick(true)) },
+                            .clickable { onUIEvent(ScreenEvent.OnFiltersButtonClick) },
                         contentAlignment = Alignment.Center,
                     ) {
                         Icon(
@@ -79,7 +79,7 @@ internal fun Header(
                     Box(
                         modifier = Modifier
                             .size(32.dp)
-                            .clickable { onUIEvent(ScreenEvent.OnSortButtonClick(true)) },
+                            .clickable { onUIEvent(ScreenEvent.OnSortButtonClick) },
                         contentAlignment = Alignment.Center,
                     ) {
                         Icon(

@@ -1,4 +1,4 @@
-package ru.dansh1nv.quiz.list.presentation.composable.bottomsheet
+package ru.dansh1nv.quiz.list.models.bottomsheet
 
 import ru.dansh1nv.designsystem.theme.bottomsheet.model.QuizBottomSheetModel
 

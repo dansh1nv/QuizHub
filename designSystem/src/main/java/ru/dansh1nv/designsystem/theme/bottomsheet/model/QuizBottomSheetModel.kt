@@ -2,12 +2,16 @@ package ru.dansh1nv.designsystem.theme.bottomsheet.model
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.material3.ColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.colorspace.ColorModel
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
+import ru.dansh1nv.designsystem.theme.uiKit.LocalColorScheme
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
+import ru.dansh1nv.designsystem.theme.utils.color.CustomColorModel
 
 /**
  * Базовая модель бщ
@@ -55,7 +59,7 @@ abstract class QuizBottomSheetModel(
 
         data class IconModel(
             @DrawableRes val iconRes: Int,
-            val color: Color = Color.Black,
+            val color: CustomColorModel = CustomColorModel.Surface,
             val onClick: (() -> Unit)? = null,
         )
     }

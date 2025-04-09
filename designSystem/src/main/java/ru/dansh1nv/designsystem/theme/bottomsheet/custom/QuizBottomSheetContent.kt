@@ -24,7 +24,7 @@ internal fun QuizBottomSheetContent(
             QuizModalBottomSheetToolbar(it)
             HorizontalDivider(
                 modifier = Modifier.padding(bottom = bottomPadding),
-                color = QuizHubTheme.colorScheme.onSecondaryContainer
+                color = QuizHubTheme.colorScheme.onSurface
             )
         }
         content?.invoke(this)

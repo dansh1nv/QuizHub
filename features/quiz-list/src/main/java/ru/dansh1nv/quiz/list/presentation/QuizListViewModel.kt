@@ -24,7 +24,7 @@ import ru.dansh1nv.quiz.list.models.filters.Filters
 import ru.dansh1nv.quiz.list.models.item.Organization
 import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz.list.models.sorting.Sort
-import ru.dansh1nv.quiz.list.presentation.composable.bottomsheet.BottomSheetModels
+import ru.dansh1nv.quiz.list.models.bottomsheet.BottomSheetModels
 import ru.dansh1nv.quiz_list_domain.interactors.QuizListInteractor
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
@@ -113,9 +113,9 @@ internal class QuizListViewModel(
 
     private fun onScreenEvent(event: ScreenEvent) {
         when (event) {
-            is ScreenEvent.OnSortButtonClick -> showSorting(event.isShow)
+            is ScreenEvent.OnSortButtonClick -> showSorting()
             is ScreenEvent.OnLocationClick -> {}
-            is ScreenEvent.OnFiltersButtonClick -> showFilters(event.isShow)
+            is ScreenEvent.OnFiltersButtonClick -> showFilters()
             is ScreenEvent.OnTabClick -> updateCurrentTab(event.index)
             is ScreenEvent.OnRefresh -> fetchQuizList()
             is ScreenEvent.BottomSheetDismiss -> {}
@@ -138,25 +138,32 @@ internal class QuizListViewModel(
         showQuizList()
     }
 
-    private fun showFilters(isShow: Boolean) {
+    private fun showFilters() {
         bottomSheetController.show(
             BottomSheetModels.FilterBottomSheetModel(
                 toolbar = Toolbar(
                     title = resourceManager.getStringById(R.string.filter_title),
                     trailIcon = IconModel(
-                        UIDrawable.ic_clear,
+                        iconRes = UIDrawable.ic_clear,
                         onClick = { dismiss() }
                     )
                 )
             )
         )
-//        updateState { state ->
-//            state.copy(isFiltersShow = isShow)
-//        }
     }
 
-    private fun showSorting(isShow: Boolean) = updateState { state ->
-        state.copy(isSortingShow = isShow)
+    private fun showSorting() {
+        bottomSheetController.show(
+            BottomSheetModels.SortingBottomSheetModel(
+                toolbar = Toolbar(
+                    title = resourceManager.getStringById(R.string.sorting_title),
+                    trailIcon = IconModel(
+                        iconRes = UIDrawable.ic_clear,
+                        onClick = { dismiss() }
+                    )
+                )
+            )
+        )
     }
 
     private fun applyFilters(organization: Organization?) {
@@ -195,8 +202,6 @@ internal data class QuizListState(
     val featureToggle: FeatureToggle = FeatureToggle(),
     val filters: Filters? = null,
     val sort: Sort = Sort.ASC_DATE,
-    val isFiltersShow: Boolean = false,
-    val isSortingShow: Boolean = false,
 )
 
 internal data class FeatureToggle(
