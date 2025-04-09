@@ -1,4 +1,4 @@
-package ru.dansh1nv.designsystem.theme
+package ru.dansh1nv.designsystem.theme.uiKit
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.font.FontFamily

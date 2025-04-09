@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import ru.dansh1nv.designsystem.theme.QuizHubTheme
+import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.designsystem.theme.elements.TextCell
 import ru.dansh1nv.designsystem.theme.status.toBackgroundColor
 import ru.dansh1nv.designsystem.theme.status.toTextColor
@@ -27,7 +27,7 @@ internal fun QuizStatusElement(
             .wrapContentHeight()
             .background(
                 color = status.tag.toBackgroundColor(),
-                shape = QuizHubTheme.shapes.small,
+                shape = QuizHubTheme.shapes.shape8dp,
             )
             .padding(all = 8.dp),
     ) {

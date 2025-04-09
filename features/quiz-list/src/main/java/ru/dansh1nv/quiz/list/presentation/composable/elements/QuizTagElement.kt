@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import ru.dansh1nv.designsystem.theme.QuizHubTheme
+import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.designsystem.theme.elements.TextCell
 import ru.dansh1nv.designsystem.theme.tag.toBackgroundColor
 import ru.dansh1nv.designsystem.theme.tag.toTextColor
@@ -24,7 +24,7 @@ internal fun QuizTagElement(
             .wrapContentHeight()
             .background(
                 color = model.tag.toBackgroundColor(),
-                shape = QuizHubTheme.shapes.small,
+                shape = QuizHubTheme.shapes.shape8dp,
             )
             .padding(horizontal = 8.dp, vertical = 4.dp)
     ) {

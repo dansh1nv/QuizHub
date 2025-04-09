@@ -6,8 +6,6 @@ import ru.dansh1nv.core.resourceManager.ResourceManager
 
 fun appModule() = module {
     factory<IResourceManager> {
-        ResourceManager(
-            get()
-        )
+        ResourceManager(context = get())
     }
 }

@@ -1,5 +1,7 @@
 package ru.dansh1nv.quiz.data.di
 
+import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import ru.dansh1nv.quiz.data.datasource.quizPlease.QuizPleaseRemoteDataSource
 import ru.dansh1nv.quiz.data.datasource.shakerQuiz.ShakerQuizRemoteDataSource
@@ -17,16 +19,9 @@ import ru.dansh1nv.quiz_list_domain.repository.IShakerQuizRepository
 
 fun quizDataModule() = module {
 
-    factory<SquizDataMapper> { SquizDataMapper() }
-
-    factory<LocalDataSource> {
-        LocalDataSource(database = get())
-    }
-
-    factory<SquizRemoteDataSource> {
-        SquizRemoteDataSource(api = get())
-    }
-
+    factoryOf(::SquizDataMapper)
+    factoryOf(::LocalDataSource)
+    factoryOf(::SquizRemoteDataSource)
     single<ISQuizRepository> {
         SquizRepository(
 //            localDataSource = get(),
@@ -35,10 +30,8 @@ fun quizDataModule() = module {
         )
     }
 
-    factory<QuizPleaseDataMapper> { QuizPleaseDataMapper() }
-
-    factory<QuizPleaseRemoteDataSource> { QuizPleaseRemoteDataSource(api = get()) }
-
+    factoryOf(::QuizPleaseDataMapper)
+    factoryOf(::QuizPleaseRemoteDataSource)
     single<IQuizPleaseRepository> {
         QuizPleaseRepository(
             remoteDataSource = get(),
@@ -46,13 +39,12 @@ fun quizDataModule() = module {
         )
     }
 
-    factory<ShakerQuizDataMapper> { ShakerQuizDataMapper() }
-    factory<ShakerQuizRemoteDataSource> { ShakerQuizRemoteDataSource(api = get()) }
+    factoryOf(::ShakerQuizDataMapper)
+    factoryOf(::ShakerQuizRemoteDataSource)
     single<IShakerQuizRepository> {
         ShakerQuizRepository(
             remoteDataSource = get(),
             mapper = get()
         )
     }
-
 }

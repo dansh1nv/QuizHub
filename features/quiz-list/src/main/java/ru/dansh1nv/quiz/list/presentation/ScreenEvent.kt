@@ -7,8 +7,8 @@ import ru.dansh1nv.quiz.list.models.sorting.Sort
 internal sealed interface QuizListEvent: UIEvent
 
 internal sealed interface ScreenEvent: QuizListEvent {
-    data class OnFiltersButtonClick(val isShow: Boolean) : ScreenEvent
-    data class OnSortButtonClick(val isShow: Boolean) : ScreenEvent
+    data object OnFiltersButtonClick : ScreenEvent
+    data object OnSortButtonClick : ScreenEvent
     data object BottomSheetDismiss : ScreenEvent
     data object OnLocationClick : ScreenEvent
     data class OnTabClick(val index: Int) : ScreenEvent

@@ -8,8 +8,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.navigator.Navigator
 import org.koin.compose.KoinContext
-import ru.dansh1nv.designsystem.theme.QuizHubTheme
-import ru.dansh1nv.quiz.list.presentation.QuizListScreen
+import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
+import ru.dansh1nv.quiz.list.presentation.composable.QuizListScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             KoinContext {
-                QuizHubTheme(darkTheme = true) {
+                QuizHubTheme(isDarkTheme = true) {
                     Surface(
                         modifier = Modifier.fillMaxSize(),
                         color = QuizHubTheme.colorScheme.surface

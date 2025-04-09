@@ -17,7 +17,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import ru.dansh1nv.designsystem.theme.QuizHubTheme
+import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizDateElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizDifficultElement
@@ -37,10 +37,10 @@ internal fun QuizCard(quizGame: QuizUI) {
             .wrapContentHeight()
             .shadow(
                 elevation = 4.dp,
-                shape = QuizHubTheme.shapes.small,
+                shape = QuizHubTheme.shapes.shape8dp,
             )
             .background(
-                shape = QuizHubTheme.shapes.small,
+                shape = QuizHubTheme.shapes.shape8dp,
                 color = QuizHubTheme.colorScheme.surfaceContainer
             )
             .padding(12.dp)
@@ -57,7 +57,7 @@ internal fun QuizCard(quizGame: QuizUI) {
                 .height(180.dp)
                 .fillMaxWidth()
                 .padding(start = 12.dp, end = 12.dp, bottom = 12.dp)
-                .clip(QuizHubTheme.shapes.large),
+                .clip(QuizHubTheme.shapes.shape16dp),
         )
         QuizTagElement(
             model = quizGame.tag,

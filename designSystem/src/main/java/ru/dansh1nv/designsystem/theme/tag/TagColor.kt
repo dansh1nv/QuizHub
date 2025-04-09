@@ -2,7 +2,7 @@ package ru.dansh1nv.designsystem.theme.tag
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import ru.dansh1nv.designsystem.theme.QuizHubTheme
+import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 
 enum class TagColor {
     ORANGE,

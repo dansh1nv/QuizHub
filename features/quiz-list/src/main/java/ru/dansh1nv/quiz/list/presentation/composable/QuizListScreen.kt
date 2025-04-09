@@ -1,4 +1,4 @@
-package ru.dansh1nv.quiz.list.presentation
+package ru.dansh1nv.quiz.list.presentation.composable
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -15,12 +15,16 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import org.orbitmvi.orbit.compose.collectAsState
 import ru.dansh1nv.core.presentation.model.UIStatus
-import ru.dansh1nv.designsystem.theme.QuizHubTheme
+import ru.dansh1nv.designsystem.theme.bottomsheet.QuizModalBottomSheet
+import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.models.CityModel
-import ru.dansh1nv.quiz.list.presentation.composable.Header
-import ru.dansh1nv.quiz.list.presentation.composable.QuizListContent
-import ru.dansh1nv.quiz.list.presentation.composable.TabLayout
+import ru.dansh1nv.quiz.list.presentation.QuizListEvent
+import ru.dansh1nv.quiz.list.presentation.QuizListState
+import ru.dansh1nv.quiz.list.presentation.QuizListViewModel
+import ru.dansh1nv.quiz.list.models.bottomsheet.BottomSheetModels
+import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.FiltersBottomSheet
 import ru.dansh1nv.quiz.list.presentation.composable.placeholder.ErrorPlaceholder
+import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.SortingBottomSheet
 
 class QuizListScreen : Screen {
 
@@ -32,7 +36,8 @@ class QuizListScreen : Screen {
 
         BaseScreen(
             screenState = screenState,
-            onUIEvent = onUIEvent
+            viewmodel = viewModel,
+            onUIEvent = onUIEvent,
         )
     }
 }
@@ -41,6 +46,7 @@ class QuizListScreen : Screen {
 internal fun BaseScreen(
     screenState: QuizListState,
     onUIEvent: (QuizListEvent) -> Unit,
+    viewmodel: QuizListViewModel,
 ) {
     Column(
         modifier = Modifier
@@ -85,4 +91,18 @@ internal fun BaseScreen(
             }
         }
     }
+
+    QuizModalBottomSheet(
+        controller = viewmodel,
+        customBottomSheetContent = { bottomSheet ->
+            when(bottomSheet) {
+                is BottomSheetModels.FilterBottomSheetModel -> {
+                    FiltersBottomSheet(onUIEvent = onUIEvent)
+                }
+                is BottomSheetModels.SortingBottomSheetModel -> {
+                    SortingBottomSheet(onUIEvent = onUIEvent)
+                }
+            }
+        }
+    )
 }

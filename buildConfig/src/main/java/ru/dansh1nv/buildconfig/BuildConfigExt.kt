@@ -1,1 +1,0 @@
-package ru.dansh1nv.buildconfig

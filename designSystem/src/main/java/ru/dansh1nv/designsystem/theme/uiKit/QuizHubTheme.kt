@@ -1,4 +1,4 @@
-package ru.dansh1nv.designsystem.theme
+package ru.dansh1nv.designsystem.theme.uiKit
 
 import android.app.Activity
 import android.os.Build
@@ -6,7 +6,6 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ProvideTextStyle
-import androidx.compose.material3.Shapes
 import androidx.compose.material3.Typography
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -25,9 +24,10 @@ import androidx.core.view.WindowCompat
 
 internal val LocalColorScheme = staticCompositionLocalOf { lightColorScheme() }
 internal val LocalTypography = staticCompositionLocalOf { QuizHubTypography }
-internal val LocalShapes = staticCompositionLocalOf { Shapes() }
+internal val LocalShapes = staticCompositionLocalOf { quizHubRoundedShapes }
 internal val LocalIconTintColor = compositionLocalOf { Color.Black }
 internal val LocalTagColor = compositionLocalOf { customColor() }
+internal val IsDarkMode = staticCompositionLocalOf { false }
 
 object QuizHubTheme {
     val colorScheme: ColorScheme
@@ -40,49 +40,37 @@ object QuizHubTheme {
         @ReadOnlyComposable
         get() = LocalTypography.current
 
-    val shapes: Shapes
+    val shapes: QuizHubShapes
         @Composable
         @ReadOnlyComposable
         get() = LocalShapes.current
-
-    val tintColor: Color
-        @Composable
-        @ReadOnlyComposable
-        get() = LocalIconTintColor.current
 
     val customColor: CustomColorScheme
         @Composable
         @ReadOnlyComposable
         get() = LocalTagColor.current
+
+    val isDarkMode: Boolean
+        @Composable
+        @ReadOnlyComposable
+        get() = IsDarkMode.current
 }
 
 @Composable
 fun QuizHubTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit
-) {
-    QuizHubTheme(
-        darkTheme = darkTheme,
-        dynamicColor = true,
-        content = content,
-    )
-}
-
-@Composable
-private fun QuizHubTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    isDarkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true,
-    shapes: Shapes = QuizHubTheme.shapes,
+    shapes: QuizHubShapes = QuizHubTheme.shapes,
     typography: Typography = QuizHubTheme.typography,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            if (isDarkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
-        darkTheme -> darkScheme
+        isDarkTheme -> darkScheme
         else -> lightScheme
     }
     val tintColor = colorScheme.onSurfaceVariant
@@ -91,25 +79,19 @@ private fun QuizHubTheme(
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = isDarkTheme
         }
     }
-    MaterialTheme(
-        colorScheme = colorScheme,
-        shapes = shapes,
-        typography = typography
-    ) {
+
+    MaterialTheme {
         CompositionLocalProvider(
             LocalColorScheme provides colorScheme,
             LocalShapes provides shapes,
             LocalTypography provides typography,
             LocalIconTintColor provides tintColor,
+            IsDarkMode provides isDarkTheme,
         ) {
             ProvideTextStyle(value = typography.bodyLarge, content = content)
         }
     }
 }
-
-val unspecified_scheme = ColorFamily(
-    Color.Unspecified, Color.Unspecified, Color.Unspecified, Color.Unspecified
-)
