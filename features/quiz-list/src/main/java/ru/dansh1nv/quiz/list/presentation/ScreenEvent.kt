@@ -13,6 +13,7 @@ internal sealed interface ScreenEvent: QuizListEvent {
     data object OnLocationClick : ScreenEvent
     data class OnTabClick(val index: Int) : ScreenEvent
     data object OnRefresh : ScreenEvent
+    data object OnCalendarClick : ScreenEvent
 }
 
 internal sealed interface BottomSheetEvent: QuizListEvent {

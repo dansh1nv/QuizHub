@@ -22,6 +22,8 @@
     <string name="quiz_online">Онлайн</string>
     <string name="quiz_offline">Игры в баре</string>
 
+    <string name="calendar_title">Календарь</string>
+
     <string name="quiz_status_open">Регистрация открыта</string>
     <string name="quiz_status_reserve">Запись в резерв</string>
     <string name="quiz_status_close">Регистрация закрыта</string>

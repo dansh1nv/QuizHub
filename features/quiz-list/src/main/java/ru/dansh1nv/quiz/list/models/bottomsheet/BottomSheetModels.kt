@@ -12,4 +12,8 @@ internal sealed class BottomSheetModels :
     data class SortingBottomSheetModel(
         override val toolbar: Toolbar
     ) : BottomSheetModels()
+
+    data class CalendarBottomSheetModel(
+        override val toolbar: Toolbar
+    ) : BottomSheetModels()
 }

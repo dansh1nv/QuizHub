@@ -8,6 +8,8 @@ configurateAndroid()
 
 dependencies {
     implementation(platform(libs.compose.bom))
+    implementation(libs.dateTime)
+    implementation(libs.photo.calendar)
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.bundles.ui)
     implementation(libs.bundles.common)
@@ -18,6 +20,13 @@ dependencies {
     implementation(project(":designSystem"))
     implementation(project(":navigation"))
     implementation(project(":core"))
+}
+android {
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+    compileSdk = 34
 }
 
 //Разбить на функции и сделать конфиги для других модулей

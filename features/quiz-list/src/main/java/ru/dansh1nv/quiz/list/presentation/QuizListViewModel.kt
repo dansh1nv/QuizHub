@@ -20,11 +20,11 @@ import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.mappers.QuizPleaseMapper
 import ru.dansh1nv.quiz.list.mappers.ShakerQuizMapper
 import ru.dansh1nv.quiz.list.mappers.SquizMapper
+import ru.dansh1nv.quiz.list.models.bottomsheet.BottomSheetModels
 import ru.dansh1nv.quiz.list.models.filters.Filters
 import ru.dansh1nv.quiz.list.models.item.Organization
 import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz.list.models.sorting.Sort
-import ru.dansh1nv.quiz.list.models.bottomsheet.BottomSheetModels
 import ru.dansh1nv.quiz_list_domain.interactors.QuizListInteractor
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
@@ -119,7 +119,22 @@ internal class QuizListViewModel(
             is ScreenEvent.OnTabClick -> updateCurrentTab(event.index)
             is ScreenEvent.OnRefresh -> fetchQuizList()
             is ScreenEvent.BottomSheetDismiss -> {}
+            is ScreenEvent.OnCalendarClick -> handleCalendarClick()
         }
+    }
+
+    private fun handleCalendarClick() {
+        Timber.d("Calendar button clicked")
+        bottomSheetController.show(
+            BottomSheetModels.CalendarBottomSheetModel(
+                toolbar = Toolbar(
+                    title = resourceManager.getStringById(R.string.calendar_title),
+                    trailIcon = IconModel( UIDrawable.ic_clear,
+                    onClick = { dismiss() }
+                    )
+                )
+            )
+        )
     }
 
     private fun onBottomSheetEvent(event: BottomSheetEvent) {

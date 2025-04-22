@@ -22,6 +22,7 @@ import ru.dansh1nv.quiz.list.presentation.QuizListEvent
 import ru.dansh1nv.quiz.list.presentation.QuizListState
 import ru.dansh1nv.quiz.list.presentation.QuizListViewModel
 import ru.dansh1nv.quiz.list.models.bottomsheet.BottomSheetModels
+import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.CalendarBottomSheet
 import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.FiltersBottomSheet
 import ru.dansh1nv.quiz.list.presentation.composable.placeholder.ErrorPlaceholder
 import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.SortingBottomSheet
@@ -101,6 +102,11 @@ internal fun BaseScreen(
                 }
                 is BottomSheetModels.SortingBottomSheetModel -> {
                     SortingBottomSheet(onUIEvent = onUIEvent)
+                }
+                is BottomSheetModels.CalendarBottomSheetModel -> {
+                    CalendarBottomSheet(
+                        viewModel = viewmodel
+                    )
                 }
             }
         }
