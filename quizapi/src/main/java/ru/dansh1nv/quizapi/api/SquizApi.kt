@@ -2,6 +2,7 @@ package ru.dansh1nv.quizapi.api
 
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
+import io.ktor.client.request.parameter
 import io.ktor.client.statement.bodyAsText
 import io.ktor.http.path
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +22,11 @@ class SquizApi(
         val httpRequest = httpClient.get {
             url {
                 path(PATH)
-                parameters
+                parameter(CITY, 111979372401) //111979372401 - Санкт-Петербург
+                parameter(PAGE_NUMBER, 1)
+                parameter(PAGE_SIZE, 100)
+                parameter("getparts", true)
+                parameter("getoptions", true)
             }
         }
         val data = httpRequest.bodyAsText()
@@ -31,7 +36,10 @@ class SquizApi(
 
     companion object {
         const val PATH =
-            "/api/getproductslist/?storepartuid=111979372401&getparts=true&getoptions=true&slice=1&size=100"
+            "/api/getproductslist"
+        const val PAGE_NUMBER = "slice"
+        const val PAGE_SIZE = "size"
+        const val CITY = "storepartuid"
     }
 }
 

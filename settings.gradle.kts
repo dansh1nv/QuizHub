@@ -14,16 +14,25 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "QuizHub"
-include(":app")
-include(":database")
-include(":quizapi")
-include(":features:quiz-list")
-include(":features:quiz-details")
-include(":features:profile")
-include(":data-quiz-list")
-include(":common")
-include(":data-profile")
-include(":data-quiz-details")
-include(":domain-quiz-list")
-include(":domain-quiz-details")
-include(":domain-profile")
+
+include(
+    ":app",
+    ":core",
+    ":navigation",
+    ":database",
+    ":quizapi",
+    ":common",
+    ":designSystem",
+
+    ":data-quiz-list",
+    ":data-quiz-details",
+    ":data-profile",
+
+    ":domain-quiz-list",
+    ":domain-quiz-details",
+    ":domain-profile",
+
+    ":features:quiz-list",
+    ":features:quiz-details",
+    ":features:profile",
+)

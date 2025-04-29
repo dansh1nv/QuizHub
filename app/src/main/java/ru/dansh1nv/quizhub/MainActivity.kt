@@ -4,11 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import ru.dansh1nv.quiz.list.presentation.QuizListScreen
-import ru.dansh1nv.quizhub.ui.theme.QuizHubTheme
+import cafe.adriel.voyager.navigator.Navigator
+import org.koin.compose.KoinContext
+import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
+import ru.dansh1nv.quiz.list.presentation.composable.QuizListScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -16,14 +17,16 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            QuizHubTheme(
-                darkTheme = true
-            ) {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.surface
-                ) {
-                    QuizListScreen()
+            KoinContext {
+                QuizHubTheme(isDarkTheme = true) {
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = QuizHubTheme.colorScheme.surface
+                    ) {
+                        Navigator(
+                            screen = QuizListScreen(),
+                        )
+                    }
                 }
             }
         }

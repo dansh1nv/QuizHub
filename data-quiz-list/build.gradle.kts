@@ -10,7 +10,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        minSdk = 24
+        minSdk = 26
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -38,14 +38,13 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlin.coroutines.android)
 
-    implementation(libs.koin.core)
-    implementation(libs.koin.annotations)
-
+    implementation(libs.bundles.common)
     implementation(libs.serialization)
 
    // ksp(libs.ksp)
 
     implementation(project(":database"))
     implementation(project(":quizapi"))
+    implementation(project(":common"))
     implementation(project(":domain-quiz-list"))
 }

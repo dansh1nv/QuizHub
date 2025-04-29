@@ -1,4 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="quiz_item_price_for_people">с человека</string>
+    <string name="quiz_item_price_for_team">с команды</string>
+    <string name="quiz_item_difficult_title">Сложность:</string>
+    <string name="tab_item_all">Все</string>
+    <string name="tab_item_favourite">Избранное</string>
+
+    <string name="empty_placeholder_text">Список пуст</string>
+    <string name="vpn_warning">Для корректной работы отключите VPN</string>
+    <string name="refresh">Обновить</string>
+
+    <string name="filter_title">Фильтры</string>
+    <string name="filter_reset">Сбросить</string>
+    <string name="filter_id_squiz">SQUIZ</string>
+    <string name="filter_id_quiz_please">Квиз, плиз!</string>
+    <string name="filter_id_shaker_quiz">Шейкер квиз</string>
+
+    <string name="sorting_title">Сортировка</string>
+    <string name="sorting_asc_date">По возрастанию даты</string>
+    <string name="sorting_desc_date">По убыванию даты</string>
+    <string name="quiz_online">Онлайн</string>
+    <string name="quiz_offline">Игры в баре</string>
+
+    <string name="calendar_title">Календарь</string>
+
+    <string name="quiz_status_open">Регистрация открыта</string>
+    <string name="quiz_status_reserve">Запись в резерв</string>
+    <string name="quiz_status_close">Регистрация закрыта</string>
 </resources>

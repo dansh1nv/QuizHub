@@ -18,6 +18,7 @@ import org.koin.core.qualifier.Qualifier
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import ru.dansh1nv.quizapi.api.QuizPleaseApi
+import ru.dansh1nv.quizapi.api.ShakerQuizApi
 import ru.dansh1nv.quizapi.api.SquizApi
 
 val QUIZ_PLEASE_KTOR = named("QUIZ_PLEASE_KTOR")
@@ -25,7 +26,7 @@ val SQUIZ_KTOR = named("SQUIZ_KTOR")
 val SHAKER_QUIZ_KTOR = named("SHAKER_QUIZ_KTOR")
 val WOW_QUIZ_KTOR = named("WOW_QUIZ_KTOR")
 
-val apiModule = module {
+fun apiModule() = module {
 
     single<HttpClientFactory> { HttpClientFactory() }
     single<Json> {
@@ -85,9 +86,34 @@ val apiModule = module {
             }
         }
     }
+    single<HttpClient>(qualifier = SHAKER_QUIZ_KTOR) {
+        val engine = HttpClientFactory().createEngine()
+        HttpClient(engine) {
+            install(ContentNegotiation) {
+                json(
+                    Json {
+                        prettyPrint = true
+                        isLenient = true
+                        ignoreUnknownKeys = true
+                    }
+                )
+            }
+            install(Logging) {
+                level = LogLevel.ALL
+                logger = Logger.SIMPLE
+            }
+            defaultRequest {
+                host = "backend.shakerquiz.ru"
+                url {
+                    protocol = URLProtocol.HTTPS
+                }
+            }
+        }
+    }
 
     single<HttpClientEngine> { CIO.create() }
     single<HttpClientConfig<OkHttpConfig>> { HttpClientConfig() }
     single<SquizApi> { SquizApi(httpClient = get(qualifier = SQUIZ_KTOR), json = get()) }
     single<QuizPleaseApi> { QuizPleaseApi(httpClient = get(qualifier = QUIZ_PLEASE_KTOR), json = get()) }
+    single<ShakerQuizApi> { ShakerQuizApi(httpClient = get(qualifier = SHAKER_QUIZ_KTOR), json = get()) }
 }
