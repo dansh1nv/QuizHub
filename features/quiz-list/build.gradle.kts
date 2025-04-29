@@ -8,6 +8,8 @@ configurateAndroid()
 
 dependencies {
     implementation(platform(libs.compose.bom))
+    implementation(libs.dateTime)
+    implementation(libs.calendar.compose)
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.bundles.ui)
     implementation(libs.bundles.common)
