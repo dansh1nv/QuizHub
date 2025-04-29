@@ -2,6 +2,7 @@ package ru.dansh1nv.quiz.list.presentation.composable.bottomSheets
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
@@ -34,7 +35,9 @@ internal fun CalendarBottomSheet(
     val selections = remember { mutableStateListOf<CalendarDay>() }
     val daysOfWeek = remember { daysOfWeek() }
     Column(
-        modifier = Modifier.background(QuizHubTheme.colorScheme.surfaceContainer),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(QuizHubTheme.colorScheme.surfaceContainer),
     ) {
         val calendarState = rememberCalendarState(
             startMonth = startMonth,
