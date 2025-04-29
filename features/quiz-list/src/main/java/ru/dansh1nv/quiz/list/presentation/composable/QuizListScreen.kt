@@ -104,9 +104,7 @@ internal fun BaseScreen(
                     SortingBottomSheet(onUIEvent = onUIEvent)
                 }
                 is BottomSheetModels.CalendarBottomSheetModel -> {
-                    CalendarBottomSheet(
-                        viewModel = viewmodel
-                    )
+                    CalendarBottomSheet()
                 }
             }
         }
