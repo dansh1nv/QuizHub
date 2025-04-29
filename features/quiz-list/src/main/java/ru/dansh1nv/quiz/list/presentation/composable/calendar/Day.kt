@@ -11,11 +11,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.kizitonwose.calendar.core.CalendarDay
 import com.kizitonwose.calendar.core.DayPosition
+import ru.dansh1nv.core.presentation.calendar.clickable
+import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.designsystem.theme.utils.color.CustomColorModel
 import ru.dansh1nv.designsystem.theme.utils.color.toTextColor
 
@@ -24,7 +24,6 @@ fun Day(day: CalendarDay, isSelected: Boolean, onClick: (CalendarDay) -> Unit) {
     Box(
         modifier = Modifier
             .aspectRatio(1f) // This is important for square-sizing!
-            .testTag("MonthDay")
             .padding(6.dp)
             .clip(CircleShape)
             .background(color = if (isSelected) Color.Yellow else Color.Transparent)
@@ -46,7 +45,7 @@ fun Day(day: CalendarDay, isSelected: Boolean, onClick: (CalendarDay) -> Unit) {
         Text(
             text = day.date.dayOfMonth.toString(),
             color = textColor,
-            fontSize = 14.sp,
+            style = QuizHubTheme.typography.labelLarge
         )
     }
 }

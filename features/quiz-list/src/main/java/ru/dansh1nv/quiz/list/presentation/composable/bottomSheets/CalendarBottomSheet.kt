@@ -9,7 +9,6 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.kizitonwose.calendar.compose.HorizontalCalendar
 import com.kizitonwose.calendar.compose.rememberCalendarState
@@ -18,11 +17,11 @@ import com.kizitonwose.calendar.core.daysOfWeek
 import com.kizitonwose.calendar.core.nextMonth
 import com.kizitonwose.calendar.core.previousMonth
 import kotlinx.coroutines.launch
+import ru.dansh1nv.core.presentation.calendar.rememberFirstMostVisibleMonth
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.presentation.composable.calendar.Day
 import ru.dansh1nv.quiz.list.presentation.composable.calendar.MonthHeader
 import ru.dansh1nv.quiz.list.presentation.composable.calendar.SimpleCalendarTitle
-import ru.dansh1nv.quiz.list.presentation.composable.calendar.rememberFirstMostVisibleMonth
 import java.time.YearMonth
 
 @Composable
@@ -63,7 +62,6 @@ internal fun CalendarBottomSheet(
             },
         )
         HorizontalCalendar(
-            modifier = Modifier.testTag("Calendar"),
             state = calendarState,
             dayContent = { day ->
                 Day(day, isSelected = selections.contains(day)) { clicked ->

@@ -60,20 +60,22 @@ internal fun Header(
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
+            if(screenState.featureToggle.isCalendarFeatureEnable) {
+                Box(
+                    modifier = Modifier
+                        .size(32.dp)
+                        .clickable { onUIEvent(ScreenEvent.OnCalendarClick) },
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_calendar),
+                        contentDescription = null,
+                        tint = QuizHubTheme.colorScheme.onSurface
+                    )
+                }
+            }
             if (screenState.uiStatus == UIStatus.Loaded) {
                 if (screenState.featureToggle.isFiltersFeatureEnabled) {
-                    Box(
-                        modifier = Modifier
-                            .size(32.dp)
-                            .clickable { onUIEvent(ScreenEvent.OnCalendarClick) },
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_calendar),
-                            contentDescription = null,
-                            tint = QuizHubTheme.colorScheme.onSurface
-                        )
-                    }
                     Box(
                         modifier = Modifier
                             .size(32.dp)

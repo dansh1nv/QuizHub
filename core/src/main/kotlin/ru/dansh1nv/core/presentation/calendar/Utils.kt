@@ -1,4 +1,4 @@
-package ru.dansh1nv.quiz.list.presentation.composable.calendar
+package ru.dansh1nv.core.presentation.calendar
 
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable

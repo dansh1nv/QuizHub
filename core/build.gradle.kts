@@ -38,5 +38,6 @@ dependencies {
     implementation(libs.bundles.common)
     implementation(libs.bundles.navigation)
     implementation(libs.bundles.ui)
+    implementation(libs.calendar.compose)
     implementation(project(":designSystem"))
 }

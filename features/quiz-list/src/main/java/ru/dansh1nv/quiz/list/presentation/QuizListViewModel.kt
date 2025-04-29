@@ -223,4 +223,5 @@ internal data class FeatureToggle(
     val isFavouriteFeatureEnabled: Boolean = false,
     val isFiltersFeatureEnabled: Boolean = true,
     val isSortFeatureEnabled: Boolean = true,
+    val isCalendarFeatureEnable: Boolean = true
 )

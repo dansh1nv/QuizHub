@@ -23,17 +23,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import ru.dansh1nv.core.presentation.calendar.displayText
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.designsystem.theme.utils.color.CustomColorModel
 import ru.dansh1nv.designsystem.theme.utils.color.toIconColor
 import ru.dansh1nv.designsystem.theme.utils.color.toTextColor
-import ru.dansh1nv.quiz.list.presentation.composable.calendar.shared.displayText
 import java.time.YearMonth
 
 @Composable
@@ -58,12 +55,10 @@ fun SimpleCalendarTitle(
         )
         Text(
             modifier = Modifier
-                .weight(1f)
-                .testTag("MonthTitle"),
+                .weight(1f),
             text = currentMonth.displayText(),
-            fontSize = 22.sp,
             textAlign = TextAlign.Center,
-            fontWeight = FontWeight.Medium,
+            style = QuizHubTheme.typography.titleLarge,
             color = CustomColorModel.Surface.toTextColor()
         )
         CalendarNavigationIcon(
@@ -71,8 +66,7 @@ fun SimpleCalendarTitle(
             contentDescription = "Next",
             onClick = goToNext,
             isHorizontal = isHorizontal,
-
-            )
+        )
     }
 }
 
