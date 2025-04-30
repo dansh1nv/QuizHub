@@ -26,7 +26,7 @@ dependencies {
 fun Project.configurateAndroid() {
     android {
         namespace = "ru.dansh1nv.quiz.list"
-        compileSdk = 34
+        compileSdk = 35
 
         defaultConfig {
             minSdk = 26

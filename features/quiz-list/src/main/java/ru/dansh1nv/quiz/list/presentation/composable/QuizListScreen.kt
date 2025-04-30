@@ -11,36 +11,31 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.koin.koinScreenModel
+import org.koin.androidx.compose.koinViewModel
 import org.orbitmvi.orbit.compose.collectAsState
 import ru.dansh1nv.core.presentation.model.UIStatus
 import ru.dansh1nv.designsystem.theme.bottomsheet.QuizModalBottomSheet
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.models.CityModel
+import ru.dansh1nv.quiz.list.models.bottomsheet.BottomSheetModels
 import ru.dansh1nv.quiz.list.presentation.QuizListEvent
 import ru.dansh1nv.quiz.list.presentation.QuizListState
 import ru.dansh1nv.quiz.list.presentation.QuizListViewModel
-import ru.dansh1nv.quiz.list.models.bottomsheet.BottomSheetModels
 import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.CalendarBottomSheet
 import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.FiltersBottomSheet
-import ru.dansh1nv.quiz.list.presentation.composable.placeholder.ErrorPlaceholder
 import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.SortingBottomSheet
+import ru.dansh1nv.quiz.list.presentation.composable.placeholder.ErrorPlaceholder
 
-class QuizListScreen : Screen {
+@Composable
+fun QuizListScreen() {
+    val viewModel = koinViewModel<QuizListViewModel>()
+    val screenState by viewModel.collectAsState()
 
-    @Composable
-    override fun Content() {
-        val viewModel = koinScreenModel<QuizListViewModel>()
-        val screenState by viewModel.collectAsState()
-        val onUIEvent = viewModel::handleEvent
-
-        BaseScreen(
-            screenState = screenState,
-            viewmodel = viewModel,
-            onUIEvent = onUIEvent,
-        )
-    }
+    BaseScreen(
+        screenState = screenState,
+        viewmodel = viewModel,
+        onUIEvent = viewModel::handleEvent,
+    )
 }
 
 @Composable
@@ -96,13 +91,15 @@ internal fun BaseScreen(
     QuizModalBottomSheet(
         controller = viewmodel,
         customBottomSheetContent = { bottomSheet ->
-            when(bottomSheet) {
+            when (bottomSheet) {
                 is BottomSheetModels.FilterBottomSheetModel -> {
                     FiltersBottomSheet(onUIEvent = onUIEvent)
                 }
+
                 is BottomSheetModels.SortingBottomSheetModel -> {
                     SortingBottomSheet(onUIEvent = onUIEvent)
                 }
+
                 is BottomSheetModels.CalendarBottomSheetModel -> {
                     CalendarBottomSheet()
                 }

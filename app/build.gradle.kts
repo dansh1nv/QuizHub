@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "ru.dansh1nv.quizhub"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "ru.dansh1nv.quizhub"

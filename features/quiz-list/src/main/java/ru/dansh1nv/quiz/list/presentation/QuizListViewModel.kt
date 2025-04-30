@@ -1,6 +1,6 @@
 package ru.dansh1nv.quiz.list.presentation
 
-import cafe.adriel.voyager.core.model.screenModelScope
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import ru.dansh1nv.core.presentation.BaseMviScreenModel
+import ru.dansh1nv.core.presentation.ScreenState
 import ru.dansh1nv.core.presentation.model.UIStatus
 import ru.dansh1nv.core.resourceManager.IResourceManager
 import ru.dansh1nv.designsystem.theme.bottomsheet.controller.BottomSheetController
@@ -58,7 +58,7 @@ internal class QuizListViewModel(
         }
     }
 
-    private fun fetchQuizList() = screenModelScope.launch {
+    private fun fetchQuizList() = viewModelScope.launch {
         interactor.getAllQuizList(17)
             .map { quizList ->
                 quizList.mapNotNull { quiz ->
@@ -86,30 +86,26 @@ internal class QuizListViewModel(
             }
             .catch { ex ->
                 Timber.e(ex)
-                updateState { state ->
-                    state.copy(uiStatus = UIStatus.Error)
-                }
+                updateState { copy(uiStatus = UIStatus.Error) }
             }
             .flowOn(Dispatchers.Default)
             .onEach { quizList ->
-                withContext(Dispatchers.Main) {
-                    updateState { state ->
-                        state.copy(
-                            quizList = quizList,
-                            uiStatus = if (quizMap.values.isNotEmpty()) {
-                                UIStatus.Loaded
-                            } else {
-                                UIStatus.Loading
-                            }
-                        )
-                    }
+                updateState {
+                    copy(
+                        quizList = quizList,
+                        uiStatus = if (quizMap.values.isNotEmpty()) {
+                            UIStatus.Loaded
+                        } else {
+                            UIStatus.Loading
+                        }
+                    )
                 }
-            }.collect()
+            }
+            .flowOn(Dispatchers.Main)
+            .collect()
     }
 
-    private fun updateCurrentTab(index: Int) = updateState { state ->
-        state.copy(selectedTabIndex = index)
-    }
+    private fun updateCurrentTab(index: Int) = updateState { copy(selectedTabIndex = index) }
 
     private fun onScreenEvent(event: ScreenEvent) {
         when (event) {
@@ -129,8 +125,8 @@ internal class QuizListViewModel(
             BottomSheetModels.CalendarBottomSheetModel(
                 toolbar = Toolbar(
                     title = resourceManager.getStringById(R.string.calendar_title),
-                    trailIcon = IconModel( UIDrawable.ic_clear,
-                    onClick = { dismiss() }
+                    trailIcon = IconModel(UIDrawable.ic_clear,
+                        onClick = { dismiss() }
                     )
                 )
             )
@@ -145,11 +141,7 @@ internal class QuizListViewModel(
     }
 
     private fun applySorting(sort: Sort) {
-        updateState { state ->
-            state.copy(
-                sort = sort
-            )
-        }
+        updateState { copy(sort = sort) }
         showQuizList()
     }
 
@@ -182,31 +174,27 @@ internal class QuizListViewModel(
     }
 
     private fun applyFilters(organization: Organization?) {
-        updateState { state ->
-            state.copy(
-                filters = Filters.entries.firstOrNull { filter ->
-                    filter.organization == organization
-                }
-            )
+        updateState {
+            copy(filters = Filters.entries.firstOrNull { filter ->
+                filter.organization == organization
+            })
         }
         showQuizList()
     }
 
-    private fun showQuizList() = updateState { state ->
-        if (state.uiStatus != UIStatus.Loaded) return@updateState state
+    private fun showQuizList() = updateState {
+        if (uiStatus != UIStatus.Loaded) return@updateState this
 
         val quizList = quizMap.getOrDefault(
-            key = state.filters?.organization,
+            key = this.filters?.organization,
             defaultValue = quizMap.values.flatten()
         )
 
-        val sortedList = when (state.sort) {
+        val sortedList = when (this.sort) {
             Sort.ASC_DATE -> quizList.sortedBy { it.formattedDate?.date }
             Sort.DESC_DATE -> quizList.sortedByDescending { it.formattedDate?.date }
         }
-        state.copy(
-            quizList = sortedList
-        )
+        copy(quizList = sortedList)
     }
 }
 
@@ -217,7 +205,7 @@ internal data class QuizListState(
     val featureToggle: FeatureToggle = FeatureToggle(),
     val filters: Filters? = null,
     val sort: Sort = Sort.ASC_DATE,
-)
+) : ScreenState
 
 internal data class FeatureToggle(
     val isFavouriteFeatureEnabled: Boolean = false,

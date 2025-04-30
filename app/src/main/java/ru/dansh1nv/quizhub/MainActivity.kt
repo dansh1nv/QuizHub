@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import cafe.adriel.voyager.navigator.Navigator
 import org.koin.compose.KoinContext
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.presentation.composable.QuizListScreen
@@ -23,9 +22,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = QuizHubTheme.colorScheme.surface
                     ) {
-                        Navigator(
-                            screen = QuizListScreen(),
-                        )
+                        QuizListScreen()
                     }
                 }
             }

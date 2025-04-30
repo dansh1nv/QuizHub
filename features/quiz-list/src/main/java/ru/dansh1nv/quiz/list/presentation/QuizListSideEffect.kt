@@ -1,5 +1,7 @@
 package ru.dansh1nv.quiz.list.presentation
 
-sealed class QuizListSideEffect {
+import ru.dansh1nv.core.presentation.SideEffect
+
+sealed class QuizListSideEffect: SideEffect {
     data object NetworkError : QuizListSideEffect()
 }

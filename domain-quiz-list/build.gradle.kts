@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "ru.dansh1nv.quiz_list_domain"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 26
