@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import ru.dansh1nv.core.presentation.BaseMviScreenModel
+import ru.dansh1nv.core.presentation.BaseMviViewModel
 import ru.dansh1nv.core.presentation.ScreenState
 import ru.dansh1nv.core.presentation.model.UIStatus
 import ru.dansh1nv.core.resourceManager.IResourceManager
@@ -38,7 +38,7 @@ internal class QuizListViewModel(
     private val shakerQuizMapper: ShakerQuizMapper,
     private val resourceManager: IResourceManager,
     private val bottomSheetController: BottomSheetController,
-) : BaseMviScreenModel<QuizListState, QuizListSideEffect, QuizListEvent>(
+) : BaseMviViewModel<QuizListState, QuizListSideEffect, QuizListEvent>(
     initialState = QuizListState()
 ), BottomSheetController by bottomSheetController {
 
@@ -116,6 +116,7 @@ internal class QuizListViewModel(
             is ScreenEvent.OnRefresh -> fetchQuizList()
             is ScreenEvent.BottomSheetDismiss -> {}
             is ScreenEvent.OnCalendarClick -> handleCalendarClick()
+            is ScreenEvent.OnCardItemClicked -> navigateToQuizDetails(event.id)
         }
     }
 
@@ -195,6 +196,10 @@ internal class QuizListViewModel(
             Sort.DESC_DATE -> quizList.sortedByDescending { it.formattedDate?.date }
         }
         copy(quizList = sortedList)
+    }
+
+    private fun navigateToQuizDetails(quizId: String) {
+        postSideEffect(QuizListSideEffect.NavigateQuizDetails(quizId))
     }
 }
 

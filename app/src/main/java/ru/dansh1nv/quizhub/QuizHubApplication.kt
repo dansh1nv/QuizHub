@@ -1,10 +1,12 @@
 package ru.dansh1nv.quizhub
 
 import android.app.Application
+import com.squareup.leakcanary.core.BuildConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
+import org.koin.core.logger.Level
 import ru.dansh1nv.core.di.uiModule
 import ru.dansh1nv.database.di.databaseModule
 import ru.dansh1nv.quiz.data.di.quizDataModule
@@ -29,7 +31,7 @@ class QuizHubApplication : Application() {
 
     private fun initKoin() {
         startKoin {
-            androidLogger()
+            androidLogger(if (BuildConfig.DEBUG) Level.ERROR else Level.NONE)
             androidContext(this@QuizHubApplication)
             modules(
                 appModule(),
@@ -44,7 +46,9 @@ class QuizHubApplication : Application() {
     }
 
     private fun initTimber() {
-        Timber.plant()
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
     }
 
 }

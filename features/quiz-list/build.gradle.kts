@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.compose.compiler)
 }
 
@@ -13,12 +14,10 @@ dependencies {
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.bundles.ui)
     implementation(libs.bundles.common)
-    implementation(libs.bundles.navigation)
 
     implementation(project(":domain-quiz-list"))
     implementation(project(":common"))
     implementation(project(":designSystem"))
-    implementation(project(":navigation"))
     implementation(project(":core"))
 }
 

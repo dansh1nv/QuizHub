@@ -41,5 +41,5 @@ dependencies {
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.bundles.ui)
     implementation(libs.bundles.common)
-    implementation(libs.bundles.navigation)
+    
 }

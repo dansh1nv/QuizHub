@@ -11,14 +11,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import org.koin.androidx.compose.koinViewModel
 import org.orbitmvi.orbit.compose.collectAsState
+import org.orbitmvi.orbit.compose.collectSideEffect
+import ru.dansh1nv.core.navigation.destinations.QuizDetailsDestination
 import ru.dansh1nv.core.presentation.model.UIStatus
 import ru.dansh1nv.designsystem.theme.bottomsheet.QuizModalBottomSheet
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.models.CityModel
 import ru.dansh1nv.quiz.list.models.bottomsheet.BottomSheetModels
 import ru.dansh1nv.quiz.list.presentation.QuizListEvent
+import ru.dansh1nv.quiz.list.presentation.QuizListSideEffect
 import ru.dansh1nv.quiz.list.presentation.QuizListState
 import ru.dansh1nv.quiz.list.presentation.QuizListViewModel
 import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.CalendarBottomSheet
@@ -27,9 +31,19 @@ import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.SortingBottomS
 import ru.dansh1nv.quiz.list.presentation.composable.placeholder.ErrorPlaceholder
 
 @Composable
-fun QuizListScreen() {
+fun QuizListScreen(navController: NavHostController) {
     val viewModel = koinViewModel<QuizListViewModel>()
     val screenState by viewModel.collectAsState()
+
+    viewModel.collectSideEffect { sideEffect ->
+        when (sideEffect) {
+            is QuizListSideEffect.NavigateQuizDetails -> {
+                navController.navigate(QuizDetailsDestination.route)
+            }
+
+            QuizListSideEffect.NetworkError -> {}
+        }
+    }
 
     BaseScreen(
         screenState = screenState,
@@ -83,7 +97,10 @@ internal fun BaseScreen(
                         onEvent = onUIEvent,
                     )
                 }
-                QuizListContent(screenState.quizList)
+                QuizListContent(
+                    quizList = screenState.quizList,
+                    onUIEvent = onUIEvent,
+                )
             }
         }
     }

@@ -18,7 +18,6 @@ rootProject.name = "QuizHub"
 include(
     ":app",
     ":core",
-    ":navigation",
     ":database",
     ":quizapi",
     ":common",

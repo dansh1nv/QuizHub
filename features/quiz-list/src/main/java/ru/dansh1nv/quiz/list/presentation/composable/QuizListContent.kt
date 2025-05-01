@@ -9,10 +9,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ru.dansh1nv.quiz.list.models.item.QuizUI
+import ru.dansh1nv.quiz.list.presentation.QuizListEvent
 import ru.dansh1nv.quiz.list.presentation.composable.card.QuizCard
 
 @Composable
-internal fun QuizListContent(quizList: List<QuizUI>) {
+internal fun QuizListContent(
+    quizList: List<QuizUI>,
+    onUIEvent: (QuizListEvent) -> Unit,
+) {
     LazyColumn(
         Modifier
             .fillMaxSize()
@@ -20,7 +24,10 @@ internal fun QuizListContent(quizList: List<QuizUI>) {
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(quizList) { quiz ->
-            QuizCard(quiz)
+            QuizCard(
+                quizGame = quiz,
+                onUIEvent = onUIEvent,
+            )
         }
     }
 }

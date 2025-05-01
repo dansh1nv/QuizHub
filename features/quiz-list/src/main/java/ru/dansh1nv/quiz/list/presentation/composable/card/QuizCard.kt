@@ -1,6 +1,7 @@
 package ru.dansh1nv.quiz.list.presentation.composable.card
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +20,8 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.models.item.QuizUI
+import ru.dansh1nv.quiz.list.presentation.QuizListEvent
+import ru.dansh1nv.quiz.list.presentation.ScreenEvent
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizDateElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizDifficultElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizLocationElement
@@ -30,7 +33,10 @@ import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizTeamElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizTitleElement
 
 @Composable
-internal fun QuizCard(quizGame: QuizUI) {
+internal fun QuizCard(
+    quizGame: QuizUI,
+    onUIEvent: (QuizListEvent) -> Unit,
+) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -44,6 +50,7 @@ internal fun QuizCard(quizGame: QuizUI) {
                 color = QuizHubTheme.colorScheme.surfaceContainer
             )
             .padding(12.dp)
+            .clickable { onUIEvent(ScreenEvent.OnCardItemClicked("test_id")) }
     ) {
         val modifier = Modifier.padding(start = 8.dp, top = 4.dp, end = 8.dp)
         AsyncImage(

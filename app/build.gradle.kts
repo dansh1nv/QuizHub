@@ -13,7 +13,7 @@ android {
     defaultConfig {
         applicationId = "ru.dansh1nv.quizhub"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -58,7 +58,7 @@ dependencies {
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.bundles.ui)
     implementation(libs.bundles.common)
-    implementation(libs.bundles.navigation)
+    implementation(libs.androidx.splashscreen)
 
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.androidx.ui.text.google.fonts)
@@ -66,7 +66,6 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":designSystem"))
     implementation(project(":common"))
-    implementation(project(":navigation"))
     //ksp(libs.koin.)
 
     implementation(project(":database"))
