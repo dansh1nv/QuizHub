@@ -13,6 +13,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.kizitonwose.calendar.core.CalendarDay
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
+import ru.dansh1nv.designsystem.theme.utils.color.CustomColorModel
+import ru.dansh1nv.designsystem.theme.utils.color.toTextColor
 import ru.dansh1nv.quiz.list.models.item.QuizUI
 
 @Composable
@@ -37,7 +39,7 @@ fun Day(
         }
         Text(
             text = day.date.dayOfMonth.toString(),
-            color = QuizHubTheme.customColor.white,
+            color = CustomColorModel.Surface.toTextColor(),
             style = QuizHubTheme.typography.labelLarge
         )
     }

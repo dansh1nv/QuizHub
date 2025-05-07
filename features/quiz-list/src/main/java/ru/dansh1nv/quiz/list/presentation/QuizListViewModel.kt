@@ -121,7 +121,6 @@ internal class QuizListViewModel(
     }
 
     private fun handleCalendarClick() {
-        Timber.d("Calendar button clicked")
         bottomSheetController.show(
             BottomSheetModels.CalendarBottomSheetModel(
                 toolbar = Toolbar(
