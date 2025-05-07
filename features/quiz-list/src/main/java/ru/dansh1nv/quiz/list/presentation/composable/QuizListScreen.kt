@@ -118,7 +118,7 @@ internal fun BaseScreen(
                 }
 
                 is BottomSheetModels.CalendarBottomSheetModel -> {
-                    CalendarBottomSheet()
+                    CalendarBottomSheet(events = bottomSheet.events)
                 }
             }
         }

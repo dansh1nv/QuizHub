@@ -17,16 +17,20 @@ import com.kizitonwose.calendar.core.daysOfWeek
 import com.kizitonwose.calendar.core.nextMonth
 import com.kizitonwose.calendar.core.previousMonth
 import kotlinx.coroutines.launch
+import kotlinx.datetime.toJavaLocalDate
 import ru.dansh1nv.core.presentation.calendar.rememberFirstMostVisibleMonth
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
+import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz.list.presentation.composable.calendar.Day
 import ru.dansh1nv.quiz.list.presentation.composable.calendar.MonthHeader
 import ru.dansh1nv.quiz.list.presentation.composable.calendar.SimpleCalendarTitle
+import java.time.LocalDate
 import java.time.YearMonth
 
 @Composable
 internal fun CalendarBottomSheet(
-    adjacentMonths: Long = 500
+    adjacentMonths: Long = 500,
+    events: List<QuizUI>
 ) {
     val currentMonth = remember { YearMonth.now() }
     val startMonth = remember { currentMonth.minusMonths(adjacentMonths) }
@@ -64,7 +68,17 @@ internal fun CalendarBottomSheet(
         HorizontalCalendar(
             state = calendarState,
             dayContent = { day ->
-                Day(day, isSelected = selections.contains(day)) { clicked ->
+                val dayEvents = events.filter { quiz ->
+                    isSameDay(
+                        quiz = quiz,
+                        targetDate = day.date
+                    )
+                }
+                Day(
+                    day = day,
+                    isSelected = selections.contains(day),
+                    events = dayEvents
+                ) { clicked ->
                     if (selections.contains(clicked)) {
                         selections.remove(clicked)
                     } else {
@@ -77,4 +91,11 @@ internal fun CalendarBottomSheet(
             },
         )
     }
+}
+
+fun isSameDay(quiz: QuizUI, targetDate: LocalDate): Boolean {
+    return quiz.formattedDate?.date?.let { kxDateTime ->
+        val kxDate = kxDateTime.date.toJavaLocalDate()
+        kxDate == targetDate
+    } ?: false
 }

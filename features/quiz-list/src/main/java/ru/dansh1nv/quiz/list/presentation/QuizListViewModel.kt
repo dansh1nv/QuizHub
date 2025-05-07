@@ -129,7 +129,8 @@ internal class QuizListViewModel(
                     trailIcon = IconModel(UIDrawable.ic_clear,
                         onClick = { dismiss() }
                     )
-                )
+                ),
+                events = container.stateFlow.value.quizList
             )
         )
     }
