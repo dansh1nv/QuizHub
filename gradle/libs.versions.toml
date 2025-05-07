@@ -41,7 +41,7 @@ androidx-lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-r
 appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
-calendar-compose = { module = "com.kizitonwose.calendar:compose", version.ref = "calendar-compose" }
+calendar-compose = { module = "com.kizitonwose.calendar:compose-multiplatform", version.ref = "calendar-compose" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
 androidx-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
