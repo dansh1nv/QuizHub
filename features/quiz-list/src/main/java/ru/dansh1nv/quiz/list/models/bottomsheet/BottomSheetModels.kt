@@ -1,7 +1,7 @@
 package ru.dansh1nv.quiz.list.models.bottomsheet
 
 import ru.dansh1nv.designsystem.theme.bottomsheet.model.QuizBottomSheetModel
-import ru.dansh1nv.quiz.list.models.item.QuizUI
+import ru.dansh1nv.quiz.list.models.item.CalendarEventUI
 
 internal sealed class BottomSheetModels :
     QuizBottomSheetModel(isDragHandleVisible = false, isScrimVisible = true) {
@@ -16,6 +16,6 @@ internal sealed class BottomSheetModels :
 
     data class CalendarBottomSheetModel(
         override val toolbar: Toolbar,
-        val events: List<QuizUI>
+        val events: List<CalendarEventUI>
     ) : BottomSheetModels()
 }

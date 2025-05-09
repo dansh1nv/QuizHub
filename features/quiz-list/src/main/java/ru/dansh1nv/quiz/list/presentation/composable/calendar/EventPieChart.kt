@@ -5,7 +5,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.StrokeCap
@@ -14,35 +13,15 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.R
-import ru.dansh1nv.quiz.list.mappers.EventPieChartMapper
-import ru.dansh1nv.quiz.list.models.item.Organization
-import ru.dansh1nv.quiz.list.models.item.QuizUI
+import ru.dansh1nv.quiz.list.models.item.CalendarEventUI
 
 @Composable
 fun EventPieChart(
-    events: List<QuizUI>,
+    events: List<CalendarEventUI>,
     modifier: Modifier,
-    strokeWidth: Dp = 8.dp,
-    gapAngle: Float = 4f
+    strokeWidth: Dp = 8.dp
 ) {
-    val orange = QuizHubTheme.customColor.orange
-    val blue = QuizHubTheme.customColor.blue
-    val purple = QuizHubTheme.customColor.purple
-    val colors = mapOf(
-        Organization.QUIZ_PLEASE to orange,
-        Organization.SQUIZ to blue,
-        Organization.SHAKER_QUIZ to purple
-    )
-    val calendarEvents = remember(events) {
-        EventPieChartMapper.mapToCalendarEvents(
-            events = events,
-            colors = colors,
-            gapAngle = gapAngle
-        )
-    }
-
     Box(modifier = modifier) {
         Image(
             painter = painterResource(id = R.drawable.ic_calendar_ring),
@@ -52,15 +31,12 @@ fun EventPieChart(
                 .clip(CircleShape),
             contentScale = ContentScale.Crop
         )
-
-        Canvas(
-            modifier = Modifier.matchParentSize()
-        ) {
-            calendarEvents.forEach { calendarEvent ->
+        Canvas(modifier = Modifier.matchParentSize()) {
+            events.forEach { event ->
                 drawArc(
-                    color = calendarEvent.color,
-                    startAngle = calendarEvent.startAngle,
-                    sweepAngle = calendarEvent.sweepAngel,
+                    color = event.color,
+                    startAngle = event.startAngle,
+                    sweepAngle = event.sweepAngle,
                     useCenter = false,
                     style = Stroke(
                         width = strokeWidth.toPx(),

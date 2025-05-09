@@ -13,15 +13,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.kizitonwose.calendar.core.CalendarDay
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
-import ru.dansh1nv.designsystem.theme.utils.color.CustomColorModel
-import ru.dansh1nv.designsystem.theme.utils.color.toTextColor
-import ru.dansh1nv.quiz.list.models.item.QuizUI
+import ru.dansh1nv.quiz.list.models.item.CalendarEventUI
 
 @Composable
 fun Day(
     day: CalendarDay,
     isSelected: Boolean,
-    events: List<QuizUI>,
+    events: List<CalendarEventUI>,
     onClick: (CalendarDay) -> Unit
 ) {
     Box(
@@ -39,7 +37,7 @@ fun Day(
         }
         Text(
             text = day.date.dayOfMonth.toString(),
-            color = CustomColorModel.Surface.toTextColor(),
+            color = QuizHubTheme.colorScheme.onSurface,
             style = QuizHubTheme.typography.labelLarge
         )
     }
