@@ -26,12 +26,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.kizitonwose.calendar.core.YearMonth
 import ru.dansh1nv.core.presentation.calendar.displayText
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.designsystem.theme.utils.color.CustomColorModel
 import ru.dansh1nv.designsystem.theme.utils.color.toIconColor
 import ru.dansh1nv.designsystem.theme.utils.color.toTextColor
-import java.time.YearMonth
 
 @Composable
 fun SimpleCalendarTitle(
@@ -76,25 +76,27 @@ private fun CalendarNavigationIcon(
     contentDescription: String,
     isHorizontal: Boolean = true,
     onClick: () -> Unit,
-) = Box(
-    modifier = Modifier
-        .fillMaxHeight()
-        .aspectRatio(1f)
-        .clip(shape = CircleShape)
-        .clickable(role = Role.Button, onClick = onClick),
 ) {
-    val rotation by animateFloatAsState(
-        targetValue = if (isHorizontal) 0f else 90f,
-        label = "CalendarNavigationIconAnimation",
-    )
-    Icon(
+    Box(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(4.dp)
-            .align(Alignment.Center)
-            .rotate(rotation),
-        imageVector = imageVector,
-        contentDescription = contentDescription,
-        tint = CustomColorModel.Surface.toIconColor()
-    )
+            .fillMaxHeight()
+            .aspectRatio(1f)
+            .clip(shape = CircleShape)
+            .clickable(role = Role.Button, onClick = onClick),
+    ) {
+        val rotation by animateFloatAsState(
+            targetValue = if (isHorizontal) 0f else 90f,
+            label = "CalendarNavigationIconAnimation",
+        )
+        Icon(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(4.dp)
+                .align(Alignment.Center)
+                .rotate(rotation),
+            imageVector = imageVector,
+            contentDescription = contentDescription,
+            tint = CustomColorModel.Surface.toIconColor()
+        )
+    }
 }

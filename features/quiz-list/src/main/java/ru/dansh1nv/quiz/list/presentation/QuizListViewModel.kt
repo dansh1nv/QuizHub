@@ -17,6 +17,7 @@ import ru.dansh1nv.designsystem.theme.bottomsheet.model.QuizBottomSheetModel.Too
 import ru.dansh1nv.designsystem.theme.bottomsheet.model.QuizBottomSheetModel.Toolbar.IconModel
 import ru.dansh1nv.designsystem.theme.utils.`typealias`.UIDrawable
 import ru.dansh1nv.quiz.list.R
+import ru.dansh1nv.quiz.list.mappers.EventPieChartMapper
 import ru.dansh1nv.quiz.list.mappers.QuizPleaseMapper
 import ru.dansh1nv.quiz.list.mappers.ShakerQuizMapper
 import ru.dansh1nv.quiz.list.mappers.SquizMapper
@@ -121,7 +122,9 @@ internal class QuizListViewModel(
     }
 
     private fun handleCalendarClick() {
-        Timber.d("Calendar button clicked")
+        val quizList = container.stateFlow.value.quizList
+        val calendarEvents = EventPieChartMapper.mapToCalendarEventsUI(quizList)
+
         bottomSheetController.show(
             BottomSheetModels.CalendarBottomSheetModel(
                 toolbar = Toolbar(
@@ -129,7 +132,8 @@ internal class QuizListViewModel(
                     trailIcon = IconModel(UIDrawable.ic_clear,
                         onClick = { dismiss() }
                     )
-                )
+                ),
+                events = calendarEvents
             )
         )
     }

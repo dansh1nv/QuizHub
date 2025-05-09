@@ -1,38 +1,53 @@
 package ru.dansh1nv.core.presentation.calendar
 
-import java.time.DayOfWeek
-import java.time.Month
-import java.time.YearMonth
-import java.time.format.DateTimeFormatter
-import java.time.format.TextStyle
-import java.util.Locale
+import com.kizitonwose.calendar.core.YearMonth
+import kotlinx.datetime.DayOfWeek
+import kotlinx.datetime.Month
 
-fun YearMonth.displayText(
-    short: Boolean = false,
-    locate: Locale = Locale("ru", "RU")
-): String {
-    val pattern = if (short) "LLL yyyy" else "LLLL yyyy"
-    val formatter = DateTimeFormatter
-        .ofPattern(pattern, locate)
-    return this.format(formatter)
-        .replaceFirstChar { it.uppercase() }
+
+fun YearMonth.displayText(short: Boolean = false): String {
+    val month = if (short) month.shortName else month.fullName
+    return "$month $year"
 }
 
-fun Month.displayText(
-    short: Boolean = true,
-    locale: Locale = Locale("ru", "RU")
-): String {
-    val style = if (short) TextStyle.SHORT else TextStyle.FULL
-    return getDisplayName(style, locale)
+fun Month.displayText(short: Boolean = true): String {
+    return if (short) shortName else fullName
 }
 
-fun DayOfWeek.displayText(
-    uppercase: Boolean = false,
-    narrow: Boolean = false,
-    locale: Locale = Locale("ru", "RU")
-): String {
-    val style = if (narrow) TextStyle.NARROW else TextStyle.SHORT
-    return getDisplayName(style, locale).let { value ->
-        if (uppercase) value.uppercase(locale) else value
+fun DayOfWeek.displayText(uppercase: Boolean = false, narrow: Boolean = false): String {
+    return when {
+        narrow -> shortName.take(1)
+        uppercase -> shortName.uppercase()
+        else -> shortName
     }
 }
+
+private val Month.fullName: String
+    get() = when (this) {
+        Month.JANUARY -> "Январь"
+        Month.FEBRUARY -> "Февраль"
+        Month.MARCH -> "Март"
+        Month.APRIL -> "Апрель"
+        Month.MAY -> "Май"
+        Month.JUNE -> "Июнь"
+        Month.JULY -> "Июль"
+        Month.AUGUST -> "Август"
+        Month.SEPTEMBER -> "Сентябрь"
+        Month.OCTOBER-> "Октябрь"
+        Month.NOVEMBER -> "Ноябрь"
+        Month.DECEMBER -> "Декабрь"
+    }
+
+private val Month.shortName: String
+    get() = fullName.take(3) + "."
+
+private val DayOfWeek.shortName: String
+    get() = when (this) {
+        DayOfWeek.MONDAY -> "Пн"
+        DayOfWeek.TUESDAY -> "Вт"
+        DayOfWeek.WEDNESDAY -> "Ср"
+        DayOfWeek.THURSDAY -> "Чт"
+        DayOfWeek.FRIDAY -> "Пт"
+        DayOfWeek.SATURDAY -> "Сб"
+        DayOfWeek.SUNDAY -> "Вс"
+    }

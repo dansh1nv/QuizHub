@@ -13,20 +13,22 @@ import androidx.compose.ui.unit.dp
 import com.kizitonwose.calendar.compose.HorizontalCalendar
 import com.kizitonwose.calendar.compose.rememberCalendarState
 import com.kizitonwose.calendar.core.CalendarDay
+import com.kizitonwose.calendar.core.YearMonth
 import com.kizitonwose.calendar.core.daysOfWeek
-import com.kizitonwose.calendar.core.nextMonth
-import com.kizitonwose.calendar.core.previousMonth
+import com.kizitonwose.calendar.core.minusMonths
+import com.kizitonwose.calendar.core.plusMonths
 import kotlinx.coroutines.launch
 import ru.dansh1nv.core.presentation.calendar.rememberFirstMostVisibleMonth
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
+import ru.dansh1nv.quiz.list.models.item.CalendarEventUI
 import ru.dansh1nv.quiz.list.presentation.composable.calendar.Day
 import ru.dansh1nv.quiz.list.presentation.composable.calendar.MonthHeader
 import ru.dansh1nv.quiz.list.presentation.composable.calendar.SimpleCalendarTitle
-import java.time.YearMonth
 
 @Composable
 internal fun CalendarBottomSheet(
-    adjacentMonths: Long = 500
+    adjacentMonths: Int = 12,
+    events: List<CalendarEventUI>
 ) {
     val currentMonth = remember { YearMonth.now() }
     val startMonth = remember { currentMonth.minusMonths(adjacentMonths) }
@@ -52,19 +54,34 @@ internal fun CalendarBottomSheet(
             currentMonth = visibleMonth.yearMonth,
             goToPrevious = {
                 coroutineScope.launch {
-                    calendarState.animateScrollToMonth(calendarState.firstVisibleMonth.yearMonth.previousMonth)
+                    calendarState.animateScrollToMonth(
+                        calendarState.firstVisibleMonth.yearMonth.minusMonths(
+                            1
+                        )
+                    )
                 }
             },
             goToNext = {
                 coroutineScope.launch {
-                    calendarState.animateScrollToMonth(calendarState.firstVisibleMonth.yearMonth.nextMonth)
+                    calendarState.animateScrollToMonth(
+                        calendarState.firstVisibleMonth.yearMonth.plusMonths(
+                            1
+                        )
+                    )
                 }
             },
         )
         HorizontalCalendar(
             state = calendarState,
             dayContent = { day ->
-                Day(day, isSelected = selections.contains(day)) { clicked ->
+                val dayEvents = events.filter { quiz ->
+                    quiz.formattedDate?.date?.date == day.date
+                }
+                Day(
+                    day = day,
+                    isSelected = selections.contains(day),
+                    events = dayEvents
+                ) { clicked ->
                     if (selections.contains(clicked)) {
                         selections.remove(clicked)
                     } else {
