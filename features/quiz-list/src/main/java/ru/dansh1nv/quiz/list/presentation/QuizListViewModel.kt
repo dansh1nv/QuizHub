@@ -20,6 +20,7 @@ import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.mappers.EventPieChartMapper
 import ru.dansh1nv.quiz.list.mappers.QuizPleaseMapper
 import ru.dansh1nv.quiz.list.mappers.ShakerQuizMapper
+import ru.dansh1nv.quiz.list.mappers.ShareEventMapper
 import ru.dansh1nv.quiz.list.mappers.SquizMapper
 import ru.dansh1nv.quiz.list.models.bottomsheet.BottomSheetModels
 import ru.dansh1nv.quiz.list.models.filters.Filters
@@ -30,6 +31,8 @@ import ru.dansh1nv.quiz_list_domain.interactors.QuizListInteractor
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
 import ru.dansh1nv.quiz_list_domain.models.ShakerQuiz
+import ru.dansh1nv.quiz_list_domain.models.common.ActionEvents
+import ru.dansh1nv.quiz_list_domain.models.common.ActionEventsListener
 import timber.log.Timber
 
 internal class QuizListViewModel(
@@ -39,6 +42,7 @@ internal class QuizListViewModel(
     private val shakerQuizMapper: ShakerQuizMapper,
     private val resourceManager: IResourceManager,
     private val bottomSheetController: BottomSheetController,
+    private val actionEventsListener: ActionEventsListener
 ) : BaseMviViewModel<QuizListState, QuizListSideEffect, QuizListEvent>(
     initialState = QuizListState()
 ), BottomSheetController by bottomSheetController {
@@ -118,7 +122,16 @@ internal class QuizListViewModel(
             is ScreenEvent.BottomSheetDismiss -> {}
             is ScreenEvent.OnCalendarClick -> handleCalendarClick()
             is ScreenEvent.OnCardItemClicked -> navigateToQuizDetails(event.id)
+            is ScreenEvent.OnShareEventClick -> handleShareEventClick(event.id)
         }
+    }
+
+    private fun handleShareEventClick(id: String) {
+        val quiz = container.stateFlow.value.quizList.first { it.id == id }
+        val shareEvent = ShareEventMapper.mapToShareEvent(quiz)
+        actionEventsListener.onActionEvent(
+            ActionEvents.ActionEvent(shareEvent)
+        )
     }
 
     private fun handleCalendarClick() {

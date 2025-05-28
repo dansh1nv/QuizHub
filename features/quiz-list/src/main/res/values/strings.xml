@@ -24,6 +24,8 @@
 
     <string name="calendar_title">Календарь</string>
 
+    <string name="share_quiz">Поделиться</string>
+
     <string name="quiz_status_open">Регистрация открыта</string>
     <string name="quiz_status_reserve">Запись в резерв</string>
     <string name="quiz_status_close">Регистрация закрыта</string>

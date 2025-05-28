@@ -2,7 +2,9 @@ package ru.dansh1nv.quiz.list.presentation.composable.card
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -27,6 +29,7 @@ import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizDifficultEleme
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizLocationElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizPriceElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizReplyElement
+import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizShareElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizStatusElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizTagElement
 import ru.dansh1nv.quiz.list.presentation.composable.elements.QuizTeamElement
@@ -66,10 +69,22 @@ internal fun QuizCard(
                 .padding(start = 12.dp, end = 12.dp, bottom = 12.dp)
                 .clip(QuizHubTheme.shapes.shape16dp),
         )
-        QuizTagElement(
-            model = quizGame.tag,
-            modifier = modifier,
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+            QuizTagElement(
+                model = quizGame.tag,
+                modifier = modifier,
+            )
+            QuizShareElement(
+                quizId = quizGame.id,
+                onShareClicked = {quizId ->
+                    onUIEvent(ScreenEvent.OnShareEventClick(quizId))
+                },
+                modifier = modifier
+            )
+        }
         Spacer(modifier = Modifier.size(8.dp))
         quizGame.formattedDate?.let { QuizDateElement(quizGame.formattedDate, modifier) }
         quizGame.takeIf { it.additionDescription.isNotBlank() }?.let {
