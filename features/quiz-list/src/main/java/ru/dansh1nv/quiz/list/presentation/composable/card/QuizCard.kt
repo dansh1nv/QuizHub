@@ -72,14 +72,14 @@ internal fun QuizCard(
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
-            ) {
+        ) {
             QuizTagElement(
                 model = quizGame.tag,
                 modifier = modifier,
             )
             QuizShareElement(
                 quizId = quizGame.id,
-                onShareClicked = {quizId ->
+                onShareClicked = { quizId ->
                     onUIEvent(ScreenEvent.OnShareEventClick(quizId))
                 },
                 modifier = modifier

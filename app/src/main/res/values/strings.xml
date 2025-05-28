@@ -1,12 +1,3 @@
 <resources>
     <string name="app_name">QuizHub</string>
-
-    <string name="join_quiz">Присоединяйся к</string>
-    <string name="date_quiz">📅 Дата:</string>
-    <string name="time_day_quiz">⏰ Время и день:</string>
-    <string name="team_size_quiz">👥 Размер команды:</string>
-    <string name="address_quiz">📍 Адрес:</string>
-    <string name="place_quiz">🏷️ Место:</string>
-    <string name="price_quiz">💵 Стоимость с участника:</string>
-    <string name="share_quiz_title">🎯 Поделись квизом!</string>
 </resources>

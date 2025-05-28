@@ -20,7 +20,7 @@ import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.mappers.EventPieChartMapper
 import ru.dansh1nv.quiz.list.mappers.QuizPleaseMapper
 import ru.dansh1nv.quiz.list.mappers.ShakerQuizMapper
-import ru.dansh1nv.quiz.list.mappers.ShareEventMapper
+import ru.dansh1nv.quiz.list.mappers.ActionEventsMapper
 import ru.dansh1nv.quiz.list.mappers.SquizMapper
 import ru.dansh1nv.quiz.list.models.bottomsheet.BottomSheetModels
 import ru.dansh1nv.quiz.list.models.filters.Filters
@@ -40,6 +40,7 @@ internal class QuizListViewModel(
     private val squizMapper: SquizMapper,
     private val quizPleaseMapper: QuizPleaseMapper,
     private val shakerQuizMapper: ShakerQuizMapper,
+    private val actionEventsMapper: ActionEventsMapper,
     private val resourceManager: IResourceManager,
     private val bottomSheetController: BottomSheetController,
     private val actionEventsListener: ActionEventsListener
@@ -127,10 +128,10 @@ internal class QuizListViewModel(
     }
 
     private fun handleShareEventClick(id: String) {
-        val quiz = container.stateFlow.value.quizList.first { it.id == id }
-        val shareEvent = ShareEventMapper.mapToShareEvent(quiz)
+        val quiz = container.stateFlow.value.quizList.firstOrNull { it.id == id } ?: return
+        val shareText = actionEventsMapper.mapToShareText(quiz)
         actionEventsListener.onActionEvent(
-            ActionEvents.ActionEvent(shareEvent)
+            ActionEvents.ShareEvent(shareText)
         )
     }
 
