@@ -1,6 +1,7 @@
 package ru.dansh1nv.quizapi.api
 
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.bodyAsText
@@ -18,17 +19,18 @@ class SquizApi(
     private val json: Json,
 ) {
 
-    suspend fun getQuizzes(): Flow<List<SquizDTO>> = flow {
+    fun getQuizzes(cityId: Long = 111979372401): Flow<List<SquizDTO>> = flow {
         val httpRequest = httpClient.get {
             url {
                 path(PATH)
-                parameter(CITY, 111979372401) //111979372401 - Санкт-Петербург
+                parameter(CITY, cityId) //111979372401 - Санкт-Петербург
                 parameter(PAGE_NUMBER, 1)
                 parameter(PAGE_SIZE, 100)
                 parameter("getparts", true)
                 parameter("getoptions", true)
             }
         }
+        //TODO: подумать что не так с парсингом сквиза (отличается от QP и  Shaker)
         val data = httpRequest.bodyAsText()
         emit(json.decodeFromString<Products>(data).quizGames.orEmpty())
     }.flowOn(Dispatchers.IO)

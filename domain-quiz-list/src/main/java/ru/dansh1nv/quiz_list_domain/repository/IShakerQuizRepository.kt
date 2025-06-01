@@ -4,5 +4,5 @@ import kotlinx.coroutines.flow.Flow
 import ru.dansh1nv.quiz_list_domain.models.ShakerQuiz
 
 interface IShakerQuizRepository {
-    suspend fun fetchQuizzes() : Flow<List<ShakerQuiz>>
+    fun fetchQuizzes() : Flow<List<ShakerQuiz>>
 }

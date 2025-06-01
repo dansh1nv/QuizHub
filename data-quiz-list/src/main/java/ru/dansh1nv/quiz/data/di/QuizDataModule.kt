@@ -3,16 +3,20 @@ package ru.dansh1nv.quiz.data.di
 import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
+import ru.dansh1nv.quiz.data.datasource.common.CityRemoteDataSource
 import ru.dansh1nv.quiz.data.datasource.quizPlease.QuizPleaseRemoteDataSource
 import ru.dansh1nv.quiz.data.datasource.shakerQuiz.ShakerQuizRemoteDataSource
 import ru.dansh1nv.quiz.data.datasource.squiz.LocalDataSource
 import ru.dansh1nv.quiz.data.datasource.squiz.SquizRemoteDataSource
+import ru.dansh1nv.quiz.data.mappers.CommonDataMapper
 import ru.dansh1nv.quiz.data.mappers.QuizPleaseDataMapper
 import ru.dansh1nv.quiz.data.mappers.ShakerQuizDataMapper
 import ru.dansh1nv.quiz.data.mappers.SquizDataMapper
+import ru.dansh1nv.quiz.data.repositories.CommonRepository
 import ru.dansh1nv.quiz.data.repositories.QuizPleaseRepository
 import ru.dansh1nv.quiz.data.repositories.ShakerQuizRepository
 import ru.dansh1nv.quiz.data.repositories.SquizRepository
+import ru.dansh1nv.quiz_list_domain.repository.ICommonRepository
 import ru.dansh1nv.quiz_list_domain.repository.IQuizPleaseRepository
 import ru.dansh1nv.quiz_list_domain.repository.ISQuizRepository
 import ru.dansh1nv.quiz_list_domain.repository.IShakerQuizRepository
@@ -45,6 +49,15 @@ fun quizDataModule() = module {
         ShakerQuizRepository(
             remoteDataSource = get(),
             mapper = get()
+        )
+    }
+
+    factoryOf(::CommonDataMapper)
+    factoryOf(::CityRemoteDataSource)
+    single<ICommonRepository> {
+        CommonRepository(
+            remoteDataSource = get(),
+            mapper = get(),
         )
     }
 }

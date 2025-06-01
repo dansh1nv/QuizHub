@@ -19,4 +19,4 @@ data class SQuiz(
     val location: Location?,
     val status: Status?,
     val difficult: String?,
-): Quiz
+): Quiz()

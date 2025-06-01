@@ -19,4 +19,4 @@ data class ShakerQuiz(
     val location: Location? = null,
     val image: String? = null,
     val capacityStatus: String?,
-): Quiz
+): Quiz()

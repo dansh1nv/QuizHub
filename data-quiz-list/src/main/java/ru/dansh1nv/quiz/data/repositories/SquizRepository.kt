@@ -13,8 +13,8 @@ class SquizRepository(
     private val quizMapper: SquizDataMapper,
 ) : ISQuizRepository {
 
-    override suspend fun getAllQuizzes(): Flow<List<SQuiz>> {
-        return remoteDataSource.getAllQuizzes()
+    override suspend fun getAllQuizzes(cityId: Long): Flow<List<SQuiz>> {
+        return remoteDataSource.getAllQuizzes(cityId)
             .map(quizMapper::map)
     }
 

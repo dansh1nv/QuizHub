@@ -1,7 +1,8 @@
-package ru.dansh1nv.quiz_list_domain.models.common
+package ru.dansh1nv.core.presentation
 
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
+import ru.dansh1nv.core.presentation.model.ActionEvents
 
 class ActionEventsListener {
     private val actionEvents = MutableSharedFlow<ActionEvents>(extraBufferCapacity = 1)

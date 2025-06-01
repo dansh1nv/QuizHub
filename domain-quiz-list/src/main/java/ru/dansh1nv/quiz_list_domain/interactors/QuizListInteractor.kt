@@ -12,7 +12,7 @@ class QuizListInteractor(
 
     suspend fun getAllQuizList(cityId: Int): Flow<List<Quiz>> {
         return merge(
-            squizInteractor.getQuizList(),
+            squizInteractor.getQuizList(111979372401),
             quizPleaseInteractor.getQuizList(
                 cityId = cityId,
                 pageNumber = 1,

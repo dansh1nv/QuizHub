@@ -1,23 +1,21 @@
 package ru.dansh1nv.quizapi.api
 
 import io.ktor.client.HttpClient
+import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
-import io.ktor.client.statement.bodyAsText
 import io.ktor.http.path
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.serialization.json.Json
-import ru.dansh1nv.quizapi.model.shakerquiz.ShakerQuizItemDTO
 import ru.dansh1nv.quizapi.model.shakerquiz.ShakerQuizResponseDTO
 
 class ShakerQuizApi(
-    private val httpClient: HttpClient,
-    private val json: Json,
+    private val httpClient: HttpClient
 ) {
-    suspend fun getQuizzes() = flow {
-        val httpRequest = httpClient.get {
+    fun getQuizzes() = flow {
+        val response = httpClient.get {
             url {
                 path(PATH)
                 parameter(PAGE_NUMBER, 1)
@@ -28,8 +26,8 @@ class ShakerQuizApi(
                 ) //b489621b-cfb2-4aef-8c22-02daf19fa08f - id Санкт-Петербург
             }
         }
-        val data = httpRequest.bodyAsText()
-        emit(json.decodeFromString<ShakerQuizResponseDTO>(data).data?.items.orEmpty())
+        val data = response.body<ShakerQuizResponseDTO>()
+        emit(data.data?.items.orEmpty())
     }.flowOn(Dispatchers.IO)
 
     companion object {

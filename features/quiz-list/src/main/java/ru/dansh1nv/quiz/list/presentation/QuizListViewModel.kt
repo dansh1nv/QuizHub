@@ -1,5 +1,6 @@
 package ru.dansh1nv.quiz.list.presentation
 
+import androidx.compose.runtime.Immutable
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
@@ -8,7 +9,8 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import ru.dansh1nv.core.presentation.BaseMviViewModel
+import ru.dansh1nv.common.addOrAppend
+import ru.dansh1nv.core.presentation.viewModel.BaseMviViewModel
 import ru.dansh1nv.core.presentation.ScreenState
 import ru.dansh1nv.core.presentation.model.UIStatus
 import ru.dansh1nv.core.resourceManager.IResourceManager
@@ -27,16 +29,18 @@ import ru.dansh1nv.quiz.list.models.filters.Filters
 import ru.dansh1nv.quiz.list.models.item.Organization
 import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz.list.models.sorting.Sort
+import ru.dansh1nv.quiz_list_domain.interactors.CityInteractor
 import ru.dansh1nv.quiz_list_domain.interactors.QuizListInteractor
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
 import ru.dansh1nv.quiz_list_domain.models.ShakerQuiz
-import ru.dansh1nv.quiz_list_domain.models.common.ActionEvents
-import ru.dansh1nv.quiz_list_domain.models.common.ActionEventsListener
+import ru.dansh1nv.core.presentation.model.ActionEvents
+import ru.dansh1nv.core.presentation.ActionEventsListener
 import timber.log.Timber
 
 internal class QuizListViewModel(
     private val interactor: QuizListInteractor,
+    private val cityInteractor: CityInteractor,
     private val squizMapper: SquizMapper,
     private val quizPleaseMapper: QuizPleaseMapper,
     private val shakerQuizMapper: ShakerQuizMapper,
@@ -50,10 +54,7 @@ internal class QuizListViewModel(
 
     private val quizMap = mutableMapOf<Organization, MutableList<QuizUI>>()
 
-    init {
-        Organization.entries.forEach { organization ->
-            quizMap[organization] = mutableListOf()
-        }
+    override suspend fun onLaunch() {
         fetchQuizList()
     }
 
@@ -67,21 +68,22 @@ internal class QuizListViewModel(
     private fun fetchQuizList() = viewModelScope.launch {
         interactor.getAllQuizList(17)
             .map { quizList ->
-                quizList.mapNotNull { quiz ->
+                quizList.map { quiz ->
                     when (quiz) {
-                        is QuizPlease -> quizMap[Organization.QUIZ_PLEASE]?.add(
-                            quizPleaseMapper.mapToQuizUI(quiz)
+                        is QuizPlease -> quizMap.addOrAppend(
+                            key = Organization.QUIZ_PLEASE,
+                            value = quizPleaseMapper.mapToQuizUI(quiz)
                         )
 
-                        is SQuiz -> quizMap[Organization.SQUIZ]?.add(
-                            squizMapper.mapToQuizUI(quiz)
+                        is SQuiz -> quizMap.addOrAppend(
+                            key = Organization.SQUIZ,
+                            value = squizMapper.mapToQuizUI(quiz)
                         )
 
-                        is ShakerQuiz -> quizMap[Organization.SHAKER_QUIZ]?.add(
-                            shakerQuizMapper.mapToQuizUI(quiz)
+                        is ShakerQuiz -> quizMap.addOrAppend(
+                            key = Organization.SHAKER_QUIZ,
+                            value = shakerQuizMapper.mapToQuizUI(quiz)
                         )
-
-                        else -> null
                     }
                 }
             }
@@ -120,9 +122,11 @@ internal class QuizListViewModel(
             is ScreenEvent.OnFiltersButtonClick -> showFilters()
             is ScreenEvent.OnTabClick -> updateCurrentTab(event.index)
             is ScreenEvent.OnRefresh -> fetchQuizList()
-            is ScreenEvent.BottomSheetDismiss -> {}
             is ScreenEvent.OnCalendarClick -> handleCalendarClick()
-            is ScreenEvent.OnCardItemClicked -> navigateToQuizDetails(event.id)
+            is ScreenEvent.OnCardItemClicked -> {
+                //Добавить экран детализации квиза
+                //navigateToQuizDetails(event.id)
+            }
             is ScreenEvent.OnShareEventClick -> handleShareEventClick(event.id)
         }
     }
@@ -221,6 +225,7 @@ internal class QuizListViewModel(
     }
 }
 
+@Immutable
 internal data class QuizListState(
     val uiStatus: UIStatus = UIStatus.Loading,
     val selectedTabIndex: Int = 0,

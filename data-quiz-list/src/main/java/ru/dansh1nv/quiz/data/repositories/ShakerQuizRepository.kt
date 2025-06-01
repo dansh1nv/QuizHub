@@ -12,7 +12,7 @@ class ShakerQuizRepository(
 //    private val localDataSource: ShakerQuizLocalDataSource,
     private val mapper: ShakerQuizDataMapper,
 ): IShakerQuizRepository {
-    override suspend fun fetchQuizzes(): Flow<List<ShakerQuiz>> {
+    override fun fetchQuizzes(): Flow<List<ShakerQuiz>> {
         return remoteDataSource.getQuizList()
             .map(mapper::mapToShakerQuiz)
     }

@@ -21,4 +21,4 @@ data class QuizPlease(
     val difficulty: String?,
     val status: Status?,
     val paymentMethod: PaymentMethod?,
-) : Quiz
+) : Quiz()

@@ -9,7 +9,6 @@ internal sealed interface QuizListEvent : UIEvent
 internal sealed interface ScreenEvent : QuizListEvent {
     data object OnFiltersButtonClick : ScreenEvent
     data object OnSortButtonClick : ScreenEvent
-    data object BottomSheetDismiss : ScreenEvent
     data object OnLocationClick : ScreenEvent
     data class OnTabClick(val index: Int) : ScreenEvent
     data object OnRefresh : ScreenEvent

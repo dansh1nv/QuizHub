@@ -1,33 +1,34 @@
 [versions]
 agp = "8.8.2"
-calendar-compose = "2.6.2"
-kotlin = "2.0.20"
-core-ktx = "1.16.0"
-junit = "4.13.2"
-androidx-test-ext-junit = "1.2.1"
-espresso-core = "3.6.1"
-androidx-lifecycle = "2.8.7"
 activity-compose = "1.10.1"
-compose-bom = "2025.04.01"
-kotlin-serialization = "1.7.3"
+appcompat = "1.7.0"
+androidx-compose = "1.8.2"
+androidx-test-ext-junit = "1.2.1"
+androidx-lifecycle = "2.9.0"
+androidx-splashscreen = "1.2.0-beta02"
+calendar-compose = "2.6.2"
+core-ktx = "1.16.0"
+compose-bom = "2025.05.01"
+coil = "2.7.0"
+datetime = "0.6.1"
+espresso-core = "3.6.1"
+jetpack-navigation = "2.9.0"
+junit = "4.13.2"
 jsoup = "1.17.2"
+kotlin = "2.0.20"
+kotlin-serialization = "1.7.3"
 koin = "4.0.2"
 koin-annotations = "1.3.1"
 ksp = "2.0.20-1.0.25"
 ktor-client = "2.3.12"
-kotlin-coroutines = "1.9.0"
-appcompat = "1.7.0"
+kotlin-coroutines = "1.10.2"
 room = "2.7.1"
-coil = "2.7.0"
-ui-text-google-fonts = "1.8.0"
+ui-text-google-fonts = "1.8.2"
 timber = "5.0.1"
-datetime = "0.6.1"
 orbit = "9.0.0"
 material3 = "1.3.2"
-androidx_compose = "1.8.0"
 leak-canary = "2.14"
-jetpack-navigation = "2.9.0-rc01"
-androidx-splashscreen = "1.2.0-beta02"
+location = "21.3.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -50,10 +51,11 @@ androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-toolin
 androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
-androidx-material = { module = "androidx.compose.material:material", version.ref = "androidx_compose" }
+androidx-material = { module = "androidx.compose.material:material", version.ref = "androidx-compose" }
 androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-splashscreen" }
 jetpack-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "jetpack-navigation" }
 
+kotlin-coroutines-core = {module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines"}
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
 
 ktor-client = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor-client" }
@@ -90,6 +92,8 @@ orbit-core = { module = "org.orbit-mvi:orbit-core", version.ref = "orbit" }
 orbit-compose = { module = "org.orbit-mvi:orbit-compose", version.ref = "orbit" }
 
 leak-canary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leak-canary" }
+
+location = { module = "com.google.android.gms:play-services-location", version.ref = "location"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -7,5 +7,5 @@ import ru.dansh1nv.quizapi.model.squiz.SquizDTO
 class SquizRemoteDataSource(
     private val api: SquizApi,
 ) {
-    suspend fun getAllQuizzes(): Flow<List<SquizDTO>> = api.getQuizzes()
+    fun getAllQuizzes(cityId: Long): Flow<List<SquizDTO>> = api.getQuizzes(cityId = cityId)
 }

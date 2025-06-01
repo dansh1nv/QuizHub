@@ -13,10 +13,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import org.koin.androidx.compose.koinViewModel
+import org.koin.core.parameter.parametersOf
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 import ru.dansh1nv.core.navigation.destinations.QuizDetailsDestination
 import ru.dansh1nv.core.presentation.model.UIStatus
+import ru.dansh1nv.core.presentation.viewModel.viewModel
 import ru.dansh1nv.designsystem.theme.bottomsheet.QuizModalBottomSheet
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.models.CityModel
@@ -32,7 +34,9 @@ import ru.dansh1nv.quiz.list.presentation.composable.placeholder.ErrorPlaceholde
 
 @Composable
 fun QuizListScreen(navController: NavHostController) {
-    val viewModel = koinViewModel<QuizListViewModel>()
+    val viewModel = viewModel<QuizListViewModel> {
+        parametersOf()
+    }
     val screenState by viewModel.collectAsState()
 
     viewModel.collectSideEffect { sideEffect ->

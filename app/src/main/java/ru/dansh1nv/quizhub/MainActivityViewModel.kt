@@ -1,8 +1,8 @@
 package ru.dansh1nv.quizhub
 
 import android.net.Uri
-import ru.dansh1nv.core.presentation.BaseViewModel
-import ru.dansh1nv.core.presentation.Router
+import ru.dansh1nv.core.presentation.viewModel.BaseViewModel
+import ru.dansh1nv.core.presentation.viewModel.Router
 
 internal interface MainActivityRouter : Router {
     fun openDeeplink(link: Uri)

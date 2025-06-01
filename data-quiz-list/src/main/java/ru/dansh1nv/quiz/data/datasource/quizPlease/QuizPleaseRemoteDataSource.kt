@@ -7,7 +7,7 @@ import ru.dansh1nv.quizapi.model.quizplease.QuizPleaseDTO
 class QuizPleaseRemoteDataSource(
     private val api: QuizPleaseApi,
 ) {
-    suspend fun getQuizList(
+    fun getQuizList(
         cityId: Int,
         pageNumber: Int,
         pageSize: Int,

@@ -55,12 +55,12 @@ android {
 dependencies {
     implementation(platform(libs.compose.bom))
     implementation(libs.activity.compose)
+    implementation(libs.kotlin.coroutines.core)
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.bundles.ui)
     implementation(libs.bundles.common)
     implementation(libs.androidx.splashscreen)
-
-    implementation(libs.kotlin.coroutines.android)
+    implementation(libs.location)
     implementation(libs.androidx.ui.text.google.fonts)
 
     implementation(project(":core"))

@@ -6,6 +6,6 @@ class ShakerQuizRemoteDataSource(
     private val api: ShakerQuizApi
 ) {
 
-    suspend fun getQuizList() = api.getQuizzes()
+    fun getQuizList() = api.getQuizzes()
 
 }

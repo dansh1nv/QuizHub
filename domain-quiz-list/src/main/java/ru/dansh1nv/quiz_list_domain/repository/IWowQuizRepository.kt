@@ -5,6 +5,6 @@ import ru.dansh1nv.quiz_list_domain.models.WowQuiz
 
 interface IWowQuizRepository {
 
-    suspend fun getQuizList() : Flow<List<WowQuiz>>
+    fun getQuizList() : Flow<List<WowQuiz>>
 
 }

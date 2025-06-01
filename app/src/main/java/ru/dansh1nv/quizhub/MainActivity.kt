@@ -17,9 +17,9 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.compose.KoinContext
+import ru.dansh1nv.core.presentation.ActionEventsListener
+import ru.dansh1nv.core.presentation.model.ActionEvents
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
-import ru.dansh1nv.quiz_list_domain.models.common.ActionEvents
-import ru.dansh1nv.quiz_list_domain.models.common.ActionEventsListener
 import ru.dansh1nv.quizhub.navigation.AppNavGraph
 
 
