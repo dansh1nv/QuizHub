@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.core.net.toUri
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
@@ -44,12 +45,20 @@ class MainActivity : ComponentActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 actionEventsListener.observerActionEvents().collect { event ->
-                    when(event) {
-                        is ActionEvents.ShareEvent-> handleShareEvent(event.shareText)
+                    when (event) {
+                        is ActionEvents.ShareEvent -> handleShareEvent(event.shareText)
+                        is ActionEvents.ShowLocationEvent -> handleLocationEvent(event.locationText)
                     }
                 }
             }
         }
+    }
+
+    private fun handleLocationEvent(location: String) {
+        val uri = location.toUri()
+        val mapIntent = Intent(Intent.ACTION_VIEW, uri)
+        val chooser = Intent.createChooser(mapIntent, "")
+        startActivity(chooser)
     }
 
     private fun handleShareEvent(shareText: String) {
@@ -60,12 +69,8 @@ class MainActivity : ComponentActivity() {
                 shareText
             )
         }
-        startActivity(
-            Intent.createChooser(
-                shareIntent,
-                ""
-            )
-        )
+        val chooser = Intent.createChooser(shareIntent,"")
+        startActivity(chooser)
     }
 
     @Composable
@@ -87,6 +92,7 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
     private companion object {
         const val TEXT_PLAIN = "text/plain"
     }

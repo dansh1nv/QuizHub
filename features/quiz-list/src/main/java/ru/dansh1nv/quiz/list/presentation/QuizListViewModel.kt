@@ -128,7 +128,16 @@ internal class QuizListViewModel(
                 //navigateToQuizDetails(event.id)
             }
             is ScreenEvent.OnShareEventClick -> handleShareEventClick(event.id)
+            is ScreenEvent.OnShowLocationEventClick -> handleShowLocationEventClick(event.id)
         }
+    }
+
+    private fun handleShowLocationEventClick(id: String) {
+        val quiz = container.stateFlow.value.quizList.firstOrNull { it.id ==id } ?: return
+        val locationText = actionEventsMapper.mapToLocationEventText(quiz)
+        actionEventsListener.onActionEvent(
+            ActionEvents.ShowLocationEvent(locationText)
+        )
     }
 
     private fun handleShareEventClick(id: String) {

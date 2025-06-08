@@ -15,6 +15,7 @@ internal sealed interface ScreenEvent : QuizListEvent {
     data object OnCalendarClick : ScreenEvent
     data class OnCardItemClicked(val id: String) : ScreenEvent
     data class OnShareEventClick(val id: String) : ScreenEvent
+    data class OnShowLocationEventClick(val id: String) : ScreenEvent
 }
 
 internal sealed interface BottomSheetEvent : QuizListEvent {
