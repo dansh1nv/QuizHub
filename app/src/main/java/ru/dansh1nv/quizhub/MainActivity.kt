@@ -22,6 +22,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.compose.KoinContext
 import ru.dansh1nv.core.presentation.ActionEventsListener
 import ru.dansh1nv.core.presentation.model.ActionEvents
+import ru.dansh1nv.core.presentation.model.startIntentSafe
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quizhub.navigation.AppNavGraph
 
@@ -44,8 +45,8 @@ class MainActivity : ComponentActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 actionEventsListener.observerActionEvents().collect { event ->
-                    when(event) {
-                        is ActionEvents.ShareEvent-> handleShareEvent(event.shareText)
+                    when (event) {
+                        is ActionEvents.ShareEvent -> handleShareEvent(event.shareText)
                     }
                 }
             }
@@ -60,7 +61,7 @@ class MainActivity : ComponentActivity() {
                 shareText
             )
         }
-        startActivity(
+        startIntentSafe(
             Intent.createChooser(
                 shareIntent,
                 ""
@@ -87,6 +88,7 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
     private companion object {
         const val TEXT_PLAIN = "text/plain"
     }
