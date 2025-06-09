@@ -1,4 +1,4 @@
-package ru.dansh1nv.core.presentation.model
+package ru.dansh1nv.common
 
 import android.content.Context
 import android.content.Intent
