@@ -2,6 +2,7 @@ package ru.dansh1nv.quiz.list.presentation
 
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.viewModelScope
+import com.kizitonwose.calendar.core.CalendarDay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -10,19 +11,21 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import ru.dansh1nv.common.addOrAppend
-import ru.dansh1nv.core.presentation.viewModel.BaseMviViewModel
+import ru.dansh1nv.core.presentation.ActionEventsListener
 import ru.dansh1nv.core.presentation.ScreenState
+import ru.dansh1nv.core.presentation.model.ActionEvents
 import ru.dansh1nv.core.presentation.model.UIStatus
+import ru.dansh1nv.core.presentation.viewModel.BaseMviViewModel
 import ru.dansh1nv.core.resourceManager.IResourceManager
 import ru.dansh1nv.designsystem.theme.bottomsheet.controller.BottomSheetController
 import ru.dansh1nv.designsystem.theme.bottomsheet.model.QuizBottomSheetModel.Toolbar
 import ru.dansh1nv.designsystem.theme.bottomsheet.model.QuizBottomSheetModel.Toolbar.IconModel
 import ru.dansh1nv.designsystem.theme.utils.`typealias`.UIDrawable
 import ru.dansh1nv.quiz.list.R
+import ru.dansh1nv.quiz.list.mappers.ActionEventsMapper
 import ru.dansh1nv.quiz.list.mappers.EventPieChartMapper
 import ru.dansh1nv.quiz.list.mappers.QuizPleaseMapper
 import ru.dansh1nv.quiz.list.mappers.ShakerQuizMapper
-import ru.dansh1nv.quiz.list.mappers.ActionEventsMapper
 import ru.dansh1nv.quiz.list.mappers.SquizMapper
 import ru.dansh1nv.quiz.list.models.bottomsheet.BottomSheetModels
 import ru.dansh1nv.quiz.list.models.filters.Filters
@@ -31,11 +34,10 @@ import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz.list.models.sorting.Sort
 import ru.dansh1nv.quiz_list_domain.interactors.CityInteractor
 import ru.dansh1nv.quiz_list_domain.interactors.QuizListInteractor
+import ru.dansh1nv.quiz_list_domain.models.Quiz
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
 import ru.dansh1nv.quiz_list_domain.models.ShakerQuiz
-import ru.dansh1nv.core.presentation.model.ActionEvents
-import ru.dansh1nv.core.presentation.ActionEventsListener
 import timber.log.Timber
 
 internal class QuizListViewModel(
@@ -68,29 +70,8 @@ internal class QuizListViewModel(
     private fun fetchQuizList() = viewModelScope.launch {
         interactor.getAllQuizList(17)
             .map { quizList ->
-                quizList.map { quiz ->
-                    when (quiz) {
-                        is QuizPlease -> quizMap.addOrAppend(
-                            key = Organization.QUIZ_PLEASE,
-                            value = quizPleaseMapper.mapToQuizUI(quiz)
-                        )
-
-                        is SQuiz -> quizMap.addOrAppend(
-                            key = Organization.SQUIZ,
-                            value = squizMapper.mapToQuizUI(quiz)
-                        )
-
-                        is ShakerQuiz -> quizMap.addOrAppend(
-                            key = Organization.SHAKER_QUIZ,
-                            value = shakerQuizMapper.mapToQuizUI(quiz)
-                        )
-                    }
-                }
-            }
-            .map {
-                quizMap.values
-                    .flatten()
-                    .sortedBy { it.formattedDate?.date }
+                updateQuizCache(quizList)
+                getQuizzesFromCache()
             }
             .catch { ex ->
                 Timber.e(ex)
@@ -127,7 +108,20 @@ internal class QuizListViewModel(
                 //Добавить экран детализации квиза
                 //navigateToQuizDetails(event.id)
             }
+
             is ScreenEvent.OnShareEventClick -> handleShareEventClick(event.id)
+            is ScreenEvent.ResetFilters -> {
+                resetFilters()
+                showQuizList()
+            }
+        }
+    }
+
+    private fun onBottomSheetEvent(event: BottomSheetEvent) {
+        when (event) {
+            is BottomSheetEvent.OnFilterClick -> applyFilters(event.filters)
+            is BottomSheetEvent.OnSortClick -> applySorting(event.sort)
+            is BottomSheetEvent.OnCalendarDayClick -> handleCalendarDayClick(event.day)
         }
     }
 
@@ -147,7 +141,8 @@ internal class QuizListViewModel(
             BottomSheetModels.CalendarBottomSheetModel(
                 toolbar = Toolbar(
                     title = resourceManager.getStringById(R.string.calendar_title),
-                    trailIcon = IconModel(UIDrawable.ic_clear,
+                    trailIcon = IconModel(
+                        UIDrawable.ic_clear,
                         onClick = { dismiss() }
                     )
                 ),
@@ -156,16 +151,20 @@ internal class QuizListViewModel(
         )
     }
 
-    private fun onBottomSheetEvent(event: BottomSheetEvent) {
-        when (event) {
-            is BottomSheetEvent.OnFilterClick -> applyFilters(event.organization)
-            is BottomSheetEvent.OnSortClick -> applySorting(event.sort)
+    //Ну это тоже какой-то пиздец, надо подумать над улучшением фильтров
+    private fun handleCalendarDayClick(day: CalendarDay) {
+        updateState {
+            copy(
+                quizList = quizList.filter { quiz ->
+                    quiz.formattedDate?.date?.date == day.date
+                },
+                filtersState = filtersState.copy(
+                    filterByDay = day,
+                    isApplied = true,
+                )
+            )
         }
-    }
-
-    private fun applySorting(sort: Sort) {
-        updateState { copy(sort = sort) }
-        showQuizList()
+        bottomSheetController.dismiss()
     }
 
     private fun showFilters() {
@@ -196,20 +195,32 @@ internal class QuizListViewModel(
         )
     }
 
-    private fun applyFilters(organization: Organization?) {
+    private fun applySorting(sort: Sort) {
+        updateState { copy(sort = sort) }
+        showQuizList()
+        bottomSheetController.dismiss()
+    }
+
+    private fun applyFilters(filters: Filters) {
+        //Нужно придумать чет с фильтрами, а то это не дело подпирать их костылями
         updateState {
-            copy(filters = Filters.entries.firstOrNull { filter ->
-                filter.organization == organization
-            })
+            copy(
+                filtersState = filtersState.copy(
+                    filters = filters,
+                    isApplied = true,
+                )
+            )
         }
         showQuizList()
+        bottomSheetController.dismiss()
     }
 
     private fun showQuizList() = updateState {
         if (uiStatus != UIStatus.Loaded) return@updateState this
 
+        //Мда, треш
         val quizList = quizMap.getOrDefault(
-            key = this.filters?.organization,
+            key = this.filtersState.filters?.organization,
             defaultValue = quizMap.values.flatten()
         )
 
@@ -219,6 +230,46 @@ internal class QuizListViewModel(
         }
         copy(quizList = sortedList)
     }
+
+    private fun resetFilters() {
+        updateState {
+            copy(
+                filtersState = filtersState.copy(
+                    filters = null,
+                    filterByDay = null,
+                    isApplied = false,
+                ),
+                sort = Sort.ASC_DATE,
+            )
+        }
+    }
+
+    private fun updateQuizCache(quizList: List<Quiz>) {
+        //Ну тут надо бы маппинг поправить, чтобы не работать в domain моделькой в presentation слое
+        quizList.map { quiz ->
+            when (quiz) {
+                is QuizPlease -> quizMap.addOrAppend(
+                    key = Organization.QUIZ_PLEASE,
+                    value = quizPleaseMapper.mapToQuizUI(quiz)
+                )
+
+                is SQuiz -> quizMap.addOrAppend(
+                    key = Organization.SQUIZ,
+                    value = squizMapper.mapToQuizUI(quiz)
+                )
+
+                is ShakerQuiz -> quizMap.addOrAppend(
+                    key = Organization.SHAKER_QUIZ,
+                    value = shakerQuizMapper.mapToQuizUI(quiz)
+                )
+            }
+        }
+    }
+
+    private fun getQuizzesFromCache(): List<QuizUI> =
+        quizMap.values
+            .flatten()
+            .sortedBy { it.formattedDate?.date }
 
     private fun navigateToQuizDetails(quizId: String) {
         postSideEffect(QuizListSideEffect.NavigateQuizDetails(quizId))
@@ -231,7 +282,7 @@ internal data class QuizListState(
     val selectedTabIndex: Int = 0,
     val quizList: List<QuizUI> = emptyList(),
     val featureToggle: FeatureToggle = FeatureToggle(),
-    val filters: Filters? = null,
+    val filtersState: FiltersState = FiltersState(),
     val sort: Sort = Sort.ASC_DATE,
 ) : ScreenState
 

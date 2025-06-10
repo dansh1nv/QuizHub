@@ -16,6 +16,7 @@
     <string name="filter_id_quiz_please">Квиз, плиз!</string>
     <string name="filter_id_shaker_quiz">Шейкер квиз</string>
 
+    <string name="reset_filters">Сбросить фильтры</string>
     <string name="sorting_title">Сортировка</string>
     <string name="sorting_asc_date">По возрастанию даты</string>
     <string name="sorting_desc_date">По убыванию даты</string>

@@ -1,10 +1,14 @@
 package ru.dansh1nv.quiz.list.presentation.composable
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -12,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import org.koin.androidx.compose.koinViewModel
 import org.koin.core.parameter.parametersOf
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
@@ -30,6 +33,8 @@ import ru.dansh1nv.quiz.list.presentation.QuizListViewModel
 import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.CalendarBottomSheet
 import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.FiltersBottomSheet
 import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.SortingBottomSheet
+import ru.dansh1nv.quiz.list.presentation.composable.elements.ResetFiltersButton
+import ru.dansh1nv.quiz.list.presentation.composable.elements.SortingIndication
 import ru.dansh1nv.quiz.list.presentation.composable.placeholder.ErrorPlaceholder
 
 @Composable
@@ -101,6 +106,19 @@ internal fun BaseScreen(
                         onEvent = onUIEvent,
                     )
                 }
+                //Подумать над дизайном
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight()
+                        .padding(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 12.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                ) {
+                    SortingIndication(screenState.sort)
+                    if (screenState.filtersState.isApplied) {
+                        ResetFiltersButton(onUIEvent)
+                    }
+                }
                 QuizListContent(
                     quizList = screenState.quizList,
                     onUIEvent = onUIEvent,
@@ -122,7 +140,10 @@ internal fun BaseScreen(
                 }
 
                 is BottomSheetModels.CalendarBottomSheetModel -> {
-                    CalendarBottomSheet(events = bottomSheet.events)
+                    CalendarBottomSheet(
+                        events = bottomSheet.events,
+                        onUIEvent = onUIEvent,
+                    )
                 }
             }
         }

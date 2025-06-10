@@ -21,6 +21,8 @@ import kotlinx.coroutines.launch
 import ru.dansh1nv.core.presentation.calendar.rememberFirstMostVisibleMonth
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.models.item.CalendarEventUI
+import ru.dansh1nv.quiz.list.presentation.BottomSheetEvent
+import ru.dansh1nv.quiz.list.presentation.QuizListEvent
 import ru.dansh1nv.quiz.list.presentation.composable.calendar.Day
 import ru.dansh1nv.quiz.list.presentation.composable.calendar.MonthHeader
 import ru.dansh1nv.quiz.list.presentation.composable.calendar.SimpleCalendarTitle
@@ -28,7 +30,8 @@ import ru.dansh1nv.quiz.list.presentation.composable.calendar.SimpleCalendarTitl
 @Composable
 internal fun CalendarBottomSheet(
     adjacentMonths: Int = 12,
-    events: List<CalendarEventUI>
+    events: List<CalendarEventUI>,
+    onUIEvent: (QuizListEvent) -> Unit,
 ) {
     val currentMonth = remember { YearMonth.now() }
     val startMonth = remember { currentMonth.minusMonths(adjacentMonths) }
@@ -79,15 +82,9 @@ internal fun CalendarBottomSheet(
                 }
                 Day(
                     day = day,
-                    isSelected = selections.contains(day),
-                    events = dayEvents
-                ) { clicked ->
-                    if (selections.contains(clicked)) {
-                        selections.remove(clicked)
-                    } else {
-                        selections.add(clicked)
-                    }
-                }
+                    events = dayEvents,
+                    onClick = { onUIEvent(BottomSheetEvent.OnCalendarDayClick(day)) }
+                )
             },
             monthHeader = {
                 MonthHeader(daysOfWeek = daysOfWeek)

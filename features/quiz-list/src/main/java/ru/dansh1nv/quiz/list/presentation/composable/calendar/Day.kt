@@ -12,21 +12,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.kizitonwose.calendar.core.CalendarDay
+import ru.dansh1nv.core.presentation.calendar.clickable
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.models.item.CalendarEventUI
 
 @Composable
 fun Day(
     day: CalendarDay,
-    isSelected: Boolean,
+    isSelected: Boolean = false,
     events: List<CalendarEventUI>,
-    onClick: (CalendarDay) -> Unit
+    onClick: () -> Unit,
 ) {
     Box(
         modifier = Modifier
             .aspectRatio(1f) // This is important for square-sizing!
             .padding(6.dp)
-            .clip(CircleShape),
+            .clip(CircleShape)
+            .clickable { onClick.invoke() },
         contentAlignment = Alignment.Center
     ) {
         if (events.isNotEmpty()) {
