@@ -114,7 +114,7 @@ internal fun BaseScreen(
                         .padding(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 12.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                 ) {
-                    SortingIndication(screenState.sort)
+                    SortingIndication(screenState.sort, onUIEvent)
                     if (screenState.filtersState.isApplied) {
                         ResetFiltersButton(onUIEvent)
                     }

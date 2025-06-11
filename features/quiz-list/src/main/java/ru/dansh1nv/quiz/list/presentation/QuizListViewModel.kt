@@ -134,7 +134,10 @@ internal class QuizListViewModel(
     }
 
     private fun handleCalendarClick() {
-        val quizList = container.stateFlow.value.quizList
+        val quizList = quizMap.getOrDefault(
+            key = container.stateFlow.value.filtersState.filters?.organization,
+            defaultValue = quizMap.values.flatten()
+        )
         val calendarEvents = EventPieChartMapper.mapToCalendarEventsUI(quizList)
 
         bottomSheetController.show(
@@ -154,6 +157,10 @@ internal class QuizListViewModel(
     //Ну это тоже какой-то пиздец, надо подумать над улучшением фильтров
     private fun handleCalendarDayClick(day: CalendarDay) {
         updateState {
+            val quizList = quizMap.getOrDefault(
+                key = this.filtersState.filters?.organization,
+                defaultValue = quizMap.values.flatten()
+            )
             copy(
                 quizList = quizList.filter { quiz ->
                     quiz.formattedDate?.date?.date == day.date

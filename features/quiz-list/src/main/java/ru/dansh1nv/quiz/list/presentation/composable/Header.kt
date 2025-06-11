@@ -89,20 +89,6 @@ internal fun Header(
                         )
                     }
                 }
-                if (screenState.featureToggle.isSortFeatureEnabled) {
-                    Box(
-                        modifier = Modifier
-                            .size(32.dp)
-                            .clickable { onUIEvent(ScreenEvent.OnSortButtonClick) },
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.ic_sort),
-                            contentDescription = null,
-                            tint = QuizHubTheme.colorScheme.onSurface,
-                        )
-                    }
-                }
             }
         }
     }
