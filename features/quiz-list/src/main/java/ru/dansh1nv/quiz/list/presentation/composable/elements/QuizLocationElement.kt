@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ru.dansh1nv.designsystem.theme.elements.IconCell
@@ -18,9 +19,11 @@ internal fun QuizLocationElement(model: LocationUI, modifier: Modifier) {
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         IconCell(iconRes = R.drawable.ic_map_white)
-        Column {
+        Column(modifier = Modifier.align(Alignment.CenterVertically)) {
             TextCell(text = model.place)
-            TextCell(text = model.address)
+            if (model.address.isNotEmpty()) {
+                TextCell(text = model.address)
+            }
         }
     }
 }
