@@ -1,9 +1,9 @@
 package ru.dansh1nv.quiz_list_domain.repository
 
 import kotlinx.coroutines.flow.Flow
-import ru.dansh1nv.quiz_list_domain.models.common.GeoCity
+import ru.dansh1nv.quiz_list_domain.models.common.GeoInfo
 
 interface ICommonRepository {
-    fun getGeoCityByName(cityName: String): Flow<GeoCity>
-    fun getGeoCityByCoordinates(latitude: Double, longitude: Double): Flow<GeoCity>
+    fun getGeoInfoByQuery(cityName: String): Flow<GeoInfo>
+    fun getGeoInfoByCoordinates(latitude: Double, longitude: Double): Flow<GeoInfo>
 }

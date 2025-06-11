@@ -1,9 +1,8 @@
 package ru.dansh1nv.quiz.data.di
 
 import org.koin.core.module.dsl.factoryOf
-import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
-import ru.dansh1nv.quiz.data.datasource.common.CityRemoteDataSource
+import ru.dansh1nv.quiz.data.datasource.common.GeoInfoRemoteDataSource
 import ru.dansh1nv.quiz.data.datasource.quizPlease.QuizPleaseRemoteDataSource
 import ru.dansh1nv.quiz.data.datasource.shakerQuiz.ShakerQuizRemoteDataSource
 import ru.dansh1nv.quiz.data.datasource.squiz.LocalDataSource
@@ -53,7 +52,7 @@ fun quizDataModule() = module {
     }
 
     factoryOf(::CommonDataMapper)
-    factoryOf(::CityRemoteDataSource)
+    factoryOf(::GeoInfoRemoteDataSource)
     single<ICommonRepository> {
         CommonRepository(
             remoteDataSource = get(),

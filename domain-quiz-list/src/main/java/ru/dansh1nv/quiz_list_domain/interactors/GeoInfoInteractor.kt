@@ -2,13 +2,13 @@ package ru.dansh1nv.quiz_list_domain.interactors
 
 import ru.dansh1nv.quiz_list_domain.repository.ICommonRepository
 
-class CityInteractor(
+class GeoInfoInteractor(
     private val repository: ICommonRepository,
 ) {
-    fun getGeoCityByName(cityName: String) = repository.getGeoCityByName(cityName)
+    fun getGeoInfoByQuery(query: String) = repository.getGeoInfoByQuery(query)
 
-    fun getGeoCityByCoordinates(
+    fun getGeoInfoByCoordinates(
         latitude: Double,
         longitude: Double,
-    ) = repository.getGeoCityByCoordinates(latitude, longitude)
+    ) = repository.getGeoInfoByCoordinates(latitude, longitude)
 }

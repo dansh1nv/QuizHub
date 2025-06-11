@@ -32,7 +32,7 @@ import ru.dansh1nv.quiz.list.models.filters.Filters
 import ru.dansh1nv.quiz.list.models.item.Organization
 import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz.list.models.sorting.Sort
-import ru.dansh1nv.quiz_list_domain.interactors.CityInteractor
+import ru.dansh1nv.quiz_list_domain.interactors.GeoInfoInteractor
 import ru.dansh1nv.quiz_list_domain.interactors.QuizListInteractor
 import ru.dansh1nv.quiz_list_domain.models.Quiz
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
@@ -42,7 +42,7 @@ import timber.log.Timber
 
 internal class QuizListViewModel(
     private val interactor: QuizListInteractor,
-    private val cityInteractor: CityInteractor,
+    private val geoInfoInteractor: GeoInfoInteractor,
     private val squizMapper: SquizMapper,
     private val quizPleaseMapper: QuizPleaseMapper,
     private val shakerQuizMapper: ShakerQuizMapper,
