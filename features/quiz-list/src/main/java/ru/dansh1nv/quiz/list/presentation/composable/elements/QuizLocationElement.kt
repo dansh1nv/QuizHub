@@ -37,9 +37,11 @@ internal fun QuizLocationElement(
             verticalAlignment = Alignment.CenterVertically
         ) {
             IconCell(iconRes = R.drawable.ic_map_white)
-            Column {
+            Column(modifier = Modifier.align(Alignment.CenterVertically)) {
                 TextCell(text = model.place)
-                TextCell(text = model.address)
+                if (model.address.isNotEmpty()) {
+                    TextCell(text = model.address)
+                }
             }
         }
         Icon(

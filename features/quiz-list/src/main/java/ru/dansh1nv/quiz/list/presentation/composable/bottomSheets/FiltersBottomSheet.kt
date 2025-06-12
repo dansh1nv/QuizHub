@@ -38,7 +38,7 @@ internal fun FiltersBottomSheet(
                 modifier = Modifier
                     .fillMaxWidth()
                     .wrapContentHeight()
-                    .clickable { onUIEvent(BottomSheetEvent.OnFilterClick(item.organization)) }
+                    .clickable { onUIEvent(BottomSheetEvent.OnFilterClick(item)) }
             )
         }
     }

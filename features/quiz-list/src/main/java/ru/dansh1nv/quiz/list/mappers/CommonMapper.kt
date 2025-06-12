@@ -45,13 +45,14 @@ class CommonMapper(
         location: Location,
         gameFormat: GameFormat,
     ): LocationUI {
+        val isOnlineGame = gameFormat == GameFormat.OFFLINE
         return LocationUI(
-            place = if (gameFormat == GameFormat.OFFLINE) {
+            place = if (isOnlineGame) {
                 location.name.orEmpty()
             } else {
                 resourceManager.getStringById(R.string.quiz_online)
             },
-            address = location.address.orEmpty(),
+            address = location.address.takeIf { isOnlineGame }.orEmpty(),
             city = location.city.orEmpty(),
             geolocation = mapGeoLocation(
                 location.latitude?.toString().orEmpty(),

@@ -23,6 +23,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.compose.KoinContext
 import ru.dansh1nv.core.presentation.ActionEventsListener
 import ru.dansh1nv.core.presentation.model.ActionEvents
+import ru.dansh1nv.common.startIntentSafe
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quizhub.navigation.AppNavGraph
 
@@ -69,8 +70,12 @@ class MainActivity : ComponentActivity() {
                 shareText
             )
         }
-        val chooser = Intent.createChooser(shareIntent,"")
-        startActivity(chooser)
+        startIntentSafe(
+            Intent.createChooser(
+                shareIntent,
+                ""
+            )
+        )
     }
 
     @Composable

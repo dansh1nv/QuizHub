@@ -20,7 +20,7 @@ internal fun QuizListContent(
     LazyColumn(
         Modifier
             .fillMaxSize()
-            .padding(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 16.dp),
+            .padding(start = 16.dp, end = 16.dp, top = 12.dp, bottom = 12.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         items(quizList) { quiz ->

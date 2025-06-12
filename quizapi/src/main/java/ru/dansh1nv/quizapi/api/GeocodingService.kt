@@ -8,7 +8,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import ru.dansh1nv.quizapi.model.base.GeoCityDTO
+import ru.dansh1nv.quizapi.model.base.GeoInfoDTO
 
 /**
  * Ссылка на используемое Api - https://nominatim.org/release-docs/develop/api/Overview/
@@ -17,22 +17,38 @@ class GeocodingService(
     private val client: HttpClient
 ) {
     //TODO:Добавить обработку ошибок в сетевых запросах
-    fun getCity(cityName: String): Flow<GeoCityDTO> = flow {
+    /**
+     *  Прямой запрос
+     *
+     *  [query] - формат запроса Страна (необязательно), Город, улица, дом
+     *
+     *  Например: "Краснодар, Красная, 5"
+     * */
+    fun getGeoInfo(query: String): Flow<GeoInfoDTO> = flow {
         val response = client.get {
             url {
                 path(SEARCH_PATH)
                 parameters.apply {
                     append(FORMAT, JSON_PARAM)
-                    append(CITY, cityName)
+                    append(QUERY, query)
                     append(LIMIT, "1")
                     append(ADDRESS_DETAILS, "1")
                 }
             }
-        }.body<List<GeoCityDTO>>()
+        }.body<List<GeoInfoDTO>>()
         emit(response.first())
     }.flowOn(Dispatchers.IO)
 
-    fun getCityByCoordinates(latitude: Double, longitude: Double): Flow<GeoCityDTO> = flow {
+    /**
+     *  Обратный запрос
+     *
+     *  Позволяет по координатам получить подробную информацию о месте
+     *
+     *  [latitude] - широта
+     *
+     *  [longitude] - долгота
+     * */
+    fun getGeoInfoByCoordinates(latitude: Double, longitude: Double): Flow<GeoInfoDTO> = flow {
         val response = client.get {
             url {
                 path(REVERSE_PATH)
@@ -44,7 +60,7 @@ class GeocodingService(
                     append(ZOOM, CITY_LEVEL_VALUE)
                 }
             }
-        }.body<GeoCityDTO>()
+        }.body<GeoInfoDTO>()
         emit(response)
     }.flowOn(Dispatchers.IO)
 
@@ -52,7 +68,7 @@ class GeocodingService(
         const val SEARCH_PATH = "search"
         const val REVERSE_PATH = "reverse"
         const val FORMAT = "format"
-        const val CITY = "q"
+        const val QUERY = "q"
         const val JSON_PARAM = "json"
         const val LIMIT = "limit"
         const val ADDRESS_DETAILS = "addressdetails"
