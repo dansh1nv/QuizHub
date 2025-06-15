@@ -26,6 +26,10 @@ abstract class BaseMviViewModel<STATE : ScreenState, SIDE_EFFECT : SideEffect, E
         }
     }
 
+    protected fun completeAction(action: () -> Unit) {
+        intent { action.invoke() }
+    }
+
     protected fun postSideEffect(sideEffect: SIDE_EFFECT) {
         intent {
             postSideEffect(sideEffect)

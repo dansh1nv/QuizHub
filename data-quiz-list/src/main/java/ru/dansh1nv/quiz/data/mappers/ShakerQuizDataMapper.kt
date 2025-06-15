@@ -14,25 +14,27 @@ import ru.dansh1nv.quizapi.model.shakerquiz.ShakerQuizItemDTO
 class ShakerQuizDataMapper {
 
     fun mapToShakerQuiz(dtos: List<ShakerQuizItemDTO>): List<ShakerQuiz> {
-        return dtos.map { dto ->
-            ShakerQuiz(
-                id = dto.id,
-                theme = dto.title,
-                packageNumber = dto.number,
-                description = dto.description,
-                shortDescription = dto.shortDescription,
-                status = mapStatus(dto.status),
-                eventTime = mapToGameDate(dto.eventTime.orEmpty()),
-                formatTime = dto.location?.gameTime,
-                price = dto.price?.toInt(),
-                currency = dto.currency,
-                minMembersCount = dto.minMembersCount,
-                maxMembersCount = dto.maxMembersCount,
-                location = dto.location?.let(::mapToLocation),
-                image = dto.image?.media?.cachedLink.orEmpty(),
-                capacityStatus = dto.capacityStatus,
-            )
-        }
+        return dtos.map { dto -> map(dto) }
+    }
+
+    fun map(dto: ShakerQuizItemDTO): ShakerQuiz {
+        return ShakerQuiz(
+            id = dto.id,
+            theme = dto.title,
+            packageNumber = dto.number,
+            description = dto.description,
+            shortDescription = dto.shortDescription,
+            status = mapStatus(dto.status),
+            eventTime = mapToGameDate(dto.eventTime.orEmpty()),
+            formatTime = dto.location?.gameTime,
+            price = dto.price?.toInt(),
+            currency = dto.currency,
+            minMembersCount = dto.minMembersCount,
+            maxMembersCount = dto.maxMembersCount,
+            location = dto.location?.let(::mapToLocation),
+            image = dto.image?.media?.cachedLink.orEmpty(),
+            capacityStatus = dto.capacityStatus,
+        )
     }
 
     private fun mapStatus(statusText: String?): Status? {

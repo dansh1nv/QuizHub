@@ -18,4 +18,8 @@ internal sealed class BottomSheetModels :
         override val toolbar: Toolbar,
         val events: List<CalendarEventUI>
     ) : BottomSheetModels()
+
+    data class CityBottomSheetModel(
+        override val toolbar: Toolbar,
+    ): BottomSheetModels()
 }

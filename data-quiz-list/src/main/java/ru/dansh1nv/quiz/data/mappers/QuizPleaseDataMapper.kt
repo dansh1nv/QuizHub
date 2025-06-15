@@ -26,7 +26,7 @@ class QuizPleaseDataMapper {
         return dtos.map(::map)
     }
 
-    private fun map(dto: QuizPleaseDTO) = QuizPlease(
+    fun map(dto: QuizPleaseDTO) = QuizPlease(
         id = dto.id?.toString().orEmpty(),
         title = dto.title,
         packageNumber = dto.packageNumber,

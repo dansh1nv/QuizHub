@@ -15,10 +15,14 @@ class QuizPleaseApi(
 ) {
 
     fun getQuizzes(
-        cityId: Int,
-        pageNumber: Int,
-        pageSize: Int,
+        cityId: Long?,
+        pageNumber: Int = 1,
+        pageSize: Int = 100,
     ) = flow {
+        if (cityId == null) {
+            emit(emptyList())
+            return@flow
+        }
         val httpRequest = httpClient.get {
             url {
                 path(PATH)

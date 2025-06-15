@@ -19,7 +19,11 @@ class SquizApi(
     private val json: Json,
 ) {
 
-    fun getQuizzes(cityId: Long = 111979372401): Flow<List<SquizDTO>> = flow {
+    fun getQuizzes(cityId: Long?): Flow<List<SquizDTO>> = flow {
+        if (cityId == null) {
+            emit(emptyList())
+            return@flow
+        }
         val httpRequest = httpClient.get {
             url {
                 path(PATH)

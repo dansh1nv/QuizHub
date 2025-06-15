@@ -2,6 +2,7 @@ package ru.dansh1nv.quiz_list_domain.di
 
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
+import ru.dansh1nv.quiz_list_domain.interactors.CommonInteractor
 import ru.dansh1nv.quiz_list_domain.interactors.GeoInfoInteractor
 import ru.dansh1nv.quiz_list_domain.interactors.QuizListInteractor
 import ru.dansh1nv.quiz_list_domain.interactors.QuizPleaseInteractor
@@ -15,4 +16,5 @@ fun quizListDomainModule() = module {
     factoryOf(::QuizListInteractor)
     factoryOf(::ShakerQuizInteractor)
     factoryOf(::GeoInfoInteractor)
+    factoryOf(::CommonInteractor)
 }

@@ -21,7 +21,7 @@ class SquizDataMapper {
         return quizzes.mapNotNull(::mapToQuiz)
     }
 
-    private fun mapToQuiz(quiz: SquizDTO): SQuiz? {
+    fun mapToQuiz(quiz: SquizDTO): SQuiz? {
         quiz.characteristics?.let {
             it.size >= 2
         } ?: return null
