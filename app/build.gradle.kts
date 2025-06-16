@@ -62,17 +62,17 @@ dependencies {
     implementation(libs.androidx.splashscreen)
     implementation(libs.location)
     implementation(libs.androidx.ui.text.google.fonts)
+    implementation(libs.datastore.preferences)
 
     implementation(project(":core"))
     implementation(project(":designSystem"))
     implementation(project(":common"))
-    //ksp(libs.koin.)
-
     implementation(project(":database"))
     implementation(project(":quizapi"))
     implementation(project(":data-quiz-list"))
     implementation(project(":domain-quiz-list"))
     implementation(project(":features:quiz-list"))
     implementation(project(":features:quiz-details"))
+
     debugImplementation(libs.leak.canary)
 }

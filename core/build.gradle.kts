@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 android {
@@ -25,19 +26,22 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "21"
     }
 }
 
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.bundles.common)
-    
     implementation(libs.bundles.ui)
     implementation(libs.calendar.compose)
-    implementation(project(":designSystem"))
+    implementation(libs.serialization)
+    implementation(libs.datastore.core)
+    implementation(libs.datastore.preferences)
+
+    api(project(":designSystem"))
 }

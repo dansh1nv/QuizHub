@@ -12,5 +12,4 @@ class CommonDataMapper {
             longitude = city.longitude
         )
     }
-
 }

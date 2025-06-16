@@ -8,7 +8,7 @@ class QuizPleaseRemoteDataSource(
     private val api: QuizPleaseApi,
 ) {
     fun getQuizList(
-        cityId: Int,
+        cityId: Long?,
         pageNumber: Int,
         pageSize: Int,
     ): Flow<List<QuizPleaseDTO>> = api.getQuizzes(

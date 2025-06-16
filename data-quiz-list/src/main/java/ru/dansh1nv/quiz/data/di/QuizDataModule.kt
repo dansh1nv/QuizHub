@@ -56,6 +56,7 @@ fun quizDataModule() = module {
     single<ICommonRepository> {
         CommonRepository(
             remoteDataSource = get(),
+            appDataStore = get(),
             mapper = get(),
         )
     }

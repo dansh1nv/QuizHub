@@ -20,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import ru.dansh1nv.core.presentation.model.UIStatus
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.R
-import ru.dansh1nv.quiz.list.models.CityModel
 import ru.dansh1nv.quiz.list.presentation.QuizListEvent
 import ru.dansh1nv.quiz.list.presentation.QuizListState
 import ru.dansh1nv.quiz.list.presentation.ScreenEvent
@@ -28,7 +27,6 @@ import ru.dansh1nv.quiz.list.presentation.ScreenEvent
 @Composable
 internal fun Header(
     screenState: QuizListState,
-    city: CityModel,
     onUIEvent: (QuizListEvent) -> Unit,
 ) {
     Row(
@@ -50,7 +48,7 @@ internal fun Header(
                 tint = QuizHubTheme.colorScheme.onSurface,
             )
             Text(
-                text = city.name,
+                text = screenState.currentCity.name,
                 style = QuizHubTheme.typography.titleMedium,
                 color = QuizHubTheme.colorScheme.onSurface,
                 overflow = TextOverflow.Ellipsis,
@@ -60,21 +58,21 @@ internal fun Header(
         Row(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            if(screenState.featureToggle.isCalendarFeatureEnable) {
-                Box(
-                    modifier = Modifier
-                        .size(32.dp)
-                        .clickable { onUIEvent(ScreenEvent.OnCalendarClick) },
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_calendar),
-                        contentDescription = null,
-                        tint = QuizHubTheme.colorScheme.onSurface
-                    )
+            if (screenState.uiStatus is UIStatus.Loaded) {
+                if (screenState.featureToggle.isCalendarFeatureEnable) {
+                    Box(
+                        modifier = Modifier
+                            .size(32.dp)
+                            .clickable { onUIEvent(ScreenEvent.OnCalendarClick) },
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_calendar),
+                            contentDescription = null,
+                            tint = QuizHubTheme.colorScheme.onSurface
+                        )
+                    }
                 }
-            }
-            if (screenState.uiStatus == UIStatus.Loaded) {
                 if (screenState.featureToggle.isFiltersFeatureEnabled) {
                     Box(
                         modifier = Modifier

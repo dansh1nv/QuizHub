@@ -9,7 +9,6 @@ enum class Status(
         quizPleaseId = 1,
         shakerId = "PUBLISHED",
         squizId = "Запись на игру",
-
     ),
     WRITE_TO_RESERVE(
         quizPleaseId = 2,

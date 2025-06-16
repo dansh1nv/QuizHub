@@ -6,6 +6,6 @@ class ShakerQuizRemoteDataSource(
     private val api: ShakerQuizApi
 ) {
 
-    fun getQuizList() = api.getQuizzes()
+    fun getQuizList(cityId: String?) = api.getQuizzes(cityId)
 
 }

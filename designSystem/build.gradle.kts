@@ -25,20 +25,20 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "21"
     }
 }
 
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.bundles.ui)
-    implementation(project(":common"))
-
     implementation(libs.androidx.ui.text.google.fonts)
+
+    api(project(":common"))
 
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)

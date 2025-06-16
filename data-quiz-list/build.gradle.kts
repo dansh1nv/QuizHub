@@ -43,8 +43,8 @@ dependencies {
 
    // ksp(libs.ksp)
 
+    implementation(project(":core"))
     implementation(project(":database"))
     implementation(project(":quizapi"))
-    implementation(project(":common"))
     implementation(project(":domain-quiz-list"))
 }

@@ -11,6 +11,7 @@ core-ktx = "1.16.0"
 compose-bom = "2025.05.01"
 coil = "2.7.0"
 datetime = "0.6.1"
+data-store = "1.1.7"
 espresso-core = "3.6.1"
 jetpack-navigation = "2.9.0"
 junit = "4.13.2"
@@ -55,7 +56,11 @@ androidx-material = { module = "androidx.compose.material:material", version.ref
 androidx-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "androidx-splashscreen" }
 jetpack-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "jetpack-navigation" }
 
-kotlin-coroutines-core = {module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines"}
+datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "data-store" }
+datastore = { module = "androidx.datastore:datastore", version.ref = "data-store" }
+datastore-core = { module = "androidx.datastore:datastore-core", version.ref = "data-store" }
+
+kotlin-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
 
 ktor-client = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor-client" }
@@ -93,7 +98,7 @@ orbit-compose = { module = "org.orbit-mvi:orbit-compose", version.ref = "orbit" 
 
 leak-canary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leak-canary" }
 
-location = { module = "com.google.android.gms:play-services-location", version.ref = "location"}
+location = { module = "com.google.android.gms:play-services-location", version.ref = "location" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -5,12 +5,15 @@ import ru.dansh1nv.common.formatStringsWithDividerPoints
 import ru.dansh1nv.common.utils.localeDate.localeDay
 import ru.dansh1nv.core.resourceManager.IResourceManager
 import ru.dansh1nv.quiz.list.R
+import ru.dansh1nv.quiz.list.models.CityModel
 import ru.dansh1nv.quiz.list.models.item.GameDateUI
 import ru.dansh1nv.quiz.list.models.item.GeoLocationUI
 import ru.dansh1nv.quiz.list.models.item.LocationUI
 import ru.dansh1nv.quiz.list.models.item.StatusUI
 import ru.dansh1nv.quiz.list.models.item.TeamSizeUI
 import ru.dansh1nv.quiz_list_domain.models.Status
+import ru.dansh1nv.quiz_list_domain.models.common.City
+import ru.dansh1nv.quiz_list_domain.models.common.CityId
 import ru.dansh1nv.quiz_list_domain.models.common.GameDate
 import ru.dansh1nv.quiz_list_domain.models.common.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.common.Location
@@ -18,6 +21,29 @@ import ru.dansh1nv.quiz_list_domain.models.common.Location
 class CommonMapper(
     private val resourceManager: IResourceManager,
 ) {
+
+    fun mapCurrentCity(city: String): CityModel {
+        val cityId = CityId.entries.firstOrNull { cityId ->
+            cityId.name == city
+        }
+        return if (cityId != null) {
+            CityModel(
+                id = cityId,
+                name = cityId.title,
+                isSearchVisible = true,
+                isSelected = true,
+            )
+        } else {
+            CityModel.UNKNOWN
+        }
+    }
+
+    fun mapToCity(city: CityModel): City {
+        return City(
+            id = city.id,
+            name = city.name,
+        )
+    }
 
     fun mapToStatusUI(status: Status): StatusUI {
         return when (status) {
