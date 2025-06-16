@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import ru.dansh1nv.common.isPhysicalPlace
 import ru.dansh1nv.core.presentation.calendar.clickable
 import ru.dansh1nv.designsystem.theme.elements.IconCell
 import ru.dansh1nv.designsystem.theme.elements.TextCell
@@ -44,11 +45,13 @@ internal fun QuizLocationElement(
                 }
             }
         }
-        Icon(
-            painter = painterResource(R.drawable.ic_arrow_forward),
-            contentDescription = null,
-            modifier = Modifier.size(16.dp),
-            tint = QuizHubTheme.colorScheme.onSurfaceVariant
-        )
+        if (model.place.isPhysicalPlace()) {
+            Icon(
+                painter = painterResource(R.drawable.ic_arrow_forward),
+                contentDescription = null,
+                modifier = Modifier.size(16.dp),
+                tint = QuizHubTheme.colorScheme.onSurfaceVariant
+            )
+        }
     }
 }

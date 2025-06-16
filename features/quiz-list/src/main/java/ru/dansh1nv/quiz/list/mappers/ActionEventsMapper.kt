@@ -3,9 +3,14 @@ package ru.dansh1nv.quiz.list.mappers
 import android.net.Uri
 import ru.dansh1nv.core.resourceManager.IResourceManager
 import ru.dansh1nv.quiz.list.R
+import ru.dansh1nv.quiz.list.models.item.GeoLocationUI
+import ru.dansh1nv.quiz.list.models.item.LocationUI
 import ru.dansh1nv.quiz.list.models.item.QuizUI
+import ru.dansh1nv.quiz_list_domain.models.common.GeoInfo
 
-class ActionEventsMapper(private val resourceManager: IResourceManager) {
+class ActionEventsMapper(
+    private val resourceManager: IResourceManager,
+) {
     fun mapToShareText(quiz: QuizUI): String {
         return buildString {
             appendLine(
@@ -65,7 +70,6 @@ class ActionEventsMapper(private val resourceManager: IResourceManager) {
     }
 
     fun mapToLocationEventText(quiz: QuizUI): String {
-        //TODO: сделать обработку случая, если place = "Онлайн"
         val location = quiz.location ?: return ""
 
         location.geolocation?.let { geo ->
@@ -79,15 +83,43 @@ class ActionEventsMapper(private val resourceManager: IResourceManager) {
                 )
             }
         }
+        return buildQueryWithoutCoordinates(location)
+    }
 
-        val address = buildString {
-            append(location.address.takeIf { it.isNotBlank() } ?: "")
-            location.place.takeIf { it.isNotBlank() }?.let { place ->
-                if (isNotEmpty()) append(", $place")
+    fun buildGeoQuery(quiz: QuizUI): String {
+        val location = quiz.location ?: return ""
+        return buildString {
+            append(location.city.takeIf { it.isNotBlank() } ?: "")
+            location.address.takeIf { it.isNotBlank() }?.let { address ->
+                append(", $address")
             }
         }.takeIf { it.isNotBlank() } ?: return ""
+    }
 
-        return GEO_URI_PREFIX + Uri.encode(address)
+    fun updateGeoLocation(
+        location: LocationUI,
+        geoInfo: GeoInfo
+    ): LocationUI {
+        val lat = geoInfo.latitude.toString()
+        val lon = geoInfo.longitude.toString()
+        return location.copy(
+            geolocation = GeoLocationUI(
+                latitude = lat,
+                longitude = lon,
+                locationText = "${lat},${lon}"
+            )
+        )
+    }
+
+    private fun buildQueryWithoutCoordinates(location: LocationUI): String {
+        return buildString {
+            location.address.takeIf { it.isNotBlank() }?.let { address ->
+                append(address)
+            }
+            location.place.takeIf { it.isNotBlank() }?.let { place ->
+                append(", $place")
+            }
+        }.takeIf { it.isNotBlank() }?.let { GEO_URI_PREFIX + Uri.encode(it) } ?: ""
     }
 
     companion object {

@@ -37,6 +37,7 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.bundles.common)
+    implementation(libs.material)
     implementation(libs.bundles.ui)
     implementation(libs.calendar.compose)
     implementation(libs.serialization)

@@ -117,7 +117,7 @@ internal class QuizListViewModel(
                         copy(
                             uiStatus = UIStatus.Error(
                                 errorText =
-                                resourceManager.getStringById(R.string.quiz_list_fetch_data_error)
+                                    resourceManager.getStringById(R.string.quiz_list_fetch_data_error)
                             )
                         )
                     }
@@ -204,12 +204,50 @@ internal class QuizListViewModel(
         }
     }
 
-    private fun handleShowLocationEventClick(id: String) {
-        val quiz = container.stateFlow.value.quizList.firstOrNull { it.id ==id } ?: return
-        val locationText = actionEventsMapper.mapToLocationEventText(quiz)
-        actionEventsListener.onActionEvent(
-            ActionEvents.ShowLocationEvent(locationText)
-        )
+    private fun handleShowLocationEventClick(id: String) = viewModelScope.launch {
+        val quiz = container.stateFlow.value.quizList.firstOrNull { it.id == id } ?: return@launch
+        val location = quiz.location ?: return@launch
+        val query = actionEventsMapper.buildGeoQuery(quiz)
+
+        geoInfoInteractor.getGeoInfoByQuery(query)
+            .catch { ex ->
+                Timber.e(ex)
+                val locationText = actionEventsMapper.mapToLocationEventText(quiz)
+                actionEventsListener.onActionEvent(
+                    ActionEvents.ShowLocationEvent(locationText)
+                )
+            }
+            .collect { geoInfo ->
+                val updateLocation = actionEventsMapper.updateGeoLocation(
+                    location = location,
+                    geoInfo = geoInfo
+                )
+                quizMap.forEach { (_, quizList) ->
+                    quizList.replaceAll { q ->
+                        if (q.id == id) {
+                            q.copy(location = updateLocation)
+                        } else {
+                            q
+                        }
+                    }
+                }
+                updateState {
+                    copy(
+                        quizList = quizList.map { q ->
+                            if (q.id == id) {
+                                q.copy(location = updateLocation)
+                            } else {
+                                q
+                            }
+                        }
+                    )
+                }
+                val updatedQuiz = quiz.copy(location = updateLocation)
+                val locationText = actionEventsMapper.mapToLocationEventText(updatedQuiz)
+                actionEventsListener.onActionEvent(
+                    ActionEvents.ShowLocationEvent(locationText)
+                )
+            }
     }
 
     private fun handleShareEventClick(id: String) {
@@ -246,7 +284,8 @@ internal class QuizListViewModel(
             BottomSheetModels.CityBottomSheetModel(
                 toolbar = Toolbar(
                     title = resourceManager.getStringById(R.string.city_bottomsheet_title),
-                    trailIcon = IconModel(UIDrawable.ic_clear,
+                    trailIcon = IconModel(
+                        UIDrawable.ic_clear,
                         onClick = { dismiss() }
                     ),
                 ),

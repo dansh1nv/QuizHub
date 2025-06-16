@@ -21,9 +21,9 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.compose.KoinContext
-import ru.dansh1nv.common.startIntentSafe
 import ru.dansh1nv.core.presentation.ActionEventsListener
 import ru.dansh1nv.core.presentation.model.ActionEvents
+import ru.dansh1nv.core.startIntentSafe
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quizhub.navigation.AppNavGraph
 
@@ -58,8 +58,12 @@ class MainActivity : ComponentActivity() {
     private fun handleLocationEvent(location: String) {
         val uri = location.toUri()
         val mapIntent = Intent(Intent.ACTION_VIEW, uri)
-        val chooser = Intent.createChooser(mapIntent, "")
-        startActivity(chooser)
+        startIntentSafe(
+            Intent.createChooser(
+                mapIntent,
+                ""
+            )
+        )
     }
 
     private fun handleShareEvent(shareText: String) {
