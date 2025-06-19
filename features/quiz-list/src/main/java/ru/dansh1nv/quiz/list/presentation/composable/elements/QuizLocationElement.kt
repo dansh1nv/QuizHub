@@ -28,7 +28,13 @@ internal fun QuizLocationElement(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clickable(onClick = onLocationClick),
+            .clickable(
+                onClick = {
+                    if (model.place.isPhysicalPlace()) {
+                        onLocationClick()
+                    }
+                }
+            ),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
