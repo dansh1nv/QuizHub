@@ -15,10 +15,10 @@ import androidx.compose.ui.unit.dp
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.R
 import ru.dansh1nv.quiz.list.presentation.ScreenEvent
-import ru.dansh1nv.quiz_list_domain.models.Quiz
 
 @Composable
 internal fun ErrorPlaceholder(
+    errorText: String = stringResource(id = R.string.empty_placeholder_text),
     onUIEvent: (ScreenEvent) -> Unit,
 ) {
     Box(
@@ -36,7 +36,7 @@ internal fun ErrorPlaceholder(
         ) {
             Text(
                 style = QuizHubTheme.typography.titleLarge,
-                text = stringResource(id = R.string.empty_placeholder_text),
+                text = errorText,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 textAlign = TextAlign.Center,
                 color = QuizHubTheme.colorScheme.onBackground

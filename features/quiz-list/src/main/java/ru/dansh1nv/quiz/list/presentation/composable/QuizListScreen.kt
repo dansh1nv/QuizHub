@@ -12,14 +12,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import org.koin.core.parameter.parametersOf
@@ -30,8 +27,6 @@ import ru.dansh1nv.core.presentation.model.UIStatus
 import ru.dansh1nv.core.presentation.viewModel.viewModel
 import ru.dansh1nv.designsystem.theme.bottomsheet.QuizModalBottomSheet
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
-import ru.dansh1nv.quiz.list.R
-import ru.dansh1nv.quiz.list.models.CityModel
 import ru.dansh1nv.quiz.list.models.bottomsheet.BottomSheetModels
 import ru.dansh1nv.quiz.list.presentation.QuizListEvent
 import ru.dansh1nv.quiz.list.presentation.QuizListSideEffect
@@ -102,7 +97,10 @@ internal fun BaseScreen(
             }
 
             is UIStatus.Error -> {
-                ErrorPlaceholder(onUIEvent = onUIEvent)
+                ErrorPlaceholder(
+                    errorText = screenState.uiStatus.errorText,
+                    onUIEvent = onUIEvent,
+                )
             }
 
             UIStatus.Empty -> {
