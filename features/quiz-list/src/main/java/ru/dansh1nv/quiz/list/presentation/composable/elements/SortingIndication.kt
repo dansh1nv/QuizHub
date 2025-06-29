@@ -31,7 +31,7 @@ internal fun SortingIndication(
             painter = painterResource(id = R.drawable.ic_sort),
             contentDescription = null,
             modifier = Modifier
-                .size(24.dp)
+                .size(20.dp)
                 .align(Alignment.CenterVertically),
             tint = QuizHubTheme.colorScheme.onSurface,
         )

@@ -147,11 +147,17 @@ internal fun BaseScreen(
         customBottomSheetContent = { bottomSheet ->
             when (bottomSheet) {
                 is BottomSheetModels.FilterBottomSheetModel -> {
-                    FiltersBottomSheet(onUIEvent = onUIEvent)
+                    FiltersBottomSheet(
+                        screenState = screenState,
+                        onUIEvent = onUIEvent,
+                    )
                 }
 
                 is BottomSheetModels.SortingBottomSheetModel -> {
-                    SortingBottomSheet(onUIEvent = onUIEvent)
+                    SortingBottomSheet(
+                        screenState = screenState,
+                        onUIEvent = onUIEvent,
+                    )
                 }
 
                 is BottomSheetModels.CalendarBottomSheetModel -> {
