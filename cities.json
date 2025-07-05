@@ -13,6 +13,20 @@
       "quizPleaseId": 17,
       "shakerQuizId": "b489621b-cfb2-4aef-8c22-02daf19fa08f",
       "squizId": 111979372401
+    },
+    {
+      "id": 3,
+        "name": "Хабаровск",
+        "quizPleaseId": 4,
+        "shakerQuizId": null,
+        "squizId": null
+    },
+    {
+      "id": 4,
+        "name": "Владивосток",
+        "quizPleaseId": 5,
+        "shakerQuizId": null,
+        "squizId": null
     }
   ]
 }
