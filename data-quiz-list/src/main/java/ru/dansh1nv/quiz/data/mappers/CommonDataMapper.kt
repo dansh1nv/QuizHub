@@ -1,5 +1,7 @@
 package ru.dansh1nv.quiz.data.mappers
 
+import ru.dansh1nv.quiz.data.models.CityDTO
+import ru.dansh1nv.quiz_list_domain.models.common.City
 import ru.dansh1nv.quiz_list_domain.models.common.GeoInfo
 import ru.dansh1nv.quizapi.model.base.GeoInfoDTO
 
@@ -10,6 +12,16 @@ class CommonDataMapper {
             name = city.name,
             latitude = city.latitude,
             longitude = city.longitude
+        )
+    }
+
+    fun mapToCity(entity: CityDTO): City {
+        return City(
+            id = entity.id,
+            name = entity.name.orEmpty(),
+            squizId = entity.squizId,
+            quizPleaseId = entity.quizPleaseId,
+            shakerQuizId = entity.shakerQuizId,
         )
     }
 }

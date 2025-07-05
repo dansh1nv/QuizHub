@@ -8,4 +8,6 @@ interface IResourceManager {
 
     fun getStringById(@StringRes resId: Int, vararg args: String): String
 
+    fun getJson(name: String): String
+
 }

@@ -4,7 +4,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import ru.dansh1nv.quiz.data.datasource.squiz.SquizRemoteDataSource
 import ru.dansh1nv.quiz.data.mappers.SquizDataMapper
-import ru.dansh1nv.quiz.data.models.toDTO
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
 import ru.dansh1nv.quiz_list_domain.models.common.City
 import ru.dansh1nv.quiz_list_domain.repository.ISQuizRepository
@@ -15,22 +14,9 @@ class SquizRepository(
     private val quizMapper: SquizDataMapper,
 ) : ISQuizRepository {
 
-    override suspend fun getAllQuizzes(cityId: City): Flow<List<SQuiz>> {
-        return remoteDataSource.getAllQuizzes(cityId.toDTO().squizId)
+    override suspend fun getAllQuizzes(city: City): Flow<List<SQuiz>> {
+        return remoteDataSource.getAllQuizzes(city.squizId)
             .map(quizMapper::map)
     }
 
 }
-
-//internal fun <T : Any> RequestResult<T?>.requireData(): T = checkNotNull(data)
-//
-//internal fun <I, O> RequestResult<I>.map(
-//    mapper: (I) -> O
-//): RequestResult<O> {
-//    val outData = mapper(data)
-//    return when (this) {
-//        is RequestResult.Success -> RequestResult.Success(outData)
-//        is RequestResult.Error -> RequestResult.Error(outData)
-//        is RequestResult.InProgress -> RequestResult.InProgress(outData)
-//    }
-//}
