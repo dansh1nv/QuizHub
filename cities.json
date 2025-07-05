@@ -1,16 +1,18 @@
 {
   "cities" : [
     {
+      "id": 1,
       "name": "Краснодар",
       "quizPleaseId": 37,
       "shakerQuizId": null,
       "squizId": null
     },
     {
+      "id": 2,
       "name": "Санкт-Петербург",
       "quizPleaseId": 17,
       "shakerQuizId": "b489621b-cfb2-4aef-8c22-02daf19fa08f",
       "squizId": 111979372401
     }
-]
+  ]
 }
