@@ -2,31 +2,1067 @@
   "cities" : [
     {
       "id": 1,
-      "name": "Краснодар",
-      "quizPleaseId": 37,
+      "name": "Абу-Даби",
+      "quizPleaseId": 206,
       "shakerQuizId": null,
       "squizId": null
     },
     {
       "id": 2,
+      "name": "Актау",
+      "quizPleaseId": 130,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 3,
+      "name": "Актобе",
+      "quizPleaseId": 116,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 4,
+      "name": "Аланья",
+      "quizPleaseId": 164,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 5,
+      "name": "Аликанте",
+      "quizPleaseId": 220,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 6,
+      "name": "Алматы",
+      "quizPleaseId": 49,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 7,
+      "name": "Альметьевск",
+      "quizPleaseId": 70,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 8,
+      "name": "Ансан",
+      "quizPleaseId": 155,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 9,
+      "name": "Анталья",
+      "quizPleaseId": 153,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 10,
+      "name": "Арзамас",
+      "quizPleaseId": 229,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 11,
+      "name": "Арсеньев",
+      "quizPleaseId": 232,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 12,
+      "name": "Архангельск",
+      "quizPleaseId": 189,
+      "shakerQuizId": "70607d29-d0ce-49f8-b39d-e11591747e1a",
+      "squizId": null
+    },
+    {
+      "id": 13,
+      "name": "Астана",
+      "quizPleaseId": 35,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 14,
+      "name": "Астрахань",
+      "quizPleaseId": 168,
+      "shakerQuizId": "4b6d2a6b-bb34-467e-9882-bbf9abb6fb21",
+      "squizId": null
+    },
+    {
+      "id": 15,
+      "name": "Атырау",
+      "quizPleaseId": 106,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 16,
+      "name": "Афины",
+      "quizPleaseId": 190,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 17,
+      "name": "Баку",
+      "quizPleaseId": 167,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 18,
+      "name": "Балаково",
+      "quizPleaseId": 90,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 19,
+      "name": "Барнаул",
+      "quizPleaseId": 31,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 20,
+      "name": "Барселона",
+      "quizPleaseId": 199,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 21,
+      "name": "Батуми",
+      "quizPleaseId": 142,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 22,
+      "name": "Белград",
+      "quizPleaseId": 172,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 23,
+      "name": "Белогорск",
+      "quizPleaseId": 234,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 24,
+      "name": "Берлин",
+      "quizPleaseId": 132,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 25,
+      "name": "Беэр-Шева",
+      "quizPleaseId": 44,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 26,
+      "name": "Бийск",
+      "quizPleaseId": 95,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 27,
+      "name": "Бишкек",
+      "quizPleaseId": 134,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 28,
+      "name": "Благовещенск",
+      "quizPleaseId": 40,
+      "shakerQuizId": "ffce7808-11a6-4aa6-a02f-fab0c9893e99",
+      "squizId": null
+    },
+    {
+      "id": 29,
+      "name": "Бостон",
+      "quizPleaseId": 60,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 30,
+      "name": "Брест",
+      "quizPleaseId": 56,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 31,
+      "name": "Брянск",
+      "quizPleaseId": 148,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 32,
+      "name": "Будапешт",
+      "quizPleaseId": 236,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 33,
+      "name": "Будва",
+      "quizPleaseId": 157,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 34,
+      "name": "Буэнос-Айрес",
+      "quizPleaseId": 169,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 35,
+      "name": "Валенсия",
+      "quizPleaseId": 192,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 36,
+      "name": "Варшава",
+      "quizPleaseId": 208,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 37,
+      "name": "Великий Новгород",
+      "quizPleaseId": 149,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 38,
+      "name": "Вена",
+      "quizPleaseId": 219,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 39,
+      "name": "Вильнюс",
+      "quizPleaseId": 221,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 40,
+      "name": "Витебск",
+      "quizPleaseId": 209,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 41,
+      "name": "Владивосток",
+      "quizPleaseId": 5,
+      "shakerQuizId": "95856429-c342-4f19-9f50-1a1d8f18540f",
+      "squizId": null
+    },
+    {
+      "id": 42,
+      "name": "Владикавказ",
+      "quizPleaseId": 120,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 43,
+      "name": "Владимир",
+      "quizPleaseId": 36,
+      "shakerQuizId": "c989e6b7-8b6c-4563-a24a-2ededde2f4cb",
+      "squizId": null
+    },
+    {
+      "id": 44,
+      "name": "Волгоград",
+      "quizPleaseId": 93,
+      "shakerQuizId": "ff21a38e-156f-41d2-90a0-924e23eae37c",
+      "squizId": null
+    },
+    {
+      "id": 45,
+      "name": "Волгодонск",
+      "quizPleaseId": 57,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 46,
+      "name": "Волжский",
+      "quizPleaseId": 94,
+      "shakerQuizId": "0ab20995-5135-46a2-a702-276b035b3c18",
+      "squizId": null
+    },
+    {
+      "id": 47,
+      "name": "Воронеж",
+      "quizPleaseId": 67,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 48,
+      "name": "Воткинск",
+      "quizPleaseId": 52,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 49,
+      "name": "Выборг",
+      "quizPleaseId": 197,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 50,
+      "name": "Горно-Алтайск",
+      "quizPleaseId": 107,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 51,
+      "name": "Гуанчжоу",
+      "quizPleaseId": 215,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 52,
+      "name": "Дубай",
+      "quizPleaseId": 171,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 53,
+      "name": "Дюссельдорф/Кёльн",
+      "quizPleaseId": 239,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 54,
+      "name": "Екатеринбург",
+      "quizPleaseId": 13,
+      "shakerQuizId": "a50dd3c8-8ba7-4bb2-a4b2-eb6c9a6f7f9f",
+      "squizId": null
+    },
+    {
+      "id": 55,
+      "name": "Ереван",
+      "quizPleaseId": 147,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 56,
+      "name": "Ессентуки",
+      "quizPleaseId": 128,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 57,
+      "name": "Иерусалим",
+      "quizPleaseId": 81,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 58,
+      "name": "Ижевск",
+      "quizPleaseId": 51,
+      "shakerQuizId": "89b65c82-ffc6-49d5-8ab6-b1346f0b1110",
+      "squizId": null
+    },
+    {
+      "id": 59,
+      "name": "Израиль",
+      "quizPleaseId": 187,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 60,
+      "name": "Инчхон",
+      "quizPleaseId": 156,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 61,
+      "name": "Иркутск",
+      "quizPleaseId": 62,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 62,
+      "name": "Йошкар-Ола",
+      "quizPleaseId": 53,
+      "shakerQuizId": "70421d50-14e9-4f1d-93d3-31290ab3c953",
+      "squizId": null
+    },
+    {
+      "id": 63,
+      "name": "Казань",
+      "quizPleaseId": 21,
+      "shakerQuizId": "3fe2fbff-b96a-4069-9270-48312eb912d8",
+      "squizId": null
+    },
+    {
+      "id": 64,
+      "name": "Калгари",
+      "quizPleaseId": 218,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 65,
+      "name": "Калининград",
+      "quizPleaseId": 92,
+      "shakerQuizId": "423b726c-4258-43c9-98ff-101bd290c3c8",
+      "squizId": null
+    },
+    {
+      "id": 66,
+      "name": "Калуга",
+      "quizPleaseId": 38,
+      "shakerQuizId": "bd5e24eb-b10d-4d43-81be-0fece6fe8144",
+      "squizId": null
+    },
+    {
+      "id": 67,
+      "name": "Караганда",
+      "quizPleaseId": 86,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 68,
+      "name": "Кармиэль",
+      "quizPleaseId": 170,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 69,
+      "name": "Кейптаун",
+      "quizPleaseId": 186,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 70,
+      "name": "Кемерово",
+      "quizPleaseId": 33,
+      "shakerQuizId": "0864fe86-7064-471d-9293-ab891654471b",
+      "squizId": null
+    },
+    {
+      "id": 71,
+      "name": "Киров",
+      "quizPleaseId": 114,
+      "shakerQuizId": "c5bb441a-e580-4ed0-afda-e79c2cab6181",
+      "squizId": null
+    },
+    {
+      "id": 72,
+      "name": "Кишинёв",
+      "quizPleaseId": 216,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 73,
+      "name": "Коломна",
+      "quizPleaseId": 182,
+      "shakerQuizId": "84eab758-598d-42ea-adec-2e084a5a7a70",
+      "squizId": null
+    },
+    {
+      "id": 74,
+      "name": "Комсомольск-на-Амуре",
+      "quizPleaseId": 131,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 75,
+      "name": "Кострома",
+      "quizPleaseId": 235,
+      "shakerQuizId": "b1016912-fd48-4b6c-a5fb-5f8647a84a17",
+      "squizId": null
+    },
+    {
+      "id": 76,
+      "name": "Краснодар",
+      "quizPleaseId": 37,
+      "shakerQuizId": "d98a0d11-536e-4e3f-bd0e-5c35343a9c6d",
+      "squizId": null
+    },
+    {
+      "id": 77,
+      "name": "Красноярск",
+      "quizPleaseId": 41,
+      "shakerQuizId": "a27fcc9e-41d4-4640-974a-92f7675707ae",
+      "squizId": null
+    },
+    {
+      "id": 78,
+      "name": "Ларнака",
+      "quizPleaseId": 178,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 79,
+      "name": "Лесосибирск",
+      "quizPleaseId": 231,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 80,
+      "name": "Лимассол",
+      "quizPleaseId": 73,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 81,
+      "name": "Липецк",
+      "quizPleaseId": 80,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 82,
+      "name": "Лиссабон",
+      "quizPleaseId": 177,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 83,
+      "name": "Лондон",
+      "quizPleaseId": 42,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 84,
+      "name": "Магадан",
+      "quizPleaseId": 20,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 85,
+      "name": "Мадрид",
+      "quizPleaseId": 204,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 86,
+      "name": "Майами",
+      "quizPleaseId": 145,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 87,
+      "name": "Междуреченск",
+      "quizPleaseId": 181,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 88,
+      "name": "Мельбурн",
+      "quizPleaseId": 213,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 89,
+      "name": "Милан",
+      "quizPleaseId": 203,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 90,
+      "name": "Минск",
+      "quizPleaseId": 74,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 91,
+      "name": "Моздок",
+      "quizPleaseId": 183,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 92,
+      "name": "Монреаль",
+      "quizPleaseId": 136,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 93,
+      "name": "Москва",
+      "quizPleaseId": 9,
+      "shakerQuizId": "c2e2affb-8719-42bb-880b-8678bbe04f03",
+      "squizId": null
+    },
+    {
+      "id": 94,
+      "name": "Мурманск",
+      "quizPleaseId": 112,
+      "shakerQuizId": "38425bd4-4163-4d81-984c-430be012d1f1",
+      "squizId": null
+    },
+    {
+      "id": 95,
+      "name": "Мюнхен",
+      "quizPleaseId": 222,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 96,
+      "name": "Набережные Челны",
+      "quizPleaseId": 16,
+      "shakerQuizId": "ae8c95fc-3334-4cf6-8cd3-29627863b857",
+      "squizId": null
+    },
+    {
+      "id": 97,
+      "name": "Находка",
+      "quizPleaseId": 46,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 98,
+      "name": "Нефтекамск",
+      "quizPleaseId": 59,
+      "shakerQuizId": "cf3128df-91bc-4d1e-a586-bd50db7477ce",
+      "squizId": null
+    },
+    {
+      "id": 99,
+      "name": "Нефтеюганск",
+      "quizPleaseId": 230,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 100,
+      "name": "Нижнекамск",
+      "quizPleaseId": 54,
+      "shakerQuizId": "3abcd16c-00c8-4ce8-9c66-11dd0abc379c",
+      "squizId": null
+    },
+    {
+      "id": 101,
+      "name": "Нижний Новгород",
+      "quizPleaseId": 15,
+      "shakerQuizId": "f9931e7e-e30f-4cd9-a718-b38cbb855384",
+      "squizId": null
+    },
+    {
+      "id": 102,
+      "name": "Никосия",
+      "quizPleaseId": 185,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 103,
+      "name": "Нови-Сад",
+      "quizPleaseId": 194,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 104,
+      "name": "Новокузнецк",
+      "quizPleaseId": 99,
+      "shakerQuizId": "40ced34c-1442-4524-9878-039a3af052d9",
+      "squizId": null
+    },
+    {
+      "id": 105,
+      "name": "Новомосковск",
+      "quizPleaseId": 117,
+      "shakerQuizId": "8f892804-9963-450a-b6a8-966c404aa102",
+      "squizId": null
+    },
+    {
+      "id": 106,
+      "name": "Новороссийск",
+      "quizPleaseId": 138,
+      "shakerQuizId": "6ad71cb8-38f6-427d-a4d4-170aa3ead97d",
+      "squizId": null
+    },
+    {
+      "id": 107,
+      "name": "Новосибирск",
+      "quizPleaseId": 10,
+      "shakerQuizId": "742d033b-3c5c-4842-a622-0cfe746b4bf0",
+      "squizId": null
+    },
+    {
+      "id": 108,
+      "name": "Новый Уренгой",
+      "quizPleaseId": 98,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 109,
+      "name": "Нью-Йорк",
+      "quizPleaseId": 26,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 110,
+      "name": "Нячанг",
+      "quizPleaseId": 202,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 111,
+      "name": "Обнинск",
+      "quizPleaseId": 50,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 112,
+      "name": "Октябрьский",
+      "quizPleaseId": 78,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 113,
+      "name": "Омск",
+      "quizPleaseId": 84,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 114,
+      "name": "Оренбург",
+      "quizPleaseId": 111,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 115,
+      "name": "Орёл",
+      "quizPleaseId": 214,
+      "shakerQuizId": "5f385c51-4458-4ce7-974b-8ea7c17f12f8",
+      "squizId": null
+    },
+    {
+      "id": 116,
+      "name": "Оттава",
+      "quizPleaseId": 223,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 117,
+      "name": "Панган",
+      "quizPleaseId": 180,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 118,
+      "name": "Париж",
+      "quizPleaseId": 228,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 119,
+      "name": "Паттайя",
+      "quizPleaseId": 200,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 120,
+      "name": "Пафос",
+      "quizPleaseId": 173,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 121,
+      "name": "Пекин",
+      "quizPleaseId": 108,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 122,
+      "name": "Пенза",
+      "quizPleaseId": 91,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 123,
+      "name": "Пермь",
+      "quizPleaseId": 43,
+      "shakerQuizId": "543bc12f-8923-4e13-a47f-88a3e17c7e5a",
+      "squizId": null
+    },
+    {
+      "id": 124,
+      "name": "Петрозаводск",
+      "quizPleaseId": 83,
+      "shakerQuizId": "3fdfd82b-3e8b-4682-b3fc-c00bbb1c3d34",
+      "squizId": null
+    },
+    {
+      "id": 125,
+      "name": "Петропавловск-Камчатский",
+      "quizPleaseId": 34,
+      "shakerQuizId": "e67b2476-0532-427c-89c4-a511971eaacb",
+      "squizId": null
+    },
+    {
+      "id": 126,
+      "name": "Прага",
+      "quizPleaseId": 188,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 127,
+      "name": "Псков",
+      "quizPleaseId": 29,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 128,
+      "name": "Пхукет",
+      "quizPleaseId": 166,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 129,
+      "name": "Пятигорск",
+      "quizPleaseId": 118,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 130,
+      "name": "Рига",
+      "quizPleaseId": 58,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 131,
+      "name": "Рим",
+      "quizPleaseId": 211,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 132,
+      "name": "Ростов-на-Дону",
+      "quizPleaseId": 19,
+      "shakerQuizId": "5b44513d-4bfd-43d2-b898-9ee273d0d9c3",
+      "squizId": null
+    },
+    {
+      "id": 133,
+      "name": "Рязань",
+      "quizPleaseId": 45,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 134,
+      "name": "Салоники",
+      "quizPleaseId": 212,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 135,
+      "name": "Самара",
+      "quizPleaseId": 23,
+      "shakerQuizId": "8fe57e5d-0a26-45f6-99d5-07009891ebe0",
+      "squizId": null
+    },
+    {
+      "id": 136,
+      "name": "Самуи",
+      "quizPleaseId": 179,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 137,
       "name": "Санкт-Петербург",
       "quizPleaseId": 17,
       "shakerQuizId": "b489621b-cfb2-4aef-8c22-02daf19fa08f",
       "squizId": 111979372401
     },
     {
-      "id": 3,
-        "name": "Хабаровск",
-        "quizPleaseId": 4,
-        "shakerQuizId": null,
-        "squizId": null
+      "id": 138,
+      "name": "Саранск",
+      "quizPleaseId": 150,
+      "shakerQuizId": "eb3a0841-921b-414a-9fb1-63748898c19d",
+      "squizId": null
     },
     {
-      "id": 4,
-        "name": "Владивосток",
-        "quizPleaseId": 5,
-        "shakerQuizId": null,
-        "squizId": null
+      "id": 139,
+      "name": "Сарапул",
+      "quizPleaseId": 141,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 140,
+      "name": "Саратов",
+      "quizPleaseId": 63,
+      "shakerQuizId": "43494653-9da5-49c3-97ed-7c3d9ff4ad47",
+      "squizId": null
+    },
+    {
+      "id": 141,
+      "name": "Севастополь",
+      "quizPleaseId": 69,
+      "shakerQuizId": "378cb268-c6db-46f5-a8a0-db5139a03ee0",
+      "squizId": null
+    },
+    {
+      "id": 142,
+      "name": "Северный Кипр",
+      "quizPleaseId": 191,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 143,
+      "name": "Северобайкальск",
+      "quizPleaseId": 198,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 144,
+      "name": "Семей",
+      "quizPleaseId": 96,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 145,
+      "name": "Серпухов",
+      "quizPleaseId": 238,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 146,
+      "name": "Сеул",
+      "quizPleaseId": 154,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 147,
+      "name": "Сидней",
+      "quizPleaseId": 184,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 148,
+      "name": "Симферополь",
+      "quizPleaseId": 133,
+      "shakerQuizId": "5d611558-bc61-4c5e-9847-c58c5c7cabb3",
+      "squizId": null
+    },
+    {
+      "id": 149,
+      "name": "Сосновый Бор",
+      "quizPleaseId": 233,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 150,
+      "name": "София",
+      "quizPleaseId": 196,
+      "shakerQuizId": null,
+      "squizId": null
+    },
+    {
+      "id": 151,
+      "name": "Сочи",
+      "quizPleaseId": 68,
+      "shakerQuizId": "7ff67747-17b6-4dbb-8c97-ac0a817df2b3",
+      "squizId": null
+    },
+    {
+      "id": 152,
+      "name": "Ставрополь",
+      "quizPleaseId": 25,
+      "shakerQuizId": "4ec678ba-3ae7-4b74-90ca-8613cb812c13",
+      "squizId": null
     }
   ]
 }
