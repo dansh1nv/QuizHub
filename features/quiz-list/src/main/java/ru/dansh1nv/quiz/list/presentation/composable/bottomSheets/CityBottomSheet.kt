@@ -1,10 +1,13 @@
 package ru.dansh1nv.quiz.list.presentation.composable.bottomSheets
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.HorizontalDivider
@@ -51,7 +54,13 @@ internal fun CityBottomSheet(
             .fillMaxSize()
             .padding(horizontal = 16.dp, vertical = 8.dp)
     ) {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .padding(bottom = footerHeightToDp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
             val keyboardController = LocalSoftwareKeyboardController.current
             val focusRequester = remember { FocusRequester() }
             val focusManager = LocalFocusManager.current
@@ -73,9 +82,8 @@ internal fun CityBottomSheet(
 
             LazyColumn(
                 modifier = Modifier
-                    .padding(bottom = footerHeightToDp)
-                    .fillMaxSize(),
-                // contentPadding = PaddingValues(8.dp)
+                    .fillMaxSize()
+                    .padding(bottom = footerHeightToDp),
             ) {
                 itemsIndexed(searchResults) { index, item ->
                     SingleSelectableListItem(
@@ -95,12 +103,16 @@ internal fun CityBottomSheet(
             }
         }
 
-        Box(modifier = Modifier.align(Alignment.BottomCenter)) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(QuizHubTheme.colorScheme.surfaceContainer)
+                .onSizeChanged { footerHeight = it.height }
+                .align(Alignment.BottomCenter)
+        ) {
             QuizHubButton(
                 title = stringResource(UIString.select_button_text),
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .onSizeChanged { footerHeight = it.height },
+                modifier = Modifier.fillMaxWidth(),
                 isEnabled = localSelectedCity.value != screenState.currentCity,
                 onClick = { onUIEvent(ScreenEvent.OnCityClick(localSelectedCity.value)) },
             )

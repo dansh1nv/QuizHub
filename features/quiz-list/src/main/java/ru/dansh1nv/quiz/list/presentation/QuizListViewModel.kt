@@ -156,8 +156,12 @@ internal class QuizListViewModel(
 
     private fun updateCurrentCity(city: CityModel) {
         updateState {
+            val cities = cities.map { city ->
+                city.copy(isSearchVisible = true)
+            }
             copy(
                 currentCity = city,
+                cities = cities,
             )
         }
 
