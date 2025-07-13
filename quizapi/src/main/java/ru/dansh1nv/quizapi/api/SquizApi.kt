@@ -26,7 +26,7 @@ class SquizApi(
         val httpRequest = httpClient.get {
             url {
                 path(PATH)
-                parameter(CITY, cityId) //111979372401 - Санкт-Петербург
+                parameter(CITY, cityId)
                 parameter(PAGE_NUMBER, 1)
                 parameter(PAGE_SIZE, 100)
                 parameter("getparts", true)

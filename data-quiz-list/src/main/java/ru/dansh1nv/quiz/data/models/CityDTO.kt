@@ -10,12 +10,12 @@ data class CityResponse(
 @Serializable
 data class CityDTO(
     val id: Long,
-    val name: String?,
-    val quizPleaseId: Long?,
-    val shakerQuizId: String?,
-    val squizId: Long?,
-    val shakerTeamSize: TeamSizeDTO?,
-    val country: String?,
+    val name: String? = null,
+    val quizPleaseId: Long? = null,
+    val shakerQuizId: String? = null,
+    val squizId: Long? = null,
+    val shakerTeamSize: TeamSizeDTO? = null,
+    val country: String? = null,
 )
 
 @Serializable

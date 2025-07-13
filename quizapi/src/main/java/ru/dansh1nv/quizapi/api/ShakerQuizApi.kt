@@ -27,7 +27,7 @@ class ShakerQuizApi(
                 parameter(
                     SEARCH,
                     "{\"$CITY_ID\":[\"$cityId\"]}"
-                ) //b489621b-cfb2-4aef-8c22-02daf19fa08f - id Санкт-Петербург
+                )
             }
         }
         val data = response.body<ShakerQuizResponseDTO>()

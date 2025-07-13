@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class QuizPleaseData(
     @SerialName("data")
-    val quizData: List<QuizPleaseDTO>?,
+    val quizData: List<QuizPleaseDTO>? = null,
     @SerialName("count")
-    val count: String?,
+    val count: String? = null,
 )

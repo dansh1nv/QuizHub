@@ -4,9 +4,9 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Characteristic (
+data class Characteristic(
     @SerialName("title")
-    val title: String?,
+    val title: String? = null,
     @SerialName("value")
-    val value: String?,
+    val value: String? = null,
 )
