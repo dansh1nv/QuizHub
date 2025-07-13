@@ -14,4 +14,12 @@ data class CityDTO(
     val quizPleaseId: Long?,
     val shakerQuizId: String?,
     val squizId: Long?,
+    val shakerTeamSize: TeamSizeDTO?,
+    val country: String?,
+)
+
+@Serializable
+data class TeamSizeDTO(
+    val maximum: Int,
+    val minimum: Int,
 )

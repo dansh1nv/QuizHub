@@ -31,6 +31,8 @@ class CommonMapper(
             squizId = city.squizId,
             shakerQuizId = city.shakerQuizId,
             quizPleaseId = city.quizPleaseId,
+            countryCode = city.countryCode,
+            shakerTeamSize = city.shakerTeamSize,
             isSearchVisible = true,
             isSelected = false,
         )
@@ -43,6 +45,8 @@ class CommonMapper(
             squizId = city.squizId,
             shakerQuizId = city.shakerQuizId,
             quizPleaseId = city.quizPleaseId,
+            countryCode = city.countryCode.orEmpty(),
+            shakerTeamSize = city.shakerTeamSize
         )
     }
 
