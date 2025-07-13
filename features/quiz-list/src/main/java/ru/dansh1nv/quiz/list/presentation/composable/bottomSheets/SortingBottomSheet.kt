@@ -37,6 +37,9 @@ internal fun SortingBottomSheet(
                 text = stringResource(id = item.titleRes),
                 item = item,
                 localState = localState,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 8.dp, vertical = 4.dp),
                 onClick = { onUIEvent(BottomSheetEvent.OnSortClick(item)) }
             )
             if (Sort.entries.lastIndex != index) {

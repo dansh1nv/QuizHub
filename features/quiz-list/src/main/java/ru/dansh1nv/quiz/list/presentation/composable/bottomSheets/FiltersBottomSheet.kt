@@ -27,7 +27,7 @@ internal fun FiltersBottomSheet(
     val localState = remember { mutableStateOf(screenState.filtersState.filters) }
     LazyColumn(
         modifier = Modifier
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .padding(horizontal = 16.dp, vertical = 4.dp)
             .fillMaxWidth()
             .wrapContentHeight(),
     ) {
@@ -36,6 +36,9 @@ internal fun FiltersBottomSheet(
                 text = stringResource(id = item.titleRes),
                 item = item,
                 localState = localState,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 4.dp, horizontal = 8.dp),
                 onClick = { onUIEvent(BottomSheetEvent.OnFilterClick(item)) }
             )
             if (Filters.entries.lastIndex != index) {

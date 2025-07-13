@@ -52,12 +52,13 @@ internal fun CityBottomSheet(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .padding(vertical = 8.dp)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight()
+                .padding(horizontal = 16.dp)
                 .padding(bottom = footerHeightToDp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
@@ -78,18 +79,23 @@ internal fun CityBottomSheet(
                 keyboardController = keyboardController,
                 focusRequester = focusRequester,
                 focusManager = focusManager,
+                modifier = Modifier.fillMaxWidth(),
             )
 
             LazyColumn(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(bottom = footerHeightToDp),
+                    .fillMaxWidth()
+                    .padding(bottom = footerHeightToDp)
+                    .padding(bottom = 16.dp),
             ) {
                 itemsIndexed(searchResults) { index, item ->
                     SingleSelectableListItem(
                         text = item.name,
                         item = item,
                         localState = localSelectedCity,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 8.dp, vertical = 4.dp),
                     )
 
                     if (searchResults.lastIndex != index) {
@@ -107,6 +113,7 @@ internal fun CityBottomSheet(
             modifier = Modifier
                 .fillMaxWidth()
                 .background(QuizHubTheme.colorScheme.surfaceContainer)
+                .padding(horizontal = 16.dp)
                 .onSizeChanged { footerHeight = it.height }
                 .align(Alignment.BottomCenter)
         ) {

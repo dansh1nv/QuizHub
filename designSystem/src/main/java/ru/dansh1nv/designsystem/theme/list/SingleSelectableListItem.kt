@@ -19,16 +19,14 @@ fun <Item> SingleSelectableListItem(
     text: String,
     item: Item,
     localState: MutableState<Item>,
+    modifier: Modifier = Modifier,
     onClick: () -> Unit = {},
 ) {
     Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(8.dp)
-            .clickable {
-                localState.value = item
-                onClick.invoke()
-            },
+        modifier = modifier.clickable {
+            localState.value = item
+            onClick.invoke()
+        },
         horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Text(
