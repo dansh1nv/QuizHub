@@ -101,7 +101,7 @@ internal fun QuizCard(
             QuizLocationElement(
                 quizGame.location,
                 modifier,
-                onLocationClick = { onUIEvent(ScreenEvent.OnShowLocationEventClick(quizGame.id)) }
+                onLocationClick = { onUIEvent(ScreenEvent.OnShowLocationEventClick(quizGame)) }
             )
         }
         QuizPriceElement(quizGame, modifier)

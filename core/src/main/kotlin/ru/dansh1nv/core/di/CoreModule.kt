@@ -12,12 +12,16 @@ import org.koin.dsl.module
 import ru.dansh1nv.core.datastore.AppDataStore
 import ru.dansh1nv.core.datastore.AppPreferences
 import ru.dansh1nv.core.presentation.ActionEventsListener
+import ru.dansh1nv.core.presentation.IntentErrorMapper
+import ru.dansh1nv.core.presentation.SnackbarListener
 import ru.dansh1nv.designsystem.theme.bottomsheet.controller.BottomSheetController
 import ru.dansh1nv.designsystem.theme.bottomsheet.controller.BottomSheetControllerImpl
 
 fun coreModule() = module {
     factoryOf(::BottomSheetControllerImpl) bind BottomSheetController::class
     singleOf(::ActionEventsListener)
+    singleOf(::SnackbarListener)
+    singleOf(::IntentErrorMapper)
     single<AppDataStore> {
         val dataStore = DataStoreFactory.create(
             serializer = AppPreferences.Serializer(Json),

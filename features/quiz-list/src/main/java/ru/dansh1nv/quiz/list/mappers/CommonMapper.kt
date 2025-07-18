@@ -92,7 +92,7 @@ class CommonMapper(
         )
     }
 
-    private fun mapGeoLocation(
+    fun mapGeoLocation(
         latitude: String,
         longitude: String,
     ): GeoLocationUI {

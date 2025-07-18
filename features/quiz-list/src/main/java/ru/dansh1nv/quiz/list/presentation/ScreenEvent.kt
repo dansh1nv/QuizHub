@@ -4,6 +4,7 @@ import com.kizitonwose.calendar.core.CalendarDay
 import ru.dansh1nv.core.presentation.UIEvent
 import ru.dansh1nv.quiz.list.models.CityModel
 import ru.dansh1nv.quiz.list.models.filters.Filters
+import ru.dansh1nv.quiz.list.models.item.QuizUI
 import ru.dansh1nv.quiz.list.models.sorting.Sort
 
 internal sealed interface QuizListEvent : UIEvent
@@ -20,7 +21,7 @@ internal sealed interface ScreenEvent : QuizListEvent {
     data object ResetFilters : ScreenEvent
     data class OnSearch(val query: String) : ScreenEvent
     data class OnCityClick(val city: CityModel) : ScreenEvent
-    data class OnShowLocationEventClick(val id: String) : ScreenEvent
+    data class OnShowLocationEventClick(val quiz: QuizUI) : ScreenEvent
 }
 
 internal sealed interface BottomSheetEvent : QuizListEvent {
