@@ -8,7 +8,7 @@ import ru.dansh1nv.quiz_list_domain.repository.ISQuizRepository
 class SquizInteractor(
     private val repository: ISQuizRepository,
 ) {
-    suspend fun getQuizList(cityId: City): Flow<List<SQuiz>> {
-        return repository.getAllQuizzes(cityId = cityId)
+    suspend fun getQuizList(city: City): Flow<List<SQuiz>> {
+        return repository.getAllQuizzes(city)
     }
 }

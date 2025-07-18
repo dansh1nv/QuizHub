@@ -39,7 +39,7 @@ import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.FiltersBottomS
 import ru.dansh1nv.quiz.list.presentation.composable.bottomSheets.SortingBottomSheet
 import ru.dansh1nv.quiz.list.presentation.composable.elements.ResetFiltersButton
 import ru.dansh1nv.quiz.list.presentation.composable.elements.SortingIndication
-import ru.dansh1nv.quiz.list.presentation.composable.placeholder.EmptyPlaceholder
+import ru.dansh1nv.quiz.list.presentation.composable.placeholder.EmptyCityPlaceholder
 import ru.dansh1nv.quiz.list.presentation.composable.placeholder.ErrorPlaceholder
 
 @Composable
@@ -104,7 +104,7 @@ internal fun BaseScreen(
             }
 
             UIStatus.Empty -> {
-                EmptyPlaceholder()
+                EmptyCityPlaceholder(onUIEvent)
             }
 
             is UIStatus.Loaded -> {
@@ -147,11 +147,17 @@ internal fun BaseScreen(
         customBottomSheetContent = { bottomSheet ->
             when (bottomSheet) {
                 is BottomSheetModels.FilterBottomSheetModel -> {
-                    FiltersBottomSheet(onUIEvent = onUIEvent)
+                    FiltersBottomSheet(
+                        screenState = screenState,
+                        onUIEvent = onUIEvent,
+                    )
                 }
 
                 is BottomSheetModels.SortingBottomSheetModel -> {
-                    SortingBottomSheet(onUIEvent = onUIEvent)
+                    SortingBottomSheet(
+                        screenState = screenState,
+                        onUIEvent = onUIEvent,
+                    )
                 }
 
                 is BottomSheetModels.CalendarBottomSheetModel -> {

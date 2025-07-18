@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class QuizPleaseResponse(
     @SerialName("data")
-    val data: QuizPleaseData?,
+    val data: QuizPleaseData? = null,
 )

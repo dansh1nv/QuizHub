@@ -23,4 +23,5 @@ data class QuizUI(
     val difficulty: String,
     val status: StatusUI?,
     val paymentMethod: String,
+    val isVisible: Boolean = true,
 )

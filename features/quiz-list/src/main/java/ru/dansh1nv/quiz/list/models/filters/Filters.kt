@@ -7,7 +7,7 @@ import ru.dansh1nv.quiz.list.models.item.Organization
 enum class Filters(
     @StringRes
     val titleRes: Int,
-    val organization: Organization
+    val organization: Organization,
 ) {
     QUIZ_PLEASE(
         titleRes = R.string.filter_id_quiz_please,

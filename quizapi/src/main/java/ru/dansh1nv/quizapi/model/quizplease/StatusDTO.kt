@@ -6,5 +6,5 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class StatusDTO(
     @SerialName("id")
-    val id: Int?,
+    val id: Int? = null,
 )

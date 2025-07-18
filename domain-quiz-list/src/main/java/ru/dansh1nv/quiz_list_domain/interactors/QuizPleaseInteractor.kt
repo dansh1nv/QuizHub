@@ -11,7 +11,7 @@ class QuizPleaseInteractor(
         pageNumber: Int,
         pageSize: Int,
     ) = repository.getQuizList(
-        cityId = cityId,
+        city = cityId,
         pageNumber = pageNumber,
         pageSize = pageSize
     )

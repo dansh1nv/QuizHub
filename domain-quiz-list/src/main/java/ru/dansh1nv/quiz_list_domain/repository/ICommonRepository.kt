@@ -1,6 +1,7 @@
 package ru.dansh1nv.quiz_list_domain.repository
 
 import kotlinx.coroutines.flow.Flow
+import ru.dansh1nv.quiz_list_domain.models.common.City
 import ru.dansh1nv.quiz_list_domain.models.common.GeoInfo
 
 interface ICommonRepository {
@@ -9,4 +10,6 @@ interface ICommonRepository {
 
     fun getGeoInfoByQuery(query: String): Flow<GeoInfo>
     fun getGeoInfoByCoordinates(latitude: Double, longitude: Double): Flow<GeoInfo>
+
+    fun fetchCities(): Flow<List<City>>
 }

@@ -1,7 +1,6 @@
 package ru.dansh1nv.quizapi.api
 
 import io.ktor.client.HttpClient
-import io.ktor.client.call.body
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.ktor.client.statement.bodyAsText
@@ -27,7 +26,7 @@ class SquizApi(
         val httpRequest = httpClient.get {
             url {
                 path(PATH)
-                parameter(CITY, cityId) //111979372401 - Санкт-Петербург
+                parameter(CITY, cityId)
                 parameter(PAGE_NUMBER, 1)
                 parameter(PAGE_SIZE, 100)
                 parameter("getparts", true)

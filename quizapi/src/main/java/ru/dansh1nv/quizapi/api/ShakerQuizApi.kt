@@ -14,8 +14,8 @@ import ru.dansh1nv.quizapi.model.shakerquiz.ShakerQuizResponseDTO
 class ShakerQuizApi(
     private val httpClient: HttpClient
 ) {
-    fun getQuizzes(city: String?) = flow {
-        if (city == null) {
+    fun getQuizzes(cityId: String?) = flow {
+        if (cityId == null) {
             emit(emptyList())
             return@flow
         }
@@ -26,8 +26,8 @@ class ShakerQuizApi(
                 parameter(PAGE_SIZE, 100)
                 parameter(
                     SEARCH,
-                    "{\"$CITY_ID\":[\"$city\"]}"
-                ) //b489621b-cfb2-4aef-8c22-02daf19fa08f - id Санкт-Петербург
+                    "{\"$CITY_ID\":[\"$cityId\"]}"
+                )
             }
         }
         val data = response.body<ShakerQuizResponseDTO>()

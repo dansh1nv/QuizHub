@@ -13,7 +13,6 @@ import ru.dansh1nv.quiz.list.models.item.StatusUI
 import ru.dansh1nv.quiz.list.models.item.TeamSizeUI
 import ru.dansh1nv.quiz_list_domain.models.Status
 import ru.dansh1nv.quiz_list_domain.models.common.City
-import ru.dansh1nv.quiz_list_domain.models.common.CityId
 import ru.dansh1nv.quiz_list_domain.models.common.GameDate
 import ru.dansh1nv.quiz_list_domain.models.common.GameFormat
 import ru.dansh1nv.quiz_list_domain.models.common.Location
@@ -21,27 +20,33 @@ import ru.dansh1nv.quiz_list_domain.models.common.Location
 class CommonMapper(
     private val resourceManager: IResourceManager,
 ) {
+    fun mapCities(cities: List<City>): List<CityModel> {
+        return cities.map(::mapToCityModel)
+    }
 
-    fun mapCurrentCity(city: String): CityModel {
-        val cityId = CityId.entries.firstOrNull { cityId ->
-            cityId.name == city
-        }
-        return if (cityId != null) {
-            CityModel(
-                id = cityId,
-                name = cityId.title,
-                isSearchVisible = true,
-                isSelected = true,
-            )
-        } else {
-            CityModel.UNKNOWN
-        }
+    fun mapToCityModel(city: City) : CityModel {
+        return CityModel(
+            id = city.id,
+            name = city.name,
+            squizId = city.squizId,
+            shakerQuizId = city.shakerQuizId,
+            quizPleaseId = city.quizPleaseId,
+            countryCode = city.countryCode,
+            shakerTeamSize = city.shakerTeamSize,
+            isSearchVisible = true,
+            isSelected = false,
+        )
     }
 
     fun mapToCity(city: CityModel): City {
         return City(
             id = city.id,
             name = city.name,
+            squizId = city.squizId,
+            shakerQuizId = city.shakerQuizId,
+            quizPleaseId = city.quizPleaseId,
+            countryCode = city.countryCode.orEmpty(),
+            shakerTeamSize = city.shakerTeamSize
         )
     }
 

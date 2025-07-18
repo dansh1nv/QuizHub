@@ -6,6 +6,6 @@ import ru.dansh1nv.quiz_list_domain.models.common.City
 
 interface ISQuizRepository {
 
-    suspend fun getAllQuizzes(cityId: City): Flow<List<SQuiz>>
+    suspend fun getAllQuizzes(city: City): Flow<List<SQuiz>>
 
 }

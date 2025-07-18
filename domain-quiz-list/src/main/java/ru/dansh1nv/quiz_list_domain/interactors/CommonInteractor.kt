@@ -1,6 +1,7 @@
 package ru.dansh1nv.quiz_list_domain.interactors
 
 import kotlinx.coroutines.flow.Flow
+import ru.dansh1nv.quiz_list_domain.models.common.City
 import ru.dansh1nv.quiz_list_domain.repository.ICommonRepository
 
 class CommonInteractor(
@@ -13,6 +14,10 @@ class CommonInteractor(
 
     suspend fun updateCurrentCity(city: String) {
         repository.updateCurrentCity(city)
+    }
+
+    fun fetchCities(): Flow<List<City>> {
+        return repository.fetchCities()
     }
 
 }

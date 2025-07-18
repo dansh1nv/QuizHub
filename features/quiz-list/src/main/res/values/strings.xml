@@ -39,7 +39,8 @@
     <string name="quiz_status_close">Регистрация закрыта</string>
 
     <string name="city_bottomsheet_title">Выберите город</string>
-    <string name="empty_placeholder_city_not_selected">Выберите город для получения списка доступных мероприятий</string>
+    <string name="empty_placeholder_city_not_selected_text">Выберите город для получения списка доступных мероприятий</string>
+    <string name="empty_placeholder_city_not_selected_button">Выбрать город</string>
 
     <string name="quiz_list_fetch_data_error">Во время выполнения запроса произошла ошибка</string>
 </resources>

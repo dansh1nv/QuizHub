@@ -6,41 +6,41 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class QuizPleaseDTO(
     @SerialName("id")
-    val id: Long?,
+    val id: Long? = null,
     @SerialName("title")
-    val title: String?,
+    val title: String? = null,
     @SerialName("name")
-    val packageNumber: String?,
+    val packageNumber: String? = null,
     @SerialName("quote")
-    val description: String?,
+    val description: String? = null,
     @SerialName("special_tablet_banner")
-    val image: String?,
+    val image: String? = null,
     @SerialName("game_type")
-    val gameFormat: Int?,
+    val gameFormat: Int? = null,
     @SerialName("datetime")
-    val datetime: String?,
+    val datetime: String? = null,
     @SerialName("format_date")
-    val formatDate: String?,
+    val formatDate: String? = null,
     @SerialName("format_time")
-    val formatTime: String?,
+    val formatTime: String? = null,
     @SerialName("price")
-    val price: Int?,
+    val price: Int? = null,
     @SerialName("format_price")
-    val formatPrice: String?,
+    val formatPrice: String? = null,
     @SerialName("place")
-    val location: String?,
+    val location: String? = null,
     @SerialName("address")
-    val address: String?,
+    val address: String? = null,
     @SerialName("city")
-    val city: String?,
+    val city: String? = null,
     @SerialName("latitude")
-    val latitude: String?,
+    val latitude: String? = null,
     @SerialName("longitude")
-    val longitude: String?,
+    val longitude: String? = null,
     @SerialName("game_difficulty")
-    val difficulty: String?,
+    val difficulty: String? = null,
     @SerialName("status")
-    val status: StatusDTO?,
+    val status: StatusDTO? = null,
     @SerialName("payment_method")
-    val paymentMethod: Int?,
+    val paymentMethod: Int? = null,
 )

@@ -35,6 +35,7 @@ fun CustomSearchBar(
     focusRequester: FocusRequester,
     focusManager: FocusManager,
     onClear: () -> Unit,
+    modifier: Modifier = Modifier,
     placeholder: @Composable () -> Unit = {
         Text(
             text = stringResource(R.string.search_bar_placeholder),
@@ -54,7 +55,6 @@ fun CustomSearchBar(
             modifier = Modifier.clickable { onClear.invoke() }
         )
     },
-    modifier: Modifier = Modifier
 ) {
     Box(
         modifier

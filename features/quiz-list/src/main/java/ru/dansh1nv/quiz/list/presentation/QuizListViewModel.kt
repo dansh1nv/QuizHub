@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.kizitonwose.calendar.core.CalendarDay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
@@ -41,7 +42,6 @@ import ru.dansh1nv.quiz_list_domain.models.Quiz
 import ru.dansh1nv.quiz_list_domain.models.QuizPlease
 import ru.dansh1nv.quiz_list_domain.models.SQuiz
 import ru.dansh1nv.quiz_list_domain.models.ShakerQuiz
-import ru.dansh1nv.quiz_list_domain.models.common.CityId
 import timber.log.Timber
 
 internal class QuizListViewModel(
@@ -63,25 +63,8 @@ internal class QuizListViewModel(
     private val quizMap = mutableMapOf<Organization, MutableList<QuizUI>>()
 
     override suspend fun onLaunch() {
+        fetchCities()
         observeCurrentCity()
-        updateState {
-            copy(
-                cities = listOf(
-                    CityModel(
-                        name = "Краснодар",
-                        id = CityId.KRASNODAR,
-                        isSearchVisible = true,
-                        isSelected = false,
-                    ),
-                    CityModel(
-                        name = "Санкт-Петербург",
-                        id = CityId.SPB,
-                        isSearchVisible = true,
-                        isSelected = false,
-                    ),
-                )
-            )
-        }
     }
 
     override fun handleEvent(event: QuizListEvent) {
@@ -93,8 +76,14 @@ internal class QuizListViewModel(
 
     private fun observeCurrentCity() {
         commonInteractor.observeCurrentCity()
-            .onEach { city ->
-                updateState { copy(currentCity = commonMapper.mapCurrentCity(city)) }
+            .onEach { cityName ->
+                updateState {
+                    copy(
+                        currentCity = cities
+                            .firstOrNull { it.name == cityName }
+                            ?: CityModel.UNKNOWN
+                    )
+                }
                 completeAction { fetchQuizList() }
             }.launchIn(viewModelScope)
     }
@@ -168,8 +157,12 @@ internal class QuizListViewModel(
 
     private fun updateCurrentCity(city: CityModel) {
         updateState {
+            val cities = cities.map { city ->
+                city.copy(isSearchVisible = true)
+            }
             copy(
                 currentCity = city,
+                cities = cities,
             )
         }
 
@@ -177,7 +170,7 @@ internal class QuizListViewModel(
             fetchQuizList()
             bottomSheetController.dismiss()
             viewModelScope.launch {
-                commonInteractor.updateCurrentCity(city.id.name)
+                commonInteractor.updateCurrentCity(city.name)
             }
         }
     }
@@ -423,6 +416,19 @@ internal class QuizListViewModel(
 
     private fun navigateToQuizDetails(quizId: String) {
         postSideEffect(QuizListSideEffect.NavigateQuizDetails(quizId))
+    }
+
+    private suspend fun fetchCities() {
+        commonInteractor.fetchCities()
+            .map { commonMapper.mapCities(it) }
+            .flowOn(Dispatchers.IO)
+            .onEach {
+                updateState {
+                    copy(cities = it)
+                }
+            }
+            .flowOn(Dispatchers.Main)
+            .collect()
     }
 }
 
