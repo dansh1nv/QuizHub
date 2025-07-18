@@ -1,5 +1,6 @@
 package ru.dansh1nv.quiz.list.presentation
 
+import android.content.ActivityNotFoundException
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.viewModelScope
 import com.kizitonwose.calendar.core.CalendarDay
@@ -13,8 +14,12 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import ru.dansh1nv.common.addOrAppend
 import ru.dansh1nv.core.presentation.ActionEventsListener
+import ru.dansh1nv.core.presentation.IntentErrorMapper
 import ru.dansh1nv.core.presentation.ScreenState
+import ru.dansh1nv.core.presentation.SnackbarListener
 import ru.dansh1nv.core.presentation.model.ActionEvents
+import ru.dansh1nv.core.presentation.model.IntentError
+import ru.dansh1nv.core.presentation.model.SnackbarEvents
 import ru.dansh1nv.core.presentation.model.UIStatus
 import ru.dansh1nv.core.presentation.viewModel.BaseMviViewModel
 import ru.dansh1nv.core.resourceManager.IResourceManager
@@ -53,9 +58,11 @@ internal class QuizListViewModel(
     private val quizPleaseMapper: QuizPleaseMapper,
     private val shakerQuizMapper: ShakerQuizMapper,
     private val actionEventsMapper: ActionEventsMapper,
+    private val intentErrorMapper: IntentErrorMapper,
     private val resourceManager: IResourceManager,
     private val bottomSheetController: BottomSheetController,
-    private val actionEventsListener: ActionEventsListener
+    private val actionEventsListener: ActionEventsListener,
+    private val snackbarListener: SnackbarListener
 ) : BaseMviViewModel<QuizListState, QuizListSideEffect, QuizListEvent>(
     initialState = QuizListState()
 ), BottomSheetController by bottomSheetController {
@@ -106,7 +113,7 @@ internal class QuizListViewModel(
                         copy(
                             uiStatus = UIStatus.Error(
                                 errorText =
-                                resourceManager.getStringById(R.string.quiz_list_fetch_data_error)
+                                    resourceManager.getStringById(R.string.quiz_list_fetch_data_error)
                             )
                         )
                     }
@@ -144,6 +151,7 @@ internal class QuizListViewModel(
             }
 
             is ScreenEvent.OnShareEventClick -> handleShareEventClick(event.id)
+            is ScreenEvent.OnShowLocationEventClick -> handleShowLocationEventClick(event.quiz)
             is ScreenEvent.ResetFilters -> {
                 resetFilters()
                 showQuizList()
@@ -196,6 +204,50 @@ internal class QuizListViewModel(
         }
     }
 
+    private fun handleShowLocationEventClick(quiz: QuizUI) {
+        val query = actionEventsMapper.buildGeoQuery(quiz)
+        geoInfoInteractor.getGeoInfoByQuery(query)
+            .map { geoInfo ->
+                val location = commonMapper.mapGeoLocation(
+                    latitude = geoInfo.latitude.toString(),
+                    longitude = geoInfo.longitude.toString(),
+                )
+                val updatedQuiz = quiz.copy(location = quiz.location?.copy(geolocation = location))
+                val quizList = quizMap[quiz.organization]?.map { model ->
+                    if (quiz.id == model.id) updatedQuiz else model
+                }.orEmpty()
+                Pair(updatedQuiz, quizList)
+            }
+            .catch { ex ->
+                Timber.e(ex)
+                val locationText = actionEventsMapper.mapToLocationEventText(quiz)
+                actionEventsListener.onActionEvent(ActionEvents.ShowLocationEvent(locationText))
+                handleError(ex)
+            }
+            .flowOn(Dispatchers.Default)
+            .onEach { (updatedQuiz, quizList) ->
+                updateState { copy(quizList = quizList) }
+                val locationText = actionEventsMapper.mapToLocationEventText(updatedQuiz)
+                actionEventsListener.onActionEvent(ActionEvents.ShowLocationEvent(locationText))
+            }
+            .flowOn(Dispatchers.Main)
+            .launchIn(viewModelScope)
+    }
+
+    private fun handleError(exception: Throwable) {
+        val error = when (exception) {
+            is ActivityNotFoundException -> IntentError.ActivityNotFound
+            is IllegalArgumentException -> IntentError.IllegalArgument
+            is SecurityException -> IntentError.Security
+            is NoSuchElementException -> IntentError.GeoLocationError
+            else -> IntentError.Unknown(exception)
+        }
+        if (error !is IntentError.GeoLocationError) {
+            val errorMessage = intentErrorMapper.mapErrorMessage(error)
+            snackbarListener.showSnackbar(SnackbarEvents.ShowErrorSnackbar(errorMessage))
+        }
+    }
+
     private fun handleShareEventClick(id: String) {
         val quiz = container.stateFlow.value.quizList.firstOrNull { it.id == id } ?: return
         val shareText = actionEventsMapper.mapToShareText(quiz)
@@ -230,7 +282,8 @@ internal class QuizListViewModel(
             BottomSheetModels.CityBottomSheetModel(
                 toolbar = Toolbar(
                     title = resourceManager.getStringById(R.string.city_bottomsheet_title),
-                    trailIcon = IconModel(UIDrawable.ic_clear,
+                    trailIcon = IconModel(
+                        UIDrawable.ic_clear,
                         onClick = { dismiss() }
                     ),
                 ),

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_activity_not_found">Не найдено приложение для работы с картами</string>
+    <string name="error_illegal_argument">Некорректный запрос</string>
+    <string name="error_security">Нет необходимых разрешений</string>
+    <string name="error_no_such_element">Точные координаты не найдены</string>
+    <string name="error_unknown">Произошла ошибка при выполнении действия</string>
+</resources>

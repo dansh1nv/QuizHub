@@ -5,11 +5,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material3.SnackbarDuration
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
@@ -20,9 +28,13 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.compose.KoinContext
-import ru.dansh1nv.common.startIntentSafe
 import ru.dansh1nv.core.presentation.ActionEventsListener
+import ru.dansh1nv.core.presentation.IntentErrorMapper
+import ru.dansh1nv.core.presentation.SnackbarListener
 import ru.dansh1nv.core.presentation.model.ActionEvents
+import ru.dansh1nv.core.presentation.model.SnackbarEvents
+import ru.dansh1nv.core.startIntentSafe
+import ru.dansh1nv.designsystem.theme.elements.QuizHubSnackbar
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quizhub.navigation.AppNavGraph
 
@@ -31,6 +43,9 @@ class MainActivity : ComponentActivity() {
 
     private val viewModel by viewModel<MainActivityViewModel>()
     private val actionEventsListener by inject<ActionEventsListener>()
+    private val snackbarListener by inject<SnackbarListener>()
+    private val intentErrorMapper by inject<IntentErrorMapper>()
+    private lateinit var snackbarHostState: SnackbarHostState
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -39,6 +54,31 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent { QuizHubApp() }
         observerGlobalEvents()
+        observerSnackbarEvents()
+    }
+
+    private fun observerSnackbarEvents() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                snackbarListener.observeSnackbarMessages().collect { event ->
+                    when (event) {
+                        is SnackbarEvents.ShowErrorSnackbar -> {
+                            showSnackbar(event.message)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun showSnackbar(message: String) {
+        lifecycleScope.launch {
+            snackbarHostState.showSnackbar(
+                message = message,
+                duration = SnackbarDuration.Short,
+                withDismissAction = false
+            )
+        }
     }
 
     private fun observerGlobalEvents() {
@@ -47,10 +87,23 @@ class MainActivity : ComponentActivity() {
                 actionEventsListener.observerActionEvents().collect { event ->
                     when (event) {
                         is ActionEvents.ShareEvent -> handleShareEvent(event.shareText)
+                        is ActionEvents.ShowLocationEvent -> handleLocationEvent(event.locationText)
                     }
                 }
             }
         }
+    }
+
+    private fun handleLocationEvent(location: String) {
+        val uri = location.toUri()
+        val mapIntent = Intent(Intent.ACTION_VIEW, uri)
+        startIntentSafe(
+            mapIntent,
+            intentErrorMapper,
+            onFailure = { errorMessage ->
+                showSnackbar(errorMessage)
+            }
+        )
     }
 
     private fun handleShareEvent(shareText: String) {
@@ -65,7 +118,11 @@ class MainActivity : ComponentActivity() {
             Intent.createChooser(
                 shareIntent,
                 ""
-            )
+            ),
+            intentErrorMapper,
+            onFailure = { errorMessage ->
+                showSnackbar(errorMessage)
+            }
         )
     }
 
@@ -73,6 +130,7 @@ class MainActivity : ComponentActivity() {
     private fun QuizHubApp() {
         KoinContext {
             val navController = rememberNavController()
+            snackbarHostState = remember { SnackbarHostState() }
             QuizHubTheme(isDarkTheme = true) {
                 Surface(
                     modifier = Modifier
@@ -80,10 +138,18 @@ class MainActivity : ComponentActivity() {
                         .statusBarsPadding(),
                     color = QuizHubTheme.colorScheme.surface
                 ) {
-                    AppNavGraph(
-                        navController = navController,
-                        onCloseApp = { this@MainActivity.finish() }
-                    )
+                    Box(modifier = Modifier.fillMaxSize()) {
+                        AppNavGraph(
+                            navController = navController,
+                            onCloseApp = { this@MainActivity.finish() }
+                        )
+                        QuizHubSnackbar(
+                            hostState = snackbarHostState,
+                            modifier = Modifier
+                                .align(Alignment.BottomCenter)
+                                .padding(16.dp)
+                        )
+                    }
                 }
             }
         }

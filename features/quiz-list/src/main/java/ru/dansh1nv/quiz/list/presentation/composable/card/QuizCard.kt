@@ -97,7 +97,13 @@ internal fun QuizCard(
         quizGame.teamSize?.teamSizeText?.let {
             QuizTeamElement(teamSizeUI = quizGame.teamSize, modifier = modifier)
         }
-        quizGame.location?.let { QuizLocationElement(quizGame.location, modifier) }
+        quizGame.location?.let {
+            QuizLocationElement(
+                quizGame.location,
+                modifier,
+                onLocationClick = { onUIEvent(ScreenEvent.OnShowLocationEventClick(quizGame)) }
+            )
+        }
         QuizPriceElement(quizGame, modifier)
         quizGame.status?.let { QuizStatusElement(status = quizGame.status) }
     }
