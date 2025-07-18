@@ -62,7 +62,7 @@ internal class QuizListViewModel(
     private val resourceManager: IResourceManager,
     private val bottomSheetController: BottomSheetController,
     private val actionEventsListener: ActionEventsListener,
-    private val snacbarListener: SnackbarListener
+    private val snackbarListener: SnackbarListener
 ) : BaseMviViewModel<QuizListState, QuizListSideEffect, QuizListEvent>(
     initialState = QuizListState()
 ), BottomSheetController by bottomSheetController {
@@ -239,11 +239,13 @@ internal class QuizListViewModel(
             is ActivityNotFoundException -> IntentError.ActivityNotFound
             is IllegalArgumentException -> IntentError.IllegalArgument
             is SecurityException -> IntentError.Security
-            is NoSuchElementException -> IntentError.NoSuchElementException
+            is NoSuchElementException -> IntentError.GeoLocationError
             else -> IntentError.Unknown(exception)
         }
-        val errorMessage = intentErrorMapper.map(error)
-        snacbarListener.showSnackbar(SnackbarEvents.ShowErrorSnackbar(errorMessage))
+        if (error !is IntentError.GeoLocationError) {
+            val errorMessage = intentErrorMapper.mapErrorMessage(error)
+            snackbarListener.showSnackbar(SnackbarEvents.ShowErrorSnackbar(errorMessage))
+        }
     }
 
     private fun handleShareEventClick(id: String) {

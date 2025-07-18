@@ -18,10 +18,10 @@ fun Context.startIntentSafe(
             is ActivityNotFoundException -> IntentError.ActivityNotFound
             is IllegalArgumentException -> IntentError.IllegalArgument
             is SecurityException -> IntentError.Security
-            is NoSuchElementException -> IntentError.NoSuchElementException
+            is NoSuchElementException -> IntentError.GeoLocationError
             else -> IntentError.Unknown(exception)
         }
-        val errorMessage = intentErrorMapper.map(intentError)
+        val errorMessage = intentErrorMapper.mapErrorMessage(intentError)
         onFailure(errorMessage)
     }
 }

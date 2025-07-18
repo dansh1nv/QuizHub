@@ -34,6 +34,7 @@ import ru.dansh1nv.core.presentation.SnackbarListener
 import ru.dansh1nv.core.presentation.model.ActionEvents
 import ru.dansh1nv.core.presentation.model.SnackbarEvents
 import ru.dansh1nv.core.startIntentSafe
+import ru.dansh1nv.designsystem.theme.elements.QuizHubSnackbar
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quizhub.navigation.AppNavGraph
 
@@ -142,7 +143,7 @@ class MainActivity : ComponentActivity() {
                             navController = navController,
                             onCloseApp = { this@MainActivity.finish() }
                         )
-                        CustomSnackbar(
+                        QuizHubSnackbar(
                             hostState = snackbarHostState,
                             modifier = Modifier
                                 .align(Alignment.BottomCenter)

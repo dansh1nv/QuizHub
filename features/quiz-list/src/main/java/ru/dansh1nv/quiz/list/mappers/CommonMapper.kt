@@ -24,7 +24,7 @@ class CommonMapper(
         return cities.map(::mapToCityModel)
     }
 
-    fun mapToCityModel(city: City) : CityModel {
+    fun mapToCityModel(city: City): CityModel {
         return CityModel(
             id = city.id,
             name = city.name,
@@ -76,19 +76,20 @@ class CommonMapper(
         location: Location,
         gameFormat: GameFormat,
     ): LocationUI {
-        val isOnlineGame = gameFormat == GameFormat.OFFLINE
+        val isOfflineGame = gameFormat == GameFormat.OFFLINE
         return LocationUI(
-            place = if (isOnlineGame) {
+            place = if (isOfflineGame) {
                 location.name.orEmpty()
             } else {
                 resourceManager.getStringById(R.string.quiz_online)
             },
-            address = location.address.takeIf { isOnlineGame }.orEmpty(),
+            address = location.address.takeIf { isOfflineGame }.orEmpty(),
             city = location.city.orEmpty(),
             geolocation = mapGeoLocation(
                 location.latitude?.toString().orEmpty(),
                 location.longitude?.toString().orEmpty(),
-            )
+            ),
+            isOnline = !isOfflineGame
         )
     }
 

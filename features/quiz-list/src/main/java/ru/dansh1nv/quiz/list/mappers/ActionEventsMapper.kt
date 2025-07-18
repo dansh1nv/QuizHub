@@ -64,14 +64,10 @@ class ActionEventsMapper(
     }
 
     private fun buildQueryWithoutCoordinates(location: LocationUI): String {
-        return buildString {
-            location.address.takeIf { it.isNotBlank() }?.let { address ->
-                append(address)
-            }
-            location.place.takeIf { it.isNotBlank() }?.let { place ->
-                append(", $place")
-            }
-        }.takeIf { it.isNotBlank() }?.let { GEO_URI_PREFIX + Uri.encode(it) } ?: ""
+        return formatStringsWithDividerPoints(
+            arrayOf(location.address, location.place),
+            StringDividerType.CommaSpace
+        ).takeIf { it.isNotBlank() }?.let { GEO_URI_PREFIX + Uri.encode(it) } ?: ""
     }
 
     companion object {

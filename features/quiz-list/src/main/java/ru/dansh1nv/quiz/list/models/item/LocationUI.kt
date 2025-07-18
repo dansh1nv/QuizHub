@@ -5,4 +5,5 @@ data class LocationUI(
     val address: String,
     val city: String,
     val geolocation: GeoLocationUI?,
+    val isOnline: Boolean
 )

@@ -11,7 +11,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import ru.dansh1nv.core.presentation.PlaceTypeValidator
 import ru.dansh1nv.core.presentation.calendar.clickable
 import ru.dansh1nv.designsystem.theme.elements.IconCell
 import ru.dansh1nv.designsystem.theme.elements.TextCell
@@ -25,13 +24,12 @@ internal fun QuizLocationElement(
     modifier: Modifier,
     onLocationClick: () -> Unit
 ) {
-    val isOnline = PlaceTypeValidator.isOnlineLocation(model.place)
     Row(
         modifier = modifier
             .fillMaxWidth()
             .clickable(
                 onClick = {
-                    if (!isOnline) {
+                    if (!model.isOnline) {
                         onLocationClick()
                     }
                 }
@@ -52,7 +50,7 @@ internal fun QuizLocationElement(
                 }
             }
         }
-        if (!isOnline) {
+        if (!model.isOnline) {
             Icon(
                 painter = painterResource(R.drawable.ic_arrow_forward),
                 contentDescription = null,
