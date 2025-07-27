@@ -5,14 +5,23 @@ import androidx.compose.runtime.Immutable
 import androidx.lifecycle.viewModelScope
 import com.kizitonwose.calendar.core.CalendarDay
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.BufferOverflow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flatMapConcat
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import ru.dansh1nv.common.addOrAppend
+import ru.dansh1nv.core.location.LocationListener
 import ru.dansh1nv.core.presentation.ActionEventsListener
 import ru.dansh1nv.core.presentation.IntentErrorMapper
 import ru.dansh1nv.core.presentation.ScreenState
@@ -62,7 +71,8 @@ internal class QuizListViewModel(
     private val resourceManager: IResourceManager,
     private val bottomSheetController: BottomSheetController,
     private val actionEventsListener: ActionEventsListener,
-    private val snackbarListener: SnackbarListener
+    private val snackbarListener: SnackbarListener,
+    private val locationListener: LocationListener,
 ) : BaseMviViewModel<QuizListState, QuizListSideEffect, QuizListEvent>(
     initialState = QuizListState()
 ), BottomSheetController by bottomSheetController {
@@ -113,7 +123,7 @@ internal class QuizListViewModel(
                         copy(
                             uiStatus = UIStatus.Error(
                                 errorText =
-                                    resourceManager.getStringById(R.string.quiz_list_fetch_data_error)
+                                resourceManager.getStringById(R.string.quiz_list_fetch_data_error)
                             )
                         )
                     }
@@ -426,7 +436,7 @@ internal class QuizListViewModel(
     private suspend fun fetchCities() {
         commonInteractor.fetchCities()
             .map { commonMapper.mapCities(it) }
-            .flowOn(Dispatchers.IO)
+            .flowOn(Dispatchers.Default)
             .onEach {
                 updateState {
                     copy(cities = it)

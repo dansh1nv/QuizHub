@@ -1,10 +1,12 @@
 package ru.dansh1nv.quizhub
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -13,10 +15,10 @@ import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
@@ -34,9 +36,11 @@ import ru.dansh1nv.core.presentation.SnackbarListener
 import ru.dansh1nv.core.presentation.model.ActionEvents
 import ru.dansh1nv.core.presentation.model.SnackbarEvents
 import ru.dansh1nv.core.startIntentSafe
+import ru.dansh1nv.core.typeAllias.UIString
 import ru.dansh1nv.designsystem.theme.elements.QuizHubSnackbar
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quizhub.navigation.AppNavGraph
+import android.Manifest.permission as Permission
 
 
 class MainActivity : ComponentActivity() {
@@ -45,7 +49,25 @@ class MainActivity : ComponentActivity() {
     private val actionEventsListener by inject<ActionEventsListener>()
     private val snackbarListener by inject<SnackbarListener>()
     private val intentErrorMapper by inject<IntentErrorMapper>()
-    private lateinit var snackbarHostState: SnackbarHostState
+    private val snackbarHostState by inject<SnackbarHostState>()
+
+    private val locationPermissionRequest = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        when {
+            permissions.getOrDefault(Permission.ACCESS_FINE_LOCATION, false) -> {
+                viewModel.getLocation()
+            }
+
+            permissions.getOrDefault(Permission.ACCESS_COARSE_LOCATION, false) -> {
+                viewModel.getLocation()
+            }
+
+            else -> {
+                showSnackbar(resources.getString(UIString.geolocation_permissions_not_granted))
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -55,16 +77,15 @@ class MainActivity : ComponentActivity() {
         setContent { QuizHubApp() }
         observerGlobalEvents()
         observerSnackbarEvents()
+        checkLocationPermission()
     }
 
     private fun observerSnackbarEvents() {
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                snackbarListener.observeSnackbarMessages().collect { event ->
-                    when (event) {
-                        is SnackbarEvents.ShowErrorSnackbar -> {
-                            showSnackbar(event.message)
-                        }
+            snackbarListener.observeSnackbarMessages().collect { event ->
+                when (event) {
+                    is SnackbarEvents.ShowErrorSnackbar -> {
+                        showSnackbar(event.message)
                     }
                 }
             }
@@ -130,7 +151,6 @@ class MainActivity : ComponentActivity() {
     private fun QuizHubApp() {
         KoinContext {
             val navController = rememberNavController()
-            snackbarHostState = remember { SnackbarHostState() }
             QuizHubTheme(isDarkTheme = true) {
                 Surface(
                     modifier = Modifier
@@ -153,6 +173,39 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    private fun checkLocationPermission() {
+        when {
+            ContextCompat.checkSelfPermission(
+                this,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED -> {
+                viewModel.getLocation()
+            }
+
+            shouldShowRequestPermissionRationale(android.Manifest.permission.ACCESS_FINE_LOCATION) -> {
+                showPermissionRationale()
+            }
+
+            else -> {
+                requestLocationPermission()
+            }
+        }
+    }
+
+    private fun requestLocationPermission() {
+        locationPermissionRequest.launch(
+            arrayOf(
+                android.Manifest.permission.ACCESS_FINE_LOCATION,
+                android.Manifest.permission.ACCESS_COARSE_LOCATION
+            )
+        )
+    }
+
+    private fun showPermissionRationale() {
+        showSnackbar(resources.getString(UIString.geolocation_need_permissions))
+        requestLocationPermission()
     }
 
     private companion object {

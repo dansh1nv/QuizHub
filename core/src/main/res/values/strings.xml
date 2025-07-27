@@ -5,4 +5,6 @@
     <string name="error_security">Нет необходимых разрешений</string>
     <string name="error_no_such_element">Точные координаты не найдены</string>
     <string name="error_unknown">Произошла ошибка при выполнении действия</string>
+    <string name="geolocation_need_permissions">Необходимо выдать разрешение на запрос геолокации</string>
+    <string name="geolocation_permissions_not_granted">Разрешения для получения геолокации не выданы</string>
 </resources>

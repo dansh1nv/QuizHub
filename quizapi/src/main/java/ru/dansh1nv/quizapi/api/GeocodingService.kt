@@ -60,8 +60,9 @@ class GeocodingService(
                     append(ZOOM, CITY_LEVEL_VALUE)
                 }
             }
-        }.body<GeoInfoDTO>()
-        emit(response)
+        }
+        val test = response.body<GeoInfoDTO>()
+        emit(test)
     }.flowOn(Dispatchers.IO)
 
     private companion object {

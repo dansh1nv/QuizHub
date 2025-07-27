@@ -39,7 +39,8 @@ class CommonRepository(
         remoteDataSource.getGeoInfoByQuery(query = query).map(mapper::mapGeoCity)
 
     override fun getGeoInfoByCoordinates(latitude: Double, longitude: Double): Flow<GeoInfo> =
-        remoteDataSource.getGeoInfoByCoordinates(latitude, longitude).map(mapper::mapGeoCity)
+        remoteDataSource.getGeoInfoByCoordinates(latitude, longitude)
+            .map(mapper::mapGeoCity)
 
     override fun fetchCities(): Flow<List<City>> {
         return flow {

@@ -11,6 +11,7 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 import ru.dansh1nv.core.datastore.AppDataStore
 import ru.dansh1nv.core.datastore.AppPreferences
+import ru.dansh1nv.core.location.LocationListener
 import ru.dansh1nv.core.presentation.ActionEventsListener
 import ru.dansh1nv.core.presentation.IntentErrorMapper
 import ru.dansh1nv.core.presentation.SnackbarListener
@@ -21,6 +22,7 @@ fun coreModule() = module {
     factoryOf(::BottomSheetControllerImpl) bind BottomSheetController::class
     singleOf(::ActionEventsListener)
     singleOf(::SnackbarListener)
+    singleOf(::LocationListener)
     singleOf(::IntentErrorMapper)
     single<AppDataStore> {
         val dataStore = DataStoreFactory.create(
