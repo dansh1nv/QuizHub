@@ -5,6 +5,6 @@ import ru.dansh1nv.quiz.list.models.filters.Filters
 
 internal data class FiltersState(
     val filters: Filters? = null,
-    val filterByDay: CalendarDay? = null,
+    val selectedDays: List<CalendarDay> = emptyList(),
     val isApplied: Boolean = false,
 )

@@ -1,14 +1,17 @@
 package ru.dansh1nv.quiz.list.presentation.composable.bottomSheets
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.kizitonwose.calendar.compose.HorizontalCalendar
 import com.kizitonwose.calendar.compose.rememberCalendarState
@@ -19,6 +22,8 @@ import com.kizitonwose.calendar.core.minusMonths
 import com.kizitonwose.calendar.core.plusMonths
 import kotlinx.coroutines.launch
 import ru.dansh1nv.core.presentation.calendar.rememberFirstMostVisibleMonth
+import ru.dansh1nv.designsystem.R
+import ru.dansh1nv.designsystem.theme.elements.QuizHubButton
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.models.item.CalendarEventUI
 import ru.dansh1nv.quiz.list.presentation.BottomSheetEvent
@@ -38,6 +43,7 @@ internal fun CalendarBottomSheet(
     val endMonth = remember { currentMonth.plusMonths(adjacentMonths) }
     val selections = remember { mutableStateListOf<CalendarDay>() }
     val daysOfWeek = remember { daysOfWeek() }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -58,22 +64,19 @@ internal fun CalendarBottomSheet(
             goToPrevious = {
                 coroutineScope.launch {
                     calendarState.animateScrollToMonth(
-                        calendarState.firstVisibleMonth.yearMonth.minusMonths(
-                            1
-                        )
+                        calendarState.firstVisibleMonth.yearMonth.minusMonths(1)
                     )
                 }
             },
             goToNext = {
                 coroutineScope.launch {
                     calendarState.animateScrollToMonth(
-                        calendarState.firstVisibleMonth.yearMonth.plusMonths(
-                            1
-                        )
+                        calendarState.firstVisibleMonth.yearMonth.plusMonths(1)
                     )
                 }
             },
         )
+
         HorizontalCalendar(
             state = calendarState,
             dayContent = { day ->
@@ -82,13 +85,34 @@ internal fun CalendarBottomSheet(
                 }
                 Day(
                     day = day,
+                    isSelected = selections.contains(day),
                     events = dayEvents,
-                    onClick = { onUIEvent(BottomSheetEvent.OnCalendarDayClick(day)) }
+                    onClick = { clickedDay ->
+                        if (selections.contains(clickedDay)) {
+                            selections.remove(clickedDay)
+                        } else {
+                            selections.add(clickedDay)
+                        }
+                    }
                 )
             },
             monthHeader = {
                 MonthHeader(daysOfWeek = daysOfWeek)
             },
         )
+
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(QuizHubTheme.colorScheme.surfaceContainer)
+                .padding(16.dp)
+        ) {
+            QuizHubButton(
+                title = stringResource(R.string.apply_button_text),
+                modifier = Modifier.fillMaxWidth(),
+                isEnabled = selections.isNotEmpty(),
+                onClick = { onUIEvent(BottomSheetEvent.OnCalendarDaySelected(selections.toList())) }
+            )
+        }
     }
 }

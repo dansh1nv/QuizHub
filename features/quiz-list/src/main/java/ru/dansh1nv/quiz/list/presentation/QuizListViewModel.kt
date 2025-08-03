@@ -200,7 +200,7 @@ internal class QuizListViewModel(
         when (event) {
             is BottomSheetEvent.OnFilterClick -> applyFilters(event.filters)
             is BottomSheetEvent.OnSortClick -> applySorting(event.sort)
-            is BottomSheetEvent.OnCalendarDayClick -> handleCalendarDayClick(event.day)
+            is BottomSheetEvent.OnCalendarDaySelected -> handleCalendarDaysSelected(event.days)
         }
     }
 
@@ -292,19 +292,23 @@ internal class QuizListViewModel(
     }
 
     //Ну это тоже какой-то пиздец, надо подумать над улучшением фильтров
-    private fun handleCalendarDayClick(day: CalendarDay) {
+    private fun handleCalendarDaysSelected(days: List<CalendarDay>) {
         updateState {
             val quizList = quizMap.getOrDefault(
                 key = this.filtersState.filters?.organization,
                 defaultValue = quizMap.values.flatten()
             )
             copy(
-                quizList = quizList.filter { quiz ->
-                    quiz.formattedDate?.date?.date == day.date
-                },
+                quizList = quizList
+                    .filter { quiz ->
+                        days.any { day ->
+                            quiz.formattedDate?.date?.date == day.date
+                        }
+                    }
+                    .sortedBy { it.formattedDate?.date },
                 filtersState = filtersState.copy(
-                    filterByDay = day,
-                    isApplied = true,
+                    selectedDays = days,
+                    isApplied = days.isNotEmpty()
                 )
             )
         }
@@ -384,7 +388,7 @@ internal class QuizListViewModel(
             copy(
                 filtersState = filtersState.copy(
                     filters = null,
-                    filterByDay = null,
+                    selectedDays = emptyList(),
                     isApplied = false,
                 ),
                 sort = Sort.ASC_DATE,

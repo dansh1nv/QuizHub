@@ -27,5 +27,5 @@ internal sealed interface ScreenEvent : QuizListEvent {
 internal sealed interface BottomSheetEvent : QuizListEvent {
     data class OnFilterClick(val filters: Filters) : BottomSheetEvent
     data class OnSortClick(val sort: Sort) : BottomSheetEvent
-    data class OnCalendarDayClick(val day: CalendarDay) : BottomSheetEvent
+    data class OnCalendarDaySelected(val days: List<CalendarDay>) : BottomSheetEvent
 }
