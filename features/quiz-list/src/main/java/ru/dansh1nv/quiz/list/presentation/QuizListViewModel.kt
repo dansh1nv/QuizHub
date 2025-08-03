@@ -150,7 +150,7 @@ internal class QuizListViewModel(
                 //navigateToQuizDetails(event.id)
             }
 
-            is ScreenEvent.OnShareEventClick -> handleShareEventClick(event.id)
+            is ScreenEvent.OnShareEventClick -> handleShareEventClick(event.quiz)
             is ScreenEvent.OnShowLocationEventClick -> handleShowLocationEventClick(event.quiz)
             is ScreenEvent.ResetFilters -> {
                 resetFilters()
@@ -248,8 +248,7 @@ internal class QuizListViewModel(
         }
     }
 
-    private fun handleShareEventClick(id: String) {
-        val quiz = container.stateFlow.value.quizList.firstOrNull { it.id == id } ?: return
+    private fun handleShareEventClick(quiz: QuizUI) {
         val shareText = actionEventsMapper.mapToShareText(quiz)
         actionEventsListener.onActionEvent(
             ActionEvents.ShareEvent(shareText)

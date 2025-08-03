@@ -11,16 +11,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
 import ru.dansh1nv.quiz.list.R
+import ru.dansh1nv.quiz.list.models.item.QuizUI
 
 @Composable
 internal fun QuizShareElement(
-    quizId: String,
-    onShareClicked: (String) -> Unit,
+    quiz: QuizUI,
+    onShareClicked: (QuizUI) -> Unit,
     modifier: Modifier
 ) {
     IconButton(
         onClick = {
-            onShareClicked(quizId)
+            onShareClicked(quiz)
         },
         modifier = modifier.size(24.dp)
     ) {

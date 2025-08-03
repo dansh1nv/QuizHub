@@ -17,7 +17,7 @@ internal sealed interface ScreenEvent : QuizListEvent {
     data object OnRefresh : ScreenEvent
     data object OnCalendarClick : ScreenEvent
     data class OnCardItemClicked(val id: String) : ScreenEvent
-    data class OnShareEventClick(val id: String) : ScreenEvent
+    data class OnShareEventClick(val quiz: QuizUI) : ScreenEvent
     data object ResetFilters : ScreenEvent
     data class OnSearch(val query: String) : ScreenEvent
     data class OnCityClick(val city: CityModel) : ScreenEvent
