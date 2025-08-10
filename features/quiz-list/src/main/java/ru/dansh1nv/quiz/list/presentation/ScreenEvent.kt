@@ -1,7 +1,7 @@
 package ru.dansh1nv.quiz.list.presentation
 
-import com.kizitonwose.calendar.core.CalendarDay
 import ru.dansh1nv.core.presentation.UIEvent
+import ru.dansh1nv.core.presentation.calendar.DateSelection
 import ru.dansh1nv.quiz.list.models.CityModel
 import ru.dansh1nv.quiz.list.models.filters.Filters
 import ru.dansh1nv.quiz.list.models.item.QuizUI
@@ -27,5 +27,5 @@ internal sealed interface ScreenEvent : QuizListEvent {
 internal sealed interface BottomSheetEvent : QuizListEvent {
     data class OnFilterClick(val filters: Filters) : BottomSheetEvent
     data class OnSortClick(val sort: Sort) : BottomSheetEvent
-    data class OnCalendarDaySelected(val days: List<CalendarDay>) : BottomSheetEvent
+    data class OnCalendarDaySelected(val days: DateSelection) : BottomSheetEvent
 }

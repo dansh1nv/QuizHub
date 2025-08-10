@@ -3,7 +3,6 @@ package ru.dansh1nv.quiz.list.presentation
 import android.content.ActivityNotFoundException
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.viewModelScope
-import com.kizitonwose.calendar.core.CalendarDay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -17,6 +16,7 @@ import ru.dansh1nv.core.presentation.ActionEventsListener
 import ru.dansh1nv.core.presentation.IntentErrorMapper
 import ru.dansh1nv.core.presentation.ScreenState
 import ru.dansh1nv.core.presentation.SnackbarListener
+import ru.dansh1nv.core.presentation.calendar.DateSelection
 import ru.dansh1nv.core.presentation.model.ActionEvents
 import ru.dansh1nv.core.presentation.model.IntentError
 import ru.dansh1nv.core.presentation.model.SnackbarEvents
@@ -291,23 +291,40 @@ internal class QuizListViewModel(
     }
 
     //Ну это тоже какой-то пиздец, надо подумать над улучшением фильтров
-    private fun handleCalendarDaysSelected(days: List<CalendarDay>) {
+    private fun handleCalendarDaysSelected(dateSelection: DateSelection) {
         updateState {
             val quizList = quizMap.getOrDefault(
                 key = this.filtersState.filters?.organization,
                 defaultValue = quizMap.values.flatten()
             )
-            copy(
-                quizList = quizList
-                    .filter { quiz ->
-                        days.any { day ->
-                            quiz.formattedDate?.date?.date == day.date
-                        }
+            val startDate = dateSelection.startDate
+            val endDate = dateSelection.endDate
+
+            val filteredQuiz = when {
+                startDate == null -> {
+                    quizList
+                }
+
+                endDate == null -> {
+                    quizList.filter { quiz ->
+                        quiz.formattedDate?.date?.date == startDate
                     }
-                    .sortedBy { it.formattedDate?.date },
+                }
+
+                else -> {
+                    val rangeStart = startDate
+                    val rangeEnd = endDate
+                    quizList.filter { quiz ->
+                        val quizDate = quiz.formattedDate?.date?.date
+                        quizDate != null && quizDate in rangeStart..rangeEnd
+                    }
+                }
+            }.sortedBy { it.formattedDate?.date }
+            copy(
+                quizList = filteredQuiz,
                 filtersState = filtersState.copy(
-                    selectedDays = days,
-                    isApplied = days.isNotEmpty()
+                    dateSelection = dateSelection,
+                    isApplied = dateSelection.startDate != null
                 )
             )
         }
@@ -387,7 +404,7 @@ internal class QuizListViewModel(
             copy(
                 filtersState = filtersState.copy(
                     filters = null,
-                    selectedDays = emptyList(),
+                    dateSelection = null,
                     isApplied = false,
                 ),
                 sort = Sort.ASC_DATE,
