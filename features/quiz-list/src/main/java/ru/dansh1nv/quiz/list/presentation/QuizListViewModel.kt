@@ -319,7 +319,7 @@ internal class QuizListViewModel(
                         quizDate != null && quizDate in rangeStart..rangeEnd
                     }
                 }
-            }.sortedBy { it.formattedDate?.date }
+            }.sortedBy { it.formattedDate?.date?.date }
             copy(
                 quizList = filteredQuiz,
                 filtersState = filtersState.copy(
