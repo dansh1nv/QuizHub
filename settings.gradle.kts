@@ -23,15 +23,15 @@ include(
     ":common",
     ":designSystem",
 
-    ":data-quiz-list",
-    ":data-quiz-details",
-    ":data-profile",
+    ":data:quizList",
+    ":data:quizDetails",
+    ":data:profile",
 
-    ":domain-quiz-list",
-    ":domain-quiz-details",
-    ":domain-profile",
+    ":domain:quizList",
+    ":domain:quizDetails",
+    ":domain:profile",
 
-    ":features:quiz-list",
-    ":features:quiz-details",
+    ":features:quizList",
+    ":features:quizDetails",
     ":features:profile",
 )

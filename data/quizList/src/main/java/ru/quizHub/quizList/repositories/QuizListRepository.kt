@@ -1,0 +1,63 @@
+package ru.quizHub.quizList.repositories
+
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import ru.quizHub.quizList.datasource.quizPlease.QuizPleaseRemoteDataSource
+import ru.quizHub.quizList.datasource.shakerQuiz.ShakerQuizRemoteDataSource
+import ru.quizHub.quizList.datasource.squiz.SquizRemoteDataSource
+import ru.quizHub.quizList.mappers.QuizPleaseDataMapper
+import ru.quizHub.quizList.mappers.ShakerQuizDataMapper
+import ru.quizHub.quizList.mappers.SquizDataMapper
+import ru.quizHub.quizlist.models.Quiz
+import ru.quizHub.quizlist.models.common.City
+import ru.quizHub.quizlist.repository.IQuizListRepository
+
+class QuizListRepository(
+    private val squizRemoteDataSource: SquizRemoteDataSource,
+    private val quizPleaseRemoteDataSource: QuizPleaseRemoteDataSource,
+    private val shakerQuizRemoteDataSource: ShakerQuizRemoteDataSource,
+    private val squizDataMapper: SquizDataMapper,
+    private val quizPleaseDataMapper: QuizPleaseDataMapper,
+    private val shakerQuizDataMapper: ShakerQuizDataMapper,
+) : IQuizListRepository {
+
+    private companion object {
+        const val PAGE_NUMBER = 1
+        const val PAGE_SIZE = 100
+    }
+
+    private val _quizListFlow: MutableStateFlow<List<Quiz>> = MutableStateFlow(emptyList())
+    override val quizListFlow = _quizListFlow.asStateFlow()
+
+    override fun getAllQuizList(city: City): Flow<List<Quiz>> {
+        return combine(
+            squizRemoteDataSource.getQuizList(city.squizId),
+            quizPleaseRemoteDataSource.getQuizList(city.quizPleaseId, PAGE_NUMBER, PAGE_SIZE),
+            shakerQuizRemoteDataSource.getQuizList(city.shakerQuizId)
+        ) { squizList, quizPleaseList, shakerQuizList ->
+            listOf(
+                squizDataMapper.map(squizList),
+                quizPleaseDataMapper.mapToQuiz(quizPleaseList),
+                shakerQuizDataMapper.mapToShakerQuiz(shakerQuizList)
+            ).flatten()
+        }
+    }
+
+    override fun fetchAllQuizList(city: City) {
+        combine(
+            squizRemoteDataSource.getQuizList(city.squizId),
+            quizPleaseRemoteDataSource.getQuizList(city.quizPleaseId, PAGE_NUMBER, PAGE_SIZE),
+            shakerQuizRemoteDataSource.getQuizList(city.shakerQuizId)
+        ) { squizList, quizPleaseList, shakerQuizList ->
+            _quizListFlow.emit(
+                listOf(
+                    squizDataMapper.map(squizList),
+                    quizPleaseDataMapper.mapToQuiz(quizPleaseList),
+                    shakerQuizDataMapper.mapToShakerQuiz(shakerQuizList)
+                ).flatten()
+            )
+        }
+    }
+}

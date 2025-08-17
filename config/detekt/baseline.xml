@@ -1,0 +1,1795 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues>
+    <ID>StringLiteralDuplication:Settings.kt$":core:utils"</ID>
+    <ID>MissingPackageDeclaration:Settings.kt$.Settings.kt</ID>
+    <ID>MissingPackageDeclaration:Utils.kt$.Utils.kt</ID>
+  </ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>AnnotationSpacing:PriceQuarantineEntity.kt$PriceQuarantineEntity$@Entity( indices = [Index(value = ["supplierId"], unique = true)], tableName = "PriceQuarantineEntity" ) data</ID>
+    <ID>ArgumentListWrapping:AcceptanceCostsModelMapper.kt$AcceptanceCostsModelMapper$( BigDecimal.valueOf( monopalletsQuantity * monopalletsCost * coefficient ).setScale(0, RoundingMode.HALF_UP), currency = Currency.RUB )</ID>
+    <ID>ArgumentListWrapping:ActionsDialog.kt$( model = WbActionsDialogModel(items), onHideDialog = { onUIEvent.invoke(ScreenEvent.ShowDialog(null)) }, onActionClick = { when (it.tag) { PASS_EDIT_TAG -&gt; PassEvent.EditPass(id) PASS_REMOVE_TAG -&gt; PassEvent.ConfirmRemove(id) else -&gt; null }?.let { event -&gt; onUIEvent.invoke(event) } })</ID>
+    <ID>ArgumentListWrapping:AddOrderToBoxBottomSheet.kt$( modifier = Modifier.padding(12.dp), order = item, isSelected = selectedOrders.contains(item.id), onItemClick = { onAddOrdersToBoxEvent.invoke(AddOrdersToBoxEvent.OnItemClick(item.id)) })</ID>
+    <ID>ArgumentListWrapping:AdditionalInfoByCountryMapper.kt$AdditionalInfoByCountryMapper$(innName)</ID>
+    <ID>ArgumentListWrapping:AnalyticsFiltersSlice.kt$AnalyticsFilterSliceImpl$( items = articles, featureName = featureName )</ID>
+    <ID>ArgumentListWrapping:AnalyticsFiltersSlice.kt$AnalyticsFilterSliceImpl$( items = brands, featureName = featureName )</ID>
+    <ID>ArgumentListWrapping:AnalyticsFiltersSlice.kt$AnalyticsFilterSliceImpl$( items = subjects, featureName = featureName )</ID>
+    <ID>ArgumentListWrapping:AnalyticsFiltersSlice.kt$AnalyticsFilterSliceImpl$( items = tags, featureName = featureName )</ID>
+    <ID>ArgumentListWrapping:AnalyticsFiltersSlice.kt$AnalyticsFilterSliceImpl$(featureName = featureName)</ID>
+    <ID>ArgumentListWrapping:AnalyticsFiltersSlice.kt$AnalyticsFilterSliceImpl$(interactor.observeSelectedArticles(featureName = featureName))</ID>
+    <ID>ArgumentListWrapping:AuthorizationViewModel.kt$AuthorizationViewModel$(R.string.authorization_authorization_try_re_request_code_again_title)</ID>
+    <ID>ArgumentListWrapping:AutoDiscountLockBottomSheet.kt$(R.string.price_and_discounts_good_info_auto_discount_lock_description_text, endTime.orDash())</ID>
+    <ID>ArgumentListWrapping:AutoPromoEditMultiSlice.kt$AutoPromoEditMultiSlice$( uri, null, null, null, null )</ID>
+    <ID>ArgumentListWrapping:AutoPromoEditViewModel.kt$AutoPromoEditViewModel$( uri, null, null, null, null )</ID>
+    <ID>ArgumentListWrapping:BalanceWidgetRepository.kt$BalanceWidgetRepository$(AuthHeaderHelper.SEPARATOR)</ID>
+    <ID>ArgumentListWrapping:BottomSheets.kt$( modifier = Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp) )</ID>
+    <ID>ArgumentListWrapping:BoxesTriState.kt$( modifier = Modifier.padding(horizontal = 12.dp), order = item, onIconClick = { onSupplyBoxesEvent.invoke( SupplyBoxesEvent.RemoveOrderFromBox(box.barcode, item.id) ) })</ID>
+    <ID>ArgumentListWrapping:BoxesTriState.kt$(modifier = Modifier .padding(start = 12.dp, top = 4.dp, end = 12.dp) .clickable { onSupplyBoxesEvent.invoke(SupplyBoxesEvent.ExpandBoxCardClick(box.barcode)) } )</ID>
+    <ID>ArgumentListWrapping:BuyersWidgetComponent.kt$(R.string.main_screen_buyers_widget_unanswered_questions_togle_title)</ID>
+    <ID>ArgumentListWrapping:BuyersWidgetComponent.kt$(ResText(R.string.main_screen_buyers_widget_unanswered_questions_togle_title))</ID>
+    <ID>ArgumentListWrapping:BuyersWidgetComponent.kt$(WbTabRowModel(ResText(R.string.main_screen_buyers_widget_unanswered_questions_togle_title)))</ID>
+    <ID>ArgumentListWrapping:BuyersWidgetNetworkMapper.kt$BuyersWidgetNetworkMapper$( id = entity.id, text = entity.text, createdDate = entity.createdDate, nmId = entity.nmId, productName = entity.productName, supplierArticle = entity.supplierArticle, supplierName = entity.supplierName, )</ID>
+    <ID>ArgumentListWrapping:CardRatingModel.kt$CardRatingErrorType.CHARACTERISTICS$(field = CHARACTERISTICS_FIELD, title = R.string.all_goods_improvment_rating_error_characteristics_title)</ID>
+    <ID>ArgumentListWrapping:ChoseItemsBottomSheet.kt$( item, isLastItem = index == options.size - 1 )</ID>
+    <ID>ArgumentListWrapping:CircularProgressOverlap.kt$( targetValue = if (isVisible) 0.9f else 0f, animationSpec = TweenSpec(durationMillis = durationMillis), label = "" )</ID>
+    <ID>ArgumentListWrapping:CoefficientModelMapper.kt$CoefficientModelMapper$(coef.coefficient.toString().formatCoefficient(), it)</ID>
+    <ID>ArgumentListWrapping:ConfirmRemove.kt$( model = model, onHideDialog = { onUIEvent.invoke(ScreenEvent.ShowDialog(null)) }, onActionClick = { onUIEvent.invoke(PassEvent.Remove(id)) })</ID>
+    <ID>ArgumentListWrapping:CreateSupplyPackagesStepDomainMapper.kt$CreateSupplyPackagesStepDomainMapper$(items .flatMap { it.barcodes.orEmpty() } .map { BoxItem(needKIZ = it.needKIZ, isFood = it.isFood) } )</ID>
+    <ID>ArgumentListWrapping:DbsRefundsFilterController.kt$DbsRefundsFilterController$(R.string.refunds_sort_awaiting_courier_appointment_text)</ID>
+    <ID>ArgumentListWrapping:DescriptionGenerationBottomSheet.kt$(R.string.create_goods_description_generation_applying_confirmation_yes_buttons)</ID>
+    <ID>ArgumentListWrapping:DetailsProductBlockFeedback.kt$(R.string.templates_articul_wb_text, product.nmId.toString())</ID>
+    <ID>ArgumentListWrapping:DisabledFeatureBottomSheet.kt$("Сейчас в новой поставке не получится выбрать дату поставки. Но вы можете заполнить остальные детали и сохранить поставку \nв черновиках. \n\nПодождите немного, пожалуйста. \nЭто временно, скоро всё вернётся в норму")</ID>
+    <ID>ArgumentListWrapping:DisabledFeatureOverlap.kt$("Сейчас в новой поставке не получится выбрать дату поставки. Но вы можете заполнить остальные детали и сохранить поставку \nв черновиках. \n\nПодождите немного, пожалуйста. \nЭто временно, скоро всё вернётся в норму")</ID>
+    <ID>ArgumentListWrapping:DocumentDateInputModel.kt$DocumentDateInputModel$(R.string.create_goods_document_date_field_invalid_date_error_text)</ID>
+    <ID>ArgumentListWrapping:DocumentDateInputModel.kt$DocumentDateInputModel$(TextType.ResText(R.string.create_goods_document_date_field_invalid_date_error_text))</ID>
+    <ID>ArgumentListWrapping:DocumentNumberValidator.kt$DocumentNumberValidator$(R.string.create_goods_document_number_error_certificate_instead_declaration_text)</ID>
+    <ID>ArgumentListWrapping:DocumentNumberValidator.kt$DocumentNumberValidator$(R.string.create_goods_document_number_error_declaration_instead_certificate_text)</ID>
+    <ID>ArgumentListWrapping:DownloadsHistoryTypes.kt$DownloadsHistoryTypes.INSTALLMENT$(R.string.change_history_detail_download_history_detail_installment_discount_text)</ID>
+    <ID>ArgumentListWrapping:ExitDialog.kt$( model = model, onHideDialog = { onUiEvent.invoke(ScreenEvent.SetDialog(null)) }, onActionClick = { onUiEvent.invoke(ScreenEvent.Exit) })</ID>
+    <ID>ArgumentListWrapping:FeedbacksCountBlock.kt$(id = R.string.templates_not_answered_text)</ID>
+    <ID>ArgumentListWrapping:GoodsListSlice.kt$GoodsWithPriceSliceImpl$( filterInteractor = filterInteractor, isWithoutPrice = false )</ID>
+    <ID>ArgumentListWrapping:GoodsListSlice.kt$GoodsWithoutPriceSliceImpl$( filterInteractor = filterInteractor, isWithoutPrice = true )</ID>
+    <ID>ArgumentListWrapping:GraphWidget.kt$( context, labelsCount, axisTextColorInfo.leftYAxisTextsColor ?: axisTextColorInfo.xAxisTextColor )</ID>
+    <ID>ArgumentListWrapping:GraphWidget.kt$( context, labelsCount, axisTextColorInfo.rightYAxisTextColor ?: axisTextColorInfo.xAxisTextColor )</ID>
+    <ID>ArgumentListWrapping:GreetingViewModel.kt$GreetingViewModel$(R.string.authorization_greeting_empty_companies_description_text)</ID>
+    <ID>ArgumentListWrapping:HeaderInfoShimmers.kt$( start = 12.dp, end = 12.dp, top = 16.dp, bottom = 16.dp )</ID>
+    <ID>ArgumentListWrapping:InfoPanel.kt$(CopyText(order.id.toString(), R.string.marketplace_wb_go_details_dialog_copy_id_success_title))</ID>
+    <ID>ArgumentListWrapping:InfoPanel.kt$(order.id.toString(), R.string.marketplace_wb_go_details_dialog_copy_id_success_title)</ID>
+    <ID>ArgumentListWrapping:InformationBlock.kt$(R.string.marketplace_cart_details_confirmation_notification_subtitle_title)</ID>
+    <ID>ArgumentListWrapping:InputNumber.kt$( onDone = { keyboardController?.hide() localFocusManager.clearFocus() })</ID>
+    <ID>ArgumentListWrapping:LeaveCompanyViewModel.kt$LeaveCompanyViewModel$(R.string.leave_company_error_leave_company_text, screenState.value.companyName)</ID>
+    <ID>ArgumentListWrapping:LeaveCompanyViewModel.kt$LeaveCompanyViewModel$(R.string.leave_company_success_leave_company_text, screenState.value.companyName)</ID>
+    <ID>ArgumentListWrapping:MapperUtils.kt$( BigDecimal.valueOf( cost ).setScale(0, RoundingMode.HALF_UP), currency = Currency.RUB )</ID>
+    <ID>ArgumentListWrapping:MappersUtils.kt$( BigDecimal.valueOf( cost ).setScale(0, RoundingMode.HALF_UP), currency = Currency.RUB )</ID>
+    <ID>ArgumentListWrapping:MarketplaceStocksManualUploadViewModel.kt$MarketplaceStocksManualUploadViewModel$(R.string.marketplace_stocks_upload_success_add_goods_text_title)</ID>
+    <ID>ArgumentListWrapping:MarketplaceStocksManualUploadViewModel.kt$MarketplaceStocksManualUploadViewModel$(ResText(R.string.marketplace_stocks_upload_success_add_goods_text_title), SnackbarType.SUCCESS)</ID>
+    <ID>ArgumentListWrapping:MarketplaceStocksUploadViewModel.kt$MarketplaceStocksUploadViewModel.FileSelectorState$(R.string.marketplace_stocks_upload_file_upload_placeholder)</ID>
+    <ID>ArgumentListWrapping:MarketplaceStocksUploadViewModel.kt$MarketplaceStocksUploadViewModel.FileSelectorState$(ResText(R.string.marketplace_stocks_upload_file_upload_placeholder))</ID>
+    <ID>ArgumentListWrapping:MarketplaceStocksViewModel.kt$MarketplaceStocksViewModel$(R.string.marketplace_stocks_create_store_button_title_buttons)</ID>
+    <ID>ArgumentListWrapping:MetricUtils.kt$TableMetricUtils$( mapResToArg.keys.toTypedArray(), mapResToArg.values.toTypedArray() )</ID>
+    <ID>ArgumentListWrapping:NewsWidgetViewModel.kt$NewsWidgetViewModel$(debounceJobKey = DEBOUNCE_TRI_STATE_JOB_NAME)</ID>
+    <ID>ArgumentListWrapping:OrderRemoteActionModel.kt$OrderRemoteActionModel.MoveToAssemble$(R.string.marketplace_cart_details_task_to_assemble_success_title)</ID>
+    <ID>ArgumentListWrapping:OrderRemoteActionModel.kt$OrderRemoteActionModel.MoveToAssemble$(R.string.marketplace_cart_details_tasks_to_assemble_error_title)</ID>
+    <ID>ArgumentListWrapping:OrderRemoteActionModel.kt$OrderRemoteActionModel.MoveToDelivery$(R.string.marketplace_cart_details_task_to_delivery_success_title)</ID>
+    <ID>ArgumentListWrapping:OrderRemoteActionModel.kt$OrderRemoteActionModel.MoveToDelivery$(R.string.marketplace_cart_details_tasks_to_delivery_error_title)</ID>
+    <ID>ArgumentListWrapping:PackageModelMapper.kt$PackageModelMapper$(items .flatMap { it.barcodes.orEmpty() } .map { BoxItem(needKIZ = it.needKIZ, isFood = it.isFood) } )</ID>
+    <ID>ArgumentListWrapping:ParticipationInPromotionRepository.kt$ParticipationInPromotionRepository$( fetchFromRemote = { handleApiWithError { api.postSendAddedFiles( body = ParticipationFileSendRequestDTO( applyAll = body.applyAll, files = body.files, periodId = body.periodId, startNow = body.startNow ) ) } })</ID>
+    <ID>ArgumentListWrapping:ParticipationInPromotionViewModel.kt$ParticipationInPromotionViewModel$( uri, null, null, null, null )</ID>
+    <ID>ArgumentListWrapping:PassVariantsBottomSheet.kt$( queryText = state.search, onQueryChange = { onUIEvent.invoke(PassVariantsEvent.SearchInput(it)) })</ID>
+    <ID>ArgumentListWrapping:PriceQuarantineInfoBottomSheet.kt$(id = R.string.price_quarantine_deliberately_want_to_reduce_the_price_bottom_sheet)</ID>
+    <ID>ArgumentListWrapping:PriceQuarantineInfoBottomSheet.kt$(id = R.string.price_quarantine_deliberately_want_to_reduce_the_price_description_bottom_sheet)</ID>
+    <ID>ArgumentListWrapping:PriceQuarantineInfoBottomSheet.kt$(id = R.string.price_quarantine_how_do_know_about_product_in_quarantine_description_bottom_sheet)</ID>
+    <ID>ArgumentListWrapping:PriceQuarantineInfoBottomSheet.kt$(id = R.string.price_quarantine_how_to_work_quarantine_function_description_bottom_sheet)</ID>
+    <ID>ArgumentListWrapping:PricesFiltersScreen.kt$(id = R.string.price_and_discounts_filters_goods_with_leftovers_text)</ID>
+    <ID>ArgumentListWrapping:PromoListComponent.kt$( model = it, onClick = { onUIEvent(PromoListUIEvent.OnPromotionClick(it)) })</ID>
+    <ID>ArgumentListWrapping:RegionSuppliesChartInfoBottomSheet.kt$(R.string.region_supplies_root_charts_info_bs_prder_part_over_all_wb_text)</ID>
+    <ID>ArgumentListWrapping:RegisterNewCompanyDataScreen.kt$( state = state, onUIEvent = vm::onUIEvent, keyboardController = keyboardController, focusRequester = focusRequester, focusManager = focusManager )</ID>
+    <ID>ArgumentListWrapping:RegisterNewCompanyDataScreen.kt$(title = R.string.form_of_organization, options = sheetContent.listToSelect.map { val itemTitleText = stringResource(id = it.titleId) ChoseBottomSheetItem( titleRes = it.titleId, onClick = { onUIEvent( RegisterNewCompanyDataUIEvent.OnBottomSheetFormOfOrganizationClick( itemTitleText, it.titleId ) ) } ) } )</ID>
+    <ID>ArgumentListWrapping:RegisterNewCompanyScreen.kt$( title = ResText(R.string.fine_go_next), onClick = { onUIEvent(RegisterNewCompanyUIEvent.OnNextClick) }, size = WbButtonSize.BIG, modifier = Modifier.fillMaxWidth() )</ID>
+    <ID>ArgumentListWrapping:RegisterNewCompanyViewModel.kt$RegisterNewCompanyViewModel$( it.ordinal, isBackClickToGreeting )</ID>
+    <ID>ArgumentListWrapping:RemoveAllDialog.kt$( model = model, onHideDialog = { onUIEvent.invoke(ScreenEvent.SetDialog(null)) }, onActionClick = { onUIEvent.invoke(ScreenEvent.RemoveAllBoxes) })</ID>
+    <ID>ArgumentListWrapping:RemoveCompanyViewModel.kt$RemoveCompanyViewModel$(UIString.verification_success_remove_company_text, interactor.getCompanyName())</ID>
+    <ID>ArgumentListWrapping:SalesFunnelFiltersSlice.kt$AnalyticsFilterSliceImpl$( items = articles, featureName = featureName )</ID>
+    <ID>ArgumentListWrapping:SalesFunnelFiltersSlice.kt$AnalyticsFilterSliceImpl$( items = brands, featureName = featureName )</ID>
+    <ID>ArgumentListWrapping:SalesFunnelFiltersSlice.kt$AnalyticsFilterSliceImpl$( items = subjects, featureName = featureName )</ID>
+    <ID>ArgumentListWrapping:SalesFunnelFiltersSlice.kt$AnalyticsFilterSliceImpl$( items = tags, featureName = featureName )</ID>
+    <ID>ArgumentListWrapping:SalesFunnelFiltersSlice.kt$AnalyticsFilterSliceImpl$(featureName = featureName)</ID>
+    <ID>ArgumentListWrapping:SalesFunnelFiltersSlice.kt$AnalyticsFilterSliceImpl$(interactor.observeSelectedArticles(featureName = featureName))</ID>
+    <ID>ArgumentListWrapping:ScreenContent.kt$( MultipleRestText( state.country.innTitleId, UIString.space, R.string.receivers ).mapString(), state.paymentNavData.innBank, onUIEvent )</ID>
+    <ID>ArgumentListWrapping:ScreenContent.kt$( stringResource(id = R.string.bank), state.paymentNavData.bankName, onUIEvent )</ID>
+    <ID>ArgumentListWrapping:ScreenContent.kt$( stringResource(id = R.string.bik), state.paymentNavData.bicBank, onUIEvent )</ID>
+    <ID>ArgumentListWrapping:SecurityViewModel.kt$SecurityViewModel$( UIPlurals.security_plurals_tfa_limit, seconds, seconds )</ID>
+    <ID>ArgumentListWrapping:SecurityViewModel.kt$SecurityViewModel$( tfaState.email, TfaStatus.Enabled(tfaState.email) )</ID>
+    <ID>ArgumentListWrapping:SelectCompanyViewModel.kt$SelectCompanyViewModel$( supplier, false )</ID>
+    <ID>ArgumentListWrapping:SelectCompanyViewModel.kt$SelectCompanyViewModel$( supplier, true )</ID>
+    <ID>ArgumentListWrapping:SpacesValidator.kt$SpacesValidator$(R.string.marketplace_add_order_id_space_error_title)</ID>
+    <ID>ArgumentListWrapping:SpacesValidator.kt$SpacesValidator$(ResText(R.string.marketplace_add_order_id_space_error_title))</ID>
+    <ID>ArgumentListWrapping:SplashScreen.kt$( targetValue = if (properVisibility.value) 1f else 0.5f, animationSpec = tween(durationInMillis), label = "" )</ID>
+    <ID>ArgumentListWrapping:SplashScreen.kt$( targetValue = if (properVisibility.value) 1f else 0f, animationSpec = tween(durationInMillis), label = "" )</ID>
+    <ID>ArgumentListWrapping:SuppliesViewModel.kt$SuppliesViewModel$(R.string.marketplace_title_create_supply_bottom_sheet)</ID>
+    <ID>ArgumentListWrapping:SuppliesViewModel.kt$SuppliesViewModel$(title = ResText(R.string.marketplace_title_create_supply_bottom_sheet))</ID>
+    <ID>ArgumentListWrapping:SupplyBoxesSlice.kt$SupplyBoxesSliceImpl$( ResWithArgsText(R.string.marketplace_supply_remove_order_success_title, boxId), it )</ID>
+    <ID>ArgumentListWrapping:SupplyEditPassNavigationGraph.kt$( navArgumentString(PASS_SUPPLY_INFO), navArgument(PASS_DATA) { type = NavType.StringType nullable = true defaultValue = null })</ID>
+    <ID>ArgumentListWrapping:SupplyGoodsItem.kt$( model = model, onRemoveClick = {} )</ID>
+    <ID>ArgumentListWrapping:SupplyGoodsStepScreen.kt$( ResText(R.string.goods_step_total), StringTextWithPlurals( UIPlurals.total_barcodes, state.goodsTypeQuantity, state.goodsTypeQuantity, state.allGoodsQuantity ) )</ID>
+    <ID>ArgumentListWrapping:SupplyItem.kt$( Modifier .size(20.dp) .align(Alignment.Center), UIDrawable.ic_jam_module )</ID>
+    <ID>ArgumentListWrapping:SwitchFilterItem.kt$( isActive = isSwitched, onStateChange = onSwitchChange, modifier = Modifier.padding(vertical = 20.dp) )</ID>
+    <ID>ArgumentListWrapping:TabsSlice.kt$FeedbacksSlice$( interactor, mapper )</ID>
+    <ID>ArgumentListWrapping:TabsSlice.kt$QuestionSlice$( interactor, mapper )</ID>
+    <ID>ArgumentListWrapping:TfaRepository.kt$TfaRepository$( fetchFromRemote = { handleApi { api.removeEmail(header = header) } })</ID>
+    <ID>ArgumentListWrapping:TimeAsStringSerializer.kt$TimeAsStringSerializer$("ru.wildberries.analytics.api.TimeAsStringSerializer", PrimitiveKind.STRING)</ID>
+    <ID>ArgumentListWrapping:TnvedBottomSheet.kt$(id = if (isCollapsed.value) R.string.all_goods_card_rating_more_button_title else UIString.common_hide)</ID>
+    <ID>ArgumentListWrapping:Toolbar.kt$(modifier = modifier .clickableOnce( delayMillis = DEFAULT_NAVIGATION_CLICKABLE_ONCE_DELAY, ) { onClickBack() } .align(Alignment.CenterStart) )</ID>
+    <ID>ArgumentListWrapping:UnsavedDialog.kt$( model = model, onHideDialog = { onUIEvent.invoke(ScreenEvent.SetDialog(null)) }, onActionClick = { onUIEvent.invoke(ScreenEvent.NavigateBack) })</ID>
+    <ID>ArgumentListWrapping:UploadFile.kt$( STROKE_INTERVAL, STROKE_INTERVAL )</ID>
+    <ID>ArgumentListWrapping:WBAnalytics2Product.kt$WBAnalytics2Product.Companion$(category.orEmpty(), categoryId?.toString().orEmpty(), parentCategoryId?.toString().orEmpty())</ID>
+    <ID>ArgumentListWrapping:WBDataSetRenderers.kt$WBBarDataSetRenderer$( x, y + 10f, circleStrokeRadius, Paint().apply { setColor(Color.WHITE) } )</ID>
+    <ID>ArgumentListWrapping:WbAccentWidget.kt$( Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp) )</ID>
+    <ID>ArgumentListWrapping:WbAccentWidget.kt$( verticalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.padding(12.dp) )</ID>
+    <ID>ArgumentListWrapping:WbChartsSlider.kt$( offset = offset, size = Size(sliderHorizontalBorderWidth, sliderHeight) )</ID>
+    <ID>ArgumentListWrapping:WbChartsSlider.kt$( sliderStaticWidth, maxWidth )</ID>
+    <ID>ArgumentListWrapping:WbChartsSlider.kt$( x = sliderPosition + xOffset, y = sliderHeight - sliderVerticalBorderWidth )</ID>
+    <ID>ArgumentListWrapping:WbChartsSlider.kt$( x = sliderPosition + xOffset, y = sliderVerticalBorderWidth )</ID>
+    <ID>ArgumentListWrapping:WbIconTabs.kt$(modifier = modifier .heightIn(40.dp) .clickable { onClick() })</ID>
+    <ID>ArgumentListWrapping:WbLoggerAnalyticsImpl.kt$WbLoggerAnalyticsImpl$("Logger send event -&gt; " + "\nTag: ${tag.name} " + "\nMessage: $message " + args.joinToString(separator = "") { "\n${it.first}: ${it.second}" } )</ID>
+    <ID>ArgumentListWrapping:WbPartnersHorizontalPagerIndicator.kt$(modifier = Modifier .width(width) .background(color = backgroundColor, shape = WbTheme.shapes.shape4dp) .height(height))</ID>
+    <ID>ArgumentListWrapping:WbStickyPanel.kt$( verticalAlignment = Alignment.CenterVertically, modifier = Modifier .heightIn(32.dp) .clickable { action.invoke() })</ID>
+    <ID>ArgumentListWrapping:WbSwitchFilterItem.kt$(modifier = Modifier .fillMaxSize() )</ID>
+    <ID>ArgumentListWrapping:WbSwitcher.kt$( shape = WbTheme.shapes.shape12dp, color = getSwitchColor(isActive, isEnabled) )</ID>
+    <ID>ArgumentListWrapping:WbTextInput.kt$("Очень Очень Очень Очень Очень Очень Очень Очень Очень Очень Очень Очень Очень Очень длинный текст")</ID>
+    <ID>BlockCommentInitialStarAlignment:BasketUrlGeneratorUtils.kt$BasketUrlGenerator$/* Описание создания url: https://youtrack.wildberries.ru/issue/BASKET-1476/Opisat-vse-modeli-shardirovaniya-s-privyazkoj-k-servisu */</ID>
+    <ID>BlockCommentInitialStarAlignment:CalendarUtils.kt$/* Берет дату по utc, и переводит в ту же дату, но уже с текущей временной зоной * 1706140800000 (2024-01-25T00:00Z по UTC) -&gt; * 2024-01-25 -&gt; * 2024-01-25T00:00+12:00 */</ID>
+    <ID>BlockCommentInitialStarAlignment:CalendarUtils.kt$/* Берет только дату, и переводит в миллисекунды по utc * 2024-01-25T02:00+12:00 -&gt; * 2024-01-25 -&gt; * 1706140800000 (2024-01-25T00:00Z по UTC) */</ID>
+    <ID>BlockCommentInitialStarAlignment:ContactCreationViewModel.kt$ContactCreationViewModel$/* * без этого падаем с ошибкой, * так как появляется конфилкт между длинной заполненного номера * и допустимой длиной строки, если номер длинее. */</ID>
+    <ID>BlockCommentInitialStarAlignment:MarketplaceWidgetViewModel.kt$MarketplaceWidgetViewModel$/* В MarketplaceSettings marketplaceType будет null, только если список availableTabs пустой, поэтому можно ориентироваться на него без проверки табов */</ID>
+    <ID>BlockCommentInitialStarAlignment:SupplierSettingsInteractor.kt$SupplierSettingsInteractor$/* Проверка настроек, возможно какие-то фичи были отключены и нужно показать дефолтные значения */</ID>
+    <ID>BracesOnIfStatements:AnalyticsFiltersSlice.kt$AnalyticsFilterSliceImpl$if</ID>
+    <ID>BracesOnIfStatements:AutoPromoEditMainBlock.kt$if</ID>
+    <ID>BracesOnIfStatements:AutoPromoEditMultiMainBlock.kt$if</ID>
+    <ID>BracesOnIfStatements:AutoPromoEditScreen.kt$if</ID>
+    <ID>BracesOnIfStatements:BaseOrderFeedSlice.kt$BaseOrderFeedSlice$if</ID>
+    <ID>BracesOnIfStatements:ChatDetailsScreen.kt$if</ID>
+    <ID>BracesOnIfStatements:CreateSupplyDateStepViewModel.kt$CreateSupplyDateStepViewModel$if</ID>
+    <ID>BracesOnIfStatements:DeliveryFilterController.kt$DeliveryFilterController$if</ID>
+    <ID>BracesOnIfStatements:FileUtils.kt$FileUtils$if</ID>
+    <ID>BracesOnIfStatements:FormPriceIndexReportFileWorker.kt$FormPriceIndexReportFileWorker$if</ID>
+    <ID>BracesOnIfStatements:InputCodeFromEmail.kt$if</ID>
+    <ID>BracesOnIfStatements:PaginationLazyColumn.kt$if</ID>
+    <ID>BracesOnIfStatements:ProfileSuppliersMapper.kt$ProfileSuppliersMapper$if</ID>
+    <ID>BracesOnIfStatements:ProfileWarehouseOperationsViewModel.kt$ProfileWarehouseOperationsViewModel$if</ID>
+    <ID>BracesOnIfStatements:PromoListSlice.kt$PromoListSlice$if</ID>
+    <ID>BracesOnIfStatements:RegionSuppliesChartRepository.kt$RegionSuppliesChartRepository$if</ID>
+    <ID>BracesOnIfStatements:RegionSuppliesChartViewModel.kt$RegionSuppliesChartViewModel$if</ID>
+    <ID>BracesOnIfStatements:SalesFunnelFiltersSlice.kt$AnalyticsFilterSliceImpl$if</ID>
+    <ID>BracesOnIfStatements:StatusFilterController.kt$StatusFilterController$if</ID>
+    <ID>BracesOnIfStatements:SuppliesRootViewModel.kt$SuppliesRootViewModel$if</ID>
+    <ID>BracesOnIfStatements:SupplyAddPackageGoodsScreen.kt$if</ID>
+    <ID>BracesOnIfStatements:SupplyEditPackageViewModel.kt$SupplyEditPackageViewModel$if</ID>
+    <ID>BracesOnIfStatements:SupplyItem.kt$if</ID>
+    <ID>BracesOnIfStatements:Switcher.kt$if</ID>
+    <ID>BracesOnIfStatements:WarehouseCoefficientsItem.kt$if</ID>
+    <ID>BracesOnIfStatements:WarningBlockContent.kt$if</ID>
+    <ID>ChainWrapping:AcceptanceCoefficientsInteractor.kt$AcceptanceCoefficientsInteractor$||</ID>
+    <ID>ChainWrapping:AllSuppliesSlice.kt$AllSuppliesSliceImpl$||</ID>
+    <ID>ChainWrapping:AnalyticsFiltersSlice.kt$AnalyticsFilterSliceImpl$&amp;&amp;</ID>
+    <ID>ChainWrapping:AssembleSuppliesSlice.kt$AssembleSuppliesSliceImpl$&amp;&amp;</ID>
+    <ID>ChainWrapping:CalendarUtils.kt$&amp;&amp;</ID>
+    <ID>ChainWrapping:ContactCreationViewModel.kt$ContactCreationViewModel$&amp;&amp;</ID>
+    <ID>ChainWrapping:ContactCreationViewModel.kt$ContactCreationViewModel.&lt;no name provided&gt;$||</ID>
+    <ID>ChainWrapping:CreateSupplyPackagePreviewViewModel.kt$CreateSupplyPackagePreviewViewModel$||</ID>
+    <ID>ChainWrapping:CreateSupplyPackagesStepViewModel.kt$CreateSupplyPackagesStepViewModel$&amp;&amp;</ID>
+    <ID>ChainWrapping:CreateSupplyPackagesStepViewModel.kt$CreateSupplyPackagesStepViewModel$||</ID>
+    <ID>ChainWrapping:DateRangeChangerSliceImpl.kt$DateRangeChangerSliceImpl$&amp;&amp;</ID>
+    <ID>ChainWrapping:DoubleInputFormatter.kt$DoubleInputFormatter$||</ID>
+    <ID>ChainWrapping:DoubleInputValidator.kt$DoubleInputValidator$&amp;&amp;</ID>
+    <ID>ChainWrapping:EditSupplyTogglesModelMapper.kt$EditSupplyTogglesModelMapper$||</ID>
+    <ID>ChainWrapping:InputField.kt$InputField$&amp;&amp;</ID>
+    <ID>ChainWrapping:KvsInteractor.kt$KvsInteractor$&amp;&amp;</ID>
+    <ID>ChainWrapping:KvsInteractor.kt$KvsInteractor$||</ID>
+    <ID>ChainWrapping:MarketplaceCourierContactsScreen.kt$&amp;&amp;</ID>
+    <ID>ChainWrapping:MarketplacePassesViewModel.kt$MarketplacePassesViewModel$&amp;&amp;</ID>
+    <ID>ChainWrapping:MarketplacePassesViewModel.kt$MarketplacePassesViewModel$||</ID>
+    <ID>ChainWrapping:MonthModelMapper.kt$MonthModelMapper$&amp;&amp;</ID>
+    <ID>ChainWrapping:NotificationsScreen.kt$&amp;&amp;</ID>
+    <ID>ChainWrapping:NotificationsViewModel.kt$NotificationsViewModel$||</ID>
+    <ID>ChainWrapping:PricesAndSaleErrorCodeHelper.kt$PricesAndSaleErrorCodeHelper$||</ID>
+    <ID>ChainWrapping:PricesAndSaleSlice.kt$PriceAndSaleSliceImpl$&amp;&amp;</ID>
+    <ID>ChainWrapping:PricesSelectingFilters.kt$PricesSelectingFilters$||</ID>
+    <ID>ChainWrapping:PushTokenService.kt$PushTokenService$&amp;&amp;</ID>
+    <ID>ChainWrapping:RegionSuppliesFiltersScreen.kt$||</ID>
+    <ID>ChainWrapping:SettingsInteractor.kt$SettingsInteractor$&amp;&amp;</ID>
+    <ID>ChainWrapping:StoreViewModel.kt$StoreViewModel$&amp;&amp;</ID>
+    <ID>ChainWrapping:StoreViewModel.kt$StoreViewModel$||</ID>
+    <ID>ChainWrapping:SupplyAddGoodsViewModel.kt$SupplyAddGoodsViewModel$||</ID>
+    <ID>ChainWrapping:SupplyBoxesSlice.kt$SupplyBoxesSliceImpl$&amp;&amp;</ID>
+    <ID>ChainWrapping:SupplyDetailsModelMapper.kt$SupplyDetailsModelMapper$&amp;&amp;</ID>
+    <ID>ChainWrapping:SupplyDetailsModelMapper.kt$SupplyDetailsModelMapper$||</ID>
+    <ID>ChainWrapping:SupplyDetailsViewModel.kt$SupplyDetailsViewModel$&amp;&amp;</ID>
+    <ID>ChainWrapping:SupplyEditGoodsViewModel.kt$SupplyEditGoodsViewModel$||</ID>
+    <ID>ChainWrapping:SupplyEditPackageViewModel.kt$SupplyEditPackageViewModel$&amp;&amp;</ID>
+    <ID>ChainWrapping:SupplyModelMapper.kt$SupplyModelMapper$&amp;&amp;</ID>
+    <ID>ChainWrapping:WbModalBottomSheet.kt$&amp;&amp;</ID>
+    <ID>ChainWrapping:WbOneDateCalendarDialog.kt$||</ID>
+    <ID>CognitiveComplexMethod:AnalyticsFiltersSlice.kt$AnalyticsFilterSliceImpl$suspend fun applyFiltersToStorage()</ID>
+    <ID>CognitiveComplexMethod:AnnotatedStrings.kt$@Composable internal fun getDateAnnotatedString(date: AvgDeliveryTimeModel): AnnotatedString</ID>
+    <ID>CognitiveComplexMethod:BasketUrlGeneratorUtils.kt$BasketUrlGenerator$private fun getBasketNumber(vol: Long, address: BasketAddress): String?</ID>
+    <ID>CognitiveComplexMethod:BoxesTriState.kt$internal fun LazyListScope.boxesTriState( isEditable: Boolean, boxesState: SupplyBoxesState, hasOrders: Boolean, onSupplyBoxesEvent: (SupplyBoxesEvent) -&gt; Unit )</ID>
+    <ID>CognitiveComplexMethod:ChartLineDataSet.kt$ChartLineDataSet$override fun getEntryIndex(xValue: Float, closestToY: Float, rounding: Rounding?): Int</ID>
+    <ID>CognitiveComplexMethod:ChatFile.kt$@Composable internal fun ChatFile( data: List&lt;ChatAttachmentModel.ChatFile&gt;, onClickAttachment: (Int) -&gt; Unit, onClickDownload: (Int) -&gt; Unit, onClickError: (Int) -&gt; Unit )</ID>
+    <ID>CognitiveComplexMethod:GoodsInfoScreen.kt$@Composable private fun GoodsInfoScreenContent( state: GoodsInfoScreenState, cardInfoState: GoodsCardInfoState, widgetsState: GoodsInfoWidgetsState, stocksState: GoodsInfoStocksState, onUIEvent: (GoodsInfoUIEvent) -&gt; Unit, )</ID>
+    <ID>CognitiveComplexMethod:HeaderInfo.kt$@Composable internal fun MainInfo( modifier: Modifier = Modifier, goods: GoodsInfoModel, colors: List&lt;String&gt;?, certificate: CertificateModel?, onUIEvent: (GoodsInfoUIEvent) -&gt; Unit )</ID>
+    <ID>CognitiveComplexMethod:ListFilterBlock.kt$ListFilterBlock$@Composable override fun Draw(state: FilterState&lt;List&lt;T&gt;, ListFilterBlockState&lt;T&gt;&gt;)</ID>
+    <ID>CognitiveComplexMethod:NavControllerUtils.kt$@Composable fun NavController.CollectEvents( navigator: WbNavigator, onCloseApp: () -&gt; Unit = {}, )</ID>
+    <ID>CognitiveComplexMethod:OtherScreen.kt$@Composable private fun NewScreenContent( onUiEvent: (OnUiEvents) -&gt; Unit, screenState: State&lt;OtherViewModel.ScreenState&gt; )</ID>
+    <ID>CognitiveComplexMethod:PointerInputScopeExt.kt$suspend fun PointerInputScope.detectConsumeTransformGestures( consume: Boolean, panZoomLock: Boolean = false, onGesture: (centroid: Offset, pan: Offset, zoom: Float, rotation: Float, changes: List&lt;PointerInputChange&gt;) -&gt; Unit )</ID>
+    <ID>CognitiveComplexMethod:PromoListComponent.kt$@Composable internal fun PromoListItem( model: PromotionModel, onClick: () -&gt; Unit, modifier: Modifier = Modifier )</ID>
+    <ID>CognitiveComplexMethod:Ratings.kt$@Composable internal fun RatingItem( isInternalRatingVisible: Boolean, widgetsState: GoodsInfoWidgetsState, goodsCardInfo: TriState&lt;GoodsCardInfoModel&gt;, onUIEvent: (GoodsInfoUIEvent) -&gt; Unit, modifier: Modifier = Modifier )</ID>
+    <ID>CognitiveComplexMethod:Ratings.kt$@Composable private fun InternalRatingBlock( ratingData: RatingDataModel?, modifier: Modifier = Modifier )</ID>
+    <ID>CognitiveComplexMethod:RegionSuppliesCategoryGoodsScreen.kt$@Composable private fun RegionSuppliesCategoryGoodsScreen( state: RegionSuppliesCategoryGoodsViewModel.RegionSuppliesCategoryGoodsScreenState, onUIEvent: (ScreenUIEvent) -&gt; Unit )</ID>
+    <ID>CognitiveComplexMethod:RegionSuppliesChartViewModel.kt$RegionSuppliesChartViewModel$private fun sortData()</ID>
+    <ID>CognitiveComplexMethod:RoundedBarChart.kt$RoundedBarChart$@SuppressLint("DrawAllocation") override fun onDraw(canvas: Canvas)</ID>
+    <ID>CognitiveComplexMethod:RoundedBarChart.kt$RoundedBarChart.RoundedBarChartRenderer$override fun drawDataSet(c: Canvas, dataSet: IBarDataSet, index: Int)</ID>
+    <ID>CognitiveComplexMethod:SalesFunnelFiltersSlice.kt$AnalyticsFilterSliceImpl$suspend fun applyFiltersToStorage()</ID>
+    <ID>CognitiveComplexMethod:SuppliesScreen.kt$@Composable internal fun SuppliesScreen(vm: SuppliesViewModel)</ID>
+    <ID>CognitiveComplexMethod:SupplyAddPackageGoodsContent.kt$@Composable internal fun SupplyAddPackageGoodsContent( triState: TriState&lt;List&lt;BoxItemModel&gt;&gt;, isSearchActive: Boolean, onUIEvent: (SupplyAddPackageGoodsUIEvent) -&gt; Unit, )</ID>
+    <ID>CognitiveComplexMethod:SupplyGoodsItem.kt$@Composable fun SupplyGoodsItem( modifier: Modifier = Modifier, model: SupplyGoodsItemModel, onRemoveClick: (() -&gt; Unit)? = null, onItemClick: (() -&gt; Unit)? = null )</ID>
+    <ID>CognitiveComplexMethod:SupplyItem.kt$@Composable internal fun SupplyItem( supplier: SupplierItemModel, onChooseSupplier: ((supplier: Supplier) -&gt; Unit), modifier: Modifier = Modifier )</ID>
+    <ID>CognitiveComplexMethod:TextInputField.kt$@Composable private fun TextInputField( // TODO: refactor - update colors to semantic textFieldValue: TextFieldValue, onValueChanged: (TextFieldValue) -&gt; Unit, keyboardController: SoftwareKeyboardController?, localFocusManager: FocusManager, focusRequester: FocusRequester, modifier: Modifier = Modifier, state: InputFieldState = InputFieldState.Default, title: String? = null, @DrawableRes endTitleIcon: Int? = null, onEndTitleIconClick: () -&gt; Unit = {}, @DrawableRes endIcon: Int? = null, onEndIconClick: (() -&gt; Unit)? = null, onInputBoxClick: (() -&gt; Unit)? = null, hint: String? = null, heightField: InputFieldHeight = InputFieldHeight.Small, visualTransformation: VisualTransformation = VisualTransformation.None, maxTextLength: Int = Int.MAX_VALUE, keyboardOptions: WBKeyboardOptions = WBKeyboardOptions.SENTENCES_TEXT_DONE, imeAction: ImeAction = ImeAction.Done, textAlign: TextAlign = TextAlign.Start, readOnly: Boolean = false )</ID>
+    <ID>CognitiveComplexMethod:UiState.kt$@Deprecated("Use &lt;T, K&gt; Resource&lt;T&gt;.toTriState()") @OptIn(ExperimentalCoroutinesApi::class) fun &lt;T&gt; toUiCacheStateFlow( resource: Flow&lt;Resource&lt;T&gt;&gt;, showCache: Boolean = true, delayShowCache: Long = 4000L ): Flow&lt;UiState&lt;T&gt;&gt;</ID>
+    <ID>CognitiveComplexMethod:WbRootCard.kt$@Composable private fun StandardRootCard( data: WbRootCardModel, onClick: () -&gt; Unit, modifier: Modifier = Modifier, state: WbRootCardState = WbRootCardState.LOADED, isEnable: Boolean = true, tag: WbRootCardTags? = null, isVisibleIndicator: Boolean = false, )</ID>
+    <ID>CognitiveComplexMethod:WbRootCard.kt$@Composable private fun WideRootCard( data: WbRootCardModel, onClick: () -&gt; Unit, modifier: Modifier = Modifier, state: WbRootCardState = WbRootCardState.LOADED, isEnable: Boolean = true, tag: WbRootCardTags? = null, isVisibleIndicator: Boolean = false, )</ID>
+    <ID>CognitiveComplexMethod:WbSegmentControl.kt$@Composable fun &lt;T&gt; WbSegmentControl( tabs: List&lt;WbSegmentTabModel&lt;T&gt;&gt;, selectedTabValue: T?, onChangeTab: (T) -&gt; Unit, modifier: Modifier = Modifier, onTabClick: () -&gt; Unit = { }, )</ID>
+    <ID>CognitiveComplexMethod:WbWidget.kt$@Composable private fun WbWidgetBigIllustration( widgetInfo: WidgetType.BigIllustration, isDisabled: Boolean )</ID>
+    <ID>CognitiveComplexMethod:WbWidget.kt$@Composable private fun WbWidgetCenterAlignment( widgetInfo: WidgetType.CenterAlignment, isDisabled: Boolean )</ID>
+    <ID>CognitiveComplexMethod:WbWidget.kt$@Composable private fun WbWidgetDefault( widgetInfo: WidgetType.Default, isDisabled: Boolean )</ID>
+    <ID>CognitiveComplexMethod:WbWidget.kt$@Composable private fun WbWidgetDefaultOneRow( widgetInfo: WidgetType.Default, isDisabled: Boolean )</ID>
+    <ID>CognitiveComplexMethod:WbWidget.kt$@Composable private fun WbWidgetValueAccent( widgetInfo: WidgetType.ValueAccent, isDisabled: Boolean )</ID>
+    <ID>CognitiveComplexMethod:WbWidget.kt$@Composable private fun WbWidgetValueBlack( widgetInfo: WidgetType.ValueBlack, isDisabled: Boolean )</ID>
+    <ID>ConstructorParameterNaming:PaymentsHistoryReportResponseDTO.kt$PagePaymentResponseDTO$val seller_id: Int? = null</ID>
+    <ID>ConstructorParameterNaming:WBAnalytics2Product.kt$WBAnalytics2Product$/** * Аббревиатура параметров Tail */ public val list_id: String? = null</ID>
+    <ID>ConstructorParameterNaming:WBAnalytics2Product.kt$WBAnalytics2Product$/** * Порядковый номер товара в выдаче/карусели */ public val in_list_index: Int = 0</ID>
+    <ID>DataClassContainsFunctions:FilterModels.kt$OrderFilter$fun getSelectedItem()</ID>
+    <ID>DataClassContainsFunctions:FilterModels.kt$OrderFilter$fun isActive()</ID>
+    <ID>DataClassContainsFunctions:FilterModels.kt$OrderFilter$fun isDefaultItemSelected()</ID>
+    <ID>DataClassContainsFunctions:FilterModels.kt$OrderFilter$fun isDifferentFilter(filter: OrderFilter)</ID>
+    <ID>DataClassContainsFunctions:FilterModels.kt$OrderFilter$fun isSelectedItem(index: Int)</ID>
+    <ID>DataClassContainsFunctions:FilterModels.kt$OrderFilter$fun resetFilter()</ID>
+    <ID>DataClassContainsFunctions:FilterModels.kt$OrderFilter$fun selectFilter(index: Int)</ID>
+    <ID>DataClassContainsFunctions:FilterModels.kt$RadioFilter$fun getSelectedItem()</ID>
+    <ID>DataClassContainsFunctions:FilterModels.kt$RadioFilter$fun isActive()</ID>
+    <ID>DataClassContainsFunctions:FilterModels.kt$RadioFilter$fun isDefaultItemSelected()</ID>
+    <ID>DataClassContainsFunctions:FilterModels.kt$RadioFilter$fun isDifferentFilter(filter: RadioFilter)</ID>
+    <ID>DataClassContainsFunctions:FilterModels.kt$RadioFilter$fun isSelectedItem(index: Int)</ID>
+    <ID>DataClassContainsFunctions:FilterModels.kt$RadioFilter$fun resetFilter()</ID>
+    <ID>DataClassContainsFunctions:FilterModels.kt$RadioFilter$fun selectFilter(index: Int)</ID>
+    <ID>DataClassContainsFunctions:FiltersModels.kt$AnalyticsFiltersData$fun isDifferentFilter(filter: AnalyticsFiltersData): Boolean</ID>
+    <ID>DataClassContainsFunctions:InnFieldValidator.kt$InnFieldValidator.LengthRule$fun isToLong(value: String): Boolean</ID>
+    <ID>DataClassContainsFunctions:InnFieldValidator.kt$InnFieldValidator.LengthRule$fun isToShort(value: String): Boolean</ID>
+    <ID>DataClassContainsFunctions:InputField.kt$InputField$fun getText()</ID>
+    <ID>DataClassContainsFunctions:InputField.kt$InputField$fun isValid()</ID>
+    <ID>DataClassContainsFunctions:InputField.kt$InputField$fun onResetToDefaultState()</ID>
+    <ID>DataClassContainsFunctions:InputField.kt$InputField$fun onTextChanged(value: TextFieldValue)</ID>
+    <ID>DataClassContainsFunctions:KppFieldValidator.kt$KppFieldValidator.LengthRule$fun isToLong(value: String): Boolean</ID>
+    <ID>DataClassContainsFunctions:KppFieldValidator.kt$KppFieldValidator.LengthRule$fun isToShort(value: String): Boolean</ID>
+    <ID>DataClassContainsFunctions:LocalizationModel.kt$LocalizationModel$@Composable fun percentToAnnotatedString(): AnnotatedString</ID>
+    <ID>DataClassContainsFunctions:LocalizationModel.kt$TimeToReadyModel$@SuppressLint("ComposableNaming") @Composable private fun AnnotatedString.Builder.appendTime(time: String, @StringRes symbol: Int)</ID>
+    <ID>DataClassContainsFunctions:PagingFilterSelectingOperator.kt$PagingFilterRequest$fun resetOffset()</ID>
+    <ID>DataClassContainsFunctions:PassModel.kt$PassModel$fun checkValidation()</ID>
+    <ID>DataClassContainsFunctions:PassModel.kt$PassModel$fun haveAnyChanges(defaultModel: PassModel): Boolean</ID>
+    <ID>DataClassContainsFunctions:PassModel.kt$PassModel$fun isAllValid()</ID>
+    <ID>DataClassContainsFunctions:PhoneInfoModel.kt$PhoneInfoModel$private fun mask(mask: String, number: String): String</ID>
+    <ID>DataClassContainsFunctions:PricesSelectingFilters.kt$PricesSelectingFilters$fun hasSelectedFilters()</ID>
+    <ID>DataClassContainsFunctions:PricesSelectingFilters.kt$PricesSelectingFilters$fun isDifferentFilter(filter: PricesSelectingFilters): Boolean</ID>
+    <ID>DataClassContainsFunctions:SalesFunnelFilterModels.kt$AnalyticsFiltersData$fun isDifferentFilter(filter: AnalyticsFiltersData): Boolean</ID>
+    <ID>DataClassContainsFunctions:SelectingFilter.kt$LoadedSelectingFilter$@Composable fun getSelectedItemsText()</ID>
+    <ID>DataClassContainsFunctions:SelectingFilter.kt$LoadedSelectingFilter$@Composable fun getSelectedItemsTextWithoutDefault()</ID>
+    <ID>DataClassContainsFunctions:SelectingFilter.kt$LoadedSelectingFilter$@Composable fun getSelectedItemsWithInactiveItems()</ID>
+    <ID>DataClassContainsFunctions:SelectingFilter.kt$LoadedSelectingFilter$fun changeFilterSelection(item: SelectingItem)</ID>
+    <ID>DataClassContainsFunctions:SelectingFilter.kt$LoadedSelectingFilter$fun isActive()</ID>
+    <ID>DataClassContainsFunctions:SelectingFilter.kt$LoadedSelectingFilter$fun isDifferentFilter(filter: LoadedSelectingFilter): Boolean</ID>
+    <ID>DataClassContainsFunctions:SelectingFilter.kt$LoadedSelectingFilter$fun isSelectedItem(item: SelectingItem)</ID>
+    <ID>DataClassContainsFunctions:SelectingFilter.kt$LoadedSelectingFilter$fun resetFilter()</ID>
+    <ID>DataClassContainsFunctions:SelectingFilter.kt$LoadedSelectingFilter$fun updateListFilter(triState: TriState&lt;List&lt;SelectingItem&gt;&gt;)</ID>
+    <ID>DataClassContainsFunctions:SelectingFilter.kt$LoadedSelectingFilter$fun updateSelectedItems(items: List&lt;SelectingItem&gt;)</ID>
+    <ID>DataClassContainsFunctions:StatisticsModel.kt$TextWithColor$@Composable fun color(): Color</ID>
+    <ID>DataClassContainsFunctions:URLString.kt$URLString$@OptIn(ExperimentalEncodingApi::class) fun decodeString(): String</ID>
+    <ID>DataClassContainsFunctions:WeekModel.kt$WeekModel$fun getDateRange(): Pair&lt;LocalDate, LocalDate&gt;</ID>
+    <ID>DataClassContainsFunctions:WeekModel.kt$WeekModel$fun getDatesList(): List&lt;LocalDate&gt;</ID>
+    <ID>DataClassContainsFunctions:WeekModel.kt$WeekModel$fun getWeekMonthsString(): String</ID>
+    <ID>DataClassShouldBeImmutable:CodeRequestDTO.kt$CodeRequestDTO$var options: OptionsDTO</ID>
+    <ID>DataClassShouldBeImmutable:CodeRequestDTO.kt$CodeRequestDTO$var token: String</ID>
+    <ID>DataClassShouldBeImmutable:DraftSuppliesRequest.kt$DraftSuppliesRequest$var limit: Int</ID>
+    <ID>DataClassShouldBeImmutable:DraftSuppliesRequest.kt$DraftSuppliesRequest$var offset: Int</ID>
+    <ID>DataClassShouldBeImmutable:DraftSuppliesRequest.kt$DraftSuppliesRequest$var sortFieldType: SortFieldType</ID>
+    <ID>DataClassShouldBeImmutable:FilterCategoriesRequest.kt$FilterCategoriesRequest$var limit: Int</ID>
+    <ID>DataClassShouldBeImmutable:FilterCategoriesRequest.kt$FilterCategoriesRequest$var offset: Int</ID>
+    <ID>DataClassShouldBeImmutable:FilterCategoriesRequest.kt$FilterCategoriesRequest$var search: String? = null</ID>
+    <ID>DataClassShouldBeImmutable:FilterCategoriesRequest.kt$FilterCategoriesRequest$var type: String</ID>
+    <ID>DataClassShouldBeImmutable:IBottomSheetFormOfOrganization.kt$IBottomSheetFormOfOrganization.FormOfOrganizationDefault$override var selectedText: String? = null</ID>
+    <ID>DataClassShouldBeImmutable:IBottomSheetFormOfOrganization.kt$IBottomSheetFormOfOrganization.FormOfOrganizationFizRus$override var selectedText: String? = null</ID>
+    <ID>DataClassShouldBeImmutable:IBottomSheetFormOfOrganization.kt$IBottomSheetFormOfOrganization.FormOfOrganizationOrgRus$override var selectedText: String? = null</ID>
+    <ID>DataClassShouldBeImmutable:OrderFeedRequest.kt$OrderFeedRequest$var pageNumber: Int</ID>
+    <ID>DataClassShouldBeImmutable:OrderFeedRequest.kt$OrderFeedRequest$var selectedOrderType: OrderTypeModel</ID>
+    <ID>DataClassShouldBeImmutable:OrderFeedRequest.kt$OrderFeedRequest$var supplierId: Int</ID>
+    <ID>DataClassShouldBeImmutable:OrderFeedWidgetResponseDTO.kt$OrderFeedWidgetResponseDTO$var state: String? = null</ID>
+    <ID>DataClassShouldBeImmutable:OtherSupplierResponseDTO.kt$OtherSupplierResponseDTO$var supplierAssigns: List&lt;OtherSuppliersDTO&gt;? = emptyList()</ID>
+    <ID>DataClassShouldBeImmutable:OtherSupplierResponseDTO.kt$OtherSuppliersDTO$var id: String? = null</ID>
+    <ID>DataClassShouldBeImmutable:OtherSupplierResponseDTO.kt$OtherSuppliersDTO$var inn: String? = null</ID>
+    <ID>DataClassShouldBeImmutable:OtherSupplierResponseDTO.kt$OtherSuppliersDTO$var name: String? = null</ID>
+    <ID>DataClassShouldBeImmutable:PagingFilterSelectingOperator.kt$PagingFilterRequest$var limit: Int = PAGINATION_LIST_FILTER_STEP</ID>
+    <ID>DataClassShouldBeImmutable:PagingFilterSelectingOperator.kt$PagingFilterRequest$var offset: Int = START_OFFSET</ID>
+    <ID>DataClassShouldBeImmutable:PagingFilterSelectingOperator.kt$PagingFilterRequest$var search: String? = null</ID>
+    <ID>DataClassShouldBeImmutable:SizesRequest.kt$SizesRequest$var limit: Int</ID>
+    <ID>DataClassShouldBeImmutable:SizesRequest.kt$SizesRequest$var nmId: Long? = null</ID>
+    <ID>DataClassShouldBeImmutable:SizesRequest.kt$SizesRequest$var offset: Int</ID>
+    <ID>DataClassShouldBeImmutable:SupplierGoodsListRequest.kt$SupplierGoodsListRequest$var brands: List&lt;String&gt;? = null</ID>
+    <ID>DataClassShouldBeImmutable:SupplierGoodsListRequest.kt$SupplierGoodsListRequest$var limit: Int</ID>
+    <ID>DataClassShouldBeImmutable:SupplierGoodsListRequest.kt$SupplierGoodsListRequest$var offset: Int = 0</ID>
+    <ID>DataClassShouldBeImmutable:SupplierGoodsListRequest.kt$SupplierGoodsListRequest$var search: String? = null</ID>
+    <ID>DataClassShouldBeImmutable:SupplierGoodsListRequest.kt$SupplierGoodsListRequest$var subjects: List&lt;String&gt;? = null</ID>
+    <ID>DataClassShouldBeImmutable:SuppliesRequest.kt$SuppliesRequest$var pageNumber: Int</ID>
+    <ID>DataClassShouldBeImmutable:SuppliesRequest.kt$SuppliesRequest$var pageSize: Int</ID>
+    <ID>DataClassShouldBeImmutable:SuppliesRequest.kt$SuppliesRequest$var searchId: Long? = null</ID>
+    <ID>DataClassShouldBeImmutable:SuppliesRequest.kt$SuppliesRequest$var sortBy: SortByType? = null</ID>
+    <ID>DataClassShouldBeImmutable:SuppliesRequest.kt$SuppliesRequest$var sortByDirection: SortDirection? = null</ID>
+    <ID>DataClassShouldBeImmutable:SuppliesRequest.kt$SuppliesRequest$var statusId: Int</ID>
+    <ID>DataClassShouldBeImmutable:SupplyOrdersRequest.kt$SupplyOrdersRequest$var next: Int</ID>
+    <ID>DataClassShouldBeImmutable:SupplyOrdersRequest.kt$SupplyOrdersRequest$var order: String</ID>
+    <ID>DataClassShouldBeImmutable:SupplyOrdersRequest.kt$SupplyOrdersRequest$var status: String? = null</ID>
+    <ID>DataClassShouldBeImmutable:SupplyOrdersRequest.kt$SupplyOrdersRequest$var storeId: Int? = null</ID>
+    <ID>DataClassShouldBeImmutable:SupplyOrdersRequest.kt$SupplyOrdersRequest$var supplyId: String = ""</ID>
+    <ID>DataClassShouldBeImmutable:SupplyOrdersRequest.kt$SupplyOrdersRequest$var tab: Tab</ID>
+    <ID>DataClassShouldBeImmutable:TokenResponseDTO.kt$TokenResponseDTO$var cookie: String? = null</ID>
+    <ID>DataClassShouldBeImmutable:TokenResponseDTO.kt$TokenResponseDTO$var token: String</ID>
+    <ID>DestructuringDeclarationWithTooManyEntries:GoodsAndPricesRootRepository.kt$GoodsAndPricesRootRepository$(goodsCount, ratingReport, priceIndexStatistics, goodsPricesDTO)</ID>
+    <ID>DoubleNegativeLambda:PriceHistoryModelMapper.kt$PriceHistoryModelMapper$none { it.value != 0.toDouble() }</ID>
+    <ID>DoubleNegativeLambda:SalesFunnelModelMapper.kt$SalesFunnelModelMapper$none { it.count != 0 }</ID>
+    <ID>DoubleNegativeLambda:UnionFilter.kt$UnionFilter$none { !it }</ID>
+    <ID>EmptyCatchBlock:LogoutApiRepository.kt$LogoutApiRepository${ }</ID>
+    <ID>EmptyClassBlock:CreateSupplyRootDataMapper.kt$CreateSupplyRootDataMapper${ }</ID>
+    <ID>EmptyClassBlock:PaymentHistoryReportAnalyticsUIEvent.kt$PaymentHistoryReportAnalyticsUIEvent${ }</ID>
+    <ID>EmptyClassBlock:StockHistoryTablesThirdLevelUIEvent.kt$StockHistoryTablesThirdLevelUIEvent${}</ID>
+    <ID>EmptyKtFile:SupplyAddPackageGoodsDateValidator.kt$.SupplyAddPackageGoodsDateValidator.kt</ID>
+    <ID>Filename:AcceptanceCoefficientsUIEvents.kt$wildberries.wbpartners.acceptanceCoefficients.presentation.AcceptanceCoefficientsUIEvents.kt</ID>
+    <ID>Filename:AssembleTabSlice.kt$wildberries.wbpartners.marketplaceDbs.presentation.slices.AssembleTabSlice.kt</ID>
+    <ID>Filename:BasketUrlGeneratorUtils.kt$wildberries.utils.BasketUrlGeneratorUtils.kt</ID>
+    <ID>Filename:BottomSheet.kt$wildberries.wbpartners.selectCompany.presentation.models.BottomSheet.kt</ID>
+    <ID>Filename:CharcSuggestDTO.kt$wildberries.wbpartners.goodsedit.data.dto.response.CharcSuggestDTO.kt</ID>
+    <ID>Filename:CreatePackageBody.kt$wildberries.wbpartners.supplyDetails.data.dto.request.CreatePackageBody.kt</ID>
+    <ID>Filename:DeliveryConfirmUIEvents.kt$wildberries.wbpartners.deliveryConfirm.presentation.DeliveryConfirmUIEvents.kt</ID>
+    <ID>Filename:DeliveryTabSlice.kt$wildberries.wbpartners.marketplaceDbs.presentation.slices.DeliveryTabSlice.kt</ID>
+    <ID>Filename:DevToolsActivity.kt$ru.wildberries.devtools.DevToolsActivity.kt</ID>
+    <ID>Filename:Dialog.kt$wildberries.wbpartners.queueCreateClaim.presentation.Dialog.kt</ID>
+    <ID>Filename:DragAndDropState.kt$wildberries.wbpartners.utils.draganddrop.DragAndDropState.kt</ID>
+    <ID>Filename:FeedbackRatingDTO.kt$wildberries.wbpartners.goodsinfo.data.dto.response.FeedbackRatingDTO.kt</ID>
+    <ID>Filename:FileDTO.kt$wildberries.wbpartners.marketplaceTasks.data.dto.response.FileDTO.kt</ID>
+    <ID>Filename:GeneratedVendorCodesDTO.kt$wildberries.wbpartners.goodsedit.data.dto.response.GeneratedVendorCodesDTO.kt</ID>
+    <ID>Filename:GoodsInfoDTO.kt$wildberries.wbpartners.goodsinfo.data.dto.response.GoodsInfoDTO.kt</ID>
+    <ID>Filename:MainScreenChaptersContent.kt$wildberries.wbpartners.settings.domain.model.MainScreenChaptersContent.kt</ID>
+    <ID>Filename:MetricUtils.kt$wildberries.wbpartners.customComponents.analyticsTable.utils.MetricUtils.kt</ID>
+    <ID>Filename:NewTabSlice.kt$wildberries.wbpartners.marketplaceDbs.presentation.slices.NewTabSlice.kt</ID>
+    <ID>Filename:NewsItem.kt$wildberries.wbpartners.newsWidget.presentation.models.NewsItem.kt</ID>
+    <ID>Filename:OperationSupplyBodyDTO.kt$wildberries.wbpartners.supplies.data.dto.request.OperationSupplyBodyDTO.kt</ID>
+    <ID>Filename:PassStepAction.kt$wildberries.wbpartners.createSupplyRootApi.passStep.PassStepAction.kt</ID>
+    <ID>Filename:PassVariantsModel.kt$wildberries.wbpartners.qrSuppliesPass.presentation.models.PassVariantsModel.kt</ID>
+    <ID>Filename:PassesDTO.kt$wildberries.wbpartners.marketplacePasses.data.dto.response.PassesDTO.kt</ID>
+    <ID>Filename:PlanningSuppliesRequestDTO.kt$wildberries.wbpartners.suppliesroot.data.dto.request.PlanningSuppliesRequestDTO.kt</ID>
+    <ID>Filename:PredictSubjectsDTO.kt$wildberries.wbpartners.goodsedit.data.dto.response.PredictSubjectsDTO.kt</ID>
+    <ID>Filename:ProfileSuppliersRequestDTO.kt$wildberries.wbpartners.profileUsers.data.models.request.ProfileSuppliersRequestDTO.kt</ID>
+    <ID>Filename:QueueRepositoryImp.kt$wildberries.wbpartners.queue.data.QueueRepositoryImp.kt</ID>
+    <ID>Filename:RatingBodyDTO.kt$wildberries.wbpartners.data.request.RatingBodyDTO.kt</ID>
+    <ID>Filename:SalesFunnelDTO.kt$wildberries.wbpartners.goodsinfo.data.dto.response.SalesFunnelDTO.kt</ID>
+    <ID>Filename:SettingsDialogModel.kt$wildberries.wbpartners.settingsDialogWidgetApi.model.SettingsDialogModel.kt</ID>
+    <ID>Filename:StoresDTO.kt$wildberries.wbpartners.marketplaceStores.data.dto.response.StoresDTO.kt</ID>
+    <ID>Filename:StoresDTO.kt$wildberries.wbpartners.marketplaceTasks.data.dto.response.StoresDTO.kt</ID>
+    <ID>Filename:SuppliesPlanUiEvents.kt$wildberries.wbpartners.suppliesPlan.presentation.SuppliesPlanUiEvents.kt</ID>
+    <ID>Filename:SuppliesRootRequestDTO.kt$wildberries.wbpartners.suppliesroot.data.dto.request.SuppliesRootRequestDTO.kt</ID>
+    <ID>Filename:SupplyCommonRepository.kt$wildberries.wbpartners.supplyCommon.data.SupplyCommonRepository.kt</ID>
+    <ID>Filename:SupplyNavigators.kt$wildberries.wbpartners.navigation.navigator.supplies.SupplyNavigators.kt</ID>
+    <ID>Filename:SupplyPackageEditParamValues.kt$wildberries.wbpartners.analytics.tracker.features.supplyEditPackage.model.SupplyPackageEditParamValues.kt</ID>
+    <ID>Filename:SupplyReschedulingUiEvents.kt$wildberries.wbpartners.supplyRescheduling.presentation.events.SupplyReschedulingUiEvents.kt</ID>
+    <ID>Filename:TabEvents.kt$wildberries.wbpartners.marketplaceDbs.presentation.events.TabEvents.kt</ID>
+    <ID>Filename:TableNavigationItemData.kt$wildberries.wbpartners.customComponents.analyticsTable.regionSuppliesTable.model.TableNavigationItemData.kt</ID>
+    <ID>Filename:TextInputModels.kt$wildberries.wbpartners.deprecatedComponents.inputField.gocevImpl.TextInputModels.kt</ID>
+    <ID>Filename:TimeModel.kt$wildberries.wbpartners.customComponents.enterCode.model.TimeModel.kt</ID>
+    <ID>Filename:TransitDirections.kt$wildberries.wbpartners.transitDirection.domain.models.TransitDirections.kt</ID>
+    <ID>Filename:Typealias.kt$wildberries.wbpartners.autoPromoEditApi.utils.Typealias.kt</ID>
+    <ID>Filename:Typealiase.kt$wildberries.utils.typealiase.Typealiase.kt</ID>
+    <ID>Filename:UIEvent.kt$wildberries.wbpartners.regionSuppliesCategoryGoodsImpl.presentation.models.UIEvent.kt</ID>
+    <ID>Filename:UiEvents.kt$wildberries.wbpartners.contactCreation.presentation.uiEvent.UiEvents.kt</ID>
+    <ID>Filename:UiEvents.kt$wildberries.wbpartners.marketplaceContactsList.presentation.uiEvents.UiEvents.kt</ID>
+    <ID>Filename:UpdateGoodsDTO.kt$wildberries.wbpartners.prices.data.dto.response.UpdateGoodsDTO.kt</ID>
+    <ID>Filename:ValueTypeSerializer.kt$wildberries.wbpartners.goodsinfo.data.dto.response.ValueTypeSerializer.kt</ID>
+    <ID>Filename:WarehousesDTO.kt$wildberries.wbpartners.marketplacePasses.data.dto.response.WarehousesDTO.kt</ID>
+    <ID>Filename:module.kt$ru.wildberries.devtools.module.kt</ID>
+    <ID>Filename:СharacteristiСconfigurationBodyDTO.kt$wildberries.wbpartners.goodsedit.data.dto.request.СharacteristiСconfigurationBodyDTO.kt</ID>
+    <ID>ForEachOnRange:RoundedBarChart.kt$RoundedBarChart$0 until dataSet.entryCount</ID>
+    <ID>ForbiddenComment:Coroutines.kt$* Почти тоже самое, что и [kotlinx.coroutines.flow.mapLatest]. * Отменяет [body] если если в поток приходит новое значение. * В стандартной библитеке такой нет, хотя должна быть. * * TODO: удалить когда появится.</ID>
+    <ID>ForbiddenComment:CreateSupplyGlobalEvents.kt$//TODO: переименовать в EditSupplyGlobalEvent</ID>
+    <ID>ForbiddenComment:CreateSupplyRootViewModel.kt$CreateSupplyRootViewModel$// TODO: вообще везде стоит стоит привести к Long, раз такая пляска, создать задачу</ID>
+    <ID>ForbiddenComment:CustomersDTO.kt$CustomerAgeDTO$//TODO: check float</ID>
+    <ID>ForbiddenComment:CustomersDTO.kt$CustomerRegionDTO$//TODO: check float</ID>
+    <ID>ForbiddenComment:CustomersDTO.kt$GenderColumnDTO$//TODO: check if not float</ID>
+    <ID>ForbiddenComment:InfoBottomSheet.kt$* Информашка о разделе * * Показать можно клинком вопросика на тулбаре * * TODO: UPD: бляяя скрины мыло ебучее</ID>
+    <ID>ForbiddenComment:ListFilterPaginationCallbacks.kt$ListFilterPaginationCallbacks$//TODO: Удалить потом, как добавим футер для пагинации</ID>
+    <ID>ForbiddenComment:LocalityOrderCountValues.kt$LocalityOrderCountValues$// TODO: уйдет в общие модели данных в фильтры</ID>
+    <ID>ForbiddenComment:MainWarehouseFilterViewModel.kt$MainWarehouseFilterListener$/* TODO: Так как добавился getMainWarehouseOpenArgs() - интерфейс стал двусторонним контрактом, смесью листенера с делегатом. Изменится при рефакторинге или может переименовать? */</ID>
+    <ID>ForbiddenComment:MonthCalendarComponent.kt$//TODO: Если это где-то кому-то когда-то пригодится, то можно вынести в ui</ID>
+    <ID>ForbiddenComment:MonthModelMapper.kt$MonthModelMapper$// TODO: тесты б на эту штуку накатать</ID>
+    <ID>ForbiddenComment:OrderFeedWidgetComponent.kt$// TODO: перенести во вьюмодель когда для создания InfoFooterState.DateOriented.Updated не будет нужен Context</ID>
+    <ID>ForbiddenComment:PassItem.kt$// TODO: WbIconButton? Пока такого типа нет</ID>
+    <ID>ForbiddenComment:QueueDetailsViewModel.kt$QueueDetailsViewModel$// TODO: когда будет задача - BottomButtonType.RateShipment</ID>
+    <ID>ForbiddenComment:SortDirection.kt$SortDirection$// TODO: уйдет в общие модели данных в фильтры</ID>
+    <ID>ForbiddenComment:SplashScreen.kt$// TODO: до лучших времен</ID>
+    <ID>ForbiddenComment:StockType.kt$StockType$// TODO: уйдет в общие модели данных в фильтры</ID>
+    <ID>ForbiddenComment:SuppliesCorousel.kt$//TODO: Этот компонент есть в suppliesRoot модуле. Когда разделим модули на api и impl, то убрать</ID>
+    <ID>ForbiddenComment:SuppliesRootTracker.kt$SuppliesRootTracker$//TODO: потом прикрутить</ID>
+    <ID>ForbiddenComment:SuppliesRootViewModel.kt$SuppliesRootViewModel$//TODO: нужна отдельная задача на доработку на удаление из списков, если дата выходит из границ</ID>
+    <ID>ForbiddenComment:SuppliesViewModel.kt$SuppliesViewModel$//TODO: рефакторинг списков с пейджингом, будет отдельный контроллер</ID>
+    <ID>ForbiddenComment:SupplyAddGoodsRepository.kt$SupplyAddGoodsRepository$//qwertyz TODO: что будет, если придёт null?</ID>
+    <ID>ForbiddenComment:SupplyAddGoodsViewModel.kt$SupplyAddGoodsViewModel$//TODO: Может быть на draft он нужен?</ID>
+    <ID>ForbiddenComment:SupplyEditGoodsViewModel.kt$SupplyEditGoodsViewModel$//TODO: что делать с поиском в списке новых товаров?</ID>
+    <ID>ForbiddenComment:TextInputField.kt$// TODO: refactor - update colors to semantic</ID>
+    <ID>FunctionNaming:WbUpdateInfoFooter.kt$InfoFooterState.DateOriented$fun Empty(): InfoFooterState</ID>
+    <ID>FunctionNaming:WbUpdateInfoFooter.kt$InfoFooterState.DateOriented$fun Loading(): InfoFooterState</ID>
+    <ID>FunctionNaming:WbUpdateInfoFooter.kt$InfoFooterState.DateOriented$fun SimpleText( text: TextType = ResText(UIString.error_footer_text), enabled: Boolean = true, isInProgress: Boolean = false, ): InfoFooterState</ID>
+    <ID>FunctionReturnTypeSpacing:MarketplaceStocksUploadNetworkApi.kt$MarketplaceStocksUploadNetworkApi$@GET("/ns/marketplace-app/marketplace-remote-wh/api/v3/portal/offices/stores/short") suspend fun getWarehouses() : ResponseWrapper&lt;List&lt;WarehouseDTO&gt;&gt;</ID>
+    <ID>FunctionReturnTypeSpacing:MarketplaceStocksUploadNetworkApi.kt$MarketplaceStocksUploadNetworkApi$@Multipart @POST("/ns/marketplace-app/marketplace-remote-wh/api/v2/portal/stocks/uploads") suspend fun uploadFile( @Part file: MultipartBody.Part, @Part("warehouseId") warehouseId: RequestBody, ) : ResponseWrapper&lt;Unit&gt;</ID>
+    <ID>FunctionReturnTypeSpacing:QueueDetailsNetworkApi.kt$QueueDetailsNetworkApi$@GET("app/e-queue/api/v1/e-queue/actual-info/{id}") suspend fun getQueueDetails( @Path("id") queueId: Long, ) : QueueDetailsDTO</ID>
+    <ID>FunctionReturnTypeSpacing:SupplyEditGoodsViewModel.kt$SupplyEditGoodsViewModel$private fun getListAndIndexByBarcode(barcode: String): Triple&lt;GoodsChanges, MutableList&lt;SupplyGoodsModel&gt;, Int&gt;?</ID>
+    <ID>FunctionReturnTypeSpacing:SupplyPassListActionsSender.kt$SupplyPassListActionsSender$fun getEmptyPassData() : Pair&lt;Long, String&gt;?</ID>
+    <ID>FunctionReturnTypeSpacing:TemplatesDestination.kt$TemplatesDestination$fun route(templatesType: Int? = null): String</ID>
+    <ID>FunctionReturnTypeSpacing:WarehouseCoefficientsItem.kt$private fun getListDrawableForHeaders(model: WarehouseCoefficientsModel) : List&lt;Int&gt;</ID>
+    <ID>FunctionStartOfBodySpacing:PdfGenerator.kt$PdfGenerator$suspend fun generatePdf(@StringRes pdfNameRes: Int, drawFun: suspend (PdfDocument) -&gt; Unit): File</ID>
+    <ID>FunctionStartOfBodySpacing:ProfileWarehousesOperationsApiModule.kt$fun profileWarehousesOperationsApiModule()</ID>
+    <ID>FunctionStartOfBodySpacing:TabModel.kt$TabItemModel.Companion$fun mock(index: Int = 0)</ID>
+    <ID>FunctionStartOfBodySpacing:TemplatesDestination.kt$TemplatesDestination$fun route(templatesType: Int? = null): String</ID>
+    <ID>FunctionStartOfBodySpacing:UiModule.kt$fun uiModule()</ID>
+    <ID>FunctionStartOfBodySpacing:WBAppPlugin.kt$WBAppPlugin$private fun ApplicationBuildType.addIsBetaBuildConfigField(isBeta: Boolean)</ID>
+    <ID>FunctionStartOfBodySpacing:WBAppPlugin.kt$WBAppPlugin$private fun ApplicationProductFlavor.addIsRustoreBuildConfigField(isRustore: Boolean)</ID>
+    <ID>Indentation:AcceptanceCoefficientsInteractor.kt$AcceptanceCoefficientsInteractor$ </ID>
+    <ID>Indentation:BalanceWidgetRepository.kt$BalanceWidgetRepository$ </ID>
+    <ID>Indentation:BaseSupplySlice.kt$BaseSupplySlice$ </ID>
+    <ID>Indentation:BuyersTracker.kt$BuyersTracker$ </ID>
+    <ID>Indentation:CoefficientInfoPanel.kt$ </ID>
+    <ID>Indentation:ContactCreationViewModel.kt$ContactCreationViewModel$ </ID>
+    <ID>Indentation:ContactCreationViewModel.kt$ContactCreationViewModel.&lt;no name provided&gt;$ </ID>
+    <ID>Indentation:CreateSupplyPackagePreviewViewModel.kt$CreateSupplyPackagePreviewViewModel$ </ID>
+    <ID>Indentation:DateRangeChangerSliceImpl.kt$DateRangeChangerSliceImpl$ </ID>
+    <ID>Indentation:DoubleInputFormatter.kt$DoubleInputFormatter$ </ID>
+    <ID>Indentation:EditSupplyTogglesModelMapper.kt$EditSupplyTogglesModelMapper$ </ID>
+    <ID>Indentation:EzLineChart.kt$ </ID>
+    <ID>Indentation:EzLineChartWithToggles.kt$ </ID>
+    <ID>Indentation:GestureUtils.kt$ </ID>
+    <ID>Indentation:InputField.kt$InputField$ </ID>
+    <ID>Indentation:MarketplaceCourierContactsScreen.kt$ </ID>
+    <ID>Indentation:MarketplaceWidgetViewModel.kt$MarketplaceWidgetViewModel$ </ID>
+    <ID>Indentation:MonthModelMapper.kt$MonthModelMapper$ </ID>
+    <ID>Indentation:NotificationsScreen.kt$ </ID>
+    <ID>Indentation:PassModel.kt$PassModel$ </ID>
+    <ID>Indentation:PassTemplateModule.kt$ </ID>
+    <ID>Indentation:PassVariantsSlice.kt$PassVariantsSliceImpl$ </ID>
+    <ID>Indentation:PriceIndexViewModel.kt$PriceIndexViewModel$ </ID>
+    <ID>Indentation:PricesAndSaleErrorCodeHelper.kt$PricesAndSaleErrorCodeHelper$ </ID>
+    <ID>Indentation:PricesSelectingFilters.kt$PricesSelectingFilters$ </ID>
+    <ID>Indentation:ProfileOperationsRepository.kt$ProfileOperationsRepository$ </ID>
+    <ID>Indentation:QueueCreateClaimViewModel.kt$QueueCreateClaimViewModel$ </ID>
+    <ID>Indentation:RegisterNewCompanyViewModel.kt$RegisterNewCompanyViewModel$ </ID>
+    <ID>Indentation:SalesFunnelFilterModels.kt$AnalyticsFiltersData$ </ID>
+    <ID>Indentation:SupplierIdTrigger.kt$SupplierIdTrigger$ </ID>
+    <ID>Indentation:SupplyEditGoodsViewModel.kt$SupplyEditGoodsViewModel$ </ID>
+    <ID>Indentation:SupplyPassListModule.kt$ </ID>
+    <ID>Indentation:WarehouseUiMapper.kt$WarehouseUiMapper$ </ID>
+    <ID>Indentation:WbButton.kt$ </ID>
+    <ID>Indentation:WbLoggerAnalyticsImpl.kt$WbLoggerAnalyticsImpl$ </ID>
+    <ID>Indentation:WbTabRowModel.kt$WbTabRowState$ </ID>
+    <ID>InvalidPackageDeclaration:AnalyticsFiltersDBMapper.kt$package wildberries.wbpartners.salesFunnel.data.mappers</ID>
+    <ID>InvalidPackageDeclaration:SupplyAddGoodsNetworkApi.kt$package wildberries.wbpartners.supplyAddGoods.network</ID>
+    <ID>LargeClass:AnalyticsFiltersSlice.kt$AnalyticsFilterSliceImpl : BaseSliceAnalyticsFilterSlice</ID>
+    <ID>LargeClass:CreateSupplyPlanningStepViewModel.kt$CreateSupplyPlanningStepViewModel : BaseViewModelMainWarehouseFilterListenerTransitWarehouseFilterListener</ID>
+    <ID>LargeClass:SalesFunnelFiltersSlice.kt$AnalyticsFilterSliceImpl : BaseSliceAnalyticsFilterSlice</ID>
+    <ID>LateinitUsage:BaseSlice.kt$BaseSlice$lateinit var sliceScope: CoroutineScope</ID>
+    <ID>LateinitUsage:BaseSlice.kt$BaseSlice$private lateinit var sliceEvents: MutableSharedFlow&lt;BaseSliceEvent&gt;</ID>
+    <ID>LateinitUsage:SupplyToDeliverySlice.kt$SupplyToDeliverySliceImpl$private lateinit var supplyBoxesSlice: SupplyBoxesSliceImpl</ID>
+    <ID>LateinitUsage:Util.kt$@Volatile public lateinit var wbAnalytics2Locator: WBAnalytics2ServiceLocator</ID>
+    <ID>LongMethod:BuyerPortraitTableMapper.kt$BuyerPortraitTableMapper$private fun mapMetrics(domain: Interest): List&lt;MetricModel&gt;</ID>
+    <ID>LongMethod:CreateSupplyPlanningStepDomainMapper.kt$CreateSupplyPlanningStepDomainMapper$fun mapWarehouseRecommendationToWarehouseRecommendationModel( recommendation: WarehouseRecommendation, ): WarehouseRecommendationModel</ID>
+    <ID>LongMethod:FiltersSlice.kt$PricesFilterSliceImpl$private fun onObserveFilterStates()</ID>
+    <ID>LongMethod:MonthModelMapper.kt$MonthModelMapper$fun addCalendarPromoDay(previousModel: CalendarPromoDayModel?, dayNumber: Int)</ID>
+    <ID>LongMethod:RegisterNewCompanyDataViewModel.kt$RegisterNewCompanyDataViewModel$private fun setupDefaultRestFields(selectedFormOfOrganization: FormOfOrganization)</ID>
+    <ID>LongMethod:RoundedBarChart.kt$RoundedBarChart$@SuppressLint("DrawAllocation") override fun onDraw(canvas: Canvas)</ID>
+    <ID>LongMethod:RoundedBarChart.kt$RoundedBarChart.RoundedBarChartRenderer$override fun drawDataSet(c: Canvas, dataSet: IBarDataSet, index: Int)</ID>
+    <ID>LongMethod:SuppliesViewModel.kt$SuppliesViewModel$fun onUIEvents(event: SuppliesUIEvents)</ID>
+    <ID>LongParameterList:TextInputField.kt$( // TODO: refactor - update colors to semantic textFieldValue: TextFieldValue, onValueChanged: (TextFieldValue) -&gt; Unit, keyboardController: SoftwareKeyboardController?, localFocusManager: FocusManager, focusRequester: FocusRequester, modifier: Modifier = Modifier, state: InputFieldState = InputFieldState.Default, title: String? = null, @DrawableRes endTitleIcon: Int? = null, onEndTitleIconClick: () -&gt; Unit = {}, @DrawableRes endIcon: Int? = null, onEndIconClick: (() -&gt; Unit)? = null, onInputBoxClick: (() -&gt; Unit)? = null, hint: String? = null, heightField: InputFieldHeight = InputFieldHeight.Small, visualTransformation: VisualTransformation = VisualTransformation.None, maxTextLength: Int = Int.MAX_VALUE, keyboardOptions: WBKeyboardOptions = WBKeyboardOptions.SENTENCES_TEXT_DONE, imeAction: ImeAction = ImeAction.Done, textAlign: TextAlign = TextAlign.Start, readOnly: Boolean = false )</ID>
+    <ID>MagicNumber:AddNewPackageContent.kt$1.5f</ID>
+    <ID>MagicNumber:AdvertisingGraph.kt$0.5f</ID>
+    <ID>MagicNumber:AdvertisingGraph.kt$10f</ID>
+    <ID>MagicNumber:AdvertisingGraph.kt$12f</ID>
+    <ID>MagicNumber:AdvertisingGraph.kt$15f</ID>
+    <ID>MagicNumber:AdvertisingGraph.kt$3f</ID>
+    <ID>MagicNumber:AdvertisingGraph.kt$4.0</ID>
+    <ID>MagicNumber:AdvertisingGraph.kt$5</ID>
+    <ID>MagicNumber:AdvertisingGraph.kt$6.2f</ID>
+    <ID>MagicNumber:AdvertisingModelMapper.kt$AdvertisingModelMapper$7</ID>
+    <ID>MagicNumber:AnalyticsColoredMarkerView.kt$AnalyticsColoredMarkerView$100f</ID>
+    <ID>MagicNumber:AnalyticsColoredMarkerView.kt$AnalyticsColoredMarkerView$14f</ID>
+    <ID>MagicNumber:AnalyticsColoredMarkerView.kt$AnalyticsColoredMarkerView$8f</ID>
+    <ID>MagicNumber:BarChart.kt$800</ID>
+    <ID>MagicNumber:BasketUrlGeneratorUtils.kt$BasketUrlGenerator$1000</ID>
+    <ID>MagicNumber:BasketUrlGeneratorUtils.kt$BasketUrlGenerator$100000</ID>
+    <ID>MagicNumber:BitmapStoreUtils.kt$100</ID>
+    <ID>MagicNumber:BottomSheets.kt$7f</ID>
+    <ID>MagicNumber:BuyerPortraitModelMapper.kt$BuyerPortraitModelMapper$100</ID>
+    <ID>MagicNumber:CalendarUtils.kt$3</ID>
+    <ID>MagicNumber:CardRatingRequestMapper.kt$CardRatingRequestMapper$204557</ID>
+    <ID>MagicNumber:CargoType.kt$3</ID>
+    <ID>MagicNumber:ChatInput.kt$0.9f</ID>
+    <ID>MagicNumber:ChatMedia.kt$10</ID>
+    <ID>MagicNumber:ChatMedia.kt$2.05f</ID>
+    <ID>MagicNumber:ChatMedia.kt$3</ID>
+    <ID>MagicNumber:ChatMedia.kt$4</ID>
+    <ID>MagicNumber:ChatMedia.kt$5</ID>
+    <ID>MagicNumber:ChatMedia.kt$6</ID>
+    <ID>MagicNumber:ChatMedia.kt$7</ID>
+    <ID>MagicNumber:ChatMedia.kt$8</ID>
+    <ID>MagicNumber:ChatMedia.kt$9</ID>
+    <ID>MagicNumber:CollapsingBanner.kt$0.2f</ID>
+    <ID>MagicNumber:ColoredDotBarChartMarkerView.kt$ColoredDotBarChartMarkerView$100f</ID>
+    <ID>MagicNumber:ColoredDotBarChartMarkerView.kt$ColoredDotBarChartMarkerView$14f</ID>
+    <ID>MagicNumber:ColoredDotBarChartMarkerView.kt$ColoredDotBarChartMarkerView$8f</ID>
+    <ID>MagicNumber:CompareToPreviousDayLineChartMarkerView.kt$CompareToPreviousDayLineChartMarkerView$100f</ID>
+    <ID>MagicNumber:CompareToPreviousDayLineChartMarkerView.kt$CompareToPreviousDayLineChartMarkerView$14f</ID>
+    <ID>MagicNumber:CompareToPreviousDayLineChartMarkerView.kt$CompareToPreviousDayLineChartMarkerView$8f</ID>
+    <ID>MagicNumber:DataMapper.kt$DataMapper$3</ID>
+    <ID>MagicNumber:DataMapper.kt$DataMapper$6</ID>
+    <ID>MagicNumber:DeliveryBlock.kt$9f</ID>
+    <ID>MagicNumber:DragAndDropState.kt$DragDropState$50f</ID>
+    <ID>MagicNumber:EnterCode.kt$100</ID>
+    <ID>MagicNumber:EzLineChartExt.kt$3</ID>
+    <ID>MagicNumber:EzLineChartExt.kt$4f</ID>
+    <ID>MagicNumber:EzLineChartExt.kt$800</ID>
+    <ID>MagicNumber:FeatureInitializer.kt$FeatureInitializer$15000</ID>
+    <ID>MagicNumber:FeatureInitializer.kt$FeatureInitializer$40000</ID>
+    <ID>MagicNumber:FeatureInitializer.kt$FeatureInitializer$5000</ID>
+    <ID>MagicNumber:FileUtils.kt$FileUtils$1024</ID>
+    <ID>MagicNumber:FileUtils.kt$FileUtils$64</ID>
+    <ID>MagicNumber:FileUtils.kt$FileUtils$8</ID>
+    <ID>MagicNumber:GetInQueueButtonVMImpl.kt$GetInQueueButtonVMImpl.&lt;no name provided&gt;$1000</ID>
+    <ID>MagicNumber:GetInQueueButtonVMImpl.kt$GetInQueueButtonVMImpl.&lt;no name provided&gt;$1_000L</ID>
+    <ID>MagicNumber:GoodsAndPricesRootModelMapper.kt$GoodsAndPricesRootModelMapper$99</ID>
+    <ID>MagicNumber:GoodsCardItem.kt$20f</ID>
+    <ID>MagicNumber:GoodsEditTrackerHelper.kt$GoodsEditTrackerHelper$3</ID>
+    <ID>MagicNumber:GraphUtils.kt$GraphUtils$0.1f</ID>
+    <ID>MagicNumber:GraphUtils.kt$GraphUtils$1.05f</ID>
+    <ID>MagicNumber:GraphUtils.kt$GraphUtils$1000</ID>
+    <ID>MagicNumber:GraphUtils.kt$GraphUtils$1000000</ID>
+    <ID>MagicNumber:GraphUtils.kt$GraphUtils$1000000000</ID>
+    <ID>MagicNumber:GraphUtils.kt$GraphUtils$10f</ID>
+    <ID>MagicNumber:GraphUtils.kt$GraphUtils$24f</ID>
+    <ID>MagicNumber:GraphUtils.kt$GraphUtils$5</ID>
+    <ID>MagicNumber:GraphWidget.kt$10f</ID>
+    <ID>MagicNumber:GraphWidget.kt$12f</ID>
+    <ID>MagicNumber:GraphWidget.kt$20f</ID>
+    <ID>MagicNumber:GraphWidget.kt$3</ID>
+    <ID>MagicNumber:GraphWidget.kt$3f</ID>
+    <ID>MagicNumber:GraphWidget.kt$4</ID>
+    <ID>MagicNumber:GraphWidget.kt$4f</ID>
+    <ID>MagicNumber:GraphWidget.kt$800</ID>
+    <ID>MagicNumber:Greeting.kt$0.6</ID>
+    <ID>MagicNumber:InfoDetailsShimmer.kt$4</ID>
+    <ID>MagicNumber:InfoDetailsShimmer.kt$5</ID>
+    <ID>MagicNumber:KeyboardUtils.kt$0.15</ID>
+    <ID>MagicNumber:LocalizationIndexInfoBottomSheet.kt$600</ID>
+    <ID>MagicNumber:LocalizationIndexView.kt$0.8f</ID>
+    <ID>MagicNumber:LocalizationReportShareChart.kt$100</ID>
+    <ID>MagicNumber:MarkerView.kt$MarkerViewThresholdDot$8f</ID>
+    <ID>MagicNumber:MarkerView.kt$MarkerViewWithDot$8f</ID>
+    <ID>MagicNumber:MarketplaceShimmer.kt$3</ID>
+    <ID>MagicNumber:MediaContentPreview.kt$1000000</ID>
+    <ID>MagicNumber:NewsShimmer.kt$5</ID>
+    <ID>MagicNumber:NewsShimmerBlock.kt$3</ID>
+    <ID>MagicNumber:NotficationsShimmer.kt$5</ID>
+    <ID>MagicNumber:NotificationsScreen.kt$10</ID>
+    <ID>MagicNumber:NotificationsScreen.kt$9</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$10</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$11</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$12</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$13</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$14</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$15</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$16</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$17</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$18</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$19</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$20</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$21</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$22</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$23</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$24</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$25</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$3</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$4</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$5</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$6</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$7</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$8</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$9</ID>
+    <ID>MagicNumber:OrderFeedModelMapper.kt$OrderFeedModelMapper$99</ID>
+    <ID>MagicNumber:OrderFeedWidgetShimmer.kt$5</ID>
+    <ID>MagicNumber:OrderItem.kt$0.56f</ID>
+    <ID>MagicNumber:OrdersGraph.kt$0.05f</ID>
+    <ID>MagicNumber:OrdersGraph.kt$0.3f</ID>
+    <ID>MagicNumber:OrdersGraph.kt$0.5f</ID>
+    <ID>MagicNumber:OrdersGraph.kt$10f</ID>
+    <ID>MagicNumber:OrdersGraph.kt$12f</ID>
+    <ID>MagicNumber:OrdersGraph.kt$15f</ID>
+    <ID>MagicNumber:OrdersGraph.kt$3f</ID>
+    <ID>MagicNumber:OrdersGraph.kt$4.0</ID>
+    <ID>MagicNumber:OrdersGraph.kt$5</ID>
+    <ID>MagicNumber:OrdersGraph.kt$7f</ID>
+    <ID>MagicNumber:OrdersMapper.kt$OrdersMapper$3</ID>
+    <ID>MagicNumber:OtherScreen.kt$0.3f</ID>
+    <ID>MagicNumber:PaginationLazyColumn.kt$9</ID>
+    <ID>MagicNumber:PdfUtils.kt$12f</ID>
+    <ID>MagicNumber:PdfUtils.kt$4f</ID>
+    <ID>MagicNumber:PdfUtils.kt$612</ID>
+    <ID>MagicNumber:PdfUtils.kt$792</ID>
+    <ID>MagicNumber:PhraseRatingShimmer.kt$5</ID>
+    <ID>MagicNumber:PointerInputScopeExt.kt$180f</ID>
+    <ID>MagicNumber:PriceGraph.kt$0.05</ID>
+    <ID>MagicNumber:PriceGraph.kt$1.3</ID>
+    <ID>MagicNumber:PriceGraph.kt$15f</ID>
+    <ID>MagicNumber:PricesAndSaleSlice.kt$PriceAndSaleSliceImpl$0.01</ID>
+    <ID>MagicNumber:PricesAndSaleSlice.kt$PriceAndSaleSliceImpl$100</ID>
+    <ID>MagicNumber:PricesModelMapper.kt$PricesModelMapper$100</ID>
+    <ID>MagicNumber:PricesModelMapper.kt$PricesModelMapper$100.0</ID>
+    <ID>MagicNumber:PromoListSlice.kt$PromoListSlice$30L</ID>
+    <ID>MagicNumber:QrCodeDrawer.kt$QrCodeDrawer$12</ID>
+    <ID>MagicNumber:QrCodeDrawer.kt$QrCodeDrawer$16</ID>
+    <ID>MagicNumber:QrCodeDrawer.kt$QrCodeDrawer$18</ID>
+    <ID>MagicNumber:QrCodeDrawer.kt$QrCodeDrawer$27</ID>
+    <ID>MagicNumber:QrCodeDrawer.kt$QrCodeDrawer$4</ID>
+    <ID>MagicNumber:QrCodeDrawer.kt$QrCodeDrawer$50</ID>
+    <ID>MagicNumber:QrCodeDrawer.kt$QrCodeDrawer$6</ID>
+    <ID>MagicNumber:QrCodeDrawer.kt$QrCodeDrawer$8</ID>
+    <ID>MagicNumber:QrCodeDrawer.kt$QrCodeDrawer$8f</ID>
+    <ID>MagicNumber:QrSuppliesGenerationInteractor.kt$QrSuppliesGenerationInteractor$16</ID>
+    <ID>MagicNumber:QrSuppliesGenerationInteractor.kt$QrSuppliesGenerationInteractor$26</ID>
+    <ID>MagicNumber:QrSuppliesGenerationInteractor.kt$QrSuppliesGenerationInteractor$8</ID>
+    <ID>MagicNumber:Ratings.kt$3.0</ID>
+    <ID>MagicNumber:Ratings.kt$8.0</ID>
+    <ID>MagicNumber:RefundsModelMapper.kt$RefundsModelMapper$10</ID>
+    <ID>MagicNumber:RefundsModelMapper.kt$RefundsModelMapper$11</ID>
+    <ID>MagicNumber:RefundsModelMapper.kt$RefundsModelMapper$21</ID>
+    <ID>MagicNumber:RoundedBarChart.kt$RoundedBarChart$10</ID>
+    <ID>MagicNumber:RoundedBarChart.kt$RoundedBarChart.RoundedBarChartRenderer$3</ID>
+    <ID>MagicNumber:RoundedBarChart.kt$RoundedBarChart.RoundedBarChartRenderer$4</ID>
+    <ID>MagicNumber:RoundedSingleBarChart.kt$0.75f</ID>
+    <ID>MagicNumber:RoundedSingleBarChart.kt$10f</ID>
+    <ID>MagicNumber:RoundedSingleBarChart.kt$5f</ID>
+    <ID>MagicNumber:RoundedSingleBarChart.kt$800</ID>
+    <ID>MagicNumber:RoundedSingleBarChart.kt$9</ID>
+    <ID>MagicNumber:SalesFunnelModelMapper.kt$SalesFunnelModelMapper$7</ID>
+    <ID>MagicNumber:SelectCompanyViewModel.kt$SelectCompanyViewModel$100</ID>
+    <ID>MagicNumber:ServiceTokenManager.kt$ServiceTokenManager$2000L</ID>
+    <ID>MagicNumber:SettingsDialogWidgetComponent.kt$0.05f</ID>
+    <ID>MagicNumber:SettingsDialogWidgetComponent.kt$0.1f</ID>
+    <ID>MagicNumber:SettingsDialogWidgetComponent.kt$0.8f</ID>
+    <ID>MagicNumber:SheetContent.kt$0.95f</ID>
+    <ID>MagicNumber:SizePricesSlice.kt$SizePricesSliceImpl$0.01</ID>
+    <ID>MagicNumber:SizePricesSlice.kt$SizePricesSliceImpl$100</ID>
+    <ID>MagicNumber:SolidButton.kt$300</ID>
+    <ID>MagicNumber:StatisticsComponent.kt$4</ID>
+    <ID>MagicNumber:StringUtils.kt$16</ID>
+    <ID>MagicNumber:StringUtils.kt$32</ID>
+    <ID>MagicNumber:SuppliesBlockShimmer.kt$3</ID>
+    <ID>MagicNumber:SuppliesViewModel.kt$SuppliesViewModel$100</ID>
+    <ID>MagicNumber:SupplyItem.kt$0.56f</ID>
+    <ID>MagicNumber:SupplyShimmerItem.kt$3</ID>
+    <ID>MagicNumber:TableInfoBottomSheet.kt$600</ID>
+    <ID>MagicNumber:TextItem.kt$600</ID>
+    <ID>MagicNumber:WBAnalytics2AddToCartParams.kt$WBAnalytics2AddToCartParams$3</ID>
+    <ID>MagicNumber:WBAnalytics2Api.kt$WBAnalytics2Api$200</ID>
+    <ID>MagicNumber:WBAnalytics2CheckoutParams.kt$WBAnalytics2CheckoutParams$3</ID>
+    <ID>MagicNumber:WBAnalytics2Product.kt$WBAnalytics2Product$192</ID>
+    <ID>MagicNumber:WBAnalytics2Product.kt$WBAnalytics2Product.Companion$128</ID>
+    <ID>MagicNumber:WBAnalytics2Product.kt$WBAnalytics2Product.Companion$192</ID>
+    <ID>MagicNumber:WBAnalytics2PurchaseParams.kt$WBAnalytics2PurchaseParams$3</ID>
+    <ID>MagicNumber:WBAnalytics2SenderService.kt$WBAnalytics2SenderService$10000</ID>
+    <ID>MagicNumber:WBAnalytics2SenderService.kt$WBAnalytics2SenderService$2.5</ID>
+    <ID>MagicNumber:WBAnalytics2ViewItemListParams.kt$WBAnalytics2ViewItemListParams$3</ID>
+    <ID>MagicNumber:WBAnalytics2ViewItemParams.kt$WBAnalytics2ViewItemParams$3</ID>
+    <ID>MagicNumber:WBDataSetRenderers.kt$WBBarDataSetRenderer$10f</ID>
+    <ID>MagicNumber:WbChartsSlider.kt$1.2f</ID>
+    <ID>MagicNumber:WbChartsSlider.kt$1.5f</ID>
+    <ID>MagicNumber:WbChartsSlider.kt$10</ID>
+    <ID>MagicNumber:WbChartsSlider.kt$20</ID>
+    <ID>MagicNumber:WbFilterBottomSheet.kt$0.95f</ID>
+    <ID>MagicNumber:WbFilterButton.kt$0.44f</ID>
+    <ID>MagicNumber:WbFilterButton.kt$0.56f</ID>
+    <ID>MagicNumber:WbPartnersHorizontalPagerIndicator.kt$0.5f</ID>
+    <ID>MagicNumber:WbSliderWithBarChart.kt$800</ID>
+    <ID>MagicNumber:YourCustomersCommonWidgets.kt$4f</ID>
+    <ID>MandatoryBracesLoops:ChartLineDataSet.kt$ChartLineDataSet$closest -= 1</ID>
+    <ID>MapperFunctionWithCollection:CoefficientModelMapper.kt$CoefficientModelMapper$fun mapCoefficientsToWarehouseModels(coefs: List&lt;Coefficient&gt;): List&lt;WarehouseCoefficientsModel&gt;</ID>
+    <ID>MapperFunctionWithCollection:PromotionModelMapper.kt$PromotionModelMapper$fun mapPromotionsList(promos: List&lt;Promotion&gt;): List&lt;PromotionModel&gt;</ID>
+    <ID>MapperFunctionWithCollection:TransitDirectionDataMapper.kt$TransitDirectionDataMapper$fun mapToDomain(entities: List&lt;TransitWarehouseDTO&gt;): List&lt;TransitDirection&gt;</ID>
+    <ID>MatchingDeclarationName:AcceptanceCoefficientsUIEvents.kt$ScreenEvent</ID>
+    <ID>MatchingDeclarationName:AssembleTabSlice.kt$AssembleTabSliceImpl : MultiselectTabSlice</ID>
+    <ID>MatchingDeclarationName:BasketUrlGeneratorUtils.kt$BasketUrlGenerator</ID>
+    <ID>MatchingDeclarationName:BottomSheet.kt$RestoreCompanyBottomSheetContent : WbBottomSheetModel</ID>
+    <ID>MatchingDeclarationName:CacheResourse.kt$Resource&lt;out T&gt;</ID>
+    <ID>MatchingDeclarationName:CharcSuggestDTO.kt$CharcSuggestDataDTO</ID>
+    <ID>MatchingDeclarationName:CreatePackageBody.kt$CreatePackageBodyDTO</ID>
+    <ID>MatchingDeclarationName:DeliveryConfirmUIEvents.kt$ScreenEvent</ID>
+    <ID>MatchingDeclarationName:DeliveryTabSlice.kt$DeliveryTabSliceImpl : TabSliceWithActions</ID>
+    <ID>MatchingDeclarationName:DevToolsActivity.kt$DevOptionsActivity : FragmentActivity</ID>
+    <ID>MatchingDeclarationName:Dialog.kt$ScreenDialogItem</ID>
+    <ID>MatchingDeclarationName:DragAndDropState.kt$DragDropState</ID>
+    <ID>MatchingDeclarationName:FeedbackRatingDTO.kt$FeedbackRatingDataDTO</ID>
+    <ID>MatchingDeclarationName:FileDTO.kt$FileDataDTO</ID>
+    <ID>MatchingDeclarationName:FiltersModels.kt$FiltersBottomSheets : SliceBottomSheet</ID>
+    <ID>MatchingDeclarationName:GeneratedVendorCodesDTO.kt$VendorCodes</ID>
+    <ID>MatchingDeclarationName:GoodsInfoDTO.kt$GoodsInfoDataDTO</ID>
+    <ID>MatchingDeclarationName:MainScreenChaptersContent.kt$MainScreenChapterSetting</ID>
+    <ID>MatchingDeclarationName:NewTabSlice.kt$NewTabSliceImpl : MultiselectTabSlice</ID>
+    <ID>MatchingDeclarationName:NewsItem.kt$NewsModelState</ID>
+    <ID>MatchingDeclarationName:OperationSupplyBodyDTO.kt$OperationBodyDTO</ID>
+    <ID>MatchingDeclarationName:PackageItemList.kt$PackageItemModel</ID>
+    <ID>MatchingDeclarationName:PassStepAction.kt$PassStepSentAction : SentAction</ID>
+    <ID>MatchingDeclarationName:PassVariantsModel.kt$VariantModel</ID>
+    <ID>MatchingDeclarationName:PassesDTO.kt$PassDataDTO</ID>
+    <ID>MatchingDeclarationName:PlanningSuppliesRequestDTO.kt$PlanningSuppliesBodyDTO</ID>
+    <ID>MatchingDeclarationName:PredictSubjectsDTO.kt$SubjectDTO</ID>
+    <ID>MatchingDeclarationName:ProfileSuppliersRequestDTO.kt$ProfileSuppliersParamsDTO</ID>
+    <ID>MatchingDeclarationName:QueueRepositoryImp.kt$QueueRepositoryImpl : QueueRepository</ID>
+    <ID>MatchingDeclarationName:RatingBodyDTO.kt$ParamsRatingBodyDTO</ID>
+    <ID>MatchingDeclarationName:SalesFunnelDTO.kt$SalesFunnelDataDTO</ID>
+    <ID>MatchingDeclarationName:SalesFunnelFilterModels.kt$AnalyticsFiltersData</ID>
+    <ID>MatchingDeclarationName:SendFilesData.kt$SendFiles</ID>
+    <ID>MatchingDeclarationName:SettingsDialogModel.kt$SettingsDialogWidgetType</ID>
+    <ID>MatchingDeclarationName:SortTypes.kt$SortModel</ID>
+    <ID>MatchingDeclarationName:StoresDTO.kt$StoreDataDTO</ID>
+    <ID>MatchingDeclarationName:SuppliesPlanUiEvents.kt$ScreenEvent</ID>
+    <ID>MatchingDeclarationName:SuppliesRootRequestDTO.kt$SuppliesRootBodyDTO</ID>
+    <ID>MatchingDeclarationName:SupplyCommonRepository.kt$SupplyCommonRepositoryImpl : SupplyCommonRepository</ID>
+    <ID>MatchingDeclarationName:SupplyNavigators.kt$CreateSupplyNavigator : WbNavigator</ID>
+    <ID>MatchingDeclarationName:SupplyPackageEditParamValues.kt$SupplyPackageEditParamValue : ParamValue</ID>
+    <ID>MatchingDeclarationName:SupplyReschedulingUiEvents.kt$ScreenEvent</ID>
+    <ID>MatchingDeclarationName:TabEvents.kt$TabEvent</ID>
+    <ID>MatchingDeclarationName:TableNavigationItemData.kt$TableData</ID>
+    <ID>MatchingDeclarationName:TextInputModels.kt$FieldWithError</ID>
+    <ID>MatchingDeclarationName:TimeModel.kt$TimerModel</ID>
+    <ID>MatchingDeclarationName:TransitDirections.kt$TransitDirection</ID>
+    <ID>MatchingDeclarationName:UIEvent.kt$ScreenUIEvent</ID>
+    <ID>MatchingDeclarationName:UiEvents.kt$UiEvent</ID>
+    <ID>MatchingDeclarationName:UpdateGoodsDTO.kt$UpdateGoodsDataDTO</ID>
+    <ID>MatchingDeclarationName:ValueTypeSerializer.kt$ValueSerializer : KSerializer</ID>
+    <ID>MatchingDeclarationName:WarehousesDTO.kt$WarehouseDataDTO</ID>
+    <ID>MatchingDeclarationName:WarehousesList.kt$WarehousesListState</ID>
+    <ID>MatchingDeclarationName:WbExpandableCard.kt$ExpandableCardType</ID>
+    <ID>MatchingDeclarationName:СharacteristiСconfigurationBodyDTO.kt$ConfigurationBodyDTO</ID>
+    <ID>MaxLineLength:AdditionalInfoByCountryMapper.kt$AdditionalInfoByCountryMapper$description = infoCommon.firstQuestionTextCommonDescription.setInnNameToCommonQA(innName).toAnnotatedString()</ID>
+    <ID>MaxLineLength:AllVariantsScreen.kt$id = if (isExpanded) R.string.create_goods_hide_details_buttons else R.string.create_goods_show_more_text</ID>
+    <ID>MaxLineLength:AnalyticsFiltersSlice.kt$AnalyticsFilterSliceImpl$.</ID>
+    <ID>MaxLineLength:AttachmentSlice.kt$AttachmentSliceImpl$AttachmentValidator.FailureCase.MAX_SINGLE_ATTACHMENT_WEIGHT -&gt; R.string.support_max_attachment_size_text</ID>
+    <ID>MaxLineLength:AuthorizationViewModel.kt$AuthorizationViewModel$errorMessage = ResText(R.string.authorization_authorization_try_re_request_code_again_title)</ID>
+    <ID>MaxLineLength:AutoDiscountLockBottomSheet.kt$text = stringResource(R.string.price_and_discounts_good_info_auto_discount_lock_description_text, endTime.orDash())</ID>
+    <ID>MaxLineLength:BalanceWidgetRepository.kt$BalanceWidgetRepository$cookie = if (isEnableNewBalance) AuthHeaderHelper.LOCALE.plus(AuthHeaderHelper.SEPARATOR) else null</ID>
+    <ID>MaxLineLength:BalanceWidgetRepository.kt$private const val NEW_BALANCE_URL = "ns/global-balance/suppliers-home-page/api/v1/balance" // ручка сервиса нового нового баланса</ID>
+    <ID>MaxLineLength:BasicValidators.kt$CodeFieldValidator$state = if (textValue.length == codeLength) InputFieldState.SuccessNoEffect else InputFieldState.ErrorNoEffect</ID>
+    <ID>MaxLineLength:BuyersWidgetComponent.kt$val</ID>
+    <ID>MaxLineLength:CardRatingModel.kt$CardRatingErrorType$CHARACTERISTICS : CardRatingErrorType</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$MESSAGE_OBSCENE_WORD -&gt; R.string.all_goods_variants_edit_rating_error_profanity_title to R.string.all_goods_variants_edit_rating_error_profanity_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_another_brands_duplicates_title to R.string.all_goods_variants_edit_rating_error_another_brands_duplicates_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_bad_length_title to R.string.all_goods_variants_edit_rating_error_bad_length_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_bad_pack_size_title to R.string.all_goods_variants_edit_rating_error_bad_pack_size_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_bad_ru_size_title to R.string.all_goods_variants_edit_rating_error_bad_ru_size_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_bad_sequence_title to R.string.all_goods_variants_edit_rating_error_bad_sequence_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_brand_duplicated_title to R.string.all_goods_variants_edit_rating_error_brand_duplicated_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_collage_title to R.string.all_goods_variants_edit_rating_error_collage_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_empty_field_title to R.string.all_goods_variants_edit_rating_error_no_description_title</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_empty_field_title to R.string.all_goods_variants_edit_rating_error_no_name_title</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_extra_details_title to R.string.all_goods_variants_edit_rating_error_bad_season_title</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_extra_details_title to R.string.all_goods_variants_edit_rating_error_extra_details_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_gender_exist_title to R.string.all_goods_variants_edit_rating_error_gender_exist_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_img_bad_angle_title to R.string.all_goods_variants_edit_rating_error_img_bad_angle_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_img_bad_background_title to R.string.all_goods_variants_edit_rating_error_img_bad_background_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_img_bad_crop_title to R.string.all_goods_variants_edit_rating_error_img_bad_crop_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_img_bad_multiple_title to R.string.all_goods_variants_edit_rating_error_img_bad_multiple_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_img_bad_package_title to R.string.all_goods_variants_edit_rating_error_img_bad_package_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_img_bad_resolution_title to R.string.all_goods_variants_edit_rating_error_img_bad_resolution_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_img_bad_text_title to R.string.all_goods_variants_edit_rating_error_img_bad_text_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_img_too_small_item_title to R.string.all_goods_variants_edit_rating_error_img_too_small_item_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_no_photo_title to R.string.all_goods_variants_edit_rating_error_no_photo_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_not_enough_images_title to R.string.all_goods_variants_edit_rating_error_not_enough_images_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_poor_description_title to R.string.all_goods_variants_edit_rating_error_poor_description_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_sizes_detected_title to R.string.all_goods_variants_edit_rating_error_sizes_detected_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_spam_phrases_title to R.string.all_goods_variants_edit_rating_error_spam_phrases_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_subject_duplicates_title to R.string.all_goods_variants_edit_rating_error_subject_duplicates_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_synonym_duplicates_title to R.string.all_goods_variants_edit_rating_error_synonym_duplicates_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_upper_word_title to R.string.all_goods_variants_edit_rating_error_upper_word_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_error_word_duplicates_title to R.string.all_goods_variants_edit_rating_error_word_duplicates_text</ID>
+    <ID>MaxLineLength:CardRatingModelMapper.kt$CardRatingModelMapper$R.string.all_goods_variants_edit_rating_upper_charc_title to R.string.all_goods_variants_edit_rating_upper_charc_text</ID>
+    <ID>MaxLineLength:CoefficientInfoPanel.kt$AcceptanceType.MONOPALLET</ID>
+    <ID>MaxLineLength:CoefficientInfoPanel.kt$AcceptanceType.QR_ACCEPTANCE</ID>
+    <ID>MaxLineLength:CoefficientInfoPanel.kt$AcceptanceType.QR_SUPPLIES</ID>
+    <ID>MaxLineLength:CoefficientModelMapper.kt$CoefficientModelMapper$coefficientType = CoefficientType.Paid(coef.coefficient.toString().formatCoefficient(), it)</ID>
+    <ID>MaxLineLength:CompanyRegisterMapper.kt$CompanyRegisterMapper$countryID</ID>
+    <ID>MaxLineLength:DbsRefundsFilterController.kt$DbsRefundsFilterController$DbsSortType.AwaitingCourierAppointment -&gt; TextType.ResText(R.string.refunds_sort_awaiting_courier_appointment_text)</ID>
+    <ID>MaxLineLength:DeliveryFilterController.kt$DeliveryFilterController$SupplyDeliveryState.REJECT -&gt; ResText(R.string.marketplace_fbs_supply_state_filter_cancel_text) to WbTagColor.RED</ID>
+    <ID>MaxLineLength:DeliveryFilterController.kt$DeliveryFilterController$SupplyDeliveryState.RESHIPMENT -&gt; ResText(R.string.marketplace_supply_state_filter_reshipment_title) to WbTagColor.RED</ID>
+    <ID>MaxLineLength:DescriptionGenerationBottomSheet.kt$title = TextType.ResText(R.string.create_goods_description_generation_applying_confirmation_yes_buttons)</ID>
+    <ID>MaxLineLength:DetailsProductBlockFeedback.kt$.</ID>
+    <ID>MaxLineLength:DisabledFeatureBottomSheet.kt$description = StringText("Сейчас в новой поставке не получится выбрать дату поставки. Но вы можете заполнить остальные детали и сохранить поставку \nв черновиках. \n\nПодождите немного, пожалуйста. \nЭто временно, скоро всё вернётся в норму")</ID>
+    <ID>MaxLineLength:DisabledFeatureOverlap.kt$description = StringText("Сейчас в новой поставке не получится выбрать дату поставки. Но вы можете заполнить остальные детали и сохранить поставку \nв черновиках. \n\nПодождите немного, пожалуйста. \nЭто временно, скоро всё вернётся в норму")</ID>
+    <ID>MaxLineLength:DocumentDateInputModel.kt$DocumentDateInputModel$return InputFieldState.Error(TextType.ResText(R.string.create_goods_document_date_field_invalid_date_error_text))</ID>
+    <ID>MaxLineLength:DocumentNumberValidator.kt$DocumentNumberValidator$text = TextType.ResText(R.string.create_goods_document_number_error_certificate_instead_declaration_text)</ID>
+    <ID>MaxLineLength:DocumentNumberValidator.kt$DocumentNumberValidator$text = TextType.ResText(R.string.create_goods_document_number_error_declaration_instead_certificate_text)</ID>
+    <ID>MaxLineLength:DownloadHistoryDetailScreen.kt$MinCost -&gt; R.string.change_history_detail_min_price_bs_title to R.string.download_history_detail_min_price_bs_desc_text</ID>
+    <ID>MaxLineLength:DownloadHistoryDetailScreen.kt$else -&gt; R.string.change_history_detail_block_bs_title to R.string.download_history_detail_block_bs_desc_text</ID>
+    <ID>MaxLineLength:DownloadsHistoryTypes.kt$DownloadsHistoryTypes.INSTALLMENT$text = stringResource(R.string.change_history_detail_download_history_detail_installment_discount_text)</ID>
+    <ID>MaxLineLength:DragAndDropState.kt$DragDropState$.</ID>
+    <ID>MaxLineLength:DragAndDropState.kt$DragDropState$draggedDistance &lt; 0 -&gt; (startOffset - state.layoutInfo.viewportStartOffset-50f).takeIf { diff -&gt; diff &lt; 0 }</ID>
+    <ID>MaxLineLength:FeedbacksCountBlock.kt$selectedTab == Tabs.NOT_ANSWERED -&gt; "$feedbacksCountPlural ${stringResource(id = R.string.templates_not_answered_text)}"</ID>
+    <ID>MaxLineLength:GreetingViewModel.kt$GreetingViewModel$descriptionTextType = if (isOwnerLastUser) ResText(R.string.authorization_greeting_empty_companies_description_text) else null</ID>
+    <ID>MaxLineLength:InfoPanel.kt$onUIEvent(CopyText(order.id.toString(), R.string.marketplace_wb_go_details_dialog_copy_id_success_title))</ID>
+    <ID>MaxLineLength:InformationBlock.kt$text = stringResource(R.string.marketplace_cart_details_confirmation_notification_subtitle_title)</ID>
+    <ID>MaxLineLength:KppFieldValidator.kt$KppFieldValidator.LengthRule$fun isToShort(value: String): Boolean</ID>
+    <ID>MaxLineLength:LeaveCompanyViewModel.kt$LeaveCompanyViewModel$text = ResWithArgsText(R.string.leave_company_error_leave_company_text, screenState.value.companyName)</ID>
+    <ID>MaxLineLength:LeaveCompanyViewModel.kt$LeaveCompanyViewModel$text = ResWithArgsText(R.string.leave_company_success_leave_company_text, screenState.value.companyName)</ID>
+    <ID>MaxLineLength:MarketplaceStocksManualUploadViewModel.kt$MarketplaceStocksManualUploadViewModel$showSnack(ResText(R.string.marketplace_stocks_upload_success_add_goods_text_title), SnackbarType.SUCCESS)</ID>
+    <ID>MaxLineLength:MarketplaceStocksUploadViewModel.kt$MarketplaceStocksUploadViewModel.FileSelectorState$val fileUploadState: FileUploadState = EmptyState(ResText(R.string.marketplace_stocks_upload_file_upload_placeholder))</ID>
+    <ID>MaxLineLength:MarketplaceStocksViewModel.kt$MarketplaceStocksViewModel$title = ResText(R.string.marketplace_stocks_create_store_button_title_buttons)</ID>
+    <ID>MaxLineLength:MassEditButtons.kt$is ResultState.Success -&gt; R.string.price_and_discounts_bottom_price_go_to_downloads_history_button_title</ID>
+    <ID>MaxLineLength:MessagesSlice.kt$MessagesSliceImpl$AttachmentValidator.FailureCase.MAX_SINGLE_ATTACHMENT_WEIGHT -&gt; R.string.support_max_attachment_size_text</ID>
+    <ID>MaxLineLength:MetadataCollector.kt$MetadataCollector$return if (context.resources.configuration.smallestScreenWidthDp &gt;= TABLET_SMALLEST_SCREEN_WIDTH) TABLET else PHONE</ID>
+    <ID>MaxLineLength:NewsWidgetViewModel.kt$NewsWidgetViewModel$debounceJob</ID>
+    <ID>MaxLineLength:NotificationsViewModel.kt$NotificationsViewModel$if</ID>
+    <ID>MaxLineLength:OpenPdfModel.kt$"https://static-basket-02.wb.ru/vol20/portal/education/instruction/Otgruzka_markirovannykh_tovarov_legkoi_promyshlennosti.pdf"</ID>
+    <ID>MaxLineLength:OpenPdfModel.kt$"https://static-basket-02.wb.ru/vol20/portal/education/instruction/Otgruzka_markirovannykh_tovarov_produktov_pitaniia.pdf"</ID>
+    <ID>MaxLineLength:OpenPdfModel.kt$"https://static-basket-02.wbbasket.ru/vol20/portal/education/instruction/Otgruzka_markirovannykh_tovarov_legkoi_promyshlennosti.pdf"</ID>
+    <ID>MaxLineLength:OpenPdfModel.kt$"https://static-basket-02.wbbasket.ru/vol20/portal/education/instruction/Otgruzka_markirovannykh_tovarov_produktov_pitaniia.pdf"</ID>
+    <ID>MaxLineLength:OrderRemoteActionModel.kt$OrderRemoteActionModel.MoveToAssemble$override val errorOrderSnackText: ResText = ResText(R.string.marketplace_cart_details_tasks_to_assemble_error_title)</ID>
+    <ID>MaxLineLength:OrderRemoteActionModel.kt$OrderRemoteActionModel.MoveToAssemble$override val successOrderSnackText: ResText = ResText(R.string.marketplace_cart_details_task_to_assemble_success_title)</ID>
+    <ID>MaxLineLength:OrderRemoteActionModel.kt$OrderRemoteActionModel.MoveToDelivery$override val errorOrderSnackText: ResText = ResText(R.string.marketplace_cart_details_tasks_to_delivery_error_title)</ID>
+    <ID>MaxLineLength:OrderRemoteActionModel.kt$OrderRemoteActionModel.MoveToDelivery$override val successOrderSnackText: ResText = ResText(R.string.marketplace_cart_details_task_to_delivery_success_title)</ID>
+    <ID>MaxLineLength:PriceQuarantineInfoBottomSheet.kt$text = stringResource(id = R.string.price_quarantine_deliberately_want_to_reduce_the_price_description_bottom_sheet)</ID>
+    <ID>MaxLineLength:PriceQuarantineInfoBottomSheet.kt$text = stringResource(id = R.string.price_quarantine_how_do_know_about_product_in_quarantine_description_bottom_sheet)</ID>
+    <ID>MaxLineLength:PriceQuarantineInfoBottomSheet.kt$text = stringResource(id = R.string.price_quarantine_how_to_work_quarantine_function_description_bottom_sheet)</ID>
+    <ID>MaxLineLength:PriceQuarantineInfoBottomSheet.kt$title = stringResource(id = R.string.price_quarantine_deliberately_want_to_reduce_the_price_bottom_sheet)</ID>
+    <ID>MaxLineLength:PricesFiltersScreen.kt$switchTitle = stringResource(id = R.string.price_and_discounts_filters_goods_with_leftovers_text)</ID>
+    <ID>MaxLineLength:Regex.kt$const val PHONE_REGEX_PATTERN = "(^([+]?7)[98][0-9]{9}\$)|(^7[98][0-9]{10}\$):RUSMS,(^7[76][0-9]{9}\$)|(^375[0-9]{9}\$)|(^996[0-9]{9}\$)|(^374[0-9]{8}\$)|(^998[0-9]{9}\$):RU,(^994[0-9]{9}\$):AZ,(^86[0-9]{10}\$)|(^86[0-9]{11}\$)|(^86[0-9]{12}\$)|(^852[0-9]{8}\$)|(^853[0-9]{8}\$)"</ID>
+    <ID>MaxLineLength:RegionSuppliesChartInfoBottomSheet.kt$definition = stringResource(R.string.region_supplies_root_charts_info_bs_prder_part_over_all_wb_text)</ID>
+    <ID>MaxLineLength:RegisterAdditionalInfoMapper.kt$RegisterAdditionalInfoMapper$private</ID>
+    <ID>MaxLineLength:RegisterCompanyCommonApi.kt$RegisterCompanyCommonApi$suspend fun getPaymentActivationPaymentByCountry(countryName: CountriesCommonName): Flow&lt;Resource&lt;ActivatePaymentAmountDomain&gt;&gt;</ID>
+    <ID>MaxLineLength:RegisterCompanyCommonImpl.kt$RegisterCompanyCommonImpl$override suspend</ID>
+    <ID>MaxLineLength:RegisterCompanyInvoiceCommonInteractor.kt$RegisterCompanyInvoiceCommonInteractor$suspend</ID>
+    <ID>MaxLineLength:RegisterNewCompanyCommonRepository.kt$RegisterNewCompanyCommonRepository$if</ID>
+    <ID>MaxLineLength:RegisterNewCompanyCommonRepository.kt$RegisterNewCompanyCommonRepository$private suspend</ID>
+    <ID>MaxLineLength:RegisterNewCompanyCommonRepository.kt$RegisterNewCompanyCommonRepository$suspend</ID>
+    <ID>MaxLineLength:RegisterNewCompanyDataUIEvent.kt$RegisterNewCompanyDataUIEvent$OnBottomSheetFormOfOrganizationClick : RegisterNewCompanyDataUIEvent</ID>
+    <ID>MaxLineLength:RegisterNewCompanyDataViewModel.kt$RegisterNewCompanyDataViewModel$if</ID>
+    <ID>MaxLineLength:RegisterNewCompanyPaymentInvoiceDestination.kt$RegisterNewCompanyPaymentInvoiceDestination$get() = "$route/{$SHOW_COUNTRY_HINT_TOGGLE_KEY}/{$REGISTER_COMPANY_PAYMENT_NAV_DATA}/{$IS_BACK_CLICK_TO_GREETING_KEY}"</ID>
+    <ID>MaxLineLength:RemoveCompanyViewModel.kt$RemoveCompanyViewModel$text = ResWithArgsText(UIString.verification_success_remove_company_text, interactor.getCompanyName())</ID>
+    <ID>MaxLineLength:SalesFunnelFiltersSlice.kt$AnalyticsFilterSliceImpl$.</ID>
+    <ID>MaxLineLength:SizePricesSlice.kt$SizePricesSliceImpl$!errorCodeHelper.checkExceptionForPriceAndSaleErrorCodes(triState.exception as? InternalError)</ID>
+    <ID>MaxLineLength:SpacesValidator.kt$SpacesValidator$!isEmptySpacesValid -&gt; InputFieldState.Error(ResText(R.string.marketplace_add_order_id_space_error_title))</ID>
+    <ID>MaxLineLength:SuccessRefundBottomSheetContent.kt$RefundActionType.ApproveAndCheckDefects -&gt; R.string.refunds_success_approved_and_checked_defects_description_text</ID>
+    <ID>MaxLineLength:SuppliesViewModel.kt$SuppliesViewModel$toolbar = WbBottomSheetModel.Toolbar(title = ResText(R.string.marketplace_title_create_supply_bottom_sheet))</ID>
+    <ID>MaxLineLength:TableItemValue.kt$TableItemValueDataStyle.BODY_SECONDARY_ANAL_BLUE -&gt; WbTheme.newTypography.bodySecondary to WbTheme.semanticColors.analyticsBlue500</ID>
+    <ID>MaxLineLength:TableItemValue.kt$TableItemValueDataStyle.BODY_SECONDARY_ANAL_CYAN -&gt; WbTheme.newTypography.bodySecondary to WbTheme.semanticColors.analyticsCyan500</ID>
+    <ID>MaxLineLength:TableItemValue.kt$TableItemValueDataStyle.BODY_SECONDARY_TEXT_PRIMARY -&gt; WbTheme.newTypography.bodySecondary to WbTheme.semanticColors.textPrimary</ID>
+    <ID>MaxLineLength:TableItemValue.kt$TableItemValueDataStyle.BODY_SMALL_ANAL_BLUE -&gt; WbTheme.newTypography.bodySmall to WbTheme.semanticColors.analyticsBlue500</ID>
+    <ID>MaxLineLength:TableItemValue.kt$TableItemValueDataStyle.BODY_SMALL_ANAL_CYAN -&gt; WbTheme.newTypography.bodySmall to WbTheme.semanticColors.analyticsCyan500</ID>
+    <ID>MaxLineLength:TextInputField.kt$maxLines = if (heightField is InputFieldHeight.Small) LINE_COUNT_FOR_SMALL_HEIGHT else LINE_COUNT_FOR_MAX_HEIGHT</ID>
+    <ID>MaxLineLength:TimeAsStringSerializer.kt$TimeAsStringSerializer$override val descriptor = PrimitiveSerialDescriptor("ru.wildberries.analytics.api.TimeAsStringSerializer", PrimitiveKind.STRING)</ID>
+    <ID>MaxLineLength:TnvedBottomSheet.kt$text = stringResource(id = if (isCollapsed.value) R.string.all_goods_card_rating_more_button_title else UIString.common_hide)</ID>
+    <ID>MaxLineLength:WBAnalytics2Product.kt$WBAnalytics2Product.Companion$category = listOf(category.orEmpty(), categoryId?.toString().orEmpty(), parentCategoryId?.toString().orEmpty())</ID>
+    <ID>MaxLineLength:WBAppPlugin.kt$WBAppPlugin$manifestPlaceholders[SENTRY_DSN] = project.getSecret(SENTRY_DEV_DSN,SENTRY_DEV_KEY).filterNot { it == '\"' }</ID>
+    <ID>MaxLineLength:WBAppPlugin.kt$WBAppPlugin$manifestPlaceholders[SENTRY_DSN] = project.getSecret(SENTRY_PROD_DSN,SENTRY_PROD_KEY).filterNot { it == '\"' }</ID>
+    <ID>MaxLineLength:WarehouseCoefficientsTriState.kt$if</ID>
+    <ID>MaxLineLength:WbFilterBottomSheet.kt$.</ID>
+    <ID>MaxLineLength:WbTextInput.kt$controller = DefaultFieldController("Очень Очень Очень Очень Очень Очень Очень Очень Очень Очень Очень Очень Очень Очень длинный текст")</ID>
+    <ID>MayBeConst:AdditionalInfoByCountryMapper.kt$AdditionalInfoByCountryMapper.Companion$private val WORK_DAYS_TEXT = "3 рабочих дней" // константа потоку как должна быть из бэка</ID>
+    <ID>MissingPackageDeclaration:Config.kt$.Config.kt</ID>
+    <ID>MissingPackageDeclaration:SaleReportWidgetDataDTO.kt$.SaleReportWidgetDataDTO.kt</ID>
+    <ID>MissingPackageDeclaration:Settings.kt$.Settings.kt</ID>
+    <ID>MissingPackageDeclaration:SupplyAddPackageGoodsDateValidator.kt$.SupplyAddPackageGoodsDateValidator.kt</ID>
+    <ID>MissingPackageDeclaration:Utils.kt$.Utils.kt</ID>
+    <ID>ModifierListSpacing:PriceQuarantineEntity.kt$PriceQuarantineEntity$@Entity( indices = [Index(value = ["supplierId"], unique = true)], tableName = "PriceQuarantineEntity" ) data</ID>
+    <ID>NoBlankLineBeforeRbrace:AbacCacheApi.kt$AbacCacheApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:AbacTogglesApi.kt$AbacTogglesApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:AbacTogglesStoreImpl.kt$AbacTogglesStoreImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:AbacTriStateUtils.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:AbacWorkerApi.kt$AbacWorkerApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:AcceptanceCoefficientsFilterController.kt$AcceptanceCoefficientsFilterController$ </ID>
+    <ID>NoBlankLineBeforeRbrace:AcceptanceCoefficientsRepository.kt$AcceptanceCoefficientsRepository$ </ID>
+    <ID>NoBlankLineBeforeRbrace:AllSuppliesListContent.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:AnalyticsFilterModelMapper.kt$AnalyticsFilterModelMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:AnalyticsFiltersDBMapper.kt$AnalyticsFiltersDBMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:AnalyticsMainInteractor.kt$AnalyticsMainInteractor$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ArchiveOrdersSlice.kt$ArchiveOrdersSliceImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:BaseSupplySlice.kt$BaseSupplySlice$ </ID>
+    <ID>NoBlankLineBeforeRbrace:BasicValidators.kt$EmodjiValidator$ </ID>
+    <ID>NoBlankLineBeforeRbrace:BasicValidators.kt$NotEmptyValidator$ </ID>
+    <ID>NoBlankLineBeforeRbrace:BottomSheets.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:BuyersDao.kt$BuyersDao$ </ID>
+    <ID>NoBlankLineBeforeRbrace:BuyersWidgetApi.kt$BuyersWidgetApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ChartSortEntityMapper.kt$ChartSortEntityMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ChatsContentType.kt$ChatsContentType$ </ID>
+    <ID>NoBlankLineBeforeRbrace:CoefficientModelMapper.kt$CoefficientModelMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:CommonSentAction.kt$CommonSentAction$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ConfigSource.kt$ConfigSource$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ConfigSource.kt$ConfigSourceFactory$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ConfigValueParser.kt$ConfigValueParser$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ConfigValueParser.kt$ConfigValueParserFactory$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ConfirmRemove.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ControlledRunner.kt$ControlledRunner$ </ID>
+    <ID>NoBlankLineBeforeRbrace:CourierContactsCommonApi.kt$CourierContactsCommonApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:CreateSupplyDateStepRepository.kt$CreateSupplyDateStepRepository$ </ID>
+    <ID>NoBlankLineBeforeRbrace:CreateSupplyPlanningStepScreen.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:CreateSupplyRootDataMapper.kt$CreateSupplyRootDataMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:CreateSupplyRootModule.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:CreateSupplyTogglesMapper.kt$CreateSupplyTogglesMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:CreateSupplyTogglesModelMapper.kt$CreateSupplyTogglesModelMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DataMapper.kt$DataMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DateRangeChangerSliceImpl.kt$DateRangeChangerSliceEvent$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DateRangeModelMapper.kt$DateRangeModelMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DefaultModelScreen.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DeliveryConfirmNetworkApi.kt$DeliveryConfirmNetworkApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DeliveryConfirmRepository.kt$DeliveryConfirmRepository$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DimensionInputFormatter.kt$DimensionInputFormatter$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DisabledFeatureOverlap.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DomainMapper.kt$DomainMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DoubleInputFormatter.kt$DoubleInputFormatter$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DoubleInputValidator.kt$DoubleInputValidator.Companion$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DraftAddGoodsMapper.kt$DraftAddGoodsMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DraftRequestMapper.kt$DraftRequestMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DraftSuppliesSlice.kt$DraftSuppliesSliceImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:DrawItem.kt$DrawItemWithState$ </ID>
+    <ID>NoBlankLineBeforeRbrace:EditGoodsMapper.kt$EditGoodsMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:EditSupplyTogglesMapper.kt$EditSupplyTogglesMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:EditSupplyTogglesModelMapper.kt$EditSupplyTogglesModelMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:FileUpload.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:FilterMapper.kt$FilterMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:FlavorUtils.kt$FlavorUtils$ </ID>
+    <ID>NoBlankLineBeforeRbrace:FractionalRectangleShape.kt$FractionalRectangleShape$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GetInQueueButtonInteractor.kt$GetInQueueButtonInteractor$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GetInQueueButtonVMImpl.kt$GetInQueueButtonVMImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsChanges.kt$GoodsChanges$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsChangesState.kt$GoodsChangesState$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsChangesState.kt$GoodsChangesState.Changed$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsChangesState.kt$GoodsChangesState.Common$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsChangesState.kt$GoodsChangesState.New$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsChangesState.kt$GoodsChangesState.Removed$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsDao.kt$GoodsDao$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsDataApi.kt$GoodsDataApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsDataMapper.kt$GoodsDataMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsDimensionalTableModelMapper.kt$GoodsDimensionalTableModelMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsInfoCardUIEvent.kt$GoodsInfoCardUIEvent$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsInfoOptionsUIEvent.kt$GoodsInfoOptionsUIEvent$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsInfoStocksUIEvent.kt$GoodsInfoStocksUIEvent$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsListRequestMapper.kt$GoodsListRequestMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsListSlice.kt$GoodsWithoutPriceSliceImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsRegionsTableModelMapper.kt$GoodsRegionsTableModelMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsSummaryMapper.kt$GoodsSummaryMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsSummaryTableMapper.kt$GoodsSummaryTableMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:GoodsTabSliceEvent.kt$GoodsTabSliceEvent$ </ID>
+    <ID>NoBlankLineBeforeRbrace:HeaderUIEvent.kt$HeaderUIEvent$ </ID>
+    <ID>NoBlankLineBeforeRbrace:JamTag.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:JsonConfigValueParser.kt$JsonConfigValueParser$ </ID>
+    <ID>NoBlankLineBeforeRbrace:KvsNetworkApi.kt$KvsNetworkApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:KvsSource.kt$KvsSource$ </ID>
+    <ID>NoBlankLineBeforeRbrace:KvsWorker.kt$KvsWorker$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ListFilterSearchModel.kt$ListFilterSearchModel$ </ID>
+    <ID>NoBlankLineBeforeRbrace:LocalListFilterBlock.kt$LocalListFilterBlock$ </ID>
+    <ID>NoBlankLineBeforeRbrace:LogoutApi.kt$LogoutApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:LogoutApiApi.kt$LogoutApiApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:LogoutApiRepository.kt$LogoutApiRepository$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplaceCourierContactsApi.kt$MarketplaceCourierContactsApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplaceCourierContactsApiImpl.kt$MarketplaceCourierContactsApiImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplaceCourierContactsListNavigationGraph.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplaceCourierContactsScreen.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplaceCourierContactsViewModel.kt$MarketplaceCourierContactsViewModel$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplaceDao.kt$MarketplaceDao$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplaceDbsDestination.kt$MarketplaceDbsDestination$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplacePassesApi.kt$MarketplacePassesApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplacePassesTrackerImpl.kt$MarketplacePassesTrackerImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplaceStocksUploadScreen.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplaceStoreContactsMapper.kt$MarketplaceStoreContactsMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplaceTasksFilterButtons.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplaceTypeConverter.kt$MarketplaceTypeConverter$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplaceTypeDBMapper.kt$MarketplaceTypeDBMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplaceTypeDomainMapper.kt$MarketplaceTypeDomainMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MarketplaceWidgetMapper.kt$MarketplaceWidgetMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MetricUtils.kt$TableMetricUtils$ </ID>
+    <ID>NoBlankLineBeforeRbrace:MonthModelMapper.kt$MonthModelMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:NewsWidgetNetworkApi.kt$NewsWidgetNetworkApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:NotificationsScreen.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:OrderFeedWidgetHolderImpl.kt$OrderFeedWidgetHolderImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:OrderFeedWidgetShimmer.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:OtherRepository.kt$OtherRepository$ </ID>
+    <ID>NoBlankLineBeforeRbrace:OtherScreen.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:PalletCounter.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:PassItem.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:PassMapper.kt$PassMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:PassModel.kt$PassModel.Companion$ </ID>
+    <ID>NoBlankLineBeforeRbrace:PassVariantsSlice.kt$PassVariantsSliceImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:PaymentHistoryList.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:PaymentHistoryReportMapper.kt$PaymentHistoryReportMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:PlanningStepImpl.kt$PlanningStepImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:PricesSelectingFilters.kt$PricesSelectingFilters$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ProfileRequisitesApi.kt$ProfileRequisitesApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ProfileRequisitesInteractor.kt$ProfileRequisitesInteractor$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ProfileRequisitesMapper.kt$ProfileRequisitesMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ProfileSupplierDialogUIEvents.kt$ProfileSupplierDialogUIEvents$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ProfileSuppliersViewModel.kt$ProfileSuppliersViewModel$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ProfileWarehouseOperationsApi.kt$ProfileWarehouseOperationsApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ProfileWarehousesDialogUIEvents.kt$ProfileWarehousesDialogUIEvents$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ProfileWarehousesMapper.kt$ProfileWarehousesMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ProfileWarehousesRepository.kt$ProfileWarehousesRepository$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ProfileWarehousesViewModel.kt$ProfileWarehousesViewModel$ </ID>
+    <ID>NoBlankLineBeforeRbrace:PromotionMapper.kt$PromotionMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:PromotionsCalendarNetworkApi.kt$PromotionsCalendarNetworkApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:QrCodeDrawer.kt$QrCodeDrawer.Companion$ </ID>
+    <ID>NoBlankLineBeforeRbrace:QrSuppliesPassTrackerImpl.kt$QrSuppliesPassTrackerImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:QuestionDetailsDestination.kt$QuestionDetailsDestination$ </ID>
+    <ID>NoBlankLineBeforeRbrace:QueueApiImpl.kt$QueueApiImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:QueueCreateClaimTrackerImpl.kt$QueueCreateClaimTrackerImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:QueueDTOMapper.kt$QueueDTOMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:QueueDao.kt$QueueDao$ </ID>
+    <ID>NoBlankLineBeforeRbrace:QueueDetailsInteractorImpl.kt$QueueDetailsInteractorImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:QueueDetailsNetworkApi.kt$QueueDetailsNetworkApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:QueueDomainMapper.kt$QueueDomainMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:QueueEntityMapper.kt$QueueEntityMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:QueueRepositoryImp.kt$QueueRepositoryImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RatingItem.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RatingsCardsRepository.kt$RatingsCardsRepository$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RatingsCardsViewModel.kt$RatingsCardsViewModel$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegionSuppliesCategoryGoodsInteractor.kt$RegionSuppliesCategoryGoodsInteractor$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegionSuppliesCategoryGoodsNetworkApi.kt$RegionSuppliesCategoryGoodsNetworkApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegionSuppliesChartSortApi.kt$RegionSuppliesChartSortApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegionSuppliesChartSortApiImpl.kt$RegionSuppliesChartSortApiImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegionSuppliesChartSortDao.kt$RegionSuppliesChartSortDao$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegionSuppliesChartSortInteractor.kt$RegionSuppliesChartSortInteractor$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegionSuppliesChartSortRepository.kt$RegionSuppliesChartSortRepository$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegionSuppliesChartSortViewModel.kt$RegionSuppliesChartSortViewModel$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegionSuppliesGoodsRegionsRepository.kt$RegionSuppliesGoodsRegionsRepository$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegionSuppliesTablesNetworkApi.kt$RegionSuppliesTablesNetworkApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegionSuppliesTablesRepository.kt$RegionSuppliesTablesRepository$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegisterCompanyCommonImpl.kt$RegisterCompanyCommonImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegisterCompanyInvoiceCommonInteractor.kt$RegisterCompanyInvoiceCommonInteractor$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegisterCompanyInvoiceMapper.kt$RegisterCompanyInvoiceMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegisterNewCompanyDestination.kt$RegisterNewCompanyDestination$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RegisterNewCompanyPaymentInvoiceUIEvent.kt$RegisterNewCompanyPaymentInvoiceUIEvent$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ResultMapper.kt$ResultMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:RootActionsController.kt$RootActionsController$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SaleReportDbMapper.kt$SaleReportDbMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SaleReportWidgetApi.kt$SaleReportWidgetApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SalesFunnelDetailsTableDestination.kt$SalesFunnelDetailsTableDestination$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SaveMediaDTOMapper.kt$SaveMediaDTOMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SearchPhraseItem.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SecurityDestination.kt$SecurityDestination$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SecurityUiEvents.kt$InputCodeFromEmailUIEvent$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SecurityUiEvents.kt$InputEmailAndCodeUIEvent$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SecurityUiEvents.kt$SecurityUiEvent$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SecurityUiEvents.kt$StartPageUIEvent$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SelectCompanyModelMapper.kt$SelectCompanyModelMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SelectingFilter.kt$LoadedSelectingFilter$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ServiceTokenStorage.kt$ServiceTokenStorage$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SnackController.kt$SnackController$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SortDirection.kt$SortDirection$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SortFilter.kt$OrderType.Companion$ </ID>
+    <ID>NoBlankLineBeforeRbrace:StartPageSlice.kt$StartPageSlice$ </ID>
+    <ID>NoBlankLineBeforeRbrace:StickyPanelUIEvent.kt$StickyPanelUIEvent$ </ID>
+    <ID>NoBlankLineBeforeRbrace:StockHistoryTablesBottomSheets.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:StoresMapper.kt$StoresMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplierEntity.kt$SupplierDao$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplierGoodsMapper.kt$SupplierGoodsMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplierSettingsDBMapper.kt$SupplierSettingsDBMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplierSettingsDomainMapper.kt$SupplierSettingsDomainMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplierSettingsInteractor.kt$SupplierSettingsInteractor$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SuppliersNetworkApi.kt$SuppliersNetworkApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SuppliersSettingsApi.kt$SuppliersSettingsApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SuppliersSettingsApiImpl.kt$SuppliersSettingsApiImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SuppliesApiImpl.kt$SuppliesApiImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SuppliesDao.kt$SuppliesDao$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SuppliesPlanInteractor.kt$SuppliesPlanInteractor$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SuppliesPlanRepository.kt$SuppliesPlanRepository$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SuppliesPlanUiEvents.kt$ScreenEvent$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SuppliesViewModel.kt$SuppliesViewModel$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyAddGoodsRepository.kt$SupplyAddGoodsRepository$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyAddGoodsViewModel.kt$SupplyAddGoodsViewModel$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyAddPackageGoodsScreen.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyDateSelectorListener.kt$SupplyDateSelectorListener$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyDetailsDialog.kt$SupplyDetailsDialog$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyDetailsGoodsMapper.kt$SupplyDetailsGoodsMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyDetailsMapper.kt$SupplyDetailsMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyDetailsViewModel.kt$SupplyDetailsViewModel$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyEditGoodsDestination.kt$SupplyEditGoodsDestination$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyEditPackageMapper.kt$SupplyEditPackageMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyGoodsItem.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyIdType.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyItem.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyPassListViewModel.kt$SupplyPassListViewModel$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyPlanningDateInteractor.kt$SupplyPlanningDateInteractor$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SupplyReschedulingApiImpl.kt$SupplyReschedulingApiImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:SurveyDao.kt$SurveyDao$ </ID>
+    <ID>NoBlankLineBeforeRbrace:Switcher.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:TableHeaderType.kt$TableHeaderType$ </ID>
+    <ID>NoBlankLineBeforeRbrace:TextInputFormatter.kt$TextInputFormatter$ </ID>
+    <ID>NoBlankLineBeforeRbrace:TfaNetworkApi.kt$TfaNetworkApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:TfaState.kt$TfaState$ </ID>
+    <ID>NoBlankLineBeforeRbrace:TfaStatusMapper.kt$TfaStatusMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:TfaStatusNetworkApi.kt$TfaStatusNetworkApi$ </ID>
+    <ID>NoBlankLineBeforeRbrace:TransitDirectionsContent.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:UnixOffsetDateTimeSerializer.kt$UnixOffsetDateTimeSerializer$ </ID>
+    <ID>NoBlankLineBeforeRbrace:ValueTypeSerializer.kt$ValueSerializer$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WarehouseMapper.kt$WarehouseMapper$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WbChartsSlider.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WbFilterScreen.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WbFooters.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WbLogger.kt$WbLogger$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WbLoggerAnalyticsImpl.kt$WbLoggerAnalyticsImpl$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WbNavBar.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WbNavBarOptionItem.kt$WbNavBarOptionItem$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WbRadioButton.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WbSemanticColorModel.kt$WbSemanticColorModel$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WbSliderWithBarChart.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WbWarningBlockModels.kt$WbWarningBlockType.Closable$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WbWidget.kt$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WbWidgetModels.kt$TagType$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WbWidgetModels.kt$WidgetType$ </ID>
+    <ID>NoBlankLineBeforeRbrace:WeekModel.kt$WeekModel$ </ID>
+    <ID>NoBlankLineBeforeRbrace:YourCustomersGeneralLoadedWidget.kt$ </ID>
+    <ID>NoBlankLinesInChainedMethodCalls:PackagesTabSlice.kt$PackagesTabSlice$ </ID>
+    <ID>NoConsecutiveBlankLines:AbacTriStateUtils.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:AcceptanceCoefficientsInteractor.kt$AcceptanceCoefficientsInteractor$ </ID>
+    <ID>NoConsecutiveBlankLines:AcceptanceCoefficientsModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:AcceptanceCoefficientsScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ActionEvents.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ActionsStore.kt$ActionsStore$ </ID>
+    <ID>NoConsecutiveBlankLines:AddGoodsFilterController.kt$AddGoodsFilterController$ </ID>
+    <ID>NoConsecutiveBlankLines:AdditionalInfoByCountryMapper.kt$AdditionalInfoByCountryMapper$ </ID>
+    <ID>NoConsecutiveBlankLines:AdvertisingGraph.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:AllSuppliesFilterController.kt$AllSuppliesFilterController$ </ID>
+    <ID>NoConsecutiveBlankLines:AllSuppliesSlice.kt$AllSuppliesSliceImpl$ </ID>
+    <ID>NoConsecutiveBlankLines:AnalyticsFiltersSlice.kt$AnalyticsFilterSliceImpl$ </ID>
+    <ID>NoConsecutiveBlankLines:AnalyticsMainGraph.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:AnnouncementsComponent.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:AppLanguages.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:AssembleSuppliesSlice.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:AuthorizationNetworkApi.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:AuthorizationTracker.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:AuthorizationTrackerImpl.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:AutoPromoEditModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:AutoPromoEditMultiModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:BalanceWidgetRepository.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:BarcodeBitmap.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:BaseFilterController.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:BaseOrderFeedSlice.kt$BaseOrderFeedSlice$ </ID>
+    <ID>NoConsecutiveBlankLines:BaseSliceEvent.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:BaseViewModel.kt$BaseViewModel$ </ID>
+    <ID>NoConsecutiveBlankLines:BottomSheetControl.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:BuyersWidgetPresentationMapper.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CardRatingRequestMapper.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChangeLanguages.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CharcConfigMapper.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChatCustomerModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChatDate.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChatFile.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChatHistoryAttachmentsDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChatHistoryFileDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChatHistoryGoodCardDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChatHistoryImageDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChatHistoryRecipientDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChatHistoryRefundDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChatHistorySenderDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChatInput.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChatMedia.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChatUserMessage.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChatUserMessageState.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ChoseItemsBottomSheet.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CircularProgress.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CodeStateModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CommonNumberUtils.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CompareToPreviousDayLineChartMarkerView.kt$CompareToPreviousDayLineChartMarkerView$ </ID>
+    <ID>NoConsecutiveBlankLines:CompareToPreviousDayLineChartMarkerView.kt$CompareToPreviousDayLineChartMarkerView.MarkerAdapter$ </ID>
+    <ID>NoConsecutiveBlankLines:ContactCreationScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ContactItem.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ContactsInfo.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CreateDialogDestination.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CreateSupplyDateStepModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CreateSupplyDateStepScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CreateSupplyGlobalEvents.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CreateSupplyPackagePreviewModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CreateSupplyPackagesStepModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CreateSupplyPassStepInteractor.kt$CreateSupplyPassStepInteractor$ </ID>
+    <ID>NoConsecutiveBlankLines:CreateSupplyPassStepScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CreateSupplyPlanningStepModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CreateSupplyResponseDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CreateSupplyRootDataMapper.kt$CreateSupplyRootDataMapper$ </ID>
+    <ID>NoConsecutiveBlankLines:CreateSupplyRootModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:CreateSupplyRootNetworkApi.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:DeliveryConfirmModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:Dialog.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:DialogDestination.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:Dialogs.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:DimensionsUIEvent.kt$DimensionsUIEvent$ </ID>
+    <ID>NoConsecutiveBlankLines:DomainMapper.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:DoubleExt.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:DownloadActDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:DragAndDropState.kt$DragDropState$ </ID>
+    <ID>NoConsecutiveBlankLines:EvaluationDialogDestination.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ExitDialog.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:FilterUIEvents.kt$FilterUIEvents$ </ID>
+    <ID>NoConsecutiveBlankLines:FiltersSlice.kt$PricesFilterSliceImpl$ </ID>
+    <ID>NoConsecutiveBlankLines:FormPriceIndexReportFileApi.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:GetInQueueButtonVMImpl.kt$GetInQueueButtonVMImpl$ </ID>
+    <ID>NoConsecutiveBlankLines:GoodsAndPricesRootModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:GoodsAndPricesRootTracker.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:GoodsAndPricesRootTrackerImpl.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:GoodsChangesState.kt$GoodsChangesState.Common$ </ID>
+    <ID>NoConsecutiveBlankLines:GoodsDataBodyDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:GoodsInfoNetworkApi.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:GoodsListDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:GoodsListRequestDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:GoodsStepAction.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:GoodsSummaryDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:GraphUtils.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:GreetingModelMapper.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:GreetingNetworkApi.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:GreetingRepository.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:IBottomSheetFormOfOrganization.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:InputFieldValidator.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:KoinExtension.kt$KoinExtension$ </ID>
+    <ID>NoConsecutiveBlankLines:KppFieldValidator.kt$KppFieldValidator.Companion$ </ID>
+    <ID>NoConsecutiveBlankLines:LogoutApi.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:LogoutApiModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:MarketplaceDbsModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:MarketplaceDomainMapper.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:MarketplaceStocksDownloadInteractor.kt$MarketplaceStocksDownloadInteractor$ </ID>
+    <ID>NoConsecutiveBlankLines:MarketplaceStocksDownloadModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:MarketplaceStocksUploadInteractor.kt$MarketplaceStocksUploadInteractor$ </ID>
+    <ID>NoConsecutiveBlankLines:MarketplaceStocksUploadModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:MarketplaceStocksValues.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:MarketplaceStoreContacts.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:MarketplaceStoresViewModel.kt$MarketplaceStoresViewModel$ </ID>
+    <ID>NoConsecutiveBlankLines:MarketplaceTasksHeader.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:MarketplaceTasksNetworkApi.kt$MarketplaceTasksNetworkApi$ </ID>
+    <ID>NoConsecutiveBlankLines:NetworkErrorWidget.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:NewsItem.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:NewsWidgetModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:NewsWidgetViewModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:NotificationsNetworkApi.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:NotificationsScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:OfferCountries.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:OfferStaticDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:Offers.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:OnUiEvents.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:OrderCountDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:OrderModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:OrderStatMainEntity.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:OtherModelMapper.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:OtherRepository.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:OtherTracker.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:OtherTrackerImpl.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:PackagesTabSlice.kt$PackagesTabSlice$ </ID>
+    <ID>NoConsecutiveBlankLines:ParamValues.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ParticipationInPromotionModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:PassTemplateHolder.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:PassTemplateModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:PassVariantsSlice.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:PaymentHistoryReportModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:PaymentHistoryReportNetworkApi.kt$PaymentHistoryReportNetworkApi$ </ID>
+    <ID>NoConsecutiveBlankLines:PaymentHistoryReportViewModel.kt$PaymentHistoryReportViewModel$ </ID>
+    <ID>NoConsecutiveBlankLines:PriceIndexModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:PriceQuarantineDao.kt$PriceQuarantineDao$ </ID>
+    <ID>NoConsecutiveBlankLines:PriceShimmer.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:PricesFiltersModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:PricesModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:PricesRepository.kt$PricesRepository$ </ID>
+    <ID>NoConsecutiveBlankLines:ProductOrderingSystem.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ProfileOperationsUserInfoResponseDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ProfileRequisitesApi.kt$ProfileRequisitesApi$ </ID>
+    <ID>NoConsecutiveBlankLines:ProfileWarehousesViewModel.kt$ProfileWarehousesViewModel$ </ID>
+    <ID>NoConsecutiveBlankLines:PromotionsCalendarModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:QueueCreateClaimModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:QueueDetailsModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:QueueItem.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:QueueModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RateSupplyModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RatingsBuybacksDestination.kt$RatingsBuybacksDestination$ </ID>
+    <ID>NoConsecutiveBlankLines:RatingsCardsModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RatingsShimmer.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RefreshTokenV3Module.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RefundDetailsSlice.kt$RefundDetailsSlice$ </ID>
+    <ID>NoConsecutiveBlankLines:RefundListContent.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RefundStatusType.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RefundsModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegionSuppliesCategoryGoodsModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegionSuppliesCategoryGoodsViewModel.kt$RegionSuppliesCategoryGoodsViewModel$ </ID>
+    <ID>NoConsecutiveBlankLines:RegionSuppliesChartInfoBottomSheet.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegionSuppliesChartModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegionSuppliesChartSortModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegionSuppliesChartViewModel.kt$RegionSuppliesChartViewModel$ </ID>
+    <ID>NoConsecutiveBlankLines:RegionSuppliesFilters.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegionSuppliesFiltersDBMapper.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegionSuppliesFiltersModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegionSuppliesGoodsDimensionalModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegionSuppliesGoodsRegionsModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegionSuppliesTablesModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegionSuppliesTablesTrackerHelper.kt$RegionSuppliesTablesTrackerHelper$ </ID>
+    <ID>NoConsecutiveBlankLines:RegisterAdditionalInfoByCountriesDomain.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegisterCompanyCommonImpl.kt$RegisterCompanyCommonImpl$ </ID>
+    <ID>NoConsecutiveBlankLines:RegisterCompanyInvoiceCommonInteractor.kt$RegisterCompanyInvoiceCommonInteractor$ </ID>
+    <ID>NoConsecutiveBlankLines:RegisterNewCompanyCommonModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegisterNewCompanyCommonRepository.kt$RegisterNewCompanyCommonRepository$ </ID>
+    <ID>NoConsecutiveBlankLines:RegisterNewCompanyDataModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegisterNewCompanyModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegisterNewCompanyPaymentInvoiceModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegisterNewCompanyPaymentInvoiceScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RegisterNewCompanyPaymentInvoiceUIEvent.kt$RegisterNewCompanyPaymentInvoiceUIEvent$ </ID>
+    <ID>NoConsecutiveBlankLines:RemoveCompanySheetContent.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RemoveCompanyTracker.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:RemoveCompanyTrackerImpl.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ReportsAndTaxes.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SalesFunnelChartsModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SalesFunnelCreateReportModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SalesFunnelFiltersModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SalesFunnelFiltersSlice.kt$AnalyticsFilterSliceImpl$ </ID>
+    <ID>NoConsecutiveBlankLines:SalesFunnelModelMapper.kt$SalesFunnelModelMapper$ </ID>
+    <ID>NoConsecutiveBlankLines:SalesFunnelTablesModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SalesFunnelTracker.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SalesFunnelTrackerImpl.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ScreenContent.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ScreenUIEvent.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SearchQueriesCreateReportScreenState.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SecurityModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SecurityViewModel.kt$SecurityViewModel$ </ID>
+    <ID>NoConsecutiveBlankLines:SelectCompanyHolderImpl.kt$SelectCompanyHolderImpl$ </ID>
+    <ID>NoConsecutiveBlankLines:SelectCompanyModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SelectCompanyViewModel.kt$SelectCompanyViewModel$ </ID>
+    <ID>NoConsecutiveBlankLines:ServiceTokenManager.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ServiceTokenRepository.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:ServiceTokenUpdateApi.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SetSupplyDateParams.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SettingsDialogWidgetRepository.kt$SettingsDialogWidgetRepository$ </ID>
+    <ID>NoConsecutiveBlankLines:SettingsDialogWidgetViewModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SettingsRepository.kt$SettingsRepository$ </ID>
+    <ID>NoConsecutiveBlankLines:SizeModel.kt$SizeModel$ </ID>
+    <ID>NoConsecutiveBlankLines:SizePricesSlice.kt$SizePricesSliceImpl$ </ID>
+    <ID>NoConsecutiveBlankLines:SortTypeBottomSheet.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SplashScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:StatusItemModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:StickyActionsModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:StickyButtonModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:StockHistoryChartModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:StockHistoryTablesModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:StockHistoryTablesSecondLevelModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:StockHistoryTablesThirdLevelModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:StocksShimmer.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplierInfo.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplierInfoContent.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplierInfoModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplierModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplierSettings.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplierTopBarWidgetUiEvent.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SuppliersNetworkApi.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SuppliesMapper.kt$SuppliesMapper$ </ID>
+    <ID>NoConsecutiveBlankLines:SuppliesNetworkApi.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SuppliesPlanModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SuppliesRepository.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SuppliesRepository.kt$SuppliesRepository$ </ID>
+    <ID>NoConsecutiveBlankLines:SuppliesRootContent.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SuppliesRootRequestDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SuppliesRootTracker.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SuppliesRootTrackerImpl.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SuppliesScreen.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SuppliesViewModel.kt$SuppliesViewModel$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyAddPackageGoodsModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyCommonModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyDetails.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyDetailsModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyDetailsViewModel.kt$SupplyDetailsViewModel$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyDraftDataMapper.kt$SupplyDraftDataMapper$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyDraftGoodsRequest.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyEditGoodsItem.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyEditGoodsViewModel.kt$SupplyEditGoodsViewModel$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyEditPackageModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyEditPassModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyGoodsItem.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyGoodsStepModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyItem.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyOrdersSlice.kt$SupplyOrdersSliceImpl$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyPassListModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyPlanningDateModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyPlanningDateViewModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyReschedulingModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SupplyType.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:SurveysModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:TabEvents.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:TableEvents.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:TableItemValue.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:Tariff.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:TariffResponseDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:TaskModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:TextInputField.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:TnvedMapper.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:TokenManagerV3.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:TransitDirectionModule.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:TriStateUtils.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:UIPreview.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:UiEvents.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:UnfinishedPlaceholderController.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:Utils.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:VendorCodeBodyDTO.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:VerticalStickyPanel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:WarehouseSelector.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:WarehousesList.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:WbButtonModels.kt$WbButtonStyle$ </ID>
+    <ID>NoConsecutiveBlankLines:WbErrorPlaceholder.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:WbExpandableCard.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:WbPlaceholderModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:WbPlaceholderModel.kt$WbPlaceholderModel.Companion$ </ID>
+    <ID>NoConsecutiveBlankLines:WbProgress.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:WbRootCard.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:WbSegmentTabModel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:WbStickyPanel.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:WbTextInputField.kt$ </ID>
+    <ID>NoConsecutiveBlankLines:WbWidgetShimmerInfo.kt$ </ID>
+    <ID>NoMultipleSpaces:BottomSheetControl.kt$BottomSheetControlImpl$ </ID>
+    <ID>NoMultipleSpaces:InfoState.kt$InfoState.Companion$ </ID>
+    <ID>NoMultipleSpaces:MarketplacePassesRepository.kt$MarketplacePassesRepository$ </ID>
+    <ID>NoMultipleSpaces:ProfileWarehousesOperationsRepository.kt$ProfileWarehousesOperationsRepository$ </ID>
+    <ID>NoMultipleSpaces:QrSuppliesGenerationInteractor.kt$QrSuppliesGenerationInteractor$ </ID>
+    <ID>NoMultipleSpaces:QueueDetailsRepository.kt$QueueDetailsRepository$ </ID>
+    <ID>NoMultipleSpaces:TabModel.kt$TabItemModel.Companion$ </ID>
+    <ID>NoMultipleSpaces:TabsSlice.kt$QuestionSlice$ </ID>
+    <ID>NoMultipleSpaces:TemplatesDestination.kt$TemplatesDestination$ </ID>
+    <ID>NoMultipleSpaces:UiModule.kt$ </ID>
+    <ID>NoUnusedImports:MarketplaceContactCreationNavigationGraph.kt$wildberries.wbpartners.contactCreation.presentation.navigation.MarketplaceContactCreationNavigationGraph.kt</ID>
+    <ID>NoUnusedImports:OrderFeedDao.kt$wildberries.database.data.dao.OrderFeedDao.kt</ID>
+    <ID>NoUnusedImports:PriceIndexRepository.kt$wildberries.wbpartners.priceIndex.data.PriceIndexRepository.kt</ID>
+    <ID>NoUnusedImports:WBAppPlugin.kt$wb.partners.WBAppPlugin.kt</ID>
+    <ID>PackageName:FeatureInitializer.kt$package ru.wildberries.WBAnalytics2</ID>
+    <ID>PackageName:Typealias.kt$package wildberries.wbpartners.utils.`typealias`</ID>
+    <ID>PackageName:UnansweredFeedbacksWidgetEntity.kt$package wildberries.database.data.entitity.buyers_widget</ID>
+    <ID>PackageName:UnansweredQuestionsWidgetEntity.kt$package wildberries.database.data.entitity.buyers_widget</ID>
+    <ID>PackageNaming:FeatureInitializer.kt$package ru.wildberries.WBAnalytics2</ID>
+    <ID>PackageNaming:UnansweredFeedbacksWidgetEntity.kt$package wildberries.database.data.entitity.buyers_widget</ID>
+    <ID>PackageNaming:UnansweredQuestionsWidgetEntity.kt$package wildberries.database.data.entitity.buyers_widget</ID>
+    <ID>ParameterListWrapping:AnalyticsFiltersSlice.kt$AnalyticsFilterSliceImpl$( type: AnalyticsBottomSheetsFiltersEnum, item: SelectingItem )</ID>
+    <ID>ParameterListWrapping:AnalyticsFiltersSlice.kt$AnalyticsFilterSliceImpl$( type: AnalyticsBottomSheetsFiltersEnum, query: String )</ID>
+    <ID>ParameterListWrapping:BottomPanel.kt$( isRemoveAllEnabled: Boolean, isPrintAllEnabled: Boolean, onUIEvent: (ScreenEvent) -&gt; Unit, modifier: Modifier = Modifier )</ID>
+    <ID>ParameterListWrapping:HeaderContent.kt$( selectedTab: PassesTab, isInfoBannerVisible: Boolean, isWarningBannerVisible: Boolean, onUIEvent: (ScreenEvent) -&gt; Unit, modifier: Modifier = Modifier )</ID>
+    <ID>ParameterListWrapping:KppFieldValidator.kt$KppFieldValidator.LengthRule$(value: String)</ID>
+    <ID>ParameterListWrapping:MarkerView.kt$FlagMarkerView$( context: Context, @ColorInt private val color: Int, private val suffix: String = "" )</ID>
+    <ID>ParameterListWrapping:MarketplaceTasksInteractor.kt$MarketplaceTasksInteractor$( supplyId: String, boxId: String, ordersIds: List&lt;Long&gt; )</ID>
+    <ID>ParameterListWrapping:MarketplaceTasksInteractor.kt$MarketplaceTasksInteractor$( supplyId: String, ids: List&lt;String&gt; )</ID>
+    <ID>ParameterListWrapping:PhoneInfoModel.kt$Country$( val code: String, val mask: String, val maskNumber: Char, val phoneLength: Int )</ID>
+    <ID>ParameterListWrapping:RegisterNewCompanyDataUIEvent.kt$RegisterNewCompanyDataUIEvent.OnBottomSheetFormOfOrganizationClick$(val selectedText: String, val selectedTextId: Int)</ID>
+    <ID>ParameterListWrapping:SalesFunnelFiltersSlice.kt$AnalyticsFilterSliceImpl$( type: AnalyticsBottomSheetsFiltersEnum, item: SelectingItem )</ID>
+    <ID>ParameterListWrapping:SalesFunnelFiltersSlice.kt$AnalyticsFilterSliceImpl$( type: AnalyticsBottomSheetsFiltersEnum, query: String )</ID>
+    <ID>ParameterListWrapping:WbPartnersHorizontalPagerIndicator.kt$( listState: LazyListState, baseWidth: Dp = 4.dp, spacing: Dp = 4.dp, height: Dp = 4.dp)</ID>
+    <ID>ParameterWrapping:MarketplaceStocksUploadViewModel.kt$MarketplaceStocksUploadViewModel.FileSelectorState$val fileUploadState: FileUploadState = EmptyState(ResText(R.string.marketplace_stocks_upload_file_upload_placeholder))</ID>
+    <ID>PrintStackTrace:PdfGenerator.kt$PdfGenerator$e</ID>
+    <ID>PrintStackTrace:StartupBenchmarks.kt$StartupBenchmarks$e</ID>
+    <ID>PropertyWrapping:OrderRemoteActionModel.kt$OrderRemoteActionModel.MoveToAssemble$override val errorOrderSnackText: ResText = ResText(R.string.marketplace_cart_details_tasks_to_assemble_error_title)</ID>
+    <ID>PropertyWrapping:OrderRemoteActionModel.kt$OrderRemoteActionModel.MoveToAssemble$override val successOrderSnackText: ResText = ResText(R.string.marketplace_cart_details_task_to_assemble_success_title)</ID>
+    <ID>PropertyWrapping:OrderRemoteActionModel.kt$OrderRemoteActionModel.MoveToDelivery$override val errorOrderSnackText: ResText = ResText(R.string.marketplace_cart_details_tasks_to_delivery_error_title)</ID>
+    <ID>PropertyWrapping:OrderRemoteActionModel.kt$OrderRemoteActionModel.MoveToDelivery$override val successOrderSnackText: ResText = ResText(R.string.marketplace_cart_details_task_to_delivery_success_title)</ID>
+    <ID>PropertyWrapping:TimeAsStringSerializer.kt$TimeAsStringSerializer$override val descriptor = PrimitiveSerialDescriptor("ru.wildberries.analytics.api.TimeAsStringSerializer", PrimitiveKind.STRING)</ID>
+    <ID>SerialVersionUIDInSerializableClass:QrSuppliesNavigationEvent.kt$QrSuppliesNavigationEvent : Serializable</ID>
+    <ID>SerialVersionUIDInSerializableClass:Tuples.kt$Quadruple&lt;out A, out B, out C, out D&gt; : Serializable</ID>
+    <ID>SpacingAroundColon:BaseSlice.kt$BaseSlice$:</ID>
+    <ID>SpacingAroundColon:BottomSheet.kt$BottomSheet.Statistic$:</ID>
+    <ID>SpacingAroundColon:BoxIdsListDTO.kt$BoxIdsListDTO$:</ID>
+    <ID>SpacingAroundColon:BuyerWidgetInteractor.kt$FeedbacksWidgetInteractor$:</ID>
+    <ID>SpacingAroundColon:BuyerWidgetInteractor.kt$QuestionsWidgetInteractor$:</ID>
+    <ID>SpacingAroundColon:BuyersWidgetHolderImpl.kt$BuyersWidgetHolderImpl$:</ID>
+    <ID>SpacingAroundColon:ChatAttachmentModel.kt$ChatAttachmentModel.ChatFile$:</ID>
+    <ID>SpacingAroundColon:ChatAttachmentModel.kt$ChatAttachmentModel.ChatMedia$:</ID>
+    <ID>SpacingAroundColon:CodeDTO.kt$CodeDTO$:</ID>
+    <ID>SpacingAroundColon:CreateDialogDestination.kt$CreateDialogDestination$:</ID>
+    <ID>SpacingAroundColon:Dialog.kt$Dialog.DatePicker$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.ApplyAllFilters$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.BrandsUiEvents$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.BrandsUiEvents.ApplyFilter$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.BrandsUiEvents.ItemClick$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.BrandsUiEvents.OnPaginate$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.BrandsUiEvents.OpenBottomSheet$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.BrandsUiEvents.Refresh$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.BrandsUiEvents.ResetFilter$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.HideBottomSheet$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.LeftoversFieldSwitchOnClick$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.ObserveFilterStates$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.ResetAllFilters$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.SubjectsUiEvents$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.SubjectsUiEvents.ApplyFilter$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.SubjectsUiEvents.ItemClick$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.SubjectsUiEvents.OnPaginate$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.SubjectsUiEvents.OpenBottomSheet$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.SubjectsUiEvents.Refresh$:</ID>
+    <ID>SpacingAroundColon:FilterUIEvents.kt$FilterUIEvents.SubjectsUiEvents.ResetFilter$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksUploadNetworkApi.kt$MarketplaceStocksUploadNetworkApi$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksUploadUIEvent.kt$BackClick$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksUploadUIEvent.kt$CloseWarehouses$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksUploadUIEvent.kt$FileButtonClick$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksUploadUIEvent.kt$FileRemoveClick$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksUploadUIEvent.kt$FileSelected$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksUploadUIEvent.kt$MarketplaceStocksUploadBottomSheetUIEvent$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksUploadUIEvent.kt$MarketplaceStocksUploadScreenUIEvent$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksUploadUIEvent.kt$OpenWarehouses$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksUploadUIEvent.kt$RefreshClicked$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksUploadUIEvent.kt$SearchFieldChanged$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksUploadUIEvent.kt$UploadClick$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksUploadUIEvent.kt$WarehouseClicked$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksUploadUIEvent.kt$WarehouseSelected$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksValues.kt$ExcelDialogActionValue$:</ID>
+    <ID>SpacingAroundColon:MarketplaceStocksValues.kt$StockDialogActionValue$:</ID>
+    <ID>SpacingAroundColon:NavigationDeepLink.kt$NavigationDeepLink$:</ID>
+    <ID>SpacingAroundColon:PassDTO.kt$PassDTO$:</ID>
+    <ID>SpacingAroundColon:PassIdDTO.kt$PassIdDTO$:</ID>
+    <ID>SpacingAroundColon:PassNavData.kt$PassNavData$:</ID>
+    <ID>SpacingAroundColon:PassSupplyInfoNavData.kt$PassSupplyInfoNavData$:</ID>
+    <ID>SpacingAroundColon:PassVariants.kt$VariantItem$:</ID>
+    <ID>SpacingAroundColon:PassesTabUIEvent.kt$PassesTabUIEvent.AddPass$:</ID>
+    <ID>SpacingAroundColon:PricesFilterApiImpl.kt$PricesFilterApiImpl$:</ID>
+    <ID>SpacingAroundColon:QueueDetailsNetworkApi.kt$QueueDetailsNetworkApi$:</ID>
+    <ID>SpacingAroundColon:QueueListRequestDTO.kt$QueueListRequestDTO$:</ID>
+    <ID>SpacingAroundColon:RateSupplyNavData.kt$RateSupplyNavData.Supplies$:</ID>
+    <ID>SpacingAroundColon:RegionSuppliesGoodsDimensionalUIEvent.kt$RegionSuppliesGoodsDimensionalUIEvent.RefreshTriggered$:</ID>
+    <ID>SpacingAroundColon:RegisterCompanyBodyRequestDTO.kt$Supplier$:</ID>
+    <ID>SpacingAroundColon:RemoveBoxBodyDTO.kt$RemoveBoxBarcodeBodyDTO$:</ID>
+    <ID>SpacingAroundColon:RemoveBoxBodyDTO.kt$RemoveBoxBodyDTO$:</ID>
+    <ID>SpacingAroundColon:RemoveEmptyBoxesDTO.kt$RemoveEmptyBoxesDTO$:</ID>
+    <ID>SpacingAroundColon:SalesFunnelTrackerImpl.kt$SalesFunnelTrackerImpl$:</ID>
+    <ID>SpacingAroundColon:StoreUiEvents.kt$StoreUiEvents.OnBackClick$:</ID>
+    <ID>SpacingAroundColon:StoreUiEvents.kt$StoreUiEvents.OnExitClick$:</ID>
+    <ID>SpacingAroundColon:StoreUiEvents.kt$StoreUiEvents.OnHideDialog$:</ID>
+    <ID>SpacingAroundColon:StoreUiEvents.kt$StoreUiEvents.OnQuestionClick$:</ID>
+    <ID>SpacingAroundColon:StoreUiEvents.kt$StoreUiEvents.OnSendClick$:</ID>
+    <ID>SpacingAroundColon:StoreUiEvents.kt$StoreUiEvents.OnShowOfferClick$:</ID>
+    <ID>SpacingAroundColon:SubscriptionNotValidException.kt$SubscriptionNotValidException$:</ID>
+    <ID>SpacingAroundColon:SupplierTopBarWidgetAnalyticsEvent.kt$OnNotificationAnalyticClick$:</ID>
+    <ID>SpacingAroundColon:SupplierTopBarWidgetUiEvent.kt$OnNotificationsClick$:</ID>
+    <ID>SpacingAroundColon:SupplierTopBarWidgetUiEvent.kt$OnRefresh$:</ID>
+    <ID>SpacingAroundColon:SupplierTopBarWidgetUiEvent.kt$OnSettingsClick$:</ID>
+    <ID>SpacingAroundColon:SuppliesDTO.kt$SuppliesDataDTO$:</ID>
+    <ID>SpacingAroundColon:SuppliesFeedbackDTO.kt$SuppliesFeedbackDTO$:</ID>
+    <ID>SpacingAroundColon:SuppliesUiEvent.kt$SuppliesUiEvent.BottomSheet$:</ID>
+    <ID>SpacingAroundColon:SuppliesUiEvent.kt$SuppliesUiEvent.BottomSheet.CreateSupply$:</ID>
+    <ID>SpacingAroundColon:SuppliesUiEvent.kt$SuppliesUiEvent.BottomSheet.SupplyNameChange$:</ID>
+    <ID>SpacingAroundColon:SuppliesUiEvent.kt$SuppliesUiEvent.Dialog$:</ID>
+    <ID>SpacingAroundColon:SuppliesUiEvent.kt$SuppliesUiEvent.Dialog.AddOrderToSupply$:</ID>
+    <ID>SpacingAroundColon:SuppliesUiEvent.kt$SuppliesUiEvent.Dialog.Hide$:</ID>
+    <ID>SpacingAroundColon:SuppliesUiEvent.kt$SuppliesUiEvent.Screen$:</ID>
+    <ID>SpacingAroundColon:SuppliesUiEvent.kt$SuppliesUiEvent.Screen.BackClick$:</ID>
+    <ID>SpacingAroundColon:SuppliesUiEvent.kt$SuppliesUiEvent.Screen.Refresh$:</ID>
+    <ID>SpacingAroundColon:SuppliesUiEvent.kt$SuppliesUiEvent.Screen.Retry$:</ID>
+    <ID>SpacingAroundColon:SuppliesUiEvent.kt$SuppliesUiEvent.Screen.ScrollToEnd$:</ID>
+    <ID>SpacingAroundColon:SuppliesUiEvent.kt$SuppliesUiEvent.Screen.ShowConfirmDialog$:</ID>
+    <ID>SpacingAroundColon:SuppliesUiEvent.kt$SuppliesUiEvent.Screen.ShowCreateSupply$:</ID>
+    <ID>SpacingAroundColon:SupplyPassListActionsSender.kt$SupplyPassListActionsSender$:</ID>
+    <ID>SpacingAroundColon:SurveyEntity.kt$SurveyEntity$:</ID>
+    <ID>SpacingAroundColon:TabsSlice.kt$BaseWidgetSlice$:</ID>
+    <ID>SpacingAroundColon:TabsSlice.kt$FeedbacksSlice$:</ID>
+    <ID>SpacingAroundColon:TabsSlice.kt$QuestionSlice$:</ID>
+    <ID>SpacingAroundColon:ValueTypeSerializer.kt$ValueSerializer$:</ID>
+    <ID>SpacingAroundColon:WarehouseCoefficientsItem.kt$:</ID>
+    <ID>SpacingAroundColon:WarehousesByRegionScreenState.kt$TabPage$:</ID>
+    <ID>SpacingAroundColon:WbBottomSheetModel.kt$WbFeatureInWorkBottomSheetModel$:</ID>
+    <ID>SpacingAroundComma:InfoBottomSheet.kt$,</ID>
+    <ID>SpacingAroundComma:RefundActionType.kt$RefundActionType.ApproveAndCheckDefects$,</ID>
+    <ID>SpacingAroundComma:RefundActionType.kt$RefundActionType.ApproveAndGetProduct$,</ID>
+    <ID>SpacingAroundComma:RefundActionType.kt$RefundActionType.AutoWithoutRefund$,</ID>
+    <ID>SpacingAroundComma:RefundActionType.kt$RefundActionType.RejectDefectNotApplied$,</ID>
+    <ID>SpacingAroundComma:RefundActionType.kt$RefundActionType.RejectDefectNotDetected$,</ID>
+    <ID>SpacingAroundComma:RefundActionType.kt$RefundActionType.Unknown$,</ID>
+    <ID>SpacingAroundComma:RequestModelMapper.kt$RequestModelMapper$,</ID>
+    <ID>SpacingAroundComma:SurveyDao.kt$SurveyDao$,</ID>
+    <ID>SpacingAroundComma:Utils.kt$,</ID>
+    <ID>SpacingAroundComma:WBAppPlugin.kt$WBAppPlugin$,</ID>
+    <ID>SpacingAroundCurly:BottomSheetControl.kt$BottomSheetControl${</ID>
+    <ID>SpacingAroundCurly:ChooseVariantType.kt$ChooseVariantType${</ID>
+    <ID>SpacingAroundCurly:CreateSupplyPackagePreviewScreen.kt$}</ID>
+    <ID>SpacingAroundCurly:CreateSupplyPlanningStepRepository.kt$CreateSupplyPlanningStepRepository${</ID>
+    <ID>SpacingAroundCurly:CreateSupplyPlanningStepUIEvent.kt$NotAcceptItemsEvent${</ID>
+    <ID>SpacingAroundCurly:OutlineButton.kt$}</ID>
+    <ID>SpacingAroundCurly:PaymentHistoryItem.kt${</ID>
+    <ID>SpacingAroundCurly:PdfDrawer.kt$PdfDrawer${</ID>
+    <ID>SpacingAroundCurly:PdfDrawer.kt${</ID>
+    <ID>SpacingAroundCurly:PdfGenerator.kt$PdfGenerator${</ID>
+    <ID>SpacingAroundCurly:ProgressOverlap.kt${</ID>
+    <ID>SpacingAroundCurly:RegionSuppliesCreateReportNetworkApi.kt$RegionSuppliesCreateReportNetworkApi${</ID>
+    <ID>SpacingAroundCurly:SalesFunnelCreateReportNetworkApi.kt$SalesFunnelCreateReportNetworkApi${</ID>
+    <ID>SpacingAroundCurly:SolidButton.kt$}</ID>
+    <ID>SpacingAroundCurly:StockHistoryCreateReportInteractor.kt$StockHistoryCreateReportInteractor${</ID>
+    <ID>SpacingAroundCurly:StockHistoryCreateReportNetworkApi.kt$StockHistoryCreateReportNetworkApi${</ID>
+    <ID>SpacingAroundCurly:StoreContacts.kt$StoreContacts${</ID>
+    <ID>SpacingAroundCurly:SupplyReschedulingNetworkApi.kt$SupplyReschedulingNetworkApi${</ID>
+    <ID>SpacingAroundCurly:WBAppPlugin.kt$WBAppPlugin${</ID>
+    <ID>SpacingAroundCurly:WarehouseCoefficientsItem.kt${</ID>
+    <ID>SpacingAroundKeyword:MarketplaceEnumUtils.kt$when</ID>
+    <ID>SpacingAroundKeyword:ProgressOverlap.kt$if</ID>
+    <ID>SpacingAroundKeyword:WBDataSetRenderers.kt$WBBarDataSetRenderer$if</ID>
+    <ID>SpacingAroundKeyword:WarehouseCoefficientsItem.kt$when</ID>
+    <ID>SpacingAroundKeyword:WbPartnersHorizontalPagerIndicator.kt$when</ID>
+    <ID>SpacingAroundOperators:ButtonStateModel.kt$ButtonStateModel$=</ID>
+    <ID>SpacingAroundOperators:CoefficientInfoPanel.kt$-&gt;</ID>
+    <ID>SpacingAroundOperators:DragAndDropState.kt$DragDropState$+</ID>
+    <ID>SpacingAroundOperators:DragAndDropState.kt$DragDropState$-</ID>
+    <ID>SpacingAroundOperators:KppFieldValidator.kt$KppFieldValidator.LengthRule$?:</ID>
+    <ID>SpacingAroundOperators:LocalizationReportShareChart.kt$/</ID>
+    <ID>SpacingAroundOperators:MarketplacePassesRepository.kt$MarketplacePassesRepository$-&gt;</ID>
+    <ID>SpacingAroundOperators:MarketplaceStoresRepository.kt$MarketplaceStoresRepository$-&gt;</ID>
+    <ID>SpacingAroundOperators:ProfileWarehousesOperationsApiModule.kt$=</ID>
+    <ID>SpacingAroundOperators:RefundsDBMapper.kt$RefundsDBMapper$?:</ID>
+    <ID>SpacingAroundOperators:SaleReportDbMapper.kt$SaleReportDbMapper$?:</ID>
+    <ID>SpacingAroundParens:AcceptanceCoefficientsNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:AutoPromoEditMultiNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:AutoPromoEditNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:ChatCustomerNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:CreateSupplyDateStepNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:CreateSupplyPackagePreviewNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:CreateSupplyPlanningStepNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:JamOfferwallNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:LongIdListBody.kt$LongIdListBody$(</ID>
+    <ID>SpacingAroundParens:MarketplaceContactCreationNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:MarketplaceCourierContactsListNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:MarketplacePassesNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:MarketplaceStocksUploadNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:MarketplaceStoreGraph.kt$(</ID>
+    <ID>SpacingAroundParens:MarketplaceTasksSuppliesGraph.kt$(</ID>
+    <ID>SpacingAroundParens:OrderCountDTO.kt$OrderCountDataDTO$(</ID>
+    <ID>SpacingAroundParens:OrderCountDTO.kt$OrderDTO$(</ID>
+    <ID>SpacingAroundParens:PackageBarcodesDTO.kt$PackageBarcodesDTO$(</ID>
+    <ID>SpacingAroundParens:PackagesDTO.kt$PackagesDTO$(</ID>
+    <ID>SpacingAroundParens:PassesDTO.kt$DetailsPassesDTO$(</ID>
+    <ID>SpacingAroundParens:PassesDTO.kt$PassesDTO$(</ID>
+    <ID>SpacingAroundParens:PaymentHistoryReportModule.kt$(</ID>
+    <ID>SpacingAroundParens:PaymentHistoryReportNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:PriceHistoryDTO.kt$PriceDTO$(</ID>
+    <ID>SpacingAroundParens:PriceHistoryDTO.kt$PriceElementDTO$(</ID>
+    <ID>SpacingAroundParens:PriceHistoryDTO.kt$PriceHistoryDataDTO$(</ID>
+    <ID>SpacingAroundParens:PricesFiltersNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:ProductCounters.kt$CounterData$(</ID>
+    <ID>SpacingAroundParens:ProductCounters.kt$ProductCounters$(</ID>
+    <ID>SpacingAroundParens:ProductCountersDTO.kt$CounterDataDTO$(</ID>
+    <ID>SpacingAroundParens:ProductCountersDTO.kt$ProductCountersDTO$(</ID>
+    <ID>SpacingAroundParens:ProductCountersDTO.kt$ProductCountersWithLimitsDTO$(</ID>
+    <ID>SpacingAroundParens:ProfileOperationsNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:ProfileRequisitesNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:ProfileWarehouseOperationsNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:PromotionsCalendarNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:QrSuppliesGenerationNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:QrSuppliesPassNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:QueueCreateClaimModule.kt$(</ID>
+    <ID>SpacingAroundParens:QuizNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:RatingsCardsNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:RegionSuppliesChartSortNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:RegisterNewCompanyDataNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:RegisterNewCompanyNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:RegisterNewCompanyPaymentInvoiceNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:StockHistoryTablesThirdLevelNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:StoresDTO.kt$StoreDataDTO$(</ID>
+    <ID>SpacingAroundParens:StringIdListBody.kt$StringIdListBody$(</ID>
+    <ID>SpacingAroundParens:SuppliesDTO.kt$SuppliesDataDTO$(</ID>
+    <ID>SpacingAroundParens:SuppliesDTO.kt$SupplyDataDTO$(</ID>
+    <ID>SpacingAroundParens:SuppliesDTO.kt$SupplyStateDTO$(</ID>
+    <ID>SpacingAroundParens:SuppliesPlanNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:SupplyAddGoodsNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:SupplyDraftNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:SupplyEditGoodsNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:SupplyEditPassNavigationGraph.kt$(</ID>
+    <ID>SpacingAroundParens:SupplyReschedulingNavigationGraph.kt$(</ID>
+    <ID>SpacingBetweenDeclarationsWithAnnotations:ProfileOperationsAddUserRequestDTO.kt$AddUserInfoDTO</ID>
+    <ID>SpacingBetweenDeclarationsWithComments:StatusId.kt$StatusId.ENTERED$// todo: вернуть, когда сделают ручку</ID>
+    <ID>StringLiteralDuplication:AdditionalInfoByCountryMapper.kt$AdditionalInfoByCountryMapper$"{account}"</ID>
+    <ID>StringLiteralDuplication:AdditionalInfoByCountryMapper.kt$AdditionalInfoByCountryMapper$"{boldInnCountry}"</ID>
+    <ID>StringLiteralDuplication:AdditionalInfoByCountryMapper.kt$AdditionalInfoByCountryMapper$"{deposit}"</ID>
+    <ID>StringLiteralDuplication:AdditionalInfoByCountryMapper.kt$AdditionalInfoByCountryMapper$"{firstAccount}"</ID>
+    <ID>StringLiteralDuplication:AdditionalInfoByCountryMapper.kt$AdditionalInfoByCountryMapper$"{period}"</ID>
+    <ID>StringLiteralDuplication:AdditionalInfoByCountryMapper.kt$AdditionalInfoByCountryMapper$"{secondAccount}"</ID>
+    <ID>StringLiteralDuplication:BitmapStoreUtils.kt$"wildberries.wbpartners.fileprovider"</ID>
+    <ID>StringLiteralDuplication:CommonNumberUtils.kt$"$this${if (hasSpace) " " else ""}%"</ID>
+    <ID>StringLiteralDuplication:DevToolsFragment.kt$DevToolsFragment$"updateHost"</ID>
+    <ID>StringLiteralDuplication:FileUtils.kt$FileUtils$"application/$extension"</ID>
+    <ID>StringLiteralDuplication:FileUtils.kt$FileUtils$"application/vnd.ms-excel"</ID>
+    <ID>StringLiteralDuplication:FileUtils.kt$FileUtils$"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"</ID>
+    <ID>StringLiteralDuplication:FileUtils.kt$FileUtils$"application/vnd.openxmlformats-officedocument.wordprocessingml.document"</ID>
+    <ID>StringLiteralDuplication:FileUtils.kt$FileUtils$"image/$extension"</ID>
+    <ID>StringLiteralDuplication:GraphUtils.kt$GraphUtils$"${df.format(amount / 1000)} тыс."</ID>
+    <ID>StringLiteralDuplication:GraphUtils.kt$GraphUtils$"${df.format(amount / 1000000)} млн."</ID>
+    <ID>StringLiteralDuplication:GraphUtils.kt$GraphUtils$"${df.format(amount / 1000000000)} млрд."</ID>
+    <ID>StringLiteralDuplication:PhoneInfoModel.kt$Country.RU$"### ###-##-##"</ID>
+    <ID>StringLiteralDuplication:Settings.kt$":core:utils"</ID>
+    <ID>StringLiteralDuplication:StartupBenchmarks.kt$StartupBenchmarks$"wb.partners"</ID>
+    <ID>StringLiteralDuplication:TestTracker.kt$TestTracker$"Not yet implemented"</ID>
+    <ID>StringLiteralDuplication:TfaInteractor.kt$TfaInteractor$"result: ${it.result}"</ID>
+    <ID>StringLiteralDuplication:TokenV3Mapper.kt$TokenV3Mapper$"set-cookie"</ID>
+    <ID>StringLiteralDuplication:Utils.kt$"\"$it\""</ID>
+    <ID>StringLiteralDuplication:Utils.kt$"detektPlugins"</ID>
+    <ID>StringLiteralDuplication:WBDeviceInfoProviderImpl.kt$WBDeviceInfoProviderImpl$"randomDeviceId"</ID>
+    <ID>StringTemplate:DialogDestination.kt$DialogDestination$${route}</ID>
+    <ID>StringTemplate:EvaluationDialogDestination.kt$EvaluationDialogDestination$${route}</ID>
+    <ID>StringTemplate:JamOfferwallDestination.kt$JamOfferwallDestination$${route}</ID>
+    <ID>StringTemplate:MarketplaceContactCreationDestination.kt$MarketplaceContactCreationDestination$${json}</ID>
+    <ID>StringTemplate:MarketplaceContactCreationDestination.kt$MarketplaceContactCreationDestination$${route}</ID>
+    <ID>StringTemplate:MarketplaceCourierContactsDestination.kt$MarketplaceCourierContactsDestination$${route}</ID>
+    <ID>StringTemplate:MarketplaceDbsDestination.kt$MarketplaceDbsDestination$${route}</ID>
+    <ID>StringTemplate:QuestionDetailsDestination.kt$QuestionDetailsDestination$${route}</ID>
+    <ID>StringTemplate:RegionSuppliesGoodsDimensionalDestination.kt$RegionSuppliesGoodsDimensionalDestination$${route}</ID>
+    <ID>StringTemplate:SearchQueriesTablesGoodsDestination.kt$SearchQueriesTablesGoodsDestination$${route}</ID>
+    <ID>StringTemplate:SupplyEditPackageDestination.kt$SupplyEditPackageDestination$${route}</ID>
+    <ID>StringTemplate:TemplatesDestination.kt$TemplatesDestination$${route}</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:CacheResourse.kt$IllegalStateException()</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:KvsInteractor.kt$KvsInteractor$IllegalStateException()</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:SupplyGoodsStepInteractor.kt$SupplyGoodsStepInteractor$IllegalStateException()</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:TfaInteractor.kt$TfaInteractor$IllegalStateException()</ID>
+    <ID>ThrowingExceptionsWithoutMessageOrCause:TriStateUtils.kt$IllegalStateException()</ID>
+    <ID>TopLevelPropertyNaming:WbRadioButton.kt$private const val WbRadioAnimationDuration = 100</ID>
+    <ID>UnusedPrivateMember:OtherScreen.kt$@Composable private fun OldScreen(vm: OtherViewModel, state: State&lt;OtherViewModel.ScreenState&gt;)</ID>
+    <ID>UnusedPrivateMember:PassVariantsSlice.kt$PassVariantsSliceImpl$private fun VariantItem.getCurrentValue()</ID>
+    <ID>UnusedPrivateMember:WbSliderWithBarChart.kt$private fun YAxis.setupYAxis(yMax: Float)</ID>
+    <ID>UnusedPrivateProperty:CreateSupplyRootDataMapper.kt$private const val DEFAULT_ID = -1L</ID>
+    <ID>UnusedPrivateProperty:DashboardModelMapper.kt$DashboardModelMapper$private val jsonConverter: JsonConverter</ID>
+    <ID>UnusedPrivateProperty:TfaInteractor.kt$TfaInteractor$i</ID>
+    <ID>UnusedPrivateProperty:WBAnalytics2Api.kt$WBAnalytics2Api.Companion$private const val debugURL = "https://analytics-stage.wildberries.ru/m/batch"</ID>
+    <ID>WildcardImport:AutoPromoEditMultiModelMapper.kt$import wildberries.wbpartners.promotionsCalendarApi.models.PromoStatus.*</ID>
+    <ID>Wrapping:AcceptanceCoefficientsFilterController.kt$AcceptanceCoefficientsFilterController$(</ID>
+    <ID>Wrapping:AcceptanceCoefficientsViewModel.kt$AcceptanceCoefficientsViewModel$(</ID>
+    <ID>Wrapping:AcceptanceCostsModelMapper.kt$AcceptanceCostsModelMapper$( BigDecimal.valueOf( monopalletsQuantity * monopalletsCost * coefficient ).setScale(0, RoundingMode.HALF_UP), currency = Currency.RUB )</ID>
+    <ID>Wrapping:ActionsDialog.kt$(</ID>
+    <ID>Wrapping:AddOrderToBoxBottomSheet.kt$(</ID>
+    <ID>Wrapping:BoxesTriState.kt$(</ID>
+    <ID>Wrapping:ChatCustomerInteractor.kt$ChatCustomerInteractor$(</ID>
+    <ID>Wrapping:CoefficientInfoPanel.kt$(</ID>
+    <ID>Wrapping:ConfirmRemove.kt$(</ID>
+    <ID>Wrapping:CreateSupplyPackagePreviewViewModel.kt$CreateSupplyPackagePreviewViewModel$(</ID>
+    <ID>Wrapping:CreateSupplyPackagesStepDomainMapper.kt$CreateSupplyPackagesStepDomainMapper$(</ID>
+    <ID>Wrapping:CreateSupplyPackagesStepViewModel.kt$CreateSupplyPackagesStepViewModel$(</ID>
+    <ID>Wrapping:CreateSupplyPlanningStepRepository.kt$CreateSupplyPlanningStepRepository$-&gt;</ID>
+    <ID>Wrapping:ExitDialog.kt$(</ID>
+    <ID>Wrapping:FilterSelectingOperator.kt$SelectingFilterOperator$(</ID>
+    <ID>Wrapping:GreetingViewModel.kt$GreetingViewModel$-&gt;</ID>
+    <ID>Wrapping:InfoBottomSheet.kt$;</ID>
+    <ID>Wrapping:InputField.kt$InputField$fieldState.value !is InputFieldState.Error &amp;&amp; fieldState.value !is InputFieldState.ErrorNoEffect</ID>
+    <ID>Wrapping:InputNumber.kt$(</ID>
+    <ID>Wrapping:MapperUtils.kt$( BigDecimal.valueOf( cost ).setScale(0, RoundingMode.HALF_UP), currency = Currency.RUB )</ID>
+    <ID>Wrapping:MappersUtils.kt$( BigDecimal.valueOf( cost ).setScale(0, RoundingMode.HALF_UP), currency = Currency.RUB )</ID>
+    <ID>Wrapping:MarketplaceStoreGraph.kt$(</ID>
+    <ID>Wrapping:MarketplaceStoresViewModel.kt$MarketplaceStoresViewModel$(</ID>
+    <ID>Wrapping:PackageModelMapper.kt$PackageModelMapper$(</ID>
+    <ID>Wrapping:ParticipationInPromotionRepository.kt$ParticipationInPromotionRepository$(</ID>
+    <ID>Wrapping:PassVariantsBottomSheet.kt$(</ID>
+    <ID>Wrapping:PaymentHistoryReportMapper.kt$PaymentHistoryReportMapper$(</ID>
+    <ID>Wrapping:PromoListComponent.kt$(</ID>
+    <ID>Wrapping:PromoListSlice.kt$PromoListSlice$(</ID>
+    <ID>Wrapping:QrSuppliesPassNavigationGraph.kt$(</ID>
+    <ID>Wrapping:QueueDataMapper.kt$QueueDataMapper$(</ID>
+    <ID>Wrapping:RegisterNewCompanyCommonRepository.kt$RegisterNewCompanyCommonRepository$it.data == null</ID>
+    <ID>Wrapping:RegisterNewCompanyDataScreen.kt$(</ID>
+    <ID>Wrapping:RegisterNewCompanyViewModel.kt$RegisterNewCompanyViewModel$(</ID>
+    <ID>Wrapping:RemoveAllDialog.kt$(</ID>
+    <ID>Wrapping:ScreenContent.kt$( MultipleRestText( state.country.innTitleId, UIString.space, R.string.receivers ).mapString(), state.paymentNavData.innBank, onUIEvent )</ID>
+    <ID>Wrapping:SupplyBoxesSlice.kt$SupplyBoxesSliceImpl$(</ID>
+    <ID>Wrapping:SupplyEditPackageViewModel.kt$SupplyEditPackageViewModel$(</ID>
+    <ID>Wrapping:SupplyEditPassNavigationGraph.kt$(</ID>
+    <ID>Wrapping:SupplyGoodsStepScreen.kt$( ResText(R.string.goods_step_total), StringTextWithPlurals( UIPlurals.total_barcodes, state.goodsTypeQuantity, state.goodsTypeQuantity, state.allGoodsQuantity ) )</ID>
+    <ID>Wrapping:SupplyItem.kt$( Modifier .size(20.dp) .align(Alignment.Center), UIDrawable.ic_jam_module )</ID>
+    <ID>Wrapping:TfaRepository.kt$TfaRepository$(</ID>
+    <ID>Wrapping:Toolbar.kt$(</ID>
+    <ID>Wrapping:TriStateUtils.kt$(</ID>
+    <ID>Wrapping:UnsavedDialog.kt$(</ID>
+    <ID>Wrapping:WbIconTabs.kt$(</ID>
+    <ID>Wrapping:WbLoggerAnalyticsImpl.kt$WbLoggerAnalyticsImpl$(</ID>
+    <ID>Wrapping:WbPartnersHorizontalPagerIndicator.kt$(</ID>
+    <ID>Wrapping:WbStickyPanel.kt$(</ID>
+    <ID>Wrapping:WbSwitchFilterItem.kt$(</ID>
+  </CurrentIssues>
+</SmellBaseline>

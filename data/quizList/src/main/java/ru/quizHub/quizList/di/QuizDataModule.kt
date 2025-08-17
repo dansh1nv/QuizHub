@@ -1,0 +1,47 @@
+package ru.quizHub.quizList.di
+
+import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.bind
+import org.koin.dsl.module
+import ru.quizHub.quizList.datasource.common.GeoInfoRemoteDataSource
+import ru.quizHub.quizList.datasource.quizPlease.QuizPleaseRemoteDataSource
+import ru.quizHub.quizList.datasource.shakerQuiz.ShakerQuizRemoteDataSource
+import ru.quizHub.quizList.datasource.squiz.LocalDataSource
+import ru.quizHub.quizList.datasource.squiz.SquizRemoteDataSource
+import ru.quizHub.quizList.mappers.CommonDataMapper
+import ru.quizHub.quizList.mappers.QuizPleaseDataMapper
+import ru.quizHub.quizList.mappers.ShakerQuizDataMapper
+import ru.quizHub.quizList.mappers.SquizDataMapper
+import ru.quizHub.quizList.repositories.CommonRepository
+import ru.quizHub.quizList.repositories.QuizListRepository
+import ru.quizHub.quizList.repositories.QuizPleaseRepository
+import ru.quizHub.quizList.repositories.ShakerQuizRepository
+import ru.quizHub.quizList.repositories.SquizRepository
+import ru.quizHub.quizlist.repository.ICommonRepository
+import ru.quizHub.quizlist.repository.IQuizListRepository
+import ru.quizHub.quizlist.repository.IQuizPleaseRepository
+import ru.quizHub.quizlist.repository.ISQuizRepository
+import ru.quizHub.quizlist.repository.IShakerQuizRepository
+
+fun quizDataModule() = module {
+
+    factoryOf(::SquizDataMapper)
+    factoryOf(::LocalDataSource)
+    factoryOf(::SquizRemoteDataSource)
+    singleOf(::SquizRepository) bind ISQuizRepository::class
+
+    factoryOf(::QuizPleaseDataMapper)
+    factoryOf(::QuizPleaseRemoteDataSource)
+    singleOf(::QuizPleaseRepository) bind IQuizPleaseRepository::class
+
+    factoryOf(::ShakerQuizDataMapper)
+    factoryOf(::ShakerQuizRemoteDataSource)
+    singleOf(::ShakerQuizRepository) bind IShakerQuizRepository::class
+
+    factoryOf(::CommonDataMapper)
+    factoryOf(::GeoInfoRemoteDataSource)
+    singleOf(::CommonRepository) bind ICommonRepository::class
+
+    singleOf(::QuizListRepository) bind IQuizListRepository::class
+}

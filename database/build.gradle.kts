@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.dansh1nv.database"
+    namespace = "ru.quizHub.database"
     compileSdk = 35
 
     defaultConfig {
