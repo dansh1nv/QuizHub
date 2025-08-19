@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.dansh1nv.designsystem"
+    namespace = "ru.quizHub.designsystem"
     compileSdk = 35
 
     defaultConfig {

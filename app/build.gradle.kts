@@ -4,14 +4,15 @@ plugins {
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.compose.compiler)
+
 }
 
 android {
-    namespace = "ru.dansh1nv.quizhub"
+    namespace = "ru.quizHub.quizhub"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "ru.dansh1nv.quizhub"
+        applicationId = "ru.quizHub.quizhub"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -69,10 +70,10 @@ dependencies {
     implementation(project(":common"))
     implementation(project(":database"))
     implementation(project(":quizapi"))
-    implementation(project(":data-quiz-list"))
-    implementation(project(":domain-quiz-list"))
-    implementation(project(":features:quiz-list"))
-    implementation(project(":features:quiz-details"))
+    implementation(project(":data:quizList"))
+    implementation(project(":domain:quizList"))
+    implementation(project(":features:quizList"))
+    implementation(project(":features:quizDetails"))
 
     debugImplementation(libs.leak.canary)
 }

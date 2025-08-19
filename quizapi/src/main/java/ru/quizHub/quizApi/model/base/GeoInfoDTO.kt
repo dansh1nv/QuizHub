@@ -1,0 +1,14 @@
+package ru.quizHub.quizApi.model.base
+
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class GeoInfoDTO(
+    @SerialName("name")
+    val name: String,
+    @SerialName("lat")
+    val latitude: Double,
+    @SerialName("lon")
+    val longitude: Double,
+)

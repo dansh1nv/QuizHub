@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.dansh1nv.core"
+    namespace = "ru.quizHub.core"
     compileSdk = 35
 
     defaultConfig {
