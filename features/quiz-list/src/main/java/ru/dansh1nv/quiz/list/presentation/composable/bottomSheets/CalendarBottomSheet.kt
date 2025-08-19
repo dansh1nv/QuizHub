@@ -1,7 +1,7 @@
 package ru.dansh1nv.quiz.list.presentation.composable.bottomSheets
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,7 +25,6 @@ import com.kizitonwose.calendar.core.plusMonths
 import kotlinx.coroutines.launch
 import ru.dansh1nv.core.presentation.calendar.ContinuousSelectionHelper.getSelection
 import ru.dansh1nv.core.presentation.calendar.DateSelection
-import ru.dansh1nv.core.presentation.calendar.rememberFirstMostVisibleMonth
 import ru.dansh1nv.designsystem.R
 import ru.dansh1nv.designsystem.theme.elements.QuizHubButton
 import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
@@ -34,7 +33,6 @@ import ru.dansh1nv.quiz.list.presentation.BottomSheetEvent
 import ru.dansh1nv.quiz.list.presentation.QuizListEvent
 import ru.dansh1nv.quiz.list.presentation.composable.calendar.Day
 import ru.dansh1nv.quiz.list.presentation.composable.calendar.MonthHeader
-import ru.dansh1nv.quiz.list.presentation.composable.calendar.SimpleCalendarTitle
 
 @Composable
 internal fun CalendarBottomSheet(
@@ -52,6 +50,7 @@ internal fun CalendarBottomSheet(
         modifier = Modifier
             .fillMaxSize()
             .background(QuizHubTheme.colorScheme.surfaceContainer),
+        verticalArrangement = Arrangement.SpaceBetween
     ) {
         val calendarState = rememberCalendarState(
             startMonth = startMonth,
@@ -60,26 +59,6 @@ internal fun CalendarBottomSheet(
             firstDayOfWeek = daysOfWeek.first(),
         )
         val coroutineScope = rememberCoroutineScope()
-        val visibleMonth = rememberFirstMostVisibleMonth(calendarState, viewportPercent = 90f)
-        SimpleCalendarTitle(
-            modifier = Modifier
-                .padding(vertical = 10.dp, horizontal = 8.dp),
-            currentMonth = visibleMonth.yearMonth,
-            goToPrevious = {
-                coroutineScope.launch {
-                    calendarState.animateScrollToMonth(
-                        calendarState.firstVisibleMonth.yearMonth.minusMonths(1)
-                    )
-                }
-            },
-            goToNext = {
-                coroutineScope.launch {
-                    calendarState.animateScrollToMonth(
-                        calendarState.firstVisibleMonth.yearMonth.plusMonths(1)
-                    )
-                }
-            },
-        )
 
         HorizontalCalendar(
             state = calendarState,
@@ -100,25 +79,37 @@ internal fun CalendarBottomSheet(
                     }
                 }
             },
-            monthHeader = {
-                MonthHeader(daysOfWeek = daysOfWeek)
+            monthHeader = { month ->
+                MonthHeader(
+                    daysOfWeek = daysOfWeek,
+                    month = month.yearMonth,
+                    goToPrevious = {
+                        coroutineScope.launch {
+                            calendarState.animateScrollToMonth(
+                                month.yearMonth.minusMonths(1)
+                            )
+                        }
+                    },
+                    goToNext = {
+                        coroutineScope.launch {
+                            calendarState.animateScrollToMonth(
+                                month.yearMonth.plusMonths(1)
+                            )
+                        }
+                    }
+                )
             },
         )
 
-        Box(
+        QuizHubButton(
+            title = stringResource(R.string.apply_button_text),
             modifier = Modifier
-                .fillMaxWidth()
-                .background(QuizHubTheme.colorScheme.surfaceContainer)
                 .padding(16.dp)
-        ) {
-            QuizHubButton(
-                title = stringResource(R.string.apply_button_text),
-                modifier = Modifier.fillMaxWidth(),
-                isEnabled = selection.startDate != null,
-                onClick = {
-                    onUIEvent(BottomSheetEvent.OnCalendarDaySelected(selection))
-                }
-            )
-        }
+                .fillMaxWidth(),
+            isEnabled = selection.startDate != null,
+            onClick = {
+                onUIEvent(BottomSheetEvent.OnCalendarDaySelected(selection))
+            }
+        )
     }
 }
