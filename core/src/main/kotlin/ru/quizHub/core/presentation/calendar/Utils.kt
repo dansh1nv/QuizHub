@@ -30,9 +30,9 @@ import com.kizitonwose.calendar.core.CalendarMonth
 import com.kizitonwose.calendar.core.DayPosition
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.filterNotNull
-import ru.dansh1nv.core.presentation.calendar.ContinuousSelectionHelper.isInDateBetweenSelection
-import ru.dansh1nv.core.presentation.calendar.ContinuousSelectionHelper.isOutDateBetweenSelection
-import ru.dansh1nv.designsystem.theme.uiKit.QuizHubTheme
+import ru.quizHub.core.presentation.calendar.ContinuousSelectionHelper.isInDateBetweenSelection
+import ru.quizHub.core.presentation.calendar.ContinuousSelectionHelper.isOutDateBetweenSelection
+import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
 
 fun Modifier.clickable(
     enabled: Boolean = true,
