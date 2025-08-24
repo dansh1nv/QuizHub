@@ -12,18 +12,20 @@ import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
 fun QuizHubCheckBox(
     isSelected: Boolean,
     modifier: Modifier = Modifier,
+    isEnabled: Boolean = true,
     colors: CheckboxColors = CheckboxDefaults.colors().copy(
         checkedCheckmarkColor = QuizHubTheme.colorScheme.surfaceTint,
         uncheckedCheckmarkColor = Color.Transparent,
         checkedBoxColor = QuizHubTheme.colorScheme.surfaceContainer,
         uncheckedBoxColor = Color.Transparent,
     ),
-    onClick: (Boolean) -> Unit = {},
+    onClick: ((Boolean) -> Unit)? = null,
 ) {
     Checkbox(
         modifier = modifier,
         checked = isSelected,
         onCheckedChange = onClick,
         colors = colors,
+        enabled = isEnabled,
     )
 }

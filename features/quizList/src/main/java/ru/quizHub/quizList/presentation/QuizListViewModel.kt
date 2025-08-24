@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import ru.quizHub.common.addOrAppend
+import ru.quizHub.common.orTrue
 import ru.quizHub.core.presentation.ActionEventsListener
 import ru.quizHub.core.presentation.IntentErrorMapper
 import ru.quizHub.core.presentation.ScreenState
@@ -36,14 +36,12 @@ import ru.quizHub.quizList.mappers.ShakerQuizMapper
 import ru.quizHub.quizList.mappers.SquizMapper
 import ru.quizHub.quizList.models.CityModel
 import ru.quizHub.quizList.models.bottomsheet.BottomSheetModels
-import ru.quizHub.quizList.models.filters.Filters
 import ru.quizHub.quizList.models.item.Organization
 import ru.quizHub.quizList.models.item.QuizUI
 import ru.quizHub.quizList.models.sorting.Sort
 import ru.quizHub.quizlist.interactors.CommonInteractor
 import ru.quizHub.quizlist.interactors.GeoInfoInteractor
 import ru.quizHub.quizlist.interactors.QuizListInteractor
-import ru.quizHub.quizlist.models.Quiz
 import ru.quizHub.quizlist.models.QuizPlease
 import ru.quizHub.quizlist.models.SQuiz
 import ru.quizHub.quizlist.models.ShakerQuiz
@@ -67,8 +65,6 @@ internal class QuizListViewModel(
     initialState = QuizListState()
 ), BottomSheetController by bottomSheetController {
 
-    private val quizMap = mutableMapOf<Organization, MutableList<QuizUI>>()
-
     override suspend fun onLaunch() {
         fetchCities()
         observeCurrentCity()
@@ -79,6 +75,11 @@ internal class QuizListViewModel(
             is ScreenEvent -> onScreenEvent(event)
             is BottomSheetEvent -> onBottomSheetEvent(event)
         }
+    }
+
+    private fun refresh() = viewModelScope.launch {
+        fetchCities()
+        fetchQuizList()
     }
 
     private fun observeCurrentCity() {
@@ -97,15 +98,19 @@ internal class QuizListViewModel(
 
     private fun fetchQuizList() = completeAction {
         viewModelScope.launch {
-            quizMap.clear()
             updateState {
                 copy(uiStatus = UIStatus.Loading)
             }
             val selectedCity = commonMapper.mapToCity(container.stateFlow.value.currentCity)
             interactor.getAllQuizList(selectedCity)
                 .map { quizList ->
-                    updateQuizCache(quizList)
-                    getQuizzesFromCache()
+                    quizList.map { quiz ->
+                        when (quiz) {
+                            is QuizPlease -> quizPleaseMapper.mapToQuizUI(quiz)
+                            is SQuiz -> squizMapper.mapToQuizUI(quiz)
+                            is ShakerQuiz -> shakerQuizMapper.mapToQuizUI(quiz)
+                        }
+                    }
                 }
                 .catch { ex ->
                     Timber.e(ex)
@@ -123,14 +128,18 @@ internal class QuizListViewModel(
                     updateState {
                         copy(
                             quizList = quizList,
-                            uiStatus = if (quizMap.values.isNotEmpty() || currentCity != CityModel.UNKNOWN) {
+                            uiStatus = if (quizList.isNotEmpty() || currentCity != CityModel.UNKNOWN) {
                                 UIStatus.Loaded()
                             } else {
                                 UIStatus.Empty
                             }
                         )
                     }
+                    completeAction {
+                        showQuizList()
+                    }
                 }
+                .flowOn(Dispatchers.Main)
                 .launchIn(viewModelScope)
         }
     }
@@ -143,7 +152,7 @@ internal class QuizListViewModel(
             is ScreenEvent.OnLocationClick -> handleLocationClick()
             is ScreenEvent.OnFiltersButtonClick -> showFilters()
             is ScreenEvent.OnTabClick -> updateCurrentTab(event.index)
-            is ScreenEvent.OnRefresh -> fetchQuizList()
+            is ScreenEvent.OnRefresh -> refresh()
             is ScreenEvent.OnCalendarClick -> handleCalendarClick()
             is ScreenEvent.OnCardItemClicked -> {
                 //Добавить экран детализации квиза
@@ -198,7 +207,7 @@ internal class QuizListViewModel(
 
     private fun onBottomSheetEvent(event: BottomSheetEvent) {
         when (event) {
-            is BottomSheetEvent.OnFilterClick -> applyFilters(event.filters)
+            is BottomSheetEvent.OnApplyFiltersClick -> applyFilters(event.filters)
             is BottomSheetEvent.OnSortClick -> applySorting(event.sort)
             is BottomSheetEvent.OnCalendarDaySelected -> handleCalendarDaysSelected(event.days)
         }
@@ -213,9 +222,9 @@ internal class QuizListViewModel(
                     longitude = geoInfo.longitude.toString(),
                 )
                 val updatedQuiz = quiz.copy(location = quiz.location?.copy(geolocation = location))
-                val quizList = quizMap[quiz.organization]?.map { model ->
+                val quizList = container.stateFlow.value.quizList.map { model ->
                     if (quiz.id == model.id) updatedQuiz else model
-                }.orEmpty()
+                }
                 Pair(updatedQuiz, quizList)
             }
             .catch { ex ->
@@ -256,24 +265,23 @@ internal class QuizListViewModel(
     }
 
     private fun handleCalendarClick() {
-        val quizList = quizMap.getOrDefault(
-            key = container.stateFlow.value.filtersState.filters?.organization,
-            defaultValue = quizMap.values.flatten()
-        )
-        val calendarEvents = EventPieChartMapper.mapToCalendarEventsUI(quizList)
-
-        bottomSheetController.show(
-            BottomSheetModels.CalendarBottomSheetModel(
-                toolbar = Toolbar(
-                    title = resourceManager.getStringById(R.string.calendar_title),
-                    trailIcon = IconModel(
-                        UIDrawable.ic_clear,
-                        onClick = { dismiss() }
-                    )
-                ),
-                events = calendarEvents
+        completeAction {
+            val quizList = container.stateFlow.value.quizList.filter { it.isVisible }
+            val calendarEvents =
+                EventPieChartMapper.mapToCalendarEventsUI(quizList)
+            bottomSheetController.show(
+                BottomSheetModels.CalendarBottomSheetModel(
+                    toolbar = Toolbar(
+                        title = resourceManager.getStringById(R.string.calendar_title),
+                        trailIcon = IconModel(
+                            UIDrawable.ic_clear,
+                            onClick = { dismiss() }
+                        )
+                    ),
+                    events = calendarEvents
+                )
             )
-        )
+        }
     }
 
     private fun handleLocationClick() {
@@ -290,45 +298,20 @@ internal class QuizListViewModel(
         )
     }
 
-    //Ну это тоже какой-то пиздец, надо подумать над улучшением фильтров
     private fun handleCalendarDaysSelected(dateSelection: DateSelection) {
         updateState {
-            val quizList = quizMap.getOrDefault(
-                key = this.filtersState.filters?.organization,
-                defaultValue = quizMap.values.flatten()
-            )
-            val startDate = dateSelection.startDate
-            val endDate = dateSelection.endDate
-
-            val filteredQuiz = when {
-                startDate == null -> {
-                    quizList
-                }
-
-                endDate == null -> {
-                    quizList.filter { quiz ->
-                        quiz.formattedDate?.date?.date == startDate
-                    }
-                }
-
-                else -> {
-                    val rangeStart = startDate
-                    val rangeEnd = endDate
-                    quizList.filter { quiz ->
-                        val quizDate = quiz.formattedDate?.date?.date
-                        quizDate != null && quizDate in rangeStart..rangeEnd
-                    }
-                }
-            }.sortedBy { it.formattedDate?.date?.date }
             copy(
-                quizList = filteredQuiz,
                 filtersState = filtersState.copy(
                     dateSelection = dateSelection,
                     isApplied = dateSelection.startDate != null
                 )
             )
         }
-        bottomSheetController.dismiss()
+
+        completeAction {
+            showQuizList()
+            bottomSheetController.dismiss()
+        }
     }
 
     private fun showFilters() {
@@ -367,13 +350,12 @@ internal class QuizListViewModel(
         }
     }
 
-    private fun applyFilters(filters: Filters) {
-        //Нужно придумать чет с фильтрами, а то это не дело подпирать их костылями
+    private fun applyFilters(filters: List<Organization>) {
         updateState {
             copy(
                 filtersState = filtersState.copy(
-                    filters = filters,
-                    isApplied = true,
+                    organizations = filters,
+                    isApplied = filters.isNotEmpty(),
                 )
             )
         }
@@ -386,16 +368,41 @@ internal class QuizListViewModel(
     private fun showQuizList() = updateState {
         if (uiStatus !is UIStatus.Loaded) return@updateState this
 
-        //Мда, треш
-        val quizList = quizMap.getOrDefault(
-            key = this.filtersState.filters?.organization,
-            defaultValue = quizMap.values.flatten()
-        )
+        val quizList = quizList.map { quiz ->
+            quiz.copy(
+                isVisible = filtersState.organizations.contains(quiz.organization)
+                    .takeIf { filtersState.organizations.isNotEmpty() }
+                    .orTrue()
+            )
+        }
+
+        val startDate = filtersState.dateSelection?.startDate
+        val endDate = filtersState.dateSelection?.endDate
+
+        val quizListByDate = when {
+            startDate == null -> {
+                quizList
+            }
+
+            endDate == null -> {
+                quizList.map { quiz ->
+                    quiz.copy(isVisible = quiz.formattedDate?.date?.date == startDate)
+                }
+            }
+
+            else -> {
+                quizList.map { quiz ->
+                    val quizDate = quiz.formattedDate?.date?.date
+                    quiz.copy(isVisible = quizDate != null && quizDate in startDate..endDate)
+                }
+            }
+        }
 
         val sortedList = when (this.sort) {
-            Sort.ASC_DATE -> quizList.sortedBy { it.formattedDate?.date }
-            Sort.DESC_DATE -> quizList.sortedByDescending { it.formattedDate?.date }
+            Sort.ASC_DATE -> quizListByDate.sortedBy { it.formattedDate?.date }
+            Sort.DESC_DATE -> quizListByDate.sortedByDescending { it.formattedDate?.date }
         }
+
         copy(quizList = sortedList)
     }
 
@@ -403,41 +410,15 @@ internal class QuizListViewModel(
         updateState {
             copy(
                 filtersState = filtersState.copy(
-                    filters = null,
+                    organizations = emptyList(),
                     dateSelection = null,
                     isApplied = false,
                 ),
                 sort = Sort.ASC_DATE,
             )
         }
+        completeAction { showQuizList() }
     }
-
-    private fun updateQuizCache(quizList: List<Quiz>) {
-        //Ну тут надо бы маппинг поправить, чтобы не работать в domain моделькой в presentation слое
-        quizList.map { quiz ->
-            when (quiz) {
-                is QuizPlease -> quizMap.addOrAppend(
-                    key = Organization.QUIZ_PLEASE,
-                    value = quizPleaseMapper.mapToQuizUI(quiz)
-                )
-
-                is SQuiz -> quizMap.addOrAppend(
-                    key = Organization.SQUIZ,
-                    value = squizMapper.mapToQuizUI(quiz)
-                )
-
-                is ShakerQuiz -> quizMap.addOrAppend(
-                    key = Organization.SHAKER_QUIZ,
-                    value = shakerQuizMapper.mapToQuizUI(quiz)
-                )
-            }
-        }
-    }
-
-    private fun getQuizzesFromCache(): List<QuizUI> =
-        quizMap.values
-            .flatten()
-            .sortedBy { it.formattedDate?.date }
 
     private fun navigateToQuizDetails(quizId: String) {
         postSideEffect(QuizListSideEffect.NavigateQuizDetails(quizId))

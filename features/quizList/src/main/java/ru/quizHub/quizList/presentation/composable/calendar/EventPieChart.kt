@@ -13,7 +13,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import ru.quizHub.quizList.R
+import ru.quizHub.designsystem.theme.utils.`typealias`.UIDrawable
 import ru.quizHub.quizList.models.item.CalendarEventUI
 
 @Composable
@@ -24,7 +24,7 @@ fun EventPieChart(
 ) {
     Box(modifier = modifier) {
         Image(
-            painter = painterResource(id = R.drawable.ic_calendar_ring),
+            painter = painterResource(id = UIDrawable.ic_calendar_ring),
             contentDescription = null,
             modifier = Modifier
                 .matchParentSize()

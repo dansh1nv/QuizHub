@@ -3,7 +3,7 @@ package ru.quizHub.quizList.presentation
 import ru.quizHub.core.presentation.UIEvent
 import ru.quizHub.core.presentation.calendar.DateSelection
 import ru.quizHub.quizList.models.CityModel
-import ru.quizHub.quizList.models.filters.Filters
+import ru.quizHub.quizList.models.item.Organization
 import ru.quizHub.quizList.models.item.QuizUI
 import ru.quizHub.quizList.models.sorting.Sort
 
@@ -25,7 +25,7 @@ internal sealed interface ScreenEvent : QuizListEvent {
 }
 
 internal sealed interface BottomSheetEvent : QuizListEvent {
-    data class OnFilterClick(val filters: Filters) : BottomSheetEvent
+    data class OnApplyFiltersClick(val filters: List<Organization>) : BottomSheetEvent
     data class OnSortClick(val sort: Sort) : BottomSheetEvent
     data class OnCalendarDaySelected(val days: DateSelection) : BottomSheetEvent
 }

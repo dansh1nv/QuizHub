@@ -114,7 +114,7 @@ internal fun BaseScreen(
                         onEvent = onUIEvent,
                     )
                 }
-                //Подумать над дизайном
+
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()

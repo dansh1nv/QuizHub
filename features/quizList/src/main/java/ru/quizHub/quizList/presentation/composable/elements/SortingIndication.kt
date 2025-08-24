@@ -13,7 +13,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
-import ru.quizHub.quizList.R
+import ru.quizHub.designsystem.theme.utils.`typealias`.UIDrawable
 import ru.quizHub.quizList.models.sorting.Sort
 import ru.quizHub.quizList.presentation.QuizListEvent
 import ru.quizHub.quizList.presentation.ScreenEvent
@@ -28,7 +28,7 @@ internal fun SortingIndication(
         horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.ic_sort),
+            painter = painterResource(id = UIDrawable.ic_sort),
             contentDescription = null,
             modifier = Modifier
                 .size(20.dp)

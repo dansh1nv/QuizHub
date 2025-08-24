@@ -15,7 +15,7 @@ import ru.quizHub.core.presentation.calendar.clickable
 import ru.quizHub.designsystem.theme.elements.IconCell
 import ru.quizHub.designsystem.theme.elements.TextCell
 import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
-import ru.quizHub.quizList.R
+import ru.quizHub.designsystem.theme.utils.`typealias`.UIDrawable
 import ru.quizHub.quizList.models.item.LocationUI
 
 @Composable
@@ -42,7 +42,7 @@ internal fun QuizLocationElement(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconCell(iconRes = R.drawable.ic_map_white)
+            IconCell(iconRes = UIDrawable.ic_map_white)
             Column(modifier = Modifier.align(Alignment.CenterVertically)) {
                 TextCell(text = model.place)
                 if (model.address.isNotEmpty()) {
@@ -52,7 +52,7 @@ internal fun QuizLocationElement(
         }
         if (!model.isOnline) {
             Icon(
-                painter = painterResource(R.drawable.ic_arrow_forward),
+                painter = painterResource(UIDrawable.ic_arrow_forward),
                 contentDescription = null,
                 modifier = Modifier.size(16.dp),
                 tint = QuizHubTheme.colorScheme.onSurfaceVariant

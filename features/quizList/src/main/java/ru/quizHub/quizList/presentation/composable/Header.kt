@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import ru.quizHub.core.presentation.model.UIStatus
 import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
-import ru.quizHub.quizList.R
+import ru.quizHub.designsystem.theme.utils.`typealias`.UIDrawable
 import ru.quizHub.quizList.presentation.QuizListEvent
 import ru.quizHub.quizList.presentation.QuizListState
 import ru.quizHub.quizList.presentation.ScreenEvent
@@ -43,7 +43,7 @@ internal fun Header(
             modifier = Modifier.clickable { onUIEvent(ScreenEvent.OnLocationClick) }
         ) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_location),
+                painter = painterResource(id = UIDrawable.ic_location),
                 contentDescription = null,
                 tint = QuizHubTheme.colorScheme.onSurface,
             )
@@ -67,7 +67,7 @@ internal fun Header(
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_calendar),
+                            painter = painterResource(id = UIDrawable.ic_calendar),
                             contentDescription = null,
                             tint = QuizHubTheme.colorScheme.onSurface
                         )
@@ -81,7 +81,7 @@ internal fun Header(
                         contentAlignment = Alignment.Center,
                     ) {
                         Icon(
-                            painter = painterResource(id = R.drawable.ic_filters),
+                            painter = painterResource(id = UIDrawable.ic_filters),
                             contentDescription = null,
                             tint = QuizHubTheme.colorScheme.onSurface,
                         )

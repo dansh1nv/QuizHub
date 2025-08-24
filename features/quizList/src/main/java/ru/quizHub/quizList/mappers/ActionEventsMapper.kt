@@ -16,7 +16,7 @@ class ActionEventsMapper(
             appendLine(
                 resourceManager.getStringById(
                     R.string.join_quiz,
-                    quiz.organization.title
+                    resourceManager.getStringById(quiz.organization.title)
                 )
             )
             appendLine()

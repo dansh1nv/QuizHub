@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ru.quizHub.designsystem.theme.elements.IconCell
 import ru.quizHub.designsystem.theme.elements.TextCell
-import ru.quizHub.quizList.R
+import ru.quizHub.designsystem.theme.utils.`typealias`.UIDrawable
 import ru.quizHub.quizList.models.item.QuizUI
 
 @Composable
@@ -17,7 +17,7 @@ internal fun QuizPriceElement(quizGame: QuizUI, modifier: Modifier) {
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        IconCell(iconRes = R.drawable.ic_price_white)
+        IconCell(iconRes = UIDrawable.ic_price_white)
         Column {
             TextCell(text = quizGame.formatPrice)
             TextCell(text = quizGame.priceAdditionalText)

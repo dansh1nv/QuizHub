@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ru.quizHub.designsystem.theme.elements.IconCell
 import ru.quizHub.designsystem.theme.elements.TextCell
-import ru.quizHub.quizList.R
+import ru.quizHub.designsystem.theme.utils.`typealias`.UIDrawable
 import ru.quizHub.quizList.models.item.TeamSizeUI
 
 @Composable
@@ -21,7 +21,7 @@ internal fun QuizTeamElement(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        IconCell(iconRes = R.drawable.ic_team)
+        IconCell(iconRes = UIDrawable.ic_team)
         TextCell(text = teamSizeUI.teamSizeText)
     }
 }
