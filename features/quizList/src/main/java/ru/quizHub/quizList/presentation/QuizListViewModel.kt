@@ -3,7 +3,6 @@ package ru.quizHub.quizList.presentation
 import android.content.ActivityNotFoundException
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.viewModelScope
-import com.kizitonwose.calendar.core.CalendarDay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -17,6 +16,7 @@ import ru.quizHub.core.presentation.ActionEventsListener
 import ru.quizHub.core.presentation.IntentErrorMapper
 import ru.quizHub.core.presentation.ScreenState
 import ru.quizHub.core.presentation.SnackbarListener
+import ru.quizHub.core.presentation.calendar.DateSelection
 import ru.quizHub.core.presentation.model.ActionEvents
 import ru.quizHub.core.presentation.model.IntentError
 import ru.quizHub.core.presentation.model.SnackbarEvents
@@ -150,7 +150,7 @@ internal class QuizListViewModel(
                 //navigateToQuizDetails(event.id)
             }
 
-            is ScreenEvent.OnShareEventClick -> handleShareEventClick(event.id)
+            is ScreenEvent.OnShareEventClick -> handleShareEventClick(event.quiz)
             is ScreenEvent.OnShowLocationEventClick -> handleShowLocationEventClick(event.quiz)
             is ScreenEvent.ResetFilters -> {
                 resetFilters()
@@ -200,7 +200,7 @@ internal class QuizListViewModel(
         when (event) {
             is BottomSheetEvent.OnFilterClick -> applyFilters(event.filters)
             is BottomSheetEvent.OnSortClick -> applySorting(event.sort)
-            is BottomSheetEvent.OnCalendarDayClick -> handleCalendarDayClick(event.day)
+            is BottomSheetEvent.OnCalendarDaySelected -> handleCalendarDaysSelected(event.days)
         }
     }
 
@@ -248,8 +248,7 @@ internal class QuizListViewModel(
         }
     }
 
-    private fun handleShareEventClick(id: String) {
-        val quiz = container.stateFlow.value.quizList.firstOrNull { it.id == id } ?: return
+    private fun handleShareEventClick(quiz: QuizUI) {
         val shareText = actionEventsMapper.mapToShareText(quiz)
         actionEventsListener.onActionEvent(
             ActionEvents.ShareEvent(shareText)
@@ -292,19 +291,40 @@ internal class QuizListViewModel(
     }
 
     //Ну это тоже какой-то пиздец, надо подумать над улучшением фильтров
-    private fun handleCalendarDayClick(day: CalendarDay) {
+    private fun handleCalendarDaysSelected(dateSelection: DateSelection) {
         updateState {
             val quizList = quizMap.getOrDefault(
                 key = this.filtersState.filters?.organization,
                 defaultValue = quizMap.values.flatten()
             )
+            val startDate = dateSelection.startDate
+            val endDate = dateSelection.endDate
+
+            val filteredQuiz = when {
+                startDate == null -> {
+                    quizList
+                }
+
+                endDate == null -> {
+                    quizList.filter { quiz ->
+                        quiz.formattedDate?.date?.date == startDate
+                    }
+                }
+
+                else -> {
+                    val rangeStart = startDate
+                    val rangeEnd = endDate
+                    quizList.filter { quiz ->
+                        val quizDate = quiz.formattedDate?.date?.date
+                        quizDate != null && quizDate in rangeStart..rangeEnd
+                    }
+                }
+            }.sortedBy { it.formattedDate?.date?.date }
             copy(
-                quizList = quizList.filter { quiz ->
-                    quiz.formattedDate?.date?.date == day.date
-                },
+                quizList = filteredQuiz,
                 filtersState = filtersState.copy(
-                    filterByDay = day,
-                    isApplied = true,
+                    dateSelection = dateSelection,
+                    isApplied = dateSelection.startDate != null
                 )
             )
         }
@@ -384,7 +404,7 @@ internal class QuizListViewModel(
             copy(
                 filtersState = filtersState.copy(
                     filters = null,
-                    filterByDay = null,
+                    dateSelection = null,
                     isApplied = false,
                 ),
                 sort = Sort.ASC_DATE,

@@ -20,7 +20,7 @@ import ru.quizHub.quizList.models.item.CalendarEventUI
 fun EventPieChart(
     events: List<CalendarEventUI>,
     modifier: Modifier,
-    strokeWidth: Dp = 8.dp
+    strokeWidth: Dp = 4.dp
 ) {
     Box(modifier = modifier) {
         Image(

@@ -1,10 +1,10 @@
 package ru.quizHub.quizList.presentation
 
-import com.kizitonwose.calendar.core.CalendarDay
+import ru.quizHub.core.presentation.calendar.DateSelection
 import ru.quizHub.quizList.models.filters.Filters
 
 internal data class FiltersState(
     val filters: Filters? = null,
-    val filterByDay: CalendarDay? = null,
+    val dateSelection: DateSelection? = null,
     val isApplied: Boolean = false,
 )

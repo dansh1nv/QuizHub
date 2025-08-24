@@ -78,9 +78,9 @@ internal fun QuizCard(
                 modifier = modifier,
             )
             QuizShareElement(
-                quizId = quizGame.id,
-                onShareClicked = { quizId ->
-                    onUIEvent(ScreenEvent.OnShareEventClick(quizId))
+                quiz = quizGame,
+                onShareClicked = { quiz ->
+                    onUIEvent(ScreenEvent.OnShareEventClick(quiz))
                 },
                 modifier = modifier
             )

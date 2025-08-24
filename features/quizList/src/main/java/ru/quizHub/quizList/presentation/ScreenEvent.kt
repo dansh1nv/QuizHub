@@ -1,7 +1,7 @@
 package ru.quizHub.quizList.presentation
 
-import com.kizitonwose.calendar.core.CalendarDay
 import ru.quizHub.core.presentation.UIEvent
+import ru.quizHub.core.presentation.calendar.DateSelection
 import ru.quizHub.quizList.models.CityModel
 import ru.quizHub.quizList.models.filters.Filters
 import ru.quizHub.quizList.models.item.QuizUI
@@ -17,7 +17,7 @@ internal sealed interface ScreenEvent : QuizListEvent {
     data object OnRefresh : ScreenEvent
     data object OnCalendarClick : ScreenEvent
     data class OnCardItemClicked(val id: String) : ScreenEvent
-    data class OnShareEventClick(val id: String) : ScreenEvent
+    data class OnShareEventClick(val quiz: QuizUI) : ScreenEvent
     data object ResetFilters : ScreenEvent
     data class OnSearch(val query: String) : ScreenEvent
     data class OnCityClick(val city: CityModel) : ScreenEvent
@@ -27,5 +27,5 @@ internal sealed interface ScreenEvent : QuizListEvent {
 internal sealed interface BottomSheetEvent : QuizListEvent {
     data class OnFilterClick(val filters: Filters) : BottomSheetEvent
     data class OnSortClick(val sort: Sort) : BottomSheetEvent
-    data class OnCalendarDayClick(val day: CalendarDay) : BottomSheetEvent
+    data class OnCalendarDaySelected(val days: DateSelection) : BottomSheetEvent
 }
