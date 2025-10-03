@@ -272,9 +272,8 @@ internal class QuizListViewModel(
 
     private fun handleCalendarClick() {
         completeAction {
-            val quizList = container.stateFlow.value.quizList.filter { it.isVisible }
-            val calendarEvents =
-                EventPieChartMapper.mapToCalendarEventsUI(quizList)
+            val quizList = container.stateFlow.value.quizList
+            val calendarEvents = EventPieChartMapper.mapToCalendarEventsUI(quizList)
             bottomSheetController.show(
                 BottomSheetModels.CalendarBottomSheetModel(
                     toolbar = Toolbar(
