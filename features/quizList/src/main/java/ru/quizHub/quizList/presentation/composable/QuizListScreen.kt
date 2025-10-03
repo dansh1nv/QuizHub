@@ -10,15 +10,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import kotlinx.coroutines.launch
 import org.koin.core.parameter.parametersOf
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
@@ -26,6 +29,8 @@ import ru.quizHub.core.navigation.destinations.QuizDetailsDestination
 import ru.quizHub.core.presentation.model.UIStatus
 import ru.quizHub.core.presentation.viewModel.viewModel
 import ru.quizHub.designsystem.theme.bottomsheet.QuizModalBottomSheet
+import ru.quizHub.designsystem.theme.elements.ScrollToTopButton
+import ru.quizHub.designsystem.theme.elements.ScrollToTopHandler
 import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
 import ru.quizHub.quizList.models.bottomsheet.BottomSheetModels
 import ru.quizHub.quizList.presentation.QuizListEvent
@@ -73,6 +78,16 @@ internal fun BaseScreen(
     onUIEvent: (QuizListEvent) -> Unit,
     viewmodel: QuizListViewModel,
 ) {
+    val listState = rememberLazyListState()
+    val coroutineScope = rememberCoroutineScope()
+
+    ScrollToTopHandler(
+        listState = listState,
+        onVisibilityChanged = { show ->
+            onUIEvent(ScreenEvent.OnScrollPositionChanged(show))
+        }
+    )
+
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -128,16 +143,27 @@ internal fun BaseScreen(
                     }
                 }
 
-                PullToRefreshBox(
-                    isRefreshing = screenState.uiStatus == UIStatus.Loading,
-                    onRefresh = { onUIEvent(ScreenEvent.OnRefresh) },
-                    content = {
-                        QuizListContent(
-                            quizList = screenState.quizList,
-                            onUIEvent = onUIEvent,
-                        )
-                    }
-                )
+                Box(modifier = Modifier.weight(1f)) {
+                    PullToRefreshBox(
+                        isRefreshing = screenState.uiStatus == UIStatus.Loading,
+                        onRefresh = { onUIEvent(ScreenEvent.OnRefresh) },
+                        content = {
+                            QuizListContent(
+                                quizList = screenState.quizList,
+                                onUIEvent = onUIEvent,
+                                listState = listState,
+                            )
+                        }
+                    )
+                    ScrollToTopButton(
+                        visible = screenState.isScrollUpVisible,
+                        onClick = {
+                            coroutineScope.launch {
+                                listState.animateScrollToItem(0)
+                            }
+                        }
+                    )
+                }
             }
         }
     }
