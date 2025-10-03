@@ -30,7 +30,7 @@ class ShakerQuizMapper(
             ),
             tag = TagModel.SHAKER_QUIZ,
             packageNumber = entity.packageNumber.orEmpty(),
-            description = entity.shortDescription.orEmpty(),
+            description = entity.shortDescription?.trim().orEmpty(),
             additionDescription = "",
             image = entity.image.orEmpty(),
             format = gameFormat,

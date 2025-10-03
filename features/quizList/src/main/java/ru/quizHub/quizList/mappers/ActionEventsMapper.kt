@@ -12,6 +12,8 @@ class ActionEventsMapper(
     private val resourceManager: IResourceManager,
 ) {
     fun mapToShareText(quiz: QuizUI): String {
+        val isPerson = quiz.priceAdditionalText.contains("с человека", ignoreCase = true)
+
         return buildString {
             appendLine(
                 resourceManager.getStringById(
@@ -29,13 +31,27 @@ class ActionEventsMapper(
             quiz.teamSize?.teamSizeText?.let { size ->
                 appendLine(resourceManager.getStringById(R.string.team_size_quiz, size))
             }
-            quiz.location?.address?.let { address ->
+            quiz.location?.address?.takeIf { it.isNotBlank() }?.let { address ->
                 appendLine(resourceManager.getStringById(R.string.address_quiz, address))
             }
             quiz.location?.place?.let { place ->
                 appendLine(resourceManager.getStringById(R.string.place_quiz, place))
             }
-            appendLine(resourceManager.getStringById(R.string.price_quiz, quiz.formatPrice))
+            if (isPerson) {
+                appendLine(
+                    resourceManager.getStringById(
+                        R.string.price_person_quiz,
+                        quiz.formatPrice
+                    )
+                )
+            } else {
+                appendLine(
+                    resourceManager.getStringById(
+                        R.string.price_team_quiz,
+                        quiz.formatPrice
+                    )
+                )
+            }
         }
     }
 

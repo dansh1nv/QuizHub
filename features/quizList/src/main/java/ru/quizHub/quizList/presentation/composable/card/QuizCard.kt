@@ -1,17 +1,21 @@
 package ru.quizHub.quizList.presentation.composable.card
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
@@ -56,37 +60,48 @@ internal fun QuizCard(
             .clickable { onUIEvent(ScreenEvent.OnCardItemClicked("test_id")) }
     ) {
         val modifier = Modifier.padding(start = 8.dp, top = 4.dp, end = 8.dp)
-        AsyncImage(
-            model = ImageRequest.Builder(LocalContext.current)
-                .data(quizGame.image)
-                .crossfade(true)
-                .build(),
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
+        Box(
             modifier = Modifier
-                .height(180.dp)
+                .height(120.dp)
                 .fillMaxWidth()
                 .padding(start = 12.dp, end = 12.dp, bottom = 12.dp)
-                .clip(QuizHubTheme.shapes.shape16dp),
-        )
+        ) {
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(quizGame.image)
+                    .crossfade(true)
+                    .build(),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(QuizHubTheme.shapes.shape16dp)
+            )
+            QuizTagElement(
+                model = quizGame.tag,
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(8.dp)
+                    .border(
+                        width = 2.dp,
+                        color = QuizHubTheme.colorScheme.outlineVariant,
+                        shape = QuizHubTheme.shapes.shape8dp
+                    )
+            )
+        }
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            QuizTagElement(
-                model = quizGame.tag,
-                modifier = modifier,
-            )
+            quizGame.formattedDate?.let { QuizDateElement(quizGame.formattedDate, modifier) }
             QuizShareElement(
                 quiz = quizGame,
                 onShareClicked = { quiz ->
                     onUIEvent(ScreenEvent.OnShareEventClick(quiz))
                 },
-                modifier = modifier
+                modifier = modifier.align(Alignment.CenterVertically)
             )
         }
-        Spacer(modifier = Modifier.size(8.dp))
-        quizGame.formattedDate?.let { QuizDateElement(quizGame.formattedDate, modifier) }
         quizGame.takeIf { it.additionDescription.isNotBlank() }?.let {
             QuizReplyElement(quizGame.additionDescription, modifier)
         }

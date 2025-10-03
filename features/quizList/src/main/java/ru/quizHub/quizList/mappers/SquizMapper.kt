@@ -27,7 +27,7 @@ internal class SquizMapper(
                 theme = theme.orEmpty(),
                 status = status?.let(commonMapper::mapToStatusUI),
                 packageNumber = packageNumber.orEmpty(),
-                description = description.orEmpty(),
+                description = description?.trim().orEmpty(),
                 additionDescription = additionDescription.orEmpty(),
                 image = image.orEmpty(),
                 formatPrice = price.orEmpty(),
