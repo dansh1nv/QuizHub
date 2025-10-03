@@ -6,6 +6,7 @@ import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import io.ktor.http.path
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import ru.quizHub.quizApi.model.quizplease.QuizPleaseResponse
@@ -33,6 +34,8 @@ class QuizPleaseApi(
         }
         val data = httpRequest.body<QuizPleaseResponse>()
         emit(data.data?.quizData.orEmpty())
+    }.catch {
+        emit(emptyList())
     }.flowOn(Dispatchers.IO)
 
     companion object {

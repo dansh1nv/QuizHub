@@ -33,14 +33,18 @@ class QuizListRepository(
 
     override fun getAllQuizList(city: City): Flow<List<Quiz>> {
         return combine(
-            squizRemoteDataSource.getQuizList(city.squizId),
-            quizPleaseRemoteDataSource.getQuizList(city.quizPleaseId, PAGE_NUMBER, PAGE_SIZE),
-            shakerQuizRemoteDataSource.getQuizList(city.shakerQuizId)
+            flow = squizRemoteDataSource.getQuizList(cityId = city.squizId),
+            flow2 = quizPleaseRemoteDataSource.getQuizList(
+                cityId = city.quizPleaseId,
+                pageNumber = PAGE_NUMBER,
+                pageSize = PAGE_SIZE
+            ),
+            flow3 = shakerQuizRemoteDataSource.getQuizList(cityId = city.shakerQuizId)
         ) { squizList, quizPleaseList, shakerQuizList ->
             listOf(
-                squizDataMapper.map(squizList),
-                quizPleaseDataMapper.mapToQuiz(quizPleaseList),
-                shakerQuizDataMapper.mapToShakerQuiz(shakerQuizList)
+                squizDataMapper.map(quizzes = squizList),
+                quizPleaseDataMapper.mapToQuiz(dtos = quizPleaseList),
+                shakerQuizDataMapper.mapToShakerQuiz(dtos = shakerQuizList)
             ).flatten()
         }
     }
