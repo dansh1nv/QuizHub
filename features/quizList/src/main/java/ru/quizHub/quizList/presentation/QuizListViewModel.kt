@@ -4,6 +4,7 @@ import android.content.ActivityNotFoundException
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flowOn
@@ -97,7 +98,7 @@ internal class QuizListViewModel(
     }
 
     private fun fetchQuizList() = completeAction {
-        viewModelScope.launch {
+        viewModelScope.launch(SupervisorJob()) {
             updateState {
                 copy(uiStatus = UIStatus.Loading)
             }

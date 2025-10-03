@@ -7,6 +7,7 @@ import io.ktor.client.statement.bodyAsText
 import io.ktor.http.path
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.serialization.json.Json
@@ -36,6 +37,8 @@ class SquizApi(
         //TODO: подумать что не так с парсингом сквиза (отличается от QP и  Shaker)
         val data = httpRequest.bodyAsText()
         emit(json.decodeFromString<Products>(data).quizGames.orEmpty())
+    }.catch {
+        emit(emptyList())
     }.flowOn(Dispatchers.IO)
 
 
