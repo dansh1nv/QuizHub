@@ -4,8 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
 import ru.quizHub.designsystem.theme.elements.TextCell
+import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
 import ru.quizHub.quizList.models.item.QuizUI
 
 @Composable

@@ -32,7 +32,7 @@ internal class QuizPleaseMapper(private val commonMapper: CommonMapper) {
             tag = TagModel.QUIZ_PLEASE,
             formattedDate = entity.formatDate?.let(commonMapper::mapToGameDateUI),
             formatPrice = entity.formatPrice.orEmpty(),
-            description = entity.description?.substringBefore(SUBSTRING_TEXT).orEmpty(),
+            description = entity.description?.substringBefore(SUBSTRING_TEXT)?.trim().orEmpty(),
             image = entity.image.orEmpty(),
             difficulty = entity.difficulty.orEmpty(),
             location = entity.location?.let { model ->

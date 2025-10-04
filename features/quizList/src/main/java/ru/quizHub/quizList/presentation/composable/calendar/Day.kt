@@ -24,11 +24,12 @@ fun Day(
     onClick: (CalendarDay) -> Unit,
 ) {
     var textColor = QuizHubTheme.colorScheme.onSurface
+    val isCurrentMonth = day.position == DayPosition.MonthDate
     Box(
         modifier = Modifier
             .aspectRatio(1f) // This is important for square-sizing!
             .clickable(
-                enabled = day.position == DayPosition.MonthDate,
+                enabled = isCurrentMonth,
                 showRipple = false,
                 onClick = { onClick(day) }
             )
@@ -40,7 +41,7 @@ fun Day(
             ) { textColor = it },
         contentAlignment = Alignment.Center
     ) {
-        if (events.isNotEmpty()) {
+        if (events.isNotEmpty() && isCurrentMonth) {
             EventPieChart(
                 events = events,
                 modifier = Modifier.size(40.dp)

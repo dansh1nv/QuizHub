@@ -32,7 +32,8 @@
     <string name="team_size_quiz">👥 Размер команды: %s</string>
     <string name="address_quiz">📍 Адрес: %s</string>
     <string name="place_quiz">🏷️ Место: %s</string>
-    <string name="price_quiz">💵 Стоимость с участника: %s</string>
+    <string name="price_person_quiz">💵 Стоимость с участника: %s</string>
+    <string name="price_team_quiz">💵 Стоимость с команды: %s</string>
 
     <string name="quiz_status_open">Регистрация открыта</string>
     <string name="quiz_status_reserve">Запись в резерв</string>

@@ -22,6 +22,7 @@ internal sealed interface ScreenEvent : QuizListEvent {
     data class OnSearch(val query: String) : ScreenEvent
     data class OnCityClick(val city: CityModel) : ScreenEvent
     data class OnShowLocationEventClick(val quiz: QuizUI) : ScreenEvent
+    data class OnScrollPositionChanged(val isScrollUpVisible: Boolean) : ScreenEvent
 }
 
 internal sealed interface BottomSheetEvent : QuizListEvent {

@@ -160,6 +160,7 @@ internal class QuizListViewModel(
                 //navigateToQuizDetails(event.id)
             }
 
+            is ScreenEvent.OnScrollPositionChanged -> updateScrollUp(event.isScrollUpVisible)
             is ScreenEvent.OnShareEventClick -> handleShareEventClick(event.quiz)
             is ScreenEvent.OnShowLocationEventClick -> handleShowLocationEventClick(event.quiz)
             is ScreenEvent.ResetFilters -> {
@@ -170,6 +171,10 @@ internal class QuizListViewModel(
             is ScreenEvent.OnSearch -> search(event.query)
             is ScreenEvent.OnCityClick -> updateCurrentCity(event.city)
         }
+    }
+
+    private fun updateScrollUp(showScrollToTop: Boolean) = updateState {
+        copy(isScrollUpVisible = showScrollToTop)
     }
 
     private fun updateCurrentCity(city: CityModel) {
@@ -267,9 +272,8 @@ internal class QuizListViewModel(
 
     private fun handleCalendarClick() {
         completeAction {
-            val quizList = container.stateFlow.value.quizList.filter { it.isVisible }
-            val calendarEvents =
-                EventPieChartMapper.mapToCalendarEventsUI(quizList)
+            val quizList = container.stateFlow.value.quizList
+            val calendarEvents = EventPieChartMapper.mapToCalendarEventsUI(quizList)
             bottomSheetController.show(
                 BottomSheetModels.CalendarBottomSheetModel(
                     toolbar = Toolbar(
@@ -449,6 +453,7 @@ internal data class QuizListState(
     val currentCity: CityModel = CityModel.UNKNOWN,
     val cities: List<CityModel> = emptyList(),
     val sort: Sort = Sort.ASC_DATE,
+    val isScrollUpVisible: Boolean = false,
 ) : ScreenState
 
 internal data class FeatureToggle(
