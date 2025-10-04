@@ -3,6 +3,7 @@ package ru.quizHub.quizList.mappers
 import ru.quizHub.quizList.models.TagModel
 import ru.quizHub.quizList.models.item.Organization
 import ru.quizHub.quizList.models.item.QuizUI
+import ru.quizHub.quizlist.models.SQuiz
 import ru.quizHub.quizlist.models.common.GameFormat
 import ru.quizHub.quizlist.models.common.GameType
 
@@ -15,7 +16,7 @@ internal class SquizMapper(
         private const val MAX_MEMBERS_COUNT = 8
     }
 
-    fun mapToQuizUI(squiz: ru.quizHub.quizlist.models.SQuiz): QuizUI {
+    fun mapToQuizUI(squiz: SQuiz): QuizUI {
         val gameFormat = squiz.format ?: GameFormat.OFFLINE
         return with(squiz) {
             QuizUI(

@@ -61,14 +61,17 @@ class CommonMapper(
     fun mapPriceAdditionalText(gameFormat: GameFormat) = when (gameFormat) {
         GameFormat.ONLINE -> resourceManager.getStringById(R.string.quiz_item_price_for_team)
         GameFormat.OFFLINE -> resourceManager.getStringById(R.string.quiz_item_price_for_people)
-        else -> ""
     }
 
     fun mapTeamSizeUI(minMembersCount: Int, maxMemberCount: Int): TeamSizeUI {
         return TeamSizeUI(
             minSize = minMembersCount,
             maxSize = maxMemberCount,
-            teamSizeText = "$minMembersCount-$maxMemberCount участников"
+            teamSizeText = resourceManager.getStringById(
+                R.string.team_member_text,
+                minMembersCount,
+                maxMemberCount
+            )
         )
     }
 

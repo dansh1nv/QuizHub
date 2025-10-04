@@ -25,6 +25,8 @@
 
     <string name="calendar_title">Календарь</string>
 
+    <string name="team_member_text">%d-%d участников</string>
+
     <string name="share_quiz">Поделиться</string>
     <string name="join_quiz">Присоединяйся к %s</string>
     <string name="date_quiz">📅 Дата: %s</string>

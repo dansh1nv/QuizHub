@@ -7,13 +7,16 @@ import ru.quizHub.core.resourceManager.IResourceManager
 import ru.quizHub.quizList.R
 import ru.quizHub.quizList.models.item.LocationUI
 import ru.quizHub.quizList.models.item.QuizUI
+import ru.quizHub.quizlist.models.common.GameFormat
 
 class ActionEventsMapper(
     private val resourceManager: IResourceManager,
 ) {
     fun mapToShareText(quiz: QuizUI): String {
-        val isPerson = quiz.priceAdditionalText.contains("с человека", ignoreCase = true)
-
+        val priceRes = when (quiz.format) {
+            GameFormat.OFFLINE -> R.string.price_person_quiz
+            GameFormat.ONLINE -> R.string.price_team_quiz
+        }
         return buildString {
             appendLine(
                 resourceManager.getStringById(
@@ -37,21 +40,9 @@ class ActionEventsMapper(
             quiz.location?.place?.let { place ->
                 appendLine(resourceManager.getStringById(R.string.place_quiz, place))
             }
-            if (isPerson) {
-                appendLine(
-                    resourceManager.getStringById(
-                        R.string.price_person_quiz,
-                        quiz.formatPrice
-                    )
-                )
-            } else {
-                appendLine(
-                    resourceManager.getStringById(
-                        R.string.price_team_quiz,
-                        quiz.formatPrice
-                    )
-                )
-            }
+            appendLine(
+                value = resourceManager.getStringById(priceRes, quiz.formatPrice)
+            )
         }
     }
 
@@ -83,7 +74,7 @@ class ActionEventsMapper(
         return formatStringsWithDividerPoints(
             arrayOf(location.address, location.place),
             StringDividerType.CommaSpace
-        ).takeIf { it.isNotBlank() }?.let { GEO_URI_PREFIX + Uri.encode(it) } ?: ""
+        ).takeIf { it.isNotBlank() }?.let { GEO_URI_PREFIX + Uri.encode(it) }.orEmpty()
     }
 
     companion object {

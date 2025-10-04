@@ -8,7 +8,7 @@ class ResourceManager(private val context: Context) : IResourceManager {
         return context.getString(resId)
     }
 
-    override fun getStringById(resId: Int, vararg args: String): String {
+    override fun getStringById(resId: Int, vararg args: Any): String {
         return context.getString(resId, *args)
     }
 

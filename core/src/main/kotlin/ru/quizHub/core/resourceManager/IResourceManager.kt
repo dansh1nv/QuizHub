@@ -6,7 +6,7 @@ interface IResourceManager {
 
     fun getStringById(@StringRes resId: Int): String
 
-    fun getStringById(@StringRes resId: Int, vararg args: String): String
+    fun getStringById(@StringRes resId: Int, vararg args: Any): String
 
     fun getJson(name: String): String
 
