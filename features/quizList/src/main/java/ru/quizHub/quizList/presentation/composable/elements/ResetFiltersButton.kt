@@ -34,7 +34,7 @@ internal fun ResetFiltersButton(
         )
 
         Icon(
-            painter = painterResource(UIDrawable.ic_clear),
+            painter = painterResource(UIDrawable.ic_remix_close),
             tint = QuizHubTheme.colorScheme.onSurface,
             modifier = Modifier
                 .size(20.dp)

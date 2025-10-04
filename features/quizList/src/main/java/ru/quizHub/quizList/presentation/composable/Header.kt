@@ -43,7 +43,7 @@ internal fun Header(
             modifier = Modifier.clickable { onUIEvent(ScreenEvent.OnLocationClick) }
         ) {
             Icon(
-                painter = painterResource(id = UIDrawable.ic_location),
+                painter = painterResource(id = UIDrawable.ic_remix_location),
                 contentDescription = null,
                 tint = QuizHubTheme.colorScheme.onSurface,
             )
@@ -67,7 +67,7 @@ internal fun Header(
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            painter = painterResource(id = UIDrawable.ic_calendar),
+                            painter = painterResource(id = UIDrawable.ic_remix_calendar_fill),
                             contentDescription = null,
                             tint = QuizHubTheme.colorScheme.onSurface
                         )
@@ -81,7 +81,7 @@ internal fun Header(
                         contentAlignment = Alignment.Center,
                     ) {
                         Icon(
-                            painter = painterResource(id = UIDrawable.ic_filters),
+                            painter = painterResource(id = UIDrawable.ic_remix_filter_fill),
                             contentDescription = null,
                             tint = QuizHubTheme.colorScheme.onSurface,
                         )

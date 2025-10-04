@@ -19,7 +19,7 @@ internal fun QuizPriceElement(quizGame: QuizUI, modifier: Modifier) {
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconCell(iconRes = UIDrawable.ic_price_white)
+        IconCell(iconRes = UIDrawable.ic_remix_wallet_fill)
         Column {
             TextCell(text = quizGame.formatPrice)
             TextCell(text = quizGame.priceAdditionalText)

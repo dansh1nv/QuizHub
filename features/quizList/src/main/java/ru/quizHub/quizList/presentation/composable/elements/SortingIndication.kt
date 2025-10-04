@@ -27,8 +27,12 @@ internal fun SortingIndication(
         modifier = Modifier.clickable { onUIEvent(ScreenEvent.OnSortButtonClick) },
         horizontalArrangement = Arrangement.spacedBy(4.dp)
     ) {
+        val iconRes = when(sort) {
+            Sort.ASC_DATE -> UIDrawable.ic_remix_sort_desc
+            Sort.DESC_DATE -> UIDrawable.ic_remix_sort_asc
+        }
         Icon(
-            painter = painterResource(id = UIDrawable.ic_sort),
+            painter = painterResource(id = iconRes),
             contentDescription = null,
             modifier = Modifier
                 .size(20.dp)

@@ -21,7 +21,7 @@ internal fun QuizTeamElement(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        IconCell(iconRes = UIDrawable.ic_team)
+        IconCell(iconRes = UIDrawable.ic_remix_team_fill)
         TextCell(text = teamSizeUI.teamSizeText)
     }
 }

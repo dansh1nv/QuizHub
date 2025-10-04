@@ -7,9 +7,11 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
+import ru.quizHub.designsystem.theme.utils.`typealias`.UIDrawable
 import ru.quizHub.quizList.R
 import ru.quizHub.quizList.models.item.QuizUI
 
@@ -26,7 +28,7 @@ internal fun QuizShareElement(
         modifier = modifier.size(24.dp)
     ) {
         Icon(
-            imageVector = Icons.Default.Share,
+            painter = painterResource(UIDrawable.ic_remix_share_fill),
             contentDescription = stringResource(R.string.share_quiz),
             tint = QuizHubTheme.colorScheme.onSurfaceVariant
         )

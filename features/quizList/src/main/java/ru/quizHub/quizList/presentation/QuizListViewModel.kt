@@ -279,7 +279,7 @@ internal class QuizListViewModel(
                     toolbar = Toolbar(
                         title = resourceManager.getStringById(R.string.calendar_title),
                         trailIcon = IconModel(
-                            UIDrawable.ic_clear,
+                            UIDrawable.ic_remix_close,
                             onClick = { dismiss() }
                         )
                     ),
@@ -295,7 +295,7 @@ internal class QuizListViewModel(
                 toolbar = Toolbar(
                     title = resourceManager.getStringById(R.string.city_bottomsheet_title),
                     trailIcon = IconModel(
-                        UIDrawable.ic_clear,
+                        UIDrawable.ic_remix_close,
                         onClick = { dismiss() }
                     ),
                 ),
@@ -325,7 +325,7 @@ internal class QuizListViewModel(
                 toolbar = Toolbar(
                     title = resourceManager.getStringById(R.string.filter_title),
                     trailIcon = IconModel(
-                        iconRes = UIDrawable.ic_clear,
+                        iconRes = UIDrawable.ic_remix_close,
                         onClick = { dismiss() }
                     )
                 )
@@ -339,7 +339,7 @@ internal class QuizListViewModel(
                 toolbar = Toolbar(
                     title = resourceManager.getStringById(R.string.sorting_title),
                     trailIcon = IconModel(
-                        iconRes = UIDrawable.ic_clear,
+                        iconRes = UIDrawable.ic_remix_close,
                         onClick = { dismiss() }
                     )
                 )

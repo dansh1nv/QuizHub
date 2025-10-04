@@ -44,13 +44,13 @@ fun CustomSearchBar(
     },
     leadingIcon: @Composable (() -> Unit) = {
         Icon(
-            painter = painterResource(R.drawable.ic_search),
+            painter = painterResource(R.drawable.ic_remix_search),
             contentDescription = stringResource(R.string.search_bar_placeholder)
         )
     },
     trailingIcon: @Composable (() -> Unit)? = {
         Icon(
-            painter = painterResource(R.drawable.ic_clear),
+            painter = painterResource(R.drawable.ic_remix_close),
             contentDescription = null,
             modifier = Modifier.clickable { onClear.invoke() }
         )

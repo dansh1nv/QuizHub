@@ -42,7 +42,7 @@ internal fun QuizLocationElement(
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconCell(iconRes = UIDrawable.ic_map_white)
+            IconCell(iconRes = UIDrawable.ic_remix_map)
             Column(modifier = Modifier.align(Alignment.CenterVertically)) {
                 TextCell(text = model.place)
                 if (model.address.isNotEmpty()) {
@@ -52,9 +52,11 @@ internal fun QuizLocationElement(
         }
         if (!model.isOnline) {
             Icon(
-                painter = painterResource(UIDrawable.ic_arrow_forward),
+                painter = painterResource(UIDrawable.ic_remix_arrow_right),
                 contentDescription = null,
-                modifier = Modifier.size(16.dp),
+                modifier = Modifier
+                    .size(24.dp)
+                    .align(Alignment.CenterVertically),
                 tint = QuizHubTheme.colorScheme.onSurfaceVariant
             )
         }
