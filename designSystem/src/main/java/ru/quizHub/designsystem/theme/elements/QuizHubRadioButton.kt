@@ -1,5 +1,6 @@
 package ru.quizHub.designsystem.theme.elements
 
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonColors
 import androidx.compose.material3.RadioButtonDefaults
@@ -18,11 +19,13 @@ fun QuizHubRadioButton(
         disabledUnselectedColor = QuizHubTheme.colorScheme.surfaceTint.copy(alpha = 0.1f),
     ),
     onClick: () -> Unit = {},
+    interactionSource: MutableInteractionSource? = null
 ) {
     RadioButton(
         selected = isSelected,
         modifier = modifier,
         onClick = onClick,
         colors = colors,
+        interactionSource = interactionSource,
     )
 }
