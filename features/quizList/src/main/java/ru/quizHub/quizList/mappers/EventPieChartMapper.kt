@@ -46,9 +46,10 @@ object EventPieChartMapper {
     private fun getColor(org: Organization): Color {
         val customColors = customColor()
         return when (org) {
-            Organization.QUIZ_PLEASE -> customColors.orange
+            Organization.QUIZ_PLEASE -> customColors.red
             Organization.SQUIZ -> customColors.blue
             Organization.SHAKER_QUIZ -> customColors.purple
+            Organization.RUDA_GAMES -> customColors.orange
         }
     }
 }

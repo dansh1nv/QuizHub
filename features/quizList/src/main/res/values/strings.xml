@@ -15,6 +15,7 @@
     <string name="filter_id_squiz">SQUIZ</string>
     <string name="filter_id_quiz_please">Квиз, плиз!</string>
     <string name="filter_id_shaker_quiz">Шейкер квиз</string>
+    <string name="filter_id_ruda_games">Ruda games</string>
 
     <string name="reset_filters">Сбросить фильтры</string>
     <string name="sorting_title">Сортировка</string>

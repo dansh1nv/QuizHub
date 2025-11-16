@@ -7,6 +7,7 @@ data class CityModel(
     val name: String,
     val squizId: Long?,
     val quizPleaseId: Long?,
+    val rudaGamesId: Int?,
     val shakerQuizId: String?,
     val countryCode: String?,
     val shakerTeamSize: ShakerTeamSize?,
@@ -22,6 +23,7 @@ data class CityModel(
             squizId = null,
             shakerQuizId = null,
             quizPleaseId = null,
+            rudaGamesId = null,
             countryCode = "RU",
             shakerTeamSize = null,
         )

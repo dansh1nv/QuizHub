@@ -12,6 +12,7 @@ data class CityDTO(
     val id: Long,
     val name: String? = null,
     val quizPleaseId: Long? = null,
+    val rudaGamesId: Int? = null,
     val shakerQuizId: String? = null,
     val squizId: Long? = null,
     val shakerTeamSize: TeamSizeDTO? = null,

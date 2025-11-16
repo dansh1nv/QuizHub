@@ -4,6 +4,7 @@
       "id": 1,
       "shakerQuizId": "ffce7808-11a6-4aa6-a02f-fab0c9893e99",
       "quizPleaseId": 40,
+      "rudaGamesId": 333,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -15,6 +16,7 @@
       "id": 2,
       "shakerQuizId": "ff21a38e-156f-41d2-90a0-924e23eae37c",
       "quizPleaseId": 93,
+      "rudaGamesId": 404,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -36,6 +38,7 @@
       "id": 4,
       "shakerQuizId": "a27fcc9e-41d4-4640-974a-92f7675707ae",
       "quizPleaseId": 41,
+      "rudaGamesId": 286,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -56,6 +59,7 @@
     {
       "id": 6,
       "shakerQuizId": "fabaf487-9b0a-4c2a-b90c-867fd2f66269",
+      "rudaGamesId": 44,
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -67,6 +71,7 @@
       "id": 7,
       "shakerQuizId": "c5bb441a-e580-4ed0-afda-e79c2cab6181",
       "quizPleaseId": 114,
+      "rudaGamesId": 90,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -88,6 +93,7 @@
       "id": 9,
       "shakerQuizId": "6ad71cb8-38f6-427d-a4d4-170aa3ead97d",
       "quizPleaseId": 138,
+      "rudaGamesId": 138,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -109,6 +115,7 @@
       "id": 11,
       "shakerQuizId": "70607d29-d0ce-49f8-b39d-e11591747e1a",
       "quizPleaseId": 189,
+      "rudaGamesId": 43,
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -120,6 +127,7 @@
       "id": 12,
       "shakerQuizId": "43494653-9da5-49c3-97ed-7c3d9ff4ad47",
       "quizPleaseId": 63,
+      "rudaGamesId": 231,
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -131,6 +139,7 @@
       "id": 13,
       "shakerQuizId": "eb3a0841-921b-414a-9fb1-63748898c19d",
       "quizPleaseId": 150,
+      "rudaGamesId": 230,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -142,6 +151,7 @@
       "id": 14,
       "shakerQuizId": "89b65c82-ffc6-49d5-8ab6-b1346f0b1110",
       "quizPleaseId": 51,
+      "rudaGamesId": 134,
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -184,6 +194,7 @@
       "id": 18,
       "shakerQuizId": "c989e6b7-8b6c-4563-a24a-2ededde2f4cb",
       "quizPleaseId": 36,
+      "rudaGamesId": 79,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -194,6 +205,7 @@
     {
       "id": 19,
       "shakerQuizId": "b4610abe-c72b-4dc9-8ee5-fd64b66455b4",
+      "rudaGamesId": 177,
       "shakerTeamSize": {
         "maximum": 11,
         "minimum": 1
@@ -204,6 +216,7 @@
     {
       "id": 20,
       "shakerQuizId": "eb1cb61a-ee72-4980-997c-81823d58a937",
+      "rudaGamesId": 133,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -276,6 +289,7 @@
     {
       "id": 27,
       "shakerQuizId": "bd716a27-f672-4f8c-aec3-030d406d0f49",
+      "rudaGamesId": 324,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -286,6 +300,7 @@
     {
       "id": 28,
       "shakerQuizId": "1dcd8d33-0a0e-4313-b000-a7b5823058ab",
+      "rudaGamesId": 111,
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -296,6 +311,7 @@
     {
       "id": 29,
       "shakerQuizId": "7b2d22f5-e1a3-42c5-ae5c-00d0c3ee6b4d",
+      "rudaGamesId": 38,
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -307,6 +323,7 @@
       "id": 30,
       "shakerQuizId": "3fdfd82b-3e8b-4682-b3fc-c00bbb1c3d34",
       "quizPleaseId": 83,
+      "rudaGamesId": 52,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -339,6 +356,7 @@
     {
       "id": 33,
       "shakerQuizId": "3bcc7e4f-3ec7-466c-8cb0-552836654e57",
+      "rudaGamesId": 88,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -380,6 +398,7 @@
       "id": 37,
       "shakerQuizId": "e7494174-fe3e-4a95-8c7d-90ae0ddafc61",
       "quizPleaseId": 195,
+      "rudaGamesId": 56,
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -420,6 +439,7 @@
     {
       "id": 41,
       "shakerQuizId": "2360aa1f-7447-4ba9-9005-3de008fda0c5",
+      "rudaGamesId": 102,
       "shakerTeamSize": {
         "maximum": 8,
         "minimum": 2
@@ -431,6 +451,7 @@
       "id": 42,
       "shakerQuizId": "bd5e24eb-b10d-4d43-81be-0fece6fe8144",
       "quizPleaseId": 38,
+      "rudaGamesId": 155,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -463,6 +484,7 @@
       "id": 45,
       "shakerQuizId": "aa3efe39-c38d-44d2-a236-cb0761be1e20",
       "quizPleaseId": 100,
+      "rudaGamesId": 244,
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -473,6 +495,7 @@
     {
       "id": 46,
       "shakerQuizId": "0b2cb15f-c004-45ea-9a64-4c86e60cf316",
+      "rudaGamesId": 46,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -505,6 +528,7 @@
       "id": 49,
       "shakerQuizId": "d98a0d11-536e-4e3f-bd0e-5c35343a9c6d",
       "quizPleaseId": 37,
+      "rudaGamesId": 199,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -516,6 +540,7 @@
       "id": 50,
       "shakerQuizId": "bd55d875-8e42-4eed-94e7-f133d1c8b802",
       "quizPleaseId": 24,
+      "rudaGamesId": 15,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -527,6 +552,7 @@
       "id": 51,
       "shakerQuizId": "543bc12f-8923-4e13-a47f-88a3e17c7e5a",
       "quizPleaseId": 43,
+      "rudaGamesId": 9,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 2
@@ -548,6 +574,7 @@
     {
       "id": 53,
       "shakerQuizId": "c706e047-8297-4bf3-9957-aba235f6abba",
+      "rudaGamesId": 194,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -589,6 +616,7 @@
     {
       "id": 57,
       "shakerQuizId": "29d036f5-31b3-4a71-98a1-b7233af0cdd2",
+      "rudaGamesId": 137,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -621,6 +649,7 @@
       "id": 60,
       "shakerQuizId": "8fe57e5d-0a26-45f6-99d5-07009891ebe0",
       "quizPleaseId": 23,
+      "rudaGamesId": 229,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -651,6 +680,7 @@
     {
       "id": 63,
       "shakerQuizId": "1058484c-10d2-4c92-82ce-8a82d68f368b",
+      "rudaGamesId": 60,
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -671,6 +701,7 @@
     {
       "id": 65,
       "shakerQuizId": "60f18115-30e1-4ab2-bc60-24c36607bd53",
+      "rudaGamesId": 45,
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -682,6 +713,7 @@
       "id": 66,
       "shakerQuizId": "a50dd3c8-8ba7-4bb2-a4b2-eb6c9a6f7f9f",
       "quizPleaseId": 13,
+      "rudaGamesId": 5,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -714,6 +746,7 @@
       "id": 69,
       "shakerQuizId": "311c78c1-b345-4549-bee5-c5d07b4ae505",
       "quizPleaseId": 71,
+      "rudaGamesId": 99,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -754,6 +787,7 @@
     {
       "id": 73,
       "shakerQuizId": "05ba9f3e-84f5-43a9-8b99-58c339588e59",
+      "rudaGamesId": 145,
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -765,6 +799,7 @@
       "id": 74,
       "shakerQuizId": "3fe2fbff-b96a-4069-9270-48312eb912d8",
       "quizPleaseId": 21,
+      "rudaGamesId": 74,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -776,6 +811,7 @@
       "id": 75,
       "shakerQuizId": "94d1b410-de85-426d-a132-22bb46bc355d",
       "quizPleaseId": 12,
+      "rudaGamesId": 146,
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -787,6 +823,7 @@
       "id": 76,
       "shakerQuizId": "f9931e7e-e30f-4cd9-a718-b38cbb855384",
       "quizPleaseId": 15,
+      "rudaGamesId": 13,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -808,6 +845,7 @@
       "id": 78,
       "shakerQuizId": "742d033b-3c5c-4842-a622-0cfe746b4bf0",
       "quizPleaseId": 10,
+      "rudaGamesId": 28,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -850,6 +888,7 @@
     {
       "id": 82,
       "shakerQuizId": "aef0c78e-9748-4ca6-8fde-b05812f8cd0a",
+      "rudaGamesId": 135,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -861,6 +900,7 @@
       "id": 83,
       "shakerQuizId": "4ec678ba-3ae7-4b74-90ca-8613cb812c13",
       "quizPleaseId": 25,
+      "rudaGamesId": 83,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -923,6 +963,7 @@
     {
       "id": 89,
       "shakerQuizId": "d4c5b2a8-b8e0-43f2-90c9-e4f7ca3bee26",
+      "rudaGamesId": 34,
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -933,6 +974,7 @@
     {
       "id": 90,
       "shakerQuizId": "62b045ab-551b-4eaf-a5be-c741e3292284",
+      "rudaGamesId": 144,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -974,6 +1016,7 @@
     {
       "id": 94,
       "shakerQuizId": "b6d965b9-e0d0-47a3-a38d-ec56a4f7de34",
+      "rudaGamesId": 77,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -1007,6 +1050,7 @@
       "id": 97,
       "shakerQuizId": "5b44513d-4bfd-43d2-b898-9ee273d0d9c3",
       "quizPleaseId": 19,
+      "rudaGamesId": 66,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -1029,6 +1073,7 @@
       "id": 99,
       "shakerQuizId": "7ff67747-17b6-4dbb-8c97-ac0a817df2b3",
       "quizPleaseId": 68,
+      "rudaGamesId": 47,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -1040,6 +1085,7 @@
       "id": 100,
       "shakerQuizId": "5242cc9c-2f68-4edb-a68c-6a06cfbdc236",
       "quizPleaseId": 75,
+      "rudaGamesId": 261,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -1051,6 +1097,7 @@
       "id": 101,
       "shakerQuizId": "c2e2affb-8719-42bb-880b-8678bbe04f03",
       "quizPleaseId": 9,
+      "rudaGamesId": 14,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -1062,6 +1109,7 @@
       "id": 102,
       "shakerQuizId": "e67b2476-0532-427c-89c4-a511971eaacb",
       "quizPleaseId": 34,
+      "rudaGamesId": 29,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -1083,6 +1131,7 @@
       "id": 104,
       "shakerQuizId": "b1016912-fd48-4b6c-a5fb-5f8647a84a17",
       "quizPleaseId": 235,
+      "rudaGamesId": 125,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -1103,6 +1152,7 @@
     {
       "id": 106,
       "shakerQuizId": "403bfd2e-2e3c-43e5-92ab-fd13a7179ceb",
+      "rudaGamesId": 358,
       "shakerTeamSize": {
         "maximum": 8,
         "minimum": 2
@@ -1114,6 +1164,7 @@
       "id": 107,
       "shakerQuizId": "423b726c-4258-43c9-98ff-101bd290c3c8",
       "quizPleaseId": 92,
+      "rudaGamesId": 39,
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -1145,6 +1196,7 @@
       "id": 110,
       "shakerQuizId": "96ccc86f-5b54-46ac-b127-8299d5efb62c",
       "quizPleaseId": 77,
+      "rudaGamesId": 41,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -1157,6 +1209,7 @@
       "shakerQuizId": "b489621b-cfb2-4aef-8c22-02daf19fa08f",
       "quizPleaseId": 17,
       "squizId": 111979372401,
+      "rudaGamesId": 8,
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
