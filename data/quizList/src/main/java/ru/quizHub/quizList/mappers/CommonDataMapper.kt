@@ -23,6 +23,7 @@ class CommonDataMapper {
             name = entity.name.orEmpty(),
             squizId = entity.squizId,
             quizPleaseId = entity.quizPleaseId,
+            rudaGamesId = entity.rudaGamesId,
             shakerQuizId = entity.shakerQuizId,
             countryCode = entity.country.orEmpty(),
             shakerTeamSize = entity.shakerTeamSize?.let(::mapShakerTeamSize)

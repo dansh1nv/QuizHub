@@ -5,6 +5,7 @@ data class City(
     val name: String,
     val squizId: Long?,
     val quizPleaseId: Long?,
+    val rudaGamesId: Int?,
     val shakerQuizId: String?,
     val shakerTeamSize: ShakerTeamSize?,
     val countryCode: String,
