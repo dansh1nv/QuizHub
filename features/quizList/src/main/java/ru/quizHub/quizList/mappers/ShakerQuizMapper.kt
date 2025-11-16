@@ -37,7 +37,7 @@ class ShakerQuizMapper(
             type = mapGameType(entity.theme.orEmpty()),
             formattedDate = entity.eventTime?.let(commonMapper::mapToGameDateUI),
             formatPrice = mapPrice(entity),
-            priceAdditionalText = commonMapper.mapPriceAdditionalText(GameFormat.OFFLINE),
+            priceAdditionalText = commonMapper.mapPriceAdditionalText(gameFormat),
             difficulty = "",
             status = entity.status?.let(commonMapper::mapToStatusUI),
             paymentMethod = "",

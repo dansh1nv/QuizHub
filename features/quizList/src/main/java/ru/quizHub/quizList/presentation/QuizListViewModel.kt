@@ -33,6 +33,7 @@ import ru.quizHub.quizList.mappers.ActionEventsMapper
 import ru.quizHub.quizList.mappers.CommonMapper
 import ru.quizHub.quizList.mappers.EventPieChartMapper
 import ru.quizHub.quizList.mappers.QuizPleaseMapper
+import ru.quizHub.quizList.mappers.RudaGamesMapper
 import ru.quizHub.quizList.mappers.ShakerQuizMapper
 import ru.quizHub.quizList.mappers.SquizMapper
 import ru.quizHub.quizList.models.CityModel
@@ -44,6 +45,7 @@ import ru.quizHub.quizlist.interactors.CommonInteractor
 import ru.quizHub.quizlist.interactors.GeoInfoInteractor
 import ru.quizHub.quizlist.interactors.QuizListInteractor
 import ru.quizHub.quizlist.models.QuizPlease
+import ru.quizHub.quizlist.models.RudaGames
 import ru.quizHub.quizlist.models.SQuiz
 import ru.quizHub.quizlist.models.ShakerQuiz
 import timber.log.Timber
@@ -56,6 +58,7 @@ internal class QuizListViewModel(
     private val squizMapper: SquizMapper,
     private val quizPleaseMapper: QuizPleaseMapper,
     private val shakerQuizMapper: ShakerQuizMapper,
+    private val rudaGamesMapper: RudaGamesMapper,
     private val actionEventsMapper: ActionEventsMapper,
     private val intentErrorMapper: IntentErrorMapper,
     private val resourceManager: IResourceManager,
@@ -110,6 +113,7 @@ internal class QuizListViewModel(
                             is QuizPlease -> quizPleaseMapper.mapToQuizUI(quiz)
                             is SQuiz -> squizMapper.mapToQuizUI(quiz)
                             is ShakerQuiz -> shakerQuizMapper.mapToQuizUI(quiz)
+                            is RudaGames -> rudaGamesMapper.mapToQuizUI(quiz)
                         }
                     }
                 }
