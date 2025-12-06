@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">QuizHub</string>
+    <string name="nav_bar_quizzes">Квизы</string>
+    <string name="nav_bar_profile">Профиль</string>
+    <string name="nav_bar_settings">Настройки</string>
 </resources>

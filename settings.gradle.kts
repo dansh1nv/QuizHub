@@ -34,4 +34,5 @@ include(
     ":features:quizList",
     ":features:quizDetails",
     ":features:profile",
+    ":features:settings"
 )
