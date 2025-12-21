@@ -10,20 +10,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHostState
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -38,6 +38,7 @@ import ru.quizHub.core.startIntentSafe
 import ru.quizHub.designsystem.theme.elements.QuizHubSnackbar
 import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
 import ru.quizHub.quizhub.navigation.AppNavGraph
+import ru.quizHub.quizhub.navigation.navigationBar.NavigationAppBar
 
 
 class MainActivity : ComponentActivity() {
@@ -132,26 +133,33 @@ class MainActivity : ComponentActivity() {
         KoinContext {
             val navController = rememberNavController()
             snackbarHostState = remember { SnackbarHostState() }
+            val currentBackStackEntry by navController.currentBackStackEntryAsState()
+            val currentRoute = currentBackStackEntry?.destination?.route
             QuizHubTheme(isDarkTheme = true) {
-                Surface(
+                Scaffold(
                     modifier = Modifier
                         .fillMaxSize()
                         .statusBarsPadding()
                         .navigationBarsPadding(),
-                    color = QuizHubTheme.colorScheme.surface
-                ) {
+                    bottomBar = {
+                        NavigationAppBar(navController, currentRoute)
+                    },
+                    snackbarHost = {
+                        QuizHubSnackbar(
+                            hostState = snackbarHostState,
+                            modifier = Modifier
+                        )
+                    },
+                    containerColor = QuizHubTheme.colorScheme.surface
+                ) { paddingValues ->
                     Box(
-                        modifier = Modifier.fillMaxSize()
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(paddingValues)
                     ) {
                         AppNavGraph(
                             navController = navController,
                             onCloseApp = { this@MainActivity.finish() }
-                        )
-                        QuizHubSnackbar(
-                            hostState = snackbarHostState,
-                            modifier = Modifier
-                                .align(Alignment.BottomCenter)
-                                .padding(16.dp)
                         )
                     }
                 }

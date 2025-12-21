@@ -6,10 +6,14 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import ru.quizHub.core.navigation.destinations.ProfileDestination
 import ru.quizHub.core.navigation.destinations.QuizDetailsDestination
 import ru.quizHub.core.navigation.destinations.QuizListDestination
+import ru.quizHub.core.navigation.destinations.SettingsDestination
+import ru.quizHub.profile.presentation.composable.ProfileScreen
 import ru.quizHub.quiz.details.presentation.presentation.composable.QuizDetailsScreen
 import ru.quizHub.quizList.presentation.composable.QuizListScreen
+import ru.quizHub.settings.presentation.composable.SettingsScreen
 
 @Composable
 fun AppNavGraph(
@@ -24,6 +28,8 @@ fun AppNavGraph(
     NavHost(navController = navController, startDestination = QuizListDestination.route) {
         quizList(navController)
         quizDetails(navController)
+        settings(navController)
+        profile(navController)
     }
 }
 
@@ -36,5 +42,17 @@ fun NavGraphBuilder.quizList(navController: NavHostController) {
 fun NavGraphBuilder.quizDetails(navController: NavHostController) {
     composable(QuizDetailsDestination.route) {
         QuizDetailsScreen()
+    }
+}
+
+fun NavGraphBuilder.profile(bavController: NavHostController) {
+    composable(ProfileDestination.route) {
+        ProfileScreen()
+    }
+}
+
+fun NavGraphBuilder.settings(navController: NavHostController) {
+    composable(SettingsDestination.route) {
+        SettingsScreen()
     }
 }

@@ -74,6 +74,8 @@ dependencies {
     implementation(project(":domain:quizList"))
     implementation(project(":features:quizList"))
     implementation(project(":features:quizDetails"))
+    implementation(project(":features:settings"))
+    implementation(project(":features:profile"))
 
     debugImplementation(libs.leak.canary)
 }

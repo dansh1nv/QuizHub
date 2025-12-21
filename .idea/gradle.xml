@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/features/profile" />
             <option value="$PROJECT_DIR$/features/quizDetails" />
             <option value="$PROJECT_DIR$/features/quizList" />
+            <option value="$PROJECT_DIR$/features/settings" />
             <option value="$PROJECT_DIR$/quizapi" />
           </set>
         </option>
