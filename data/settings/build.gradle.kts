@@ -1,7 +1,8 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 android {
@@ -24,9 +25,6 @@ android {
             )
         }
     }
-    buildFeatures {
-        compose = true
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
@@ -37,13 +35,15 @@ android {
 }
 
 dependencies {
-    implementation(platform(libs.compose.bom))
+    implementation(libs.androidx.core.ktx)
     implementation(libs.kotlin.coroutines.android)
-    implementation(libs.bundles.ui)
-    implementation(libs.bundles.common)
 
-    implementation(project(":common"))
-    implementation(project(":designSystem"))
+    implementation(libs.bundles.common)
+    implementation(libs.serialization)
+
+    // ksp(libs.ksp)
+
     implementation(project(":core"))
+    implementation(project(":database"))
     implementation(project(":domain:settings"))
 }

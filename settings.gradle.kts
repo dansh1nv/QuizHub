@@ -26,10 +26,12 @@ include(
     ":data:quizList",
     ":data:quizDetails",
     ":data:profile",
+    ":data:settings",
 
     ":domain:quizList",
     ":domain:quizDetails",
     ":domain:profile",
+    ":domain:settings",
 
     ":features:quizList",
     ":features:quizDetails",

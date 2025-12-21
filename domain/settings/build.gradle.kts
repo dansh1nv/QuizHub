@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -24,26 +23,17 @@ android {
             )
         }
     }
-    buildFeatures {
-        compose = true
-    }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "21"
+        jvmTarget = "11"
     }
 }
 
 dependencies {
-    implementation(platform(libs.compose.bom))
-    implementation(libs.kotlin.coroutines.android)
-    implementation(libs.bundles.ui)
     implementation(libs.bundles.common)
-
-    implementation(project(":common"))
-    implementation(project(":designSystem"))
-    implementation(project(":core"))
-    implementation(project(":domain:settings"))
+    implementation(libs.kotlin.coroutines.android)
+    testImplementation(libs.junit)
 }
