@@ -20,8 +20,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import ru.quizHub.designsystem.R
 import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
+import ru.quizHub.designsystem.theme.utils.`typealias`.UIDrawable
 
 @Composable
 fun SettingsListItem(
@@ -66,10 +66,9 @@ fun SettingsListItem(
         }
 
         Icon(
-            imageVector = ImageVector.vectorResource(R.drawable.ic_arrow_forward),
+            imageVector = ImageVector.vectorResource(UIDrawable.ic_arrow_right_s),
             contentDescription = null,
-            tint = QuizHubTheme.colorScheme.onSurfaceVariant,
-            modifier = Modifier.size(16.dp)
+            tint = QuizHubTheme.colorScheme.onSurfaceVariant
         )
     }
 }

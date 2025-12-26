@@ -14,6 +14,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import ru.quizHub.designsystem.theme.list.SettingsListItem
 import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
+import ru.quizHub.designsystem.theme.utils.`typealias`.UIDrawable
+import ru.quizHub.designsystem.theme.utils.`typealias`.UIString
 import ru.quizHub.settings.R
 import ru.quizHub.settings.presentation.ScreenEvent
 
@@ -35,8 +37,8 @@ internal fun SettingsContent(onUIEvent: (ScreenEvent) -> Unit) {
         Spacer(modifier = Modifier.height(24.dp))
 
         SettingsListItem(
-            title = stringResource(R.string.settings_theme_title),
-            iconResId = R.drawable.ic_contrast,
+            title = stringResource(UIString.settings_theme_title),
+            iconResId = UIDrawable.ic_contrast,
             onClick = { onUIEvent(ScreenEvent.OnThemeClick) }
         )
     }

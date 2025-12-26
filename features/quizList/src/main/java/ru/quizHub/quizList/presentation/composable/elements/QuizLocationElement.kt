@@ -52,9 +52,8 @@ internal fun QuizLocationElement(
         }
         if (!model.isOnline) {
             Icon(
-                painter = painterResource(UIDrawable.ic_arrow_forward),
+                painter = painterResource(UIDrawable.ic_arrow_right_s),
                 contentDescription = null,
-                modifier = Modifier.size(16.dp),
                 tint = QuizHubTheme.colorScheme.onSurfaceVariant
             )
         }
