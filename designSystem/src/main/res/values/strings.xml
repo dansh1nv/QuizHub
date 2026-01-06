@@ -3,4 +3,10 @@
     <string name="search_bar_placeholder">Введите запрос</string>
     <string name="select_button_text">Выбрать</string>
     <string name="apply_button_text">Применить</string>
+
+    <string name="nav_bar_quizzes">Квизы</string>
+    <string name="nav_bar_profile">Профиль</string>
+    <string name="nav_bar_settings">Настройки</string>
+
+    <string name="settings_theme_title">Оформление</string>
 </resources>

@@ -5,28 +5,29 @@ import androidx.annotation.StringRes
 import ru.quizHub.core.navigation.destinations.ProfileDestination
 import ru.quizHub.core.navigation.destinations.QuizListDestination
 import ru.quizHub.core.navigation.destinations.SettingsDestination
-import ru.quizHub.quizhub.R
+import ru.quizHub.designsystem.theme.utils.`typealias`.UIDrawable
+import ru.quizHub.designsystem.theme.utils.`typealias`.UIString
 
-sealed class NavigationBarItem(
+sealed class NavigationAppBarItem(
     val route: String,
     @StringRes val title: Int,
     @DrawableRes val icon: Int
 ) {
-    object QuizList : NavigationBarItem(
+    object QuizList : NavigationAppBarItem(
         route = QuizListDestination.route,
-        title = R.string.nav_bar_quizzes,
-        icon = R.drawable.ic_list_line
+        title = UIString.nav_bar_quizzes,
+        icon = UIDrawable.ic_list_line
     )
 
-    object Profile : NavigationBarItem(
+    object Profile : NavigationAppBarItem(
         route = ProfileDestination.route,
-        title = R.string.nav_bar_profile,
-        icon = R.drawable.ic_profile
+        title = UIString.nav_bar_profile,
+        icon = UIDrawable.ic_profile
     )
 
-    object Settings : NavigationBarItem(
+    object Settings : NavigationAppBarItem(
         route = SettingsDestination.route,
-        title = R.string.nav_bar_settings,
-        icon = R.drawable.ic_settings
+        title = UIString.nav_bar_settings,
+        icon = UIDrawable.ic_settings
     )
 }
