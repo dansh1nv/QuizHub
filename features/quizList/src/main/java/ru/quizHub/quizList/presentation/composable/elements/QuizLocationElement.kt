@@ -52,7 +52,7 @@ internal fun QuizLocationElement(
         }
         if (!model.isOnline) {
             Icon(
-                painter = painterResource(UIDrawable.ic_remix_arrow_right),
+                painter = painterResource(UIDrawable.ic_arrow_right_s),
                 contentDescription = null,
                 modifier = Modifier
                     .size(24.dp)

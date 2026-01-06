@@ -17,12 +17,14 @@
             <option value="$PROJECT_DIR$/data/profile" />
             <option value="$PROJECT_DIR$/data/quizDetails" />
             <option value="$PROJECT_DIR$/data/quizList" />
+            <option value="$PROJECT_DIR$/data/settings" />
             <option value="$PROJECT_DIR$/database" />
             <option value="$PROJECT_DIR$/designSystem" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/domain/profile" />
             <option value="$PROJECT_DIR$/domain/quizDetails" />
             <option value="$PROJECT_DIR$/domain/quizList" />
+            <option value="$PROJECT_DIR$/domain/settings" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/profile" />
             <option value="$PROJECT_DIR$/features/quizDetails" />

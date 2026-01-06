@@ -14,6 +14,8 @@ import androidx.datastore.core.Serializer as DataStoreSerializer
 @Serializable
 data class AppPreferences(
     val currentCity: String = "",
+    val themeMode: String = "SYSTEM",
+    val highContrast: Boolean = false
 ) {
     class Serializer(private val json: Json) : DataStoreSerializer<AppPreferences> {
         override val defaultValue: AppPreferences = AppPreferences()

@@ -19,9 +19,9 @@ fun NavigationAppBar(
     currentRoute: String?
 ) {
     val items = listOf(
-        NavigationBarItem.QuizList,
-        NavigationBarItem.Profile,
-        NavigationBarItem.Settings
+        NavigationAppBarItem.QuizList,
+        NavigationAppBarItem.Profile,
+        NavigationAppBarItem.Settings
     )
 
     val shouldShowNavigationBar = items.any { it.route == currentRoute }
