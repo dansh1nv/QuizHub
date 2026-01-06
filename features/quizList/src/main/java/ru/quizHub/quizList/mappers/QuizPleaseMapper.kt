@@ -38,7 +38,6 @@ internal class QuizPleaseMapper(private val commonMapper: CommonMapper) {
             location = entity.location?.let { model ->
                 commonMapper.mapLocationUI(model, gameFormat)
             },
-            //TODO: Уточнить по правилам
             teamSize = commonMapper.mapTeamSizeUI(
                 minMembersCount = MIN_MEMBERS_COUNT,
                 maxMemberCount = MAX_MEMBERS_COUNT

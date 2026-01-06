@@ -2,9 +2,11 @@ package ru.quizHub.designsystem.theme.image
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -39,14 +41,22 @@ fun QuizImage(
         contentDescription = null,
         contentScale = contentScale,
         loading = {
-            CircularProgressIndicator(
-                modifier = Modifier.fillMaxSize(),
-                color = QuizHubTheme.colorScheme.secondary,
-                strokeWidth = 2.dp,
-            )
+            Box(modifier = Modifier.fillMaxSize()) {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .wrapContentSize()
+                        .align(Alignment.Center),
+                    color = QuizHubTheme.colorScheme.secondary,
+                    strokeWidth = 2.dp,
+                )
+            }
         },
         error = {
-            Box(modifier = Modifier.fillMaxSize()) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(QuizHubTheme.colorScheme.secondary)
+            ) {
                 Image(
                     modifier = Modifier
                         .size(40.dp)

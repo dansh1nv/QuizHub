@@ -133,7 +133,7 @@ internal class QuizListViewModel(
                     updateState {
                         copy(
                             quizList = quizList,
-                            uiStatus = if (quizList.isNotEmpty() || currentCity != CityModel.UNKNOWN) {
+                            uiStatus = if (quizList.isNotEmpty() && currentCity != CityModel.UNKNOWN) {
                                 UIStatus.Loaded()
                             } else {
                                 UIStatus.Empty

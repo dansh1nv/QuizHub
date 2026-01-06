@@ -1,5 +1,6 @@
 package ru.quizHub.quizList.mappers
 
+import ru.quizHub.common.Currency
 import ru.quizHub.common.orZero
 import ru.quizHub.quizList.models.TagModel
 import ru.quizHub.quizList.models.item.Organization
@@ -51,13 +52,18 @@ class RudaGamesMapper(
         val pattern = Regex("#(\\d+)")
         val match = pattern.find(gameName)
 
-        return match?.value ?: ""
+        return match?.value.orEmpty()
     }
 
     private fun mapPrice(entity: RudaGames): String {
         return buildString {
             entity.price?.let(::append)
-            entity.currency?.let(::append)
+            entity.currency?.let {
+                //todo пока поддерживаются только города RU-региона
+                if (it == Currency.RUB.id) {
+                    append(Currency.RUB.symbol)
+                }
+            }
         }
     }
 

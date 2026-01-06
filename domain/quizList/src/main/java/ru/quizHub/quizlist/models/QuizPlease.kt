@@ -14,7 +14,6 @@ data class QuizPlease(
     val gameFormat: GameFormat?,
     val datetime: String?,
     val formatDate: GameDate?,
-    val formatTime: String?,
     val price: Int?,
     val formatPrice: String?,
     val location: Location?,

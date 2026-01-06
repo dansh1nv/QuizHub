@@ -63,7 +63,7 @@ fun NavigationAppBar(
                                 QuizHubTheme.colorScheme.secondary
                             } else {
                                 QuizHubTheme.colorScheme.onSurfaceVariant
-                            }
+                            },
                         )
                     },
                     colors = NavigationBarItemDefaults.colors(

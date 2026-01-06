@@ -27,7 +27,10 @@ fun AppNavGraph(
             onCloseApp.invoke()
         }
     }
-    NavHost(navController = navController, startDestination = QuizListDestination.route) {
+    NavHost(
+        navController = navController,
+        startDestination = QuizListDestination.route
+    ) {
         quizList(navController)
         quizDetails(navController)
         settings(navController)
@@ -47,7 +50,7 @@ fun NavGraphBuilder.quizDetails(navController: NavHostController) {
     }
 }
 
-fun NavGraphBuilder.profile(bavController: NavHostController) {
+fun NavGraphBuilder.profile(navController: NavHostController) {
     composable(ProfileDestination.route) {
         ProfileScreen()
     }

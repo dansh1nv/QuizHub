@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -62,7 +61,7 @@ internal fun QuizCard(
                 .padding(start = 12.dp, end = 12.dp, bottom = 12.dp)
         ) {
             QuizImage(
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier.fillMaxWidth(),
                 url = quizGame.image,
                 contentScale = ContentScale.FillBounds,
             )
@@ -82,7 +81,12 @@ internal fun QuizCard(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            quizGame.formattedDate?.let { QuizDateElement(quizGame.formattedDate, modifier) }
+            quizGame.formattedDate?.let {
+                QuizDateElement(
+                    gameDate = quizGame.formattedDate,
+                    modifier = modifier
+                )
+            }
             QuizShareElement(
                 quiz = quizGame,
                 onShareClicked = { quiz ->
@@ -92,19 +96,22 @@ internal fun QuizCard(
             )
         }
         quizGame.takeIf { it.additionDescription.isNotBlank() }?.let {
-            QuizReplyElement(quizGame.additionDescription, modifier)
+            QuizReplyElement(
+                additionDescription = quizGame.additionDescription,
+                modifier = modifier,
+            )
         }
         QuizTitleElement(quizGame, modifier)
         if (quizGame.difficulty.isNotBlank()) {
-            QuizDifficultElement(quizGame.difficulty, modifier)
+            QuizDifficultElement(difficult = quizGame.difficulty, modifier = modifier)
         }
         quizGame.teamSize?.teamSizeText?.let {
             QuizTeamElement(teamSizeUI = quizGame.teamSize, modifier = modifier)
         }
         quizGame.location?.let {
             QuizLocationElement(
-                quizGame.location,
-                modifier,
+                model = quizGame.location,
+                modifier = modifier,
                 onLocationClick = { onUIEvent(ScreenEvent.OnShowLocationEventClick(quizGame)) }
             )
         }

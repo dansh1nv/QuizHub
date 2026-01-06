@@ -31,11 +31,13 @@ class QuizPleaseDataMapper {
         title = dto.title,
         packageNumber = dto.packageNumber,
         description = dto.description,
-        image = BASE_URL + dto.image,
+        image = dto.image?.let(::mapImageURL),
         gameFormat = dto.gameFormat?.let { mapGameFormat(it) },
         datetime = dto.datetime,
-        formatDate = mapGameDate(dto.datetime.orEmpty()),
-        formatTime = dto.formatTime,
+        formatDate = mapGameDate(
+            dto.datetime.orEmpty(),
+            dto.formatTime,
+        ),
         price = dto.price,
         formatPrice = dto.formatPrice,
         location = Location(
@@ -49,6 +51,11 @@ class QuizPleaseDataMapper {
         status = mapStatus(dto.status),
         paymentMethod = dto.paymentMethod?.let { mapPaymentMethod(it) },
     )
+
+    private fun mapImageURL(path: String): String {
+        val secondPartUrl = if (path.startsWith("/")) path else "/$path"
+        return BASE_URL + secondPartUrl
+    }
 
     private fun mapStatus(status: StatusDTO?): Status? {
         return Status.entries.firstOrNull { it.quizPleaseId == status?.id }
@@ -69,10 +76,12 @@ class QuizPleaseDataMapper {
     }
 
     private fun mapGameDate(
-        datetime: String
+        datetime: String,
+        formatTime: String?,
     ): GameDate {
         val (date, time) = datetime.split(" ", limit = 2)
-        val timeArray = time.split(":", limit = 2)
+        val timeWithLocale = formatTime ?: time
+        val timeArray = timeWithLocale.split(":", limit = 2)
         val dateArray = date.split(".", limit = 3)
         val day = dateArray.getOrNull(0)?.toInt() ?: 1
         val month = dateArray.getOrNull(1)?.toInt() ?: 1
@@ -94,7 +103,7 @@ class QuizPleaseDataMapper {
             dateTime = localDateTime,
             day = day.toString(),
             month = MonthConverter.getMonthNameByNumber(month),
-            time = time,
+            time = timeWithLocale,
         )
     }
 }
