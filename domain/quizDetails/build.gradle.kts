@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "ru.quizHub.quizdetails"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 26
