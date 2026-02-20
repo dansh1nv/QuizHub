@@ -9,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.kizitonwose.calendar.core.YearMonth
 import kotlinx.datetime.DayOfWeek
+import kotlinx.datetime.YearMonth
 import ru.quizHub.core.presentation.calendar.displayText
 import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
 import ru.quizHub.designsystem.theme.utils.color.CustomColorModel

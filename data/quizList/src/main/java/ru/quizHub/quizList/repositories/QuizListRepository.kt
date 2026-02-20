@@ -54,26 +54,4 @@ class QuizListRepository(
             ).flatten()
         }
     }
-
-    override fun fetchAllQuizList(city: City) {
-        combine(
-            flow = squizRemoteDataSource.getQuizList(cityId = city.squizId),
-            flow2 = quizPleaseRemoteDataSource.getQuizList(
-                cityId = city.quizPleaseId,
-                pageNumber = PAGE_NUMBER,
-                pageSize = PAGE_SIZE
-            ),
-            flow3 = shakerQuizRemoteDataSource.getQuizList(cityId = city.shakerQuizId),
-            flow4 = rudaGamesRemoteDataSource.getQuizList(cityId = city.rudaGamesId)
-        ) { squizList, quizPleaseList, shakerQuizList, rudaGamesList ->
-            _quizListFlow.emit(
-                listOf(
-                    squizDataMapper.map(quizzes =  squizList),
-                    quizPleaseDataMapper.mapToQuiz(dtos = quizPleaseList),
-                    shakerQuizDataMapper.mapToShakerQuiz(dtos = shakerQuizList),
-                    rudaGamesDataMapper.mapToRudaGames(dtos = rudaGamesList)
-                ).flatten()
-            )
-        }
-    }
 }

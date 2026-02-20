@@ -1,6 +1,6 @@
 package ru.quizHub.common.utils.localeDate
 
-import java.time.DayOfWeek
+import kotlinx.datetime.DayOfWeek
 
 fun localeDay(dayOfWeek: DayOfWeek): String {
     return when (dayOfWeek) {

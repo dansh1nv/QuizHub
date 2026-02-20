@@ -8,5 +8,4 @@ import ru.quizHub.quizlist.models.common.City
 interface IQuizListRepository {
     val quizListFlow: StateFlow<List<Quiz>>
     fun getAllQuizList(city: City): Flow<List<Quiz>>
-    fun fetchAllQuizList(city: City)
 }

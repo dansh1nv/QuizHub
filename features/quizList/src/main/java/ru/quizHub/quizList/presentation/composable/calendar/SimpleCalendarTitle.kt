@@ -11,9 +11,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowLeft
-import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,12 +19,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.kizitonwose.calendar.core.YearMonth
+import kotlinx.datetime.YearMonth
 import ru.quizHub.core.presentation.calendar.displayText
+import ru.quizHub.designsystem.R
 import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
 import ru.quizHub.designsystem.theme.utils.color.CustomColorModel
 import ru.quizHub.designsystem.theme.utils.color.toIconColor
@@ -48,7 +47,7 @@ fun SimpleCalendarTitle(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         CalendarNavigationIcon(
-            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
+            painter  = painterResource(R.drawable.ic_remix_arrow_left),
             contentDescription = "Previous",
             onClick = goToPrevious,
             isHorizontal = isHorizontal,
@@ -62,7 +61,7 @@ fun SimpleCalendarTitle(
             color = CustomColorModel.Surface.toTextColor()
         )
         CalendarNavigationIcon(
-            imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
+            painter = painterResource(R.drawable.ic_remix_arrow_right),
             contentDescription = "Next",
             onClick = goToNext,
             isHorizontal = isHorizontal,
@@ -72,7 +71,7 @@ fun SimpleCalendarTitle(
 
 @Composable
 private fun CalendarNavigationIcon(
-    imageVector: ImageVector,
+    painter: Painter,
     contentDescription: String,
     isHorizontal: Boolean = true,
     onClick: () -> Unit,
@@ -94,7 +93,7 @@ private fun CalendarNavigationIcon(
                 .padding(4.dp)
                 .align(Alignment.Center)
                 .rotate(rotation),
-            imageVector = imageVector,
+            painter = painter,
             contentDescription = contentDescription,
             tint = CustomColorModel.Surface.toIconColor()
         )

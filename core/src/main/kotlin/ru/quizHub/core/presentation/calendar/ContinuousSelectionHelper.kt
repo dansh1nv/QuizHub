@@ -1,12 +1,11 @@
 package ru.quizHub.core.presentation.calendar
 
-import com.kizitonwose.calendar.core.atDay
-import com.kizitonwose.calendar.core.atEndOfMonth
 import com.kizitonwose.calendar.core.minusMonths
 import com.kizitonwose.calendar.core.plusMonths
-import com.kizitonwose.calendar.core.yearMonth
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.daysUntil
+import kotlinx.datetime.onDay
+import kotlinx.datetime.yearMonth
 import kotlin.LazyThreadSafetyMode.NONE
 
 data class DateSelection(val startDate: LocalDate? = null, val endDate: LocalDate? = null) {
@@ -45,7 +44,7 @@ object ContinuousSelectionHelper {
     ): Boolean {
         if (startDate.yearMonth == endDate.yearMonth) return false
         if (inDate.yearMonth == startDate.yearMonth) return true
-        val firstDateInThisMonth = inDate.yearMonth.plusMonths(1).atDay(1)
+        val firstDateInThisMonth = inDate.yearMonth.plusMonths(1).onDay(1)
         return firstDateInThisMonth in startDate..endDate && startDate != firstDateInThisMonth
     }
 
@@ -56,7 +55,7 @@ object ContinuousSelectionHelper {
     ): Boolean {
         if (startDate.yearMonth == endDate.yearMonth) return false
         if (outDate.yearMonth == endDate.yearMonth) return true
-        val lastDateInThisMonth = outDate.yearMonth.minusMonths(1).atEndOfMonth()
+        val lastDateInThisMonth = outDate.yearMonth.minusMonths(1).lastDay
         return lastDateInThisMonth in startDate..endDate && endDate != lastDateInThisMonth
     }
 }

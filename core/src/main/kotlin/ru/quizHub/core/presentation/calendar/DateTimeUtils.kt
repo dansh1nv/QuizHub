@@ -1,8 +1,8 @@
 package ru.quizHub.core.presentation.calendar
 
-import com.kizitonwose.calendar.core.YearMonth
 import kotlinx.datetime.DayOfWeek
 import kotlinx.datetime.Month
+import kotlinx.datetime.YearMonth
 
 
 fun YearMonth.displayText(short: Boolean = false): String {
