@@ -25,8 +25,16 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
             isMinifyEnabled = false
+            isDebuggable = true
+        }
+
+        release {
+            isMinifyEnabled = true
+            isDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -38,9 +46,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
-     
+
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 
     packaging {
@@ -78,4 +87,5 @@ dependencies {
     implementation(project(":features:profile"))
 
     debugImplementation(libs.leak.canary)
+    debugImplementation(libs.timber)
 }
