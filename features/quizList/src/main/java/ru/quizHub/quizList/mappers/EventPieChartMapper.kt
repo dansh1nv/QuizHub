@@ -50,6 +50,7 @@ object EventPieChartMapper {
             Organization.SQUIZ -> customColors.blue
             Organization.SHAKER_QUIZ -> customColors.purple
             Organization.RUDA_GAMES -> customColors.orange
+            Organization.WOW_QUIZ -> customColors.green
         }
     }
 }

@@ -25,4 +25,8 @@ enum class TagModel(
         title = R.string.filter_id_ruda_games,
         tag = TagColor.ORANGE
     ),
+    WOW_QUIZ(
+        title = R.string.filter_id_wow_quiz,
+        tag = TagColor.GREEN
+    ),
 }

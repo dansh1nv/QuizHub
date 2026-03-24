@@ -23,10 +23,12 @@ import ru.quizHub.quizApi.Urls.BASE_QUIZ_PLEASE_URL
 import ru.quizHub.quizApi.Urls.BASE_RUDA_GAMES_URL
 import ru.quizHub.quizApi.Urls.BASE_SHAKER_URL
 import ru.quizHub.quizApi.Urls.BASE_SQUIZ_URL
+import ru.quizHub.quizApi.Urls.BASE_WOW_QUIZ_URL
 import ru.quizHub.quizApi.api.QuizPleaseApi
 import ru.quizHub.quizApi.api.RudaGamesApi
 import ru.quizHub.quizApi.api.ShakerQuizApi
 import ru.quizHub.quizApi.api.SquizApi
+import ru.quizHub.quizApi.api.WowQuizApi
 
 val QUIZ_PLEASE_KTOR = named("QUIZ_PLEASE_KTOR")
 val SQUIZ_KTOR = named("SQUIZ_KTOR")
@@ -74,6 +76,22 @@ fun apiModule() = module {
                 url {
                     protocol = URLProtocol.HTTPS
                     host = BASE_QUIZ_PLEASE_URL
+                }
+            }
+        }
+    }
+    single<HttpClient>(qualifier = WOW_QUIZ_KTOR) {
+        val engine = HttpClientFactory().createEngine()
+        HttpClient(engine) {
+            install(ContentNegotiation) { json(get()) }
+            install(Logging) {
+                level = LogLevel.ALL
+                logger = Logger.SIMPLE
+            }
+            defaultRequest {
+                url {
+                    protocol = URLProtocol.HTTPS
+                    host = BASE_WOW_QUIZ_URL
                 }
             }
         }
@@ -135,6 +153,7 @@ fun apiModule() = module {
     single<HttpClientConfig<OkHttpConfig>> { HttpClientConfig() }
     single<SquizApi> { SquizApi(httpClient = get(qualifier = SQUIZ_KTOR), get()) }
     single<QuizPleaseApi> { QuizPleaseApi(httpClient = get(qualifier = QUIZ_PLEASE_KTOR)) }
+    single<WowQuizApi> { WowQuizApi(httpClient = get(qualifier = WOW_QUIZ_KTOR)) }
     single<ShakerQuizApi> { ShakerQuizApi(httpClient = get(qualifier = SHAKER_QUIZ_KTOR)) }
     single<RudaGamesApi> { RudaGamesApi(httpClient = get(qualifier = RUDA_GAMES_KTOR)) }
     single<GeocodingService> { GeocodingService(client = get(qualifier = GEO_SERVICE)) }

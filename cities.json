@@ -22,7 +22,8 @@
         "minimum": 1
       },
       "name": "Волгоград",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://vlg.wowquiz.ru"
     },
     {
       "id": 3,
@@ -32,7 +33,8 @@
         "minimum": 1
       },
       "name": "Евпатория",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://evpator.wowquiz.ru"
     },
     {
       "id": 4,
@@ -44,7 +46,8 @@
         "minimum": 1
       },
       "name": "Красноярск",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://krs.wowquiz.ru"
     },
     {
       "id": 5,
@@ -54,7 +57,8 @@
         "minimum": 1
       },
       "name": "Курск",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://kursk.wowquiz.ru"
     },
     {
       "id": 6,
@@ -65,7 +69,8 @@
         "minimum": 1
       },
       "name": "Люберцы",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://lub.wowquiz.ru"
     },
     {
       "id": 7,
@@ -77,7 +82,8 @@
         "minimum": 1
       },
       "name": "Киров",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://kirov.wowquiz.ru"
     },
     {
       "id": 8,
@@ -99,7 +105,8 @@
         "minimum": 1
       },
       "name": "Новороссийск",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://nvrsk.wowquiz.ru"
     },
     {
       "id": 10,
@@ -109,7 +116,8 @@
         "minimum": 1
       },
       "name": "Олонец",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://olonec.wowquiz.ru"
     },
     {
       "id": 11,
@@ -121,7 +129,8 @@
         "minimum": 1
       },
       "name": "Архангельск",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://arh.wowquiz.ru"
     },
     {
       "id": 12,
@@ -133,7 +142,8 @@
         "minimum": 1
       },
       "name": "Саратов",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://saratov.wowquiz.ru"
     },
     {
       "id": 13,
@@ -145,7 +155,8 @@
         "minimum": 1
       },
       "name": "Саранск",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://sr.wowquiz.ru"
     },
     {
       "id": 14,
@@ -157,7 +168,8 @@
         "minimum": 1
       },
       "name": "Ижевск",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://izh.wowquiz.ru"
     },
     {
       "id": 15,
@@ -168,7 +180,8 @@
         "minimum": 1
       },
       "name": "Орёл",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://orel.wowquiz.ru"
     },
     {
       "id": 16,
@@ -178,7 +191,8 @@
         "minimum": 1
       },
       "name": "Череповец",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://cher.wowquiz.ru"
     },
     {
       "id": 17,
@@ -188,7 +202,8 @@
         "minimum": 1
       },
       "name": "Керчь",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://kerch.wowquiz.ru"
     },
     {
       "id": 18,
@@ -200,7 +215,8 @@
         "minimum": 1
       },
       "name": "Владимир",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://vld.wowquiz.ru"
     },
     {
       "id": 19,
@@ -211,7 +227,8 @@
         "minimum": 1
       },
       "name": "Вологда",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://vologda.wowquiz.ru"
     },
     {
       "id": 20,
@@ -222,7 +239,8 @@
         "minimum": 1
       },
       "name": "Зеленоград",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://zgd.wowquiz.ru"
     },
     {
       "id": 21,
@@ -243,7 +261,8 @@
         "minimum": 4
       },
       "name": "Мурманск",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://mrm.wowquiz.ru"
     },
     {
       "id": 23,
@@ -254,7 +273,8 @@
         "minimum": 1
       },
       "name": "Нижнекамск",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://nk.wowquiz.ru"
     },
     {
       "id": 24,
@@ -317,7 +337,8 @@
         "minimum": 1
       },
       "name": "Абакан",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://abk.wowquiz.ru"
     },
     {
       "id": 30,
@@ -329,7 +350,8 @@
         "minimum": 1
       },
       "name": "Петрозаводск",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://ptz.wowquiz.ru"
     },
     {
       "id": 31,
@@ -340,7 +362,8 @@
         "minimum": 1
       },
       "name": "Севастополь",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://svs.wowquiz.ru"
     },
     {
       "id": 32,
@@ -351,7 +374,8 @@
         "minimum": 2
       },
       "name": "Таганрог",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://tgn.wowquiz.ru"
     },
     {
       "id": 33,
@@ -362,7 +386,8 @@
         "minimum": 1
       },
       "name": "Армавир",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://arm.wowquiz.ru"
     },
     {
       "id": 34,
@@ -392,7 +417,8 @@
         "minimum": 1
       },
       "name": "Чусовой",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://chus.wowquiz.ru"
     },
     {
       "id": 37,
@@ -404,7 +430,8 @@
         "minimum": 1
       },
       "name": "Тверь",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://tver.wowquiz.ru"
     },
     {
       "id": 38,
@@ -414,7 +441,8 @@
         "minimum": 1
       },
       "name": "Видное",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://vdn.wowquiz.ru"
     },
     {
       "id": 39,
@@ -424,7 +452,8 @@
         "minimum": 1
       },
       "name": "Вышний Волочек",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://vysh-vol.wowquiz.ru"
     },
     {
       "id": 40,
@@ -457,7 +486,8 @@
         "minimum": 1
       },
       "name": "Калуга",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://kaluga.wowquiz.ru"
     },
     {
       "id": 43,
@@ -468,7 +498,8 @@
         "minimum": 1
       },
       "name": "Волжский",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://vlz.wowquiz.ru"
     },
     {
       "id": 44,
@@ -490,7 +521,8 @@
         "minimum": 1
       },
       "name": "Тула",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://tula.wowquiz.ru"
     },
     {
       "id": 46,
@@ -512,7 +544,8 @@
         "minimum": 1
       },
       "name": "Тольятти",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://tlt.wowquiz.ru"
     },
     {
       "id": 48,
@@ -522,7 +555,8 @@
         "minimum": 1
       },
       "name": "Ялта",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://yalta.wowquiz.ru"
     },
     {
       "id": 49,
@@ -534,7 +568,8 @@
         "minimum": 1
       },
       "name": "Краснодар",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://krd.wowquiz.ru"
     },
     {
       "id": 50,
@@ -546,7 +581,8 @@
         "minimum": 1
       },
       "name": "Тюмень",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://tmn.wowquiz.ru"
     },
     {
       "id": 51,
@@ -558,7 +594,8 @@
         "minimum": 2
       },
       "name": "Пермь",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://perm.wowquiz.ru"
     },
     {
       "id": 52,
@@ -580,7 +617,8 @@
         "minimum": 1
       },
       "name": "Ковров",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://kvrv.wowquiz.ru"
     },
     {
       "id": 54,
@@ -600,7 +638,8 @@
         "minimum": 1
       },
       "name": "Колпино",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://klp.wowquiz.ru"
     },
     {
       "id": 56,
@@ -622,7 +661,8 @@
         "minimum": 1
       },
       "name": "Нижний Тагил",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://tagil.wowquiz.ru"
     },
     {
       "id": 58,
@@ -655,7 +695,8 @@
         "minimum": 1
       },
       "name": "Самара",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://samara.wowquiz.ru"
     },
     {
       "id": 61,
@@ -686,7 +727,8 @@
         "minimum": 1
       },
       "name": "Первоуральск",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://prv.wowquiz.ru"
     },
     {
       "id": 64,
@@ -719,7 +761,8 @@
         "minimum": 1
       },
       "name": "Екатеринбург",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://ekb.wowquiz.ru"
     },
     {
       "id": 67,
@@ -730,7 +773,8 @@
         "minimum": 1
       },
       "name": "Кемерово",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://kem.wowquiz.ru"
     },
     {
       "id": 68,
@@ -752,7 +796,8 @@
         "minimum": 1
       },
       "name": "Тамбов",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://tmb.wowquiz.ru"
     },
     {
       "id": 70,
@@ -782,7 +827,8 @@
         "minimum": 1
       },
       "name": "Пушкин",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://push.wowquiz.ru"
     },
     {
       "id": 73,
@@ -793,7 +839,8 @@
         "minimum": 1
       },
       "name": "Чайковский",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://chaik.wowquiz.ru"
     },
     {
       "id": 74,
@@ -805,7 +852,8 @@
         "minimum": 1
       },
       "name": "Казань",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://kazan.wowquiz.ru"
     },
     {
       "id": 75,
@@ -817,7 +865,8 @@
         "minimum": 1
       },
       "name": "Челябинск",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://che.wowquiz.ru"
     },
     {
       "id": 76,
@@ -829,7 +878,8 @@
         "minimum": 1
       },
       "name": "Нижний Новгород",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://nn.wowquiz.ru"
     },
     {
       "id": 77,
@@ -851,7 +901,8 @@
         "minimum": 1
       },
       "name": "Новосибирск",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://nsk.wowquiz.ru"
     },
     {
       "id": 79,
@@ -872,7 +923,8 @@
         "minimum": 1
       },
       "name": "Набережные Челны",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://chelny.wowquiz.ru"
     },
     {
       "id": 81,
@@ -883,7 +935,8 @@
         "minimum": 1
       },
       "name": "Коломна",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://klmn.wowquiz.ru"
     },
     {
       "id": 82,
@@ -906,7 +959,8 @@
         "minimum": 1
       },
       "name": "Ставрополь",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://stv.wowquiz.ru"
     },
     {
       "id": 84,
@@ -917,7 +971,8 @@
         "minimum": 1
       },
       "name": "Хабаровск",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://khv.wowquiz.ru"
     },
     {
       "id": 85,
@@ -938,7 +993,8 @@
         "minimum": 1
       },
       "name": "Симферополь",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://simf.wowquiz.ru"
     },
     {
       "id": 87,
@@ -958,7 +1014,8 @@
         "minimum": 1
       },
       "name": "Судогда",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://sdg.wowquiz.ru"
     },
     {
       "id": 89,
@@ -969,7 +1026,8 @@
         "minimum": 1
       },
       "name": "Нижневартовск",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://nv.wowquiz.ru"
     },
     {
       "id": 90,
@@ -1001,7 +1059,8 @@
         "minimum": 1
       },
       "name": "Астрахань",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://astra.wowquiz.ru"
     },
     {
       "id": 93,
@@ -1011,7 +1070,8 @@
         "minimum": 1
       },
       "name": "Лодейное поле",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://lp.wowquiz.ru"
     },
     {
       "id": 94,
@@ -1022,7 +1082,8 @@
         "minimum": 1
       },
       "name": "Балашиха",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://blsh.wowquiz.ru"
     },
     {
       "id": 95,
@@ -1033,7 +1094,8 @@
         "minimum": 1
       },
       "name": "Владивосток",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://wowdivostok.wowquiz.ru"
     },
     {
       "id": 96,
@@ -1044,7 +1106,8 @@
         "minimum": 1
       },
       "name": "Чебоксары",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://cheb.wowquiz.ru"
     },
     {
       "id": 97,
@@ -1056,7 +1119,8 @@
         "minimum": 1
       },
       "name": "Ростов-на-Дону",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://rnd.wowquiz.ru"
     },
     {
       "id": 98,
@@ -1067,7 +1131,8 @@
         "minimum": 1
       },
       "name": "Йошкар-Ола",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://yo.wowquiz.ru"
     },
     {
       "id": 99,
@@ -1079,7 +1144,8 @@
         "minimum": 1
       },
       "name": "Сочи",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://sochi.wowquiz.ru"
     },
     {
       "id": 100,
@@ -1091,7 +1157,8 @@
         "minimum": 1
       },
       "name": "Сургут",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://surgut.wowquiz.ru"
     },
     {
       "id": 101,
@@ -1103,7 +1170,8 @@
         "minimum": 1
       },
       "name": "Москва",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://wowquiz.ru"
     },
     {
       "id": 102,
@@ -1115,7 +1183,8 @@
         "minimum": 1
       },
       "name": "Петропавловск-Камчатский",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://pk.wowquiz.ru"
     },
     {
       "id": 103,
@@ -1170,7 +1239,8 @@
         "minimum": 1
       },
       "name": "Калининград",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://kalin.wowquiz.ru"
     },
     {
       "id": 108,
@@ -1202,7 +1272,8 @@
         "minimum": 1
       },
       "name": "Сыктывкар",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://syk.wowquiz.ru"
     },
     {
       "id": 111,
@@ -1215,7 +1286,8 @@
         "minimum": 1
       },
       "name": "Санкт-Петербург",
-      "country": "RU"
+      "country": "RU",
+      "wowQuizDomain": "https://spb.wowquiz.ru"
     },
     {
       "id": 112,

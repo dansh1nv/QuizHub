@@ -8,7 +8,8 @@ enum class TagColor {
     ORANGE,
     PURPLE,
     BLUE,
-    RED
+    RED,
+    GREEN,
 }
 
 @Composable
@@ -18,6 +19,7 @@ fun TagColor.toBackgroundColor(): Color {
         TagColor.PURPLE -> QuizHubTheme.customColor.purple
         TagColor.BLUE -> QuizHubTheme.customColor.blue
         TagColor.RED -> QuizHubTheme.customColor.red
+        TagColor.GREEN -> QuizHubTheme.customColor.green
     }
 }
 
@@ -28,5 +30,6 @@ fun TagColor.toTextColor(): Color {
         TagColor.PURPLE -> QuizHubTheme.customColor.white
         TagColor.BLUE -> QuizHubTheme.customColor.white
         TagColor.RED -> QuizHubTheme.customColor.white
+        TagColor.GREEN -> QuizHubTheme.customColor.darkPurple
     }
 }

@@ -10,23 +10,27 @@ import ru.quizHub.quizList.datasource.rudaGames.RudaGamesRemoteDataSource
 import ru.quizHub.quizList.datasource.shakerQuiz.ShakerQuizRemoteDataSource
 import ru.quizHub.quizList.datasource.squiz.LocalDataSource
 import ru.quizHub.quizList.datasource.squiz.SquizRemoteDataSource
+import ru.quizHub.quizList.datasource.wowQuiz.WowQuizRemoteDataSource
 import ru.quizHub.quizList.mappers.CommonDataMapper
 import ru.quizHub.quizList.mappers.QuizPleaseDataMapper
 import ru.quizHub.quizList.mappers.RudaGamesDataMapper
 import ru.quizHub.quizList.mappers.ShakerQuizDataMapper
 import ru.quizHub.quizList.mappers.SquizDataMapper
+import ru.quizHub.quizList.mappers.WowQuizDataMapper
 import ru.quizHub.quizList.repositories.CommonRepository
 import ru.quizHub.quizList.repositories.QuizListRepository
 import ru.quizHub.quizList.repositories.QuizPleaseRepository
 import ru.quizHub.quizList.repositories.RudaGamesRepository
 import ru.quizHub.quizList.repositories.ShakerQuizRepository
 import ru.quizHub.quizList.repositories.SquizRepository
+import ru.quizHub.quizList.repositories.WowQuizRepository
 import ru.quizHub.quizlist.repository.ICommonRepository
 import ru.quizHub.quizlist.repository.IQuizListRepository
 import ru.quizHub.quizlist.repository.IQuizPleaseRepository
 import ru.quizHub.quizlist.repository.IRudaGamesRepository
 import ru.quizHub.quizlist.repository.ISQuizRepository
 import ru.quizHub.quizlist.repository.IShakerQuizRepository
+import ru.quizHub.quizlist.repository.IWowQuizRepository
 
 fun quizDataModule() = module {
 
@@ -46,6 +50,10 @@ fun quizDataModule() = module {
     factoryOf(::RudaGamesDataMapper)
     factoryOf(::RudaGamesRemoteDataSource)
     singleOf(::RudaGamesRepository) bind IRudaGamesRepository::class
+
+    factoryOf(::WowQuizDataMapper)
+    factoryOf(::WowQuizRemoteDataSource)
+    singleOf(::WowQuizRepository) bind IWowQuizRepository::class
 
     factoryOf(::CommonDataMapper)
     factoryOf(::GeoInfoRemoteDataSource)

@@ -26,7 +26,8 @@ class CommonDataMapper {
             rudaGamesId = entity.rudaGamesId,
             shakerQuizId = entity.shakerQuizId,
             countryCode = entity.country.orEmpty(),
-            shakerTeamSize = entity.shakerTeamSize?.let(::mapShakerTeamSize)
+            shakerTeamSize = entity.shakerTeamSize?.let(::mapShakerTeamSize),
+            wowQuizDomain = entity.wowQuizDomain,
         )
     }
 

@@ -17,6 +17,7 @@ data class CityDTO(
     val squizId: Long? = null,
     val shakerTeamSize: TeamSizeDTO? = null,
     val country: String? = null,
+    val wowQuizDomain: String? = null,
 )
 
 @Serializable

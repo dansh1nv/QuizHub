@@ -11,6 +11,7 @@ data class CityModel(
     val shakerQuizId: String?,
     val countryCode: String?,
     val shakerTeamSize: ShakerTeamSize?,
+    val wowQuizDomain: String?,
     val isSearchVisible: Boolean,
     val isSelected: Boolean,
 ) {
@@ -26,6 +27,7 @@ data class CityModel(
             rudaGamesId = null,
             countryCode = "RU",
             shakerTeamSize = null,
+            wowQuizDomain = null,
         )
     }
 }

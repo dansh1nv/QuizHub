@@ -34,6 +34,7 @@ class CommonMapper(
             rudaGamesId = city.rudaGamesId,
             countryCode = city.countryCode,
             shakerTeamSize = city.shakerTeamSize,
+            wowQuizDomain = city.wowQuizDomain,
             isSearchVisible = true,
             isSelected = false,
         )
@@ -48,7 +49,8 @@ class CommonMapper(
             quizPleaseId = city.quizPleaseId,
             rudaGamesId = city.rudaGamesId,
             countryCode = city.countryCode.orEmpty(),
-            shakerTeamSize = city.shakerTeamSize
+            shakerTeamSize = city.shakerTeamSize,
+            wowQuizDomain = city.wowQuizDomain,
         )
     }
 
