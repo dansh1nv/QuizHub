@@ -1,10 +1,7 @@
 package ru.quizHub.quizApi.di
 
 import io.ktor.client.HttpClient
-import io.ktor.client.HttpClientConfig
-import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.cio.CIO
-import io.ktor.client.engine.okhttp.OkHttpConfig
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.defaultRequest
@@ -18,12 +15,12 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import ru.quizHub.quizApi.api.GeocodingService
 import ru.quizHub.quizApi.Urls.BASE_QUIZ_PLEASE_URL
 import ru.quizHub.quizApi.Urls.BASE_RUDA_GAMES_URL
 import ru.quizHub.quizApi.Urls.BASE_SHAKER_URL
 import ru.quizHub.quizApi.Urls.BASE_SQUIZ_URL
 import ru.quizHub.quizApi.Urls.BASE_WOW_QUIZ_URL
+import ru.quizHub.quizApi.api.GeocodingService
 import ru.quizHub.quizApi.api.QuizPleaseApi
 import ru.quizHub.quizApi.api.RudaGamesApi
 import ru.quizHub.quizApi.api.ShakerQuizApi
@@ -49,8 +46,12 @@ fun apiModule() = module {
     }
 
     single<HttpClient>(qualifier = SQUIZ_KTOR) {
-        val engine = HttpClientFactory().createEngine()
-        HttpClient(engine) {
+        HttpClient(get<HttpClientFactory>().createEngine()) {
+            install(HttpTimeout) {
+                connectTimeoutMillis = 15_000
+                requestTimeoutMillis = 30_000
+                socketTimeoutMillis = 15_000
+            }
             install(ContentNegotiation) { json(get()) }
             install(Logging) {
                 level = LogLevel.ALL
@@ -65,8 +66,12 @@ fun apiModule() = module {
         }
     }
     single<HttpClient>(qualifier = QUIZ_PLEASE_KTOR) {
-        val engine = HttpClientFactory().createEngine()
-        HttpClient(engine) {
+        HttpClient(get<HttpClientFactory>().createEngine()) {
+            install(HttpTimeout) {
+                connectTimeoutMillis = 15_000
+                requestTimeoutMillis = 30_000
+                socketTimeoutMillis = 15_000
+            }
             install(ContentNegotiation) { json(get()) }
             install(Logging) {
                 level = LogLevel.ALL
@@ -81,8 +86,12 @@ fun apiModule() = module {
         }
     }
     single<HttpClient>(qualifier = WOW_QUIZ_KTOR) {
-        val engine = HttpClientFactory().createEngine()
-        HttpClient(engine) {
+        HttpClient(get<HttpClientFactory>().createEngine()) {
+            install(HttpTimeout) {
+                connectTimeoutMillis = 15_000
+                requestTimeoutMillis = 30_000
+                socketTimeoutMillis = 15_000
+            }
             install(ContentNegotiation) { json(get()) }
             install(Logging) {
                 level = LogLevel.ALL
@@ -97,8 +106,12 @@ fun apiModule() = module {
         }
     }
     single<HttpClient>(qualifier = SHAKER_QUIZ_KTOR) {
-        val engine = HttpClientFactory().createEngine()
-        HttpClient(engine) {
+        HttpClient(get<HttpClientFactory>().createEngine()) {
+            install(HttpTimeout) {
+                connectTimeoutMillis = 15_000
+                requestTimeoutMillis = 30_000
+                socketTimeoutMillis = 15_000
+            }
             install(ContentNegotiation) { json(get()) }
             install(Logging) {
                 level = LogLevel.ALL
@@ -113,8 +126,12 @@ fun apiModule() = module {
         }
     }
     single<HttpClient>(qualifier = RUDA_GAMES_KTOR) {
-        val engine = HttpClientFactory().createEngine()
-        HttpClient(engine) {
+        HttpClient(get<HttpClientFactory>().createEngine()) {
+            install(HttpTimeout) {
+                connectTimeoutMillis = 15_000
+                requestTimeoutMillis = 30_000
+                socketTimeoutMillis = 15_000
+            }
             install(ContentNegotiation) { json(get()) }
             install(Logging) {
                 level = LogLevel.ALL
@@ -133,6 +150,7 @@ fun apiModule() = module {
             install(HttpTimeout) {
                 connectTimeoutMillis = 10_000
                 requestTimeoutMillis = 20_000
+                socketTimeoutMillis = 15_000
             }
             install(ContentNegotiation) { json(get()) }
             install(Logging) {
@@ -149,8 +167,6 @@ fun apiModule() = module {
         }
     }
 
-    single<HttpClientEngine> { CIO.create() }
-    single<HttpClientConfig<OkHttpConfig>> { HttpClientConfig() }
     single<SquizApi> { SquizApi(httpClient = get(qualifier = SQUIZ_KTOR), get()) }
     single<QuizPleaseApi> { QuizPleaseApi(httpClient = get(qualifier = QUIZ_PLEASE_KTOR)) }
     single<WowQuizApi> { WowQuizApi(httpClient = get(qualifier = WOW_QUIZ_KTOR)) }

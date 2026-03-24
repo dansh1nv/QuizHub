@@ -20,6 +20,10 @@ class WowQuizApi(
         page: Int = 1,
         upcoming: Int = 1,
     ) = flow {
+        if (domain.isBlank()) {
+            emit(emptyList())
+            return@flow
+        }
         val httpRequest = httpClient.get {
             url {
                 path(PATH)

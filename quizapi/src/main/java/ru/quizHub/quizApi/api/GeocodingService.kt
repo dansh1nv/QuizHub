@@ -12,31 +12,37 @@ import ru.quizHub.quizApi.model.base.GeoInfoDTO
 
 /**
  * Ссылка на используемое Api - https://nominatim.org/release-docs/develop/api/Overview/
- * */
+ */
 class GeocodingService(
     private val client: HttpClient
 ) {
-    //TODO:Добавить обработку ошибок в сетевых запросах
     /**
-     *  Прямой запрос
+     * Прямой запрос
      *
-     *  [query] - формат запроса Страна (необязательно), Город, улица, дом
+     * [query] — формат запроса: страна (необязательно), город, улица, дом.
+     * Например: "Краснодар, Красная, 5"
      *
-     *  Например: "Краснодар, Красная, 5"
-     * */
+     * Пустой [query] — [IllegalArgumentException].
+     * Пустой ответ Nominatim — [NoSuchElementException] (как раньше при [List.first]).
+     */
     fun getGeoInfo(query: String): Flow<GeoInfoDTO> = flow {
+        val trimmed = query.trim()
+        require(trimmed.isNotEmpty()) { "Geo query must not be blank" }
         val response = client.get {
             url {
                 path(SEARCH_PATH)
                 parameters.apply {
                     append(FORMAT, JSON_PARAM)
-                    append(QUERY, query)
+                    append(QUERY, trimmed)
                     append(LIMIT, "1")
                     append(ADDRESS_DETAILS, "1")
                 }
             }
         }.body<List<GeoInfoDTO>>()
-        emit(response.first())
+        emit(
+            response.firstOrNull()
+                ?: throw NoSuchElementException("Nominatim: no results for \"$trimmed\"")
+        )
     }.flowOn(Dispatchers.IO)
 
     /**
