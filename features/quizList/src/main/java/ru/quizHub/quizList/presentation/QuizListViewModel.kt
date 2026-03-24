@@ -3,10 +3,12 @@ package ru.quizHub.quizList.presentation
 import android.content.ActivityNotFoundException
 import androidx.compose.runtime.Immutable
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
@@ -25,18 +27,11 @@ import ru.quizHub.core.presentation.model.UIStatus
 import ru.quizHub.core.presentation.viewModel.BaseMviViewModel
 import ru.quizHub.core.resourceManager.IResourceManager
 import ru.quizHub.designsystem.theme.bottomsheet.controller.BottomSheetController
-import ru.quizHub.designsystem.theme.bottomsheet.model.QuizBottomSheetModel.Toolbar
-import ru.quizHub.designsystem.theme.bottomsheet.model.QuizBottomSheetModel.Toolbar.IconModel
-import ru.quizHub.designsystem.theme.utils.`typealias`.UIDrawable
 import ru.quizHub.quizList.R
 import ru.quizHub.quizList.mappers.ActionEventsMapper
 import ru.quizHub.quizList.mappers.CommonMapper
 import ru.quizHub.quizList.mappers.EventPieChartMapper
-import ru.quizHub.quizList.mappers.QuizPleaseMapper
-import ru.quizHub.quizList.mappers.RudaGamesMapper
-import ru.quizHub.quizList.mappers.ShakerQuizMapper
-import ru.quizHub.quizList.mappers.SquizMapper
-import ru.quizHub.quizList.mappers.WowQuizMapper
+import ru.quizHub.quizList.mappers.QuizListUIMapper
 import ru.quizHub.quizList.models.CityModel
 import ru.quizHub.quizList.models.bottomsheet.BottomSheetModels
 import ru.quizHub.quizList.models.item.Organization
@@ -45,11 +40,6 @@ import ru.quizHub.quizList.models.sorting.Sort
 import ru.quizHub.quizlist.interactors.CommonInteractor
 import ru.quizHub.quizlist.interactors.GeoInfoInteractor
 import ru.quizHub.quizlist.interactors.QuizListInteractor
-import ru.quizHub.quizlist.models.QuizPlease
-import ru.quizHub.quizlist.models.RudaGames
-import ru.quizHub.quizlist.models.SQuiz
-import ru.quizHub.quizlist.models.ShakerQuiz
-import ru.quizHub.quizlist.models.WowQuiz
 import timber.log.Timber
 
 internal class QuizListViewModel(
@@ -57,11 +47,8 @@ internal class QuizListViewModel(
     private val geoInfoInteractor: GeoInfoInteractor,
     private val commonInteractor: CommonInteractor,
     private val commonMapper: CommonMapper,
-    private val squizMapper: SquizMapper,
-    private val quizPleaseMapper: QuizPleaseMapper,
-    private val shakerQuizMapper: ShakerQuizMapper,
-    private val rudaGamesMapper: RudaGamesMapper,
-    private val wowQuizMapper: WowQuizMapper,
+    private val quizListUIMapper: QuizListUIMapper,
+    private val eventPieChartMapper: EventPieChartMapper,
     private val actionEventsMapper: ActionEventsMapper,
     private val intentErrorMapper: IntentErrorMapper,
     private val resourceManager: IResourceManager,
@@ -71,6 +58,9 @@ internal class QuizListViewModel(
 ) : BaseMviViewModel<QuizListState, QuizListSideEffect, QuizListEvent>(
     initialState = QuizListState()
 ), BottomSheetController by bottomSheetController {
+
+    private var quizListFetchJob: Job? = null
+    private var geoInfoFetchJob: Job? = null
 
     override suspend fun onLaunch() {
         fetchCities()
@@ -91,6 +81,7 @@ internal class QuizListViewModel(
 
     private fun observeCurrentCity() {
         commonInteractor.observeCurrentCity()
+            .distinctUntilChanged()
             .onEach { cityName ->
                 updateState {
                     copy(
@@ -104,52 +95,49 @@ internal class QuizListViewModel(
     }
 
     private fun fetchQuizList() = completeAction {
-        viewModelScope.launch(SupervisorJob()) {
+        quizListFetchJob?.cancel()
+        quizListFetchJob = viewModelScope.launch {
             updateState {
                 copy(uiStatus = UIStatus.Loading)
             }
             val selectedCity = commonMapper.mapToCity(container.stateFlow.value.currentCity)
-            interactor.getAllQuizList(selectedCity)
-                .map { quizList ->
-                    quizList.map { quiz ->
-                        when (quiz) {
-                            is QuizPlease -> quizPleaseMapper.mapToQuizUI(quiz)
-                            is SQuiz -> squizMapper.mapToQuizUI(quiz)
-                            is ShakerQuiz -> shakerQuizMapper.mapToQuizUI(quiz)
-                            is RudaGames -> rudaGamesMapper.mapToQuizUI(quiz)
-                            is WowQuiz -> wowQuizMapper.mapToQuizUI(quiz)
+            try {
+                interactor.getAllQuizList(selectedCity)
+                    .map { quizList ->
+                        quizList.map { quizListUIMapper.mapToQuizUI(it) }
+                    }
+                    .catch { ex ->
+                        Timber.e(ex)
+                        updateState {
+                            copy(
+                                uiStatus = UIStatus.Error(
+                                    errorText =
+                                        resourceManager.getStringById(R.string.quiz_list_fetch_data_error)
+                                )
+                            )
                         }
                     }
-                }
-                .catch { ex ->
-                    Timber.e(ex)
-                    updateState {
-                        copy(
-                            uiStatus = UIStatus.Error(
-                                errorText =
-                                    resourceManager.getStringById(R.string.quiz_list_fetch_data_error)
+                    .flowOn(Dispatchers.Default)
+                    .onEach { quizList ->
+                        updateState {
+                            copy(
+                                quizList = quizList,
+                                uiStatus = if (quizList.isNotEmpty() && currentCity != CityModel.UNKNOWN) {
+                                    UIStatus.Loaded()
+                                } else {
+                                    UIStatus.Empty
+                                }
                             )
-                        )
+                        }
+                        completeAction {
+                            showQuizList()
+                        }
                     }
-                }
-                .flowOn(Dispatchers.Default)
-                .onEach { quizList ->
-                    updateState {
-                        copy(
-                            quizList = quizList,
-                            uiStatus = if (quizList.isNotEmpty() && currentCity != CityModel.UNKNOWN) {
-                                UIStatus.Loaded()
-                            } else {
-                                UIStatus.Empty
-                            }
-                        )
-                    }
-                    completeAction {
-                        showQuizList()
-                    }
-                }
-                .flowOn(Dispatchers.Main)
-                .launchIn(viewModelScope)
+                    .flowOn(Dispatchers.Main)
+                    .collect()
+            } catch (e: CancellationException) {
+                throw e
+            }
         }
     }
 
@@ -163,10 +151,7 @@ internal class QuizListViewModel(
             is ScreenEvent.OnTabClick -> updateCurrentTab(event.index)
             is ScreenEvent.OnRefresh -> refresh()
             is ScreenEvent.OnCalendarClick -> handleCalendarClick()
-            is ScreenEvent.OnCardItemClicked -> {
-                //Добавить экран детализации квиза
-                //navigateToQuizDetails(event.id)
-            }
+            is ScreenEvent.OnCardItemClicked -> navigateToQuizDetails(event.id)
 
             is ScreenEvent.OnScrollPositionChanged -> updateScrollUp(event.isScrollUpVisible)
             is ScreenEvent.OnShareEventClick -> handleShareEventClick(event.quiz)
@@ -229,7 +214,8 @@ internal class QuizListViewModel(
 
     private fun handleShowLocationEventClick(quiz: QuizUI) {
         val query = actionEventsMapper.buildGeoQuery(quiz)
-        geoInfoInteractor.getGeoInfoByQuery(query)
+        geoInfoFetchJob?.cancel()
+        geoInfoFetchJob = geoInfoInteractor.getGeoInfoByQuery(query)
             .map { geoInfo ->
                 val location = commonMapper.mapGeoLocation(
                     latitude = geoInfo.latitude.toString(),
@@ -281,15 +267,12 @@ internal class QuizListViewModel(
     private fun handleCalendarClick() {
         completeAction {
             val quizList = container.stateFlow.value.quizList
-            val calendarEvents = EventPieChartMapper.mapToCalendarEventsUI(quizList)
+            val calendarEvents = eventPieChartMapper.mapToCalendarEventsUI(quizList)
             bottomSheetController.show(
                 BottomSheetModels.CalendarBottomSheetModel(
-                    toolbar = Toolbar(
+                    toolbar = QuizListBottomSheetToolbar.withCloseButton(
                         title = resourceManager.getStringById(R.string.calendar_title),
-                        trailIcon = IconModel(
-                            UIDrawable.ic_remix_close,
-                            onClick = { dismiss() }
-                        )
+                        onCloseClick = { dismiss() },
                     ),
                     events = calendarEvents
                 )
@@ -300,12 +283,9 @@ internal class QuizListViewModel(
     private fun handleLocationClick() {
         bottomSheetController.show(
             BottomSheetModels.CityBottomSheetModel(
-                toolbar = Toolbar(
+                toolbar = QuizListBottomSheetToolbar.withCloseButton(
                     title = resourceManager.getStringById(R.string.city_bottomsheet_title),
-                    trailIcon = IconModel(
-                        UIDrawable.ic_remix_close,
-                        onClick = { dismiss() }
-                    ),
+                    onCloseClick = { dismiss() },
                 ),
             )
         )
@@ -330,12 +310,9 @@ internal class QuizListViewModel(
     private fun showFilters() {
         bottomSheetController.show(
             BottomSheetModels.FilterBottomSheetModel(
-                toolbar = Toolbar(
+                toolbar = QuizListBottomSheetToolbar.withCloseButton(
                     title = resourceManager.getStringById(R.string.filter_title),
-                    trailIcon = IconModel(
-                        iconRes = UIDrawable.ic_remix_close,
-                        onClick = { dismiss() }
-                    )
+                    onCloseClick = { dismiss() },
                 )
             )
         )
@@ -344,12 +321,9 @@ internal class QuizListViewModel(
     private fun showSorting() {
         bottomSheetController.show(
             BottomSheetModels.SortingBottomSheetModel(
-                toolbar = Toolbar(
+                toolbar = QuizListBottomSheetToolbar.withCloseButton(
                     title = resourceManager.getStringById(R.string.sorting_title),
-                    trailIcon = IconModel(
-                        iconRes = UIDrawable.ic_remix_close,
-                        onClick = { dismiss() }
-                    )
+                    onCloseClick = { dismiss() },
                 )
             )
         )
@@ -379,7 +353,7 @@ internal class QuizListViewModel(
     }
 
     private fun showQuizList() = updateState {
-        if (uiStatus !is UIStatus.Loaded) return@updateState this
+        if (uiStatus is UIStatus.Loading) return@updateState this
 
         val quizList = quizList.map { quiz ->
             quiz.copy(

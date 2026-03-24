@@ -6,10 +6,7 @@ import ru.quizHub.quizList.models.item.CalendarEventUI
 import ru.quizHub.quizList.models.item.Organization
 import ru.quizHub.quizList.models.item.QuizUI
 
-object EventPieChartMapper {
-    private const val GAP_ANGLE = 4f
-    private const val START_ANGLE = -90f
-    private const val MAX_ANGLE = 360f
+internal class EventPieChartMapper {
 
     fun mapToCalendarEventsUI(
         events: List<QuizUI>,
@@ -52,5 +49,11 @@ object EventPieChartMapper {
             Organization.RUDA_GAMES -> customColors.orange
             Organization.WOW_QUIZ -> customColors.green
         }
+    }
+
+    private companion object {
+        const val GAP_ANGLE = 4f
+        const val START_ANGLE = -90f
+        const val MAX_ANGLE = 360f
     }
 }

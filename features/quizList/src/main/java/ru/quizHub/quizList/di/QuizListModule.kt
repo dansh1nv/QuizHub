@@ -4,6 +4,8 @@ import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 import ru.quizHub.quizList.mappers.ActionEventsMapper
 import ru.quizHub.quizList.mappers.CommonMapper
+import ru.quizHub.quizList.mappers.EventPieChartMapper
+import ru.quizHub.quizList.mappers.QuizListUIMapper
 import ru.quizHub.quizList.mappers.QuizPleaseMapper
 import ru.quizHub.quizList.mappers.RudaGamesMapper
 import ru.quizHub.quizList.mappers.ShakerQuizMapper
@@ -17,6 +19,8 @@ fun quizListModule() = module {
     factoryOf(::ShakerQuizMapper)
     factoryOf(::RudaGamesMapper)
     factoryOf(::WowQuizMapper)
+    factoryOf(::QuizListUIMapper)
+    factoryOf(::EventPieChartMapper)
     factoryOf(::CommonMapper)
     factoryOf(::ActionEventsMapper)
     factoryOf(::QuizListViewModel)
