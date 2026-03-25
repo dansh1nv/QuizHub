@@ -50,7 +50,9 @@ class QuizHubApplication : Application() {
     }
 
     private fun initTimber() {
-        Timber.plant(Timber.DebugTree())
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
     }
 
 }

@@ -28,6 +28,7 @@ import androidx.core.net.toUri
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -35,7 +36,6 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.compose.KoinContext
 import ru.quizHub.core.presentation.ActionEventsListener
 import ru.quizHub.core.presentation.IntentErrorMapper
 import ru.quizHub.core.presentation.SnackbarListener
@@ -53,12 +53,12 @@ import ru.quizHub.settings.presentation.ThemeManager
 
 class MainActivity : ComponentActivity() {
 
+    @Suppress("unused")
     private val viewModel by viewModel<MainActivityViewModel>()
     private val actionEventsListener by inject<ActionEventsListener>()
     private val snackbarListener by inject<SnackbarListener>()
     private val intentErrorMapper by inject<IntentErrorMapper>()
     private val themeManager by inject<ThemeManager>()
-    private lateinit var snackbarHostState: SnackbarHostState
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -66,35 +66,10 @@ class MainActivity : ComponentActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         enableEdgeToEdge()
         setContent { QuizHubApp() }
-        observerGlobalEvents()
-        observerSnackbarEvents()
+        observeGlobalEvents()
     }
 
-    private fun observerSnackbarEvents() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                snackbarListener.observeSnackbarMessages().collect { event ->
-                    when (event) {
-                        is SnackbarEvents.ShowErrorSnackbar -> {
-                            showSnackbar(event.message)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun showSnackbar(message: String) {
-        lifecycleScope.launch {
-            snackbarHostState.showSnackbar(
-                message = message,
-                duration = SnackbarDuration.Short,
-                withDismissAction = false
-            )
-        }
-    }
-
-    private fun observerGlobalEvents() {
+    private fun observeGlobalEvents() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 actionEventsListener.observerActionEvents().collect { event ->
@@ -114,7 +89,7 @@ class MainActivity : ComponentActivity() {
             mapIntent,
             intentErrorMapper,
             onFailure = { errorMessage ->
-                showSnackbar(errorMessage)
+                snackbarListener.showSnackbar(SnackbarEvents.ShowErrorSnackbar(errorMessage))
             }
         )
     }
@@ -130,11 +105,11 @@ class MainActivity : ComponentActivity() {
         startIntentSafe(
             Intent.createChooser(
                 shareIntent,
-                ""
+                getString(R.string.share_chooser_title)
             ),
             intentErrorMapper,
             onFailure = { errorMessage ->
-                showSnackbar(errorMessage)
+                snackbarListener.showSnackbar(SnackbarEvents.ShowErrorSnackbar(errorMessage))
             }
         )
     }
@@ -142,57 +117,73 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     private fun QuizHubApp() {
-        KoinContext {
-            snackbarHostState = remember { SnackbarHostState() }
-            val navController = rememberNavController()
-            val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+        val snackbarHostState = remember { SnackbarHostState() }
+        val lifecycleOwner = LocalLifecycleOwner.current
 
-            val currentBackStackEntry by navController.currentBackStackEntryAsState()
-            val currentRoute = currentBackStackEntry?.destination?.route
-
-            val currentTheme by themeManager.currentTheme.collectAsState()
-            val themeMode by themeManager.themeMode.collectAsState()
-            val systemDarkMode = isSystemInDarkTheme()
-
-            LaunchedEffect(systemDarkMode, themeMode) {
-                if (themeMode == ThemeModeUI.System) {
-                    themeManager.handleSystemThemeChange(systemDarkMode)
+        LaunchedEffect(lifecycleOwner, snackbarListener) {
+            lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                snackbarListener.observeSnackbarMessages().collect { event ->
+                    when (event) {
+                        is SnackbarEvents.ShowErrorSnackbar -> {
+                            snackbarHostState.showSnackbar(
+                                message = event.message,
+                                duration = SnackbarDuration.Short,
+                                withDismissAction = false,
+                            )
+                        }
+                    }
                 }
             }
+        }
 
-            QuizHubTheme(
-                appTheme = currentTheme,
-            ) {
-                Scaffold(
+        val navController = rememberNavController()
+        val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+
+        val currentBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = currentBackStackEntry?.destination?.route
+
+        val currentTheme by themeManager.currentTheme.collectAsState()
+        val themeMode by themeManager.themeMode.collectAsState()
+        val systemDarkMode = isSystemInDarkTheme()
+
+        LaunchedEffect(systemDarkMode, themeMode) {
+            if (themeMode == ThemeModeUI.System) {
+                themeManager.handleSystemThemeChange(systemDarkMode)
+            }
+        }
+
+        QuizHubTheme(
+            appTheme = currentTheme,
+        ) {
+            Scaffold(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .statusBarsPadding()
+                    .navigationBarsPadding()
+                    .nestedScroll(scrollBehavior.nestedScrollConnection),
+                topBar = {
+                    TopAppBar(navController, scrollBehavior, currentRoute)
+                },
+                bottomBar = {
+                    NavigationAppBar(navController, currentRoute)
+                },
+                snackbarHost = {
+                    QuizHubSnackbar(
+                        hostState = snackbarHostState,
+                        modifier = Modifier
+                    )
+                },
+                containerColor = QuizHubTheme.colorScheme.surface
+            ) { paddingValues ->
+                Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .statusBarsPadding()
-                        .navigationBarsPadding()
-                        .nestedScroll(scrollBehavior.nestedScrollConnection),
-                    topBar = {
-                        TopAppBar(navController, scrollBehavior, currentRoute)
-                    },
-                    bottomBar = {
-                        NavigationAppBar(navController, currentRoute)
-                    },
-                    snackbarHost = {
-                        QuizHubSnackbar(
-                            hostState = snackbarHostState,
-                            modifier = Modifier
-                        )
-                    },
-                    containerColor = QuizHubTheme.colorScheme.surface
-                ) { paddingValues ->
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(paddingValues)
-                    ) {
-                        AppNavGraph(
-                            navController = navController,
-                            onCloseApp = { this@MainActivity.finish() }
-                        )
-                    }
+                        .padding(paddingValues)
+                ) {
+                    AppNavGraph(
+                        navController = navController,
+                        onCloseApp = { this@MainActivity.finish() }
+                    )
                 }
             }
         }

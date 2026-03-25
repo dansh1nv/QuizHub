@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">QuizHub</string>
+    <string name="share_chooser_title">Поделиться через</string>
 </resources>
