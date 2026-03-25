@@ -28,7 +28,7 @@ fun SettingsListItem(
     title: String,
     iconResId: Int,
     modifier: Modifier = Modifier,
-    iconTint: Color = QuizHubTheme.colorScheme.onPrimaryContainer,
+    iconTint: Color = QuizHubTheme.colorScheme.onSurface,
     onClick: () -> Unit = {},
 ) {
     val interactionSource = remember { MutableInteractionSource() }

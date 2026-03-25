@@ -7,10 +7,16 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
@@ -24,6 +30,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
@@ -39,6 +46,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.quizHub.core.presentation.ActionEventsListener
 import ru.quizHub.core.presentation.IntentErrorMapper
 import ru.quizHub.core.presentation.SnackbarListener
+import ru.quizHub.core.navigation.destinations.ThemeSettingsDestination
 import ru.quizHub.core.presentation.model.ActionEvents
 import ru.quizHub.core.presentation.model.SnackbarEvents
 import ru.quizHub.core.startIntentSafe
@@ -46,6 +54,7 @@ import ru.quizHub.designsystem.theme.elements.QuizHubSnackbar
 import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
 import ru.quizHub.quizhub.navigation.AppNavGraph
 import ru.quizHub.quizhub.navigation.navigationBar.NavigationAppBar
+import ru.quizHub.quizhub.navigation.navigationBar.NavigationAppBarItem
 import ru.quizHub.quizhub.navigation.topAppBar.TopAppBar
 import ru.quizHub.settings.models.ThemeModeUI
 import ru.quizHub.settings.presentation.ThemeManager
@@ -152,15 +161,24 @@ class MainActivity : ComponentActivity() {
             }
         }
 
+        val mainTabRoutes = remember {
+            setOf(
+                NavigationAppBarItem.QuizList.route,
+                NavigationAppBarItem.Profile.route,
+                NavigationAppBarItem.Settings.route,
+            )
+        }
+        val showsActivityTopBar = currentRoute == ThemeSettingsDestination.route
+        val showsBottomBar = currentRoute != null && currentRoute in mainTabRoutes
+
         QuizHubTheme(
             appTheme = currentTheme,
         ) {
             Scaffold(
                 modifier = Modifier
                     .fillMaxSize()
-                    .statusBarsPadding()
-                    .navigationBarsPadding()
                     .nestedScroll(scrollBehavior.nestedScrollConnection),
+                contentWindowInsets = WindowInsets(0.dp, 0.dp, 0.dp, 0.dp),
                 topBar = {
                     TopAppBar(navController, scrollBehavior, currentRoute)
                 },
@@ -179,6 +197,24 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(paddingValues)
+                        .then(
+                            if (!showsActivityTopBar) {
+                                Modifier.windowInsetsPadding(
+                                    WindowInsets.statusBars.only(WindowInsetsSides.Top)
+                                )
+                            } else {
+                                Modifier
+                            }
+                        )
+                        .then(
+                            if (!showsBottomBar) {
+                                Modifier.windowInsetsPadding(
+                                    WindowInsets.navigationBars.only(WindowInsetsSides.Bottom)
+                                )
+                            } else {
+                                Modifier
+                            }
+                        )
                 ) {
                     AppNavGraph(
                         navController = navController,
