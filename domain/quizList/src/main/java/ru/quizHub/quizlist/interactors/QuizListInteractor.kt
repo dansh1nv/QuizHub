@@ -8,5 +8,6 @@ import ru.quizHub.quizlist.repository.IQuizListRepository
 class QuizListInteractor(
     private val repository: IQuizListRepository,
 ) {
-    fun getAllQuizList(city: City): Flow<List<Quiz>> = repository.getAllQuizList(city)
+    fun getAllQuizList(city: City, forceRefresh: Boolean = false): Flow<List<Quiz>> =
+        repository.getAllQuizList(city, forceRefresh)
 }

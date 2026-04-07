@@ -76,7 +76,7 @@ internal class QuizListViewModel(
 
     private fun refresh() = viewModelScope.launch {
         fetchCities()
-        fetchQuizList()
+        fetchQuizList(forceRefresh = true)
     }
 
     private fun observeCurrentCity() {
@@ -90,19 +90,23 @@ internal class QuizListViewModel(
                             ?: CityModel.UNKNOWN
                     )
                 }
-                completeAction { fetchQuizList() }
+                completeAction { fetchQuizList(forceRefresh = false) }
             }.launchIn(viewModelScope)
     }
 
-    private fun fetchQuizList() = completeAction {
+    private fun fetchQuizList(forceRefresh: Boolean = false) = completeAction {
         quizListFetchJob?.cancel()
         quizListFetchJob = viewModelScope.launch {
             updateState {
-                copy(uiStatus = UIStatus.Loading)
+                if (forceRefresh || quizList.isEmpty()) {
+                    copy(uiStatus = UIStatus.Loading)
+                } else {
+                    this
+                }
             }
             val selectedCity = commonMapper.mapToCity(container.stateFlow.value.currentCity)
             try {
-                interactor.getAllQuizList(selectedCity)
+                interactor.getAllQuizList(selectedCity, forceRefresh)
                     .map { quizList ->
                         quizList.map { quizListUIMapper.mapToQuizUI(it) }
                     }
@@ -182,7 +186,7 @@ internal class QuizListViewModel(
         }
 
         completeAction {
-            fetchQuizList()
+            fetchQuizList(forceRefresh = true)
             bottomSheetController.dismiss()
             viewModelScope.launch {
                 commonInteractor.updateCurrentCity(city.name)

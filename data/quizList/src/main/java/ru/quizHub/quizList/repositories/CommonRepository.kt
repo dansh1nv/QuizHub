@@ -43,28 +43,30 @@ class CommonRepository(
 
     override fun fetchCities(): Flow<List<City>> {
         return flow {
-            val url = URL(CITY_URL)
-            val request = url.readText()
-            val json = Json {
-                prettyPrint = true
-                isLenient = true
-                ignoreUnknownKeys = true
+            Timber.d("Fetching cities from remote URL: $CITY_URL")
+            try {
+                val url = URL(CITY_URL)
+                val request = url.readText()
+                val json = Json {
+                    prettyPrint = true
+                    isLenient = true
+                    ignoreUnknownKeys = true
+                }
+                val cities = json.decodeFromString<CityResponse>(request)
+                val cityList = cities.cities.map { city ->
+                    mapper.mapToCity(city)
+                }
+                Timber.i("Successfully loaded ${cityList.size} cities from remote")
+                emit(cityList)
+            } catch (e: Exception) {
+                Timber.e(e, "Failed to fetch cities from $CITY_URL. Returning empty list as fallback.")
+                emit(emptyList())
             }
-            val cities = json.decodeFromString<CityResponse>(request)
-            val city = cities.cities.map { city ->
-                mapper.mapToCity(city)
-            }
-            emit(city)
         }
             .flowOn(Dispatchers.IO)
-            .catch {
-                Timber.e(it)
-                emptyList<City>()
-            }
     }
 
     companion object {
         private const val CITY_URL = "https://dansh1nv.github.io/QuizHub/cities.json"
     }
-
 }

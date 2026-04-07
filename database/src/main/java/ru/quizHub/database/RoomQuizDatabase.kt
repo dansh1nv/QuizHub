@@ -13,7 +13,7 @@ class QuizDatabase internal constructor(private val database: RoomQuizDatabase) 
         get() = database.quizDao()
 }
 
-@Database(entities = [QuizDBO::class], version = 1)
+@Database(entities = [QuizDBO::class], version = 2)
 abstract class RoomQuizDatabase : RoomDatabase() {
     abstract fun quizDao(): QuizDao
 }

@@ -20,4 +20,5 @@ data class QuizDBO(
     @ColumnInfo("time") val time: String,
     @ColumnInfo("address") val address: String,
     @ColumnInfo("price") val price: String,
+    @ColumnInfo("image") val image: String,
 )

@@ -4,6 +4,7 @@ import org.koin.core.module.dsl.factoryOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.bind
 import org.koin.dsl.module
+import ru.quizHub.quizList.datasource.QuizListLocalDataSource
 import ru.quizHub.quizList.datasource.common.GeoInfoRemoteDataSource
 import ru.quizHub.quizList.datasource.quizPlease.QuizPleaseRemoteDataSource
 import ru.quizHub.quizList.datasource.rudaGames.RudaGamesRemoteDataSource
@@ -12,6 +13,7 @@ import ru.quizHub.quizList.datasource.squiz.LocalDataSource
 import ru.quizHub.quizList.datasource.squiz.SquizRemoteDataSource
 import ru.quizHub.quizList.datasource.wowQuiz.WowQuizRemoteDataSource
 import ru.quizHub.quizList.mappers.CommonDataMapper
+import ru.quizHub.quizList.mappers.QuizDBOMapper
 import ru.quizHub.quizList.mappers.QuizPleaseDataMapper
 import ru.quizHub.quizList.mappers.RudaGamesDataMapper
 import ru.quizHub.quizList.mappers.ShakerQuizDataMapper
@@ -59,5 +61,7 @@ fun quizDataModule() = module {
     factoryOf(::GeoInfoRemoteDataSource)
     singleOf(::CommonRepository) bind ICommonRepository::class
 
+    factoryOf(::QuizListLocalDataSource)
+    factoryOf(::QuizDBOMapper)
     singleOf(::QuizListRepository) bind IQuizListRepository::class
 }
