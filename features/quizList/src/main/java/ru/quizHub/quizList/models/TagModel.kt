@@ -29,4 +29,8 @@ enum class TagModel(
         title = R.string.filter_id_wow_quiz,
         tag = TagColor.GREEN
     ),
+    SMUZI(
+        title = R.string.filter_id_smuzi,
+        tag = TagColor.YELLOW
+    ),
 }

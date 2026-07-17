@@ -10,6 +10,7 @@ data class City(
     val shakerTeamSize: ShakerTeamSize?,
     val countryCode: String,
     val wowQuizDomain: String? = null,
+    val smuziStorePartId: Long? = null,
 )
 
 data class ShakerTeamSize(

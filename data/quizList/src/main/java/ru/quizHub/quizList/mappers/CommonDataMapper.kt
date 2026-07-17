@@ -28,6 +28,7 @@ class CommonDataMapper {
             countryCode = entity.country.orEmpty(),
             shakerTeamSize = entity.shakerTeamSize?.let(::mapShakerTeamSize),
             wowQuizDomain = entity.wowQuizDomain,
+            smuziStorePartId = entity.smuziStorePartId,
         )
     }
 

@@ -7,6 +7,7 @@ import ru.quizHub.quizlist.models.QuizPlease
 import ru.quizHub.quizlist.models.RudaGames
 import ru.quizHub.quizlist.models.SQuiz
 import ru.quizHub.quizlist.models.ShakerQuiz
+import ru.quizHub.quizlist.models.Smuzi
 import ru.quizHub.quizlist.models.WowQuiz
 import ru.quizHub.quizlist.models.common.GameDate
 import ru.quizHub.quizlist.models.common.GameFormat
@@ -21,6 +22,7 @@ class QuizDBOMapper {
         const val ORG_SHAKER = "ShakerQuiz"
         const val ORG_RUDA = "RudaGames"
         const val ORG_WOW = "WowQuiz"
+        const val ORG_SMUZI = "Smuzi"
         const val SEPARATOR = "|"
     }
 
@@ -103,6 +105,18 @@ class QuizDBOMapper {
                 registrationType = null,
             )
 
+            ORG_SMUZI -> Smuzi(
+                id = dbo.id.toString(),
+                title = dbo.theme.ifEmpty { null },
+                description = dbo.description.ifEmpty { null },
+                image = dbo.image.takeIf { it.isNotEmpty() },
+                price = dbo.price.toIntOrNull(),
+                eventTime = gameDate,
+                location = location,
+                gameTypeLabel = dbo.type.ifEmpty { null },
+                url = null,
+            )
+
             else -> QuizPlease(
                 id = dbo.id.toString(),
                 title = dbo.name.ifEmpty { null },
@@ -129,6 +143,7 @@ class QuizDBOMapper {
             is ShakerQuiz -> mapShakerToDBO(quiz, cityName)
             is RudaGames -> mapRudaToDBO(quiz, cityName)
             is WowQuiz -> mapWowToDBO(quiz, cityName)
+            is Smuzi -> mapSmuziToDBO(quiz, cityName)
         }
     }
 
@@ -219,6 +234,24 @@ class QuizDBOMapper {
         theme = quiz.theme.orEmpty(),
         packageNumber = "",
         name = quiz.title ?: quiz.theme ?: "Без названия",
+        description = quiz.description.orEmpty(),
+        place = quiz.location?.name.orEmpty(),
+        time = quiz.eventTime?.time.orEmpty(),
+        address = quiz.location?.address.orEmpty(),
+        price = quiz.price?.toString().orEmpty(),
+        image = quiz.image.orEmpty(),
+    )
+
+    private fun mapSmuziToDBO(quiz: Smuzi, cityName: String) = QuizDBO(
+        id = 0,
+        organization = ORG_SMUZI,
+        city = quiz.location?.city ?: cityName,
+        date = serializeGameDate(quiz.eventTime),
+        format = "",
+        type = quiz.gameTypeLabel.orEmpty(),
+        theme = quiz.title.orEmpty(),
+        packageNumber = "",
+        name = quiz.title ?: "Без названия",
         description = quiz.description.orEmpty(),
         place = quiz.location?.name.orEmpty(),
         time = quiz.eventTime?.time.orEmpty(),

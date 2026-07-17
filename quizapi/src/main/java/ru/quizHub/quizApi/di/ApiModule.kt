@@ -18,12 +18,14 @@ import org.koin.dsl.module
 import ru.quizHub.quizApi.Urls.BASE_QUIZ_PLEASE_URL
 import ru.quizHub.quizApi.Urls.BASE_RUDA_GAMES_URL
 import ru.quizHub.quizApi.Urls.BASE_SHAKER_URL
+import ru.quizHub.quizApi.Urls.BASE_SMUZI_URL
 import ru.quizHub.quizApi.Urls.BASE_SQUIZ_URL
 import ru.quizHub.quizApi.Urls.BASE_WOW_QUIZ_URL
 import ru.quizHub.quizApi.api.GeocodingService
 import ru.quizHub.quizApi.api.QuizPleaseApi
 import ru.quizHub.quizApi.api.RudaGamesApi
 import ru.quizHub.quizApi.api.ShakerQuizApi
+import ru.quizHub.quizApi.api.SmuziApi
 import ru.quizHub.quizApi.api.SquizApi
 import ru.quizHub.quizApi.api.WowQuizApi
 
@@ -32,6 +34,7 @@ val SQUIZ_KTOR = named("SQUIZ_KTOR")
 val SHAKER_QUIZ_KTOR = named("SHAKER_QUIZ_KTOR")
 val WOW_QUIZ_KTOR = named("WOW_QUIZ_KTOR")
 val RUDA_GAMES_KTOR = named("RUDA_GAMES_KTOR")
+val SMUZI_KTOR = named("SMUZI_KTOR")
 val GEO_SERVICE = named("GEO_SERVICE")
 
 fun apiModule() = module {
@@ -145,6 +148,26 @@ fun apiModule() = module {
             }
         }
     }
+    single<HttpClient>(qualifier = SMUZI_KTOR) {
+        HttpClient(get<HttpClientFactory>().createEngine()) {
+            install(HttpTimeout) {
+                connectTimeoutMillis = 15_000
+                requestTimeoutMillis = 30_000
+                socketTimeoutMillis = 15_000
+            }
+            install(ContentNegotiation) { json(get()) }
+            install(Logging) {
+                level = LogLevel.ALL
+                logger = Logger.SIMPLE
+            }
+            defaultRequest {
+                url {
+                    protocol = URLProtocol.HTTPS
+                    host = BASE_SMUZI_URL
+                }
+            }
+        }
+    }
     single<HttpClient>(qualifier = GEO_SERVICE) {
         HttpClient(CIO) {
             install(HttpTimeout) {
@@ -172,5 +195,6 @@ fun apiModule() = module {
     single<WowQuizApi> { WowQuizApi(httpClient = get(qualifier = WOW_QUIZ_KTOR)) }
     single<ShakerQuizApi> { ShakerQuizApi(httpClient = get(qualifier = SHAKER_QUIZ_KTOR)) }
     single<RudaGamesApi> { RudaGamesApi(httpClient = get(qualifier = RUDA_GAMES_KTOR)) }
+    single<SmuziApi> { SmuziApi(httpClient = get(qualifier = SMUZI_KTOR), json = get()) }
     single<GeocodingService> { GeocodingService(client = get(qualifier = GEO_SERVICE)) }
 }

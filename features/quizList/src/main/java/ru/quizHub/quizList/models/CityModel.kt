@@ -12,6 +12,7 @@ data class CityModel(
     val countryCode: String?,
     val shakerTeamSize: ShakerTeamSize?,
     val wowQuizDomain: String?,
+    val smuziStorePartId: Long?,
     val isSearchVisible: Boolean,
     val isSelected: Boolean,
 ) {
@@ -28,6 +29,7 @@ data class CityModel(
             countryCode = "RU",
             shakerTeamSize = null,
             wowQuizDomain = null,
+            smuziStorePartId = null,
         )
     }
 }

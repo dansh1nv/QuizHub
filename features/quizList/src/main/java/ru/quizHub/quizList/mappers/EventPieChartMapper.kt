@@ -48,6 +48,7 @@ internal class EventPieChartMapper {
             Organization.SHAKER_QUIZ -> customColors.purple
             Organization.RUDA_GAMES -> customColors.orange
             Organization.WOW_QUIZ -> customColors.green
+            Organization.SMUZI -> customColors.yellow
         }
     }
 

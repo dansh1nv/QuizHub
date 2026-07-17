@@ -9,4 +9,5 @@ enum class Organization(@StringRes val title: Int) {
     SHAKER_QUIZ(R.string.filter_id_shaker_quiz),
     RUDA_GAMES(R.string.filter_id_ruda_games),
     WOW_QUIZ(R.string.filter_id_wow_quiz),
+    SMUZI(R.string.filter_id_smuzi),
 }

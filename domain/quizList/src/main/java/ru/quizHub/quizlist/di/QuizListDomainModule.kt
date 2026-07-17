@@ -8,6 +8,7 @@ import ru.quizHub.quizlist.interactors.QuizListInteractor
 import ru.quizHub.quizlist.interactors.QuizPleaseInteractor
 import ru.quizHub.quizlist.interactors.RudaGamesInteractor
 import ru.quizHub.quizlist.interactors.ShakerQuizInteractor
+import ru.quizHub.quizlist.interactors.SmuziInteractor
 import ru.quizHub.quizlist.interactors.SquizInteractor
 
 fun quizListDomainModule() = module {
@@ -19,4 +20,5 @@ fun quizListDomainModule() = module {
     factoryOf(::GeoInfoInteractor)
     factoryOf(::CommonInteractor)
     factoryOf(::RudaGamesInteractor)
+    factoryOf(::SmuziInteractor)
 }

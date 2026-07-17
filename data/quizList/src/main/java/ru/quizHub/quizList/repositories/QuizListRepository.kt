@@ -9,12 +9,14 @@ import ru.quizHub.quizList.datasource.QuizListLocalDataSource
 import ru.quizHub.quizList.datasource.quizPlease.QuizPleaseRemoteDataSource
 import ru.quizHub.quizList.datasource.rudaGames.RudaGamesRemoteDataSource
 import ru.quizHub.quizList.datasource.shakerQuiz.ShakerQuizRemoteDataSource
+import ru.quizHub.quizList.datasource.smuzi.SmuziRemoteDataSource
 import ru.quizHub.quizList.datasource.squiz.SquizRemoteDataSource
 import ru.quizHub.quizList.datasource.wowQuiz.WowQuizRemoteDataSource
 import ru.quizHub.quizList.mappers.QuizDBOMapper
 import ru.quizHub.quizList.mappers.QuizPleaseDataMapper
 import ru.quizHub.quizList.mappers.RudaGamesDataMapper
 import ru.quizHub.quizList.mappers.ShakerQuizDataMapper
+import ru.quizHub.quizList.mappers.SmuziDataMapper
 import ru.quizHub.quizList.mappers.SquizDataMapper
 import ru.quizHub.quizList.mappers.WowQuizDataMapper
 import ru.quizHub.quizlist.models.Quiz
@@ -34,11 +36,13 @@ class QuizListRepository(
     private val shakerQuizRemoteDataSource: ShakerQuizRemoteDataSource,
     private val rudaGamesRemoteDataSource: RudaGamesRemoteDataSource,
     private val wowQuizRemoteDataSource: WowQuizRemoteDataSource,
+    private val smuziRemoteDataSource: SmuziRemoteDataSource,
     private val squizDataMapper: SquizDataMapper,
     private val quizPleaseDataMapper: QuizPleaseDataMapper,
     private val shakerQuizDataMapper: ShakerQuizDataMapper,
     private val rudaGamesDataMapper: RudaGamesDataMapper,
     private val wowQuizDataMapper: WowQuizDataMapper,
+    private val smuziDataMapper: SmuziDataMapper,
 ) : IQuizListRepository {
 
     private companion object {
@@ -50,7 +54,6 @@ class QuizListRepository(
         return flow {
             Timber.d("getAllQuizList called for city: ${city.name}, forceRefresh: $forceRefresh")
 
-            // Если не требуется принудительное обновление — сначала пытаемся взять из кэша
             if (!forceRefresh) {
                 Timber.d("Trying to load from cache for city: ${city.name}")
                 try {
@@ -67,7 +70,6 @@ class QuizListRepository(
                 }
             }
 
-            // Если кэша нет или требуется обновление — запрашиваем из сети
             val squiz = squizRemoteDataSource.getQuizList(cityId = city.squizId)
                 .orEmptyOnFailure(sourceTag = "Squiz")
             val quizPlease = quizPleaseRemoteDataSource.getQuizList(
@@ -84,24 +86,28 @@ class QuizListRepository(
                 page = PAGE_NUMBER,
                 upcoming = 1,
             ).orEmptyOnFailure(sourceTag = "WowQuiz")
+            val smuzi = smuziRemoteDataSource.getQuizList(storePartId = city.smuziStorePartId)
+                .orEmptyOnFailure(sourceTag = "Smuzi")
 
             val remoteFlow = combine(
                 squiz,
                 quizPlease,
                 shaker,
                 ruda,
-                wow
+                combine(wow, smuzi) { wowList, smuziList -> wowList to smuziList },
             ) { squizList,
                 quizPleaseList,
                 shakerQuizList,
                 rudaGamesList,
-                wowList ->
+                wowAndSmuzi ->
+                val (wowList, smuziList) = wowAndSmuzi
                 buildList {
                     addAll(squizDataMapper.map(quizzes = squizList))
                     addAll(quizPleaseDataMapper.mapToQuiz(dtos = quizPleaseList))
                     addAll(shakerQuizDataMapper.mapToShakerQuiz(dtos = shakerQuizList))
                     addAll(rudaGamesDataMapper.mapToRudaGames(dtos = rudaGamesList))
                     addAll(wowQuizDataMapper.mapToWowQuiz(dtos = wowList))
+                    addAll(smuziDataMapper.mapToSmuzi(dtos = smuziList))
                 }
             }
 
@@ -109,7 +115,6 @@ class QuizListRepository(
                 Timber.d("Received ${quizList.size} quizzes from remote sources for city: ${city.name}")
                 emit(quizList)
 
-                // Сохраняем в кэш
                 if (quizList.isNotEmpty()) {
                     try {
                         val dboList = quizDBOMapper.mapToQuizDBOList(quizList, city.name)

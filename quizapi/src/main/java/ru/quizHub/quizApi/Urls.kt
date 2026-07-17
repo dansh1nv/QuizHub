@@ -6,4 +6,5 @@ object Urls {
     const val BASE_QUIZ_PLEASE_URL = "api.quizplease.ru"
     const val BASE_RUDA_GAMES_URL = "api.rudagames.com"
     const val BASE_WOW_QUIZ_URL = "api.etowow.ru"
+    const val BASE_SMUZI_URL = "store.tildaapi.com"
 }

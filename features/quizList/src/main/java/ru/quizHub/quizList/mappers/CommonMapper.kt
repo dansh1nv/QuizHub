@@ -35,6 +35,7 @@ class CommonMapper(
             countryCode = city.countryCode,
             shakerTeamSize = city.shakerTeamSize,
             wowQuizDomain = city.wowQuizDomain,
+            smuziStorePartId = city.smuziStorePartId,
             isSearchVisible = true,
             isSelected = false,
         )
@@ -51,6 +52,7 @@ class CommonMapper(
             countryCode = city.countryCode.orEmpty(),
             shakerTeamSize = city.shakerTeamSize,
             wowQuizDomain = city.wowQuizDomain,
+            smuziStorePartId = city.smuziStorePartId,
         )
     }
 

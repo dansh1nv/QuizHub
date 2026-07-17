@@ -5,6 +5,7 @@ import ru.quizHub.quizlist.models.QuizPlease
 import ru.quizHub.quizlist.models.RudaGames
 import ru.quizHub.quizlist.models.SQuiz
 import ru.quizHub.quizlist.models.ShakerQuiz
+import ru.quizHub.quizlist.models.Smuzi
 import ru.quizHub.quizlist.models.WowQuiz
 import ru.quizHub.quizList.models.item.QuizUI
 
@@ -14,6 +15,7 @@ internal class QuizListUIMapper(
     private val shakerQuizMapper: ShakerQuizMapper,
     private val rudaGamesMapper: RudaGamesMapper,
     private val wowQuizMapper: WowQuizMapper,
+    private val smuziMapper: SmuziMapper,
 ) {
 
     fun mapToQuizUI(quiz: Quiz): QuizUI = when (quiz) {
@@ -22,5 +24,6 @@ internal class QuizListUIMapper(
         is ShakerQuiz -> shakerQuizMapper.mapToQuizUI(quiz)
         is RudaGames -> rudaGamesMapper.mapToQuizUI(quiz)
         is WowQuiz -> wowQuizMapper.mapToQuizUI(quiz)
+        is Smuzi -> smuziMapper.mapToQuizUI(quiz)
     }
 }

@@ -10,7 +10,8 @@
         "minimum": 1
       },
       "name": "Благовещенск",
-      "country": "RU"
+      "country": "RU",
+      "smuziStorePartId": 925512646962
     },
     {
       "id": 2,
@@ -23,7 +24,8 @@
       },
       "name": "Волгоград",
       "country": "RU",
-      "wowQuizDomain": "https://vlg.wowquiz.ru"
+      "wowQuizDomain": "https://vlg.wowquiz.ru",
+      "smuziStorePartId": 405334648721
     },
     {
       "id": 3,
@@ -59,7 +61,8 @@
       "name": "Курск",
       "country": "RU",
       "wowQuizDomain": "https://kursk.wowquiz.ru",
-      "quizPleaseId": "66"
+      "quizPleaseId": "66",
+      "smuziStorePartId": 272003606062
     },
     {
       "id": 6,
@@ -217,7 +220,8 @@
       },
       "name": "Владимир",
       "country": "RU",
-      "wowQuizDomain": "https://vld.wowquiz.ru"
+      "wowQuizDomain": "https://vld.wowquiz.ru",
+      "smuziStorePartId": 783369670321
     },
     {
       "id": 19,
@@ -230,7 +234,8 @@
       "name": "Вологда",
       "country": "RU",
       "wowQuizDomain": "https://vologda.wowquiz.ru",
-      "quizPleaseId": "135"
+      "quizPleaseId": "135",
+      "smuziStorePartId": 469101181832
     },
     {
       "id": 20,
@@ -525,7 +530,8 @@
       },
       "name": "Тула",
       "country": "RU",
-      "wowQuizDomain": "https://tula.wowquiz.ru"
+      "wowQuizDomain": "https://tula.wowquiz.ru",
+      "smuziStorePartId": 103079178232
     },
     {
       "id": 46,
@@ -572,7 +578,8 @@
       },
       "name": "Краснодар",
       "country": "RU",
-      "wowQuizDomain": "https://krd.wowquiz.ru"
+      "wowQuizDomain": "https://krd.wowquiz.ru",
+      "smuziStorePartId": 501134308652
     },
     {
       "id": 50,
@@ -598,7 +605,8 @@
       },
       "name": "Пермь",
       "country": "RU",
-      "wowQuizDomain": "https://perm.wowquiz.ru"
+      "wowQuizDomain": "https://perm.wowquiz.ru",
+      "smuziStorePartId": 116985768352
     },
     {
       "id": 52,
@@ -767,7 +775,8 @@
       },
       "name": "Екатеринбург",
       "country": "RU",
-      "wowQuizDomain": "https://ekb.wowquiz.ru"
+      "wowQuizDomain": "https://ekb.wowquiz.ru",
+      "smuziStorePartId": 873310042071
     },
     {
       "id": 67,
@@ -859,7 +868,8 @@
       },
       "name": "Казань",
       "country": "RU",
-      "wowQuizDomain": "https://kazan.wowquiz.ru"
+      "wowQuizDomain": "https://kazan.wowquiz.ru",
+      "smuziStorePartId": 489885669911
     },
     {
       "id": 75,
@@ -1034,7 +1044,8 @@
       "name": "Нижневартовск",
       "country": "RU",
       "wowQuizDomain": "https://nv.wowquiz.ru",
-      "quizPleaseId": "153"
+      "quizPleaseId": "153",
+      "smuziStorePartId": 262596518172
     },
     {
       "id": 90,
@@ -1128,7 +1139,8 @@
       },
       "name": "Ростов-на-Дону",
       "country": "RU",
-      "wowQuizDomain": "https://rnd.wowquiz.ru"
+      "wowQuizDomain": "https://rnd.wowquiz.ru",
+      "smuziStorePartId": 642168992011
     },
     {
       "id": 98,
@@ -1140,7 +1152,8 @@
       },
       "name": "Йошкар-Ола",
       "country": "RU",
-      "wowQuizDomain": "https://yo.wowquiz.ru"
+      "wowQuizDomain": "https://yo.wowquiz.ru",
+      "smuziStorePartId": 398482230352
     },
     {
       "id": 99,
@@ -1179,7 +1192,8 @@
       },
       "name": "Москва",
       "country": "RU",
-      "wowQuizDomain": "https://wowquiz.ru"
+      "wowQuizDomain": "https://wowquiz.ru",
+      "smuziStorePartId": 220534520881
     },
     {
       "id": 102,
@@ -1248,7 +1262,8 @@
       },
       "name": "Калининград",
       "country": "RU",
-      "wowQuizDomain": "https://kalin.wowquiz.ru"
+      "wowQuizDomain": "https://kalin.wowquiz.ru",
+      "smuziStorePartId": 905573138661
     },
     {
       "id": 108,
@@ -1295,7 +1310,8 @@
       },
       "name": "Санкт-Петербург",
       "country": "RU",
-      "wowQuizDomain": "https://spb.wowquiz.ru"
+      "wowQuizDomain": "https://spb.wowquiz.ru",
+      "smuziStorePartId": 977061546921
     },
     {
       "id": 112,
@@ -1306,6 +1322,156 @@
       },
       "name": "Щигры",
       "country": "RU"
+    },
+    {
+      "id": 113,
+      "name": "Актау",
+      "country": "KZ",
+      "smuziStorePartId": 372149495771
+    },
+    {
+      "id": 114,
+      "name": "Актобе",
+      "country": "KZ",
+      "smuziStorePartId": 773710324941
+    },
+    {
+      "id": 115,
+      "name": "Алматы",
+      "country": "KZ",
+      "smuziStorePartId": 972614669802
+    },
+    {
+      "id": 116,
+      "name": "Астана",
+      "country": "KZ",
+      "smuziStorePartId": 184554237491
+    },
+    {
+      "id": 117,
+      "name": "Барановичи",
+      "country": "BY",
+      "smuziStorePartId": 792593380841
+    },
+    {
+      "id": 118,
+      "name": "Бобруйск",
+      "country": "BY",
+      "smuziStorePartId": 356302592422
+    },
+    {
+      "id": 119,
+      "name": "Брест",
+      "country": "BY",
+      "smuziStorePartId": 435633036541
+    },
+    {
+      "id": 120,
+      "name": "Великие Луки",
+      "country": "RU",
+      "smuziStorePartId": 432036066742
+    },
+    {
+      "id": 121,
+      "name": "Витебск",
+      "country": "BY",
+      "smuziStorePartId": 495369562011
+    },
+    {
+      "id": 122,
+      "name": "Гомель",
+      "country": "BY",
+      "smuziStorePartId": 191111880491
+    },
+    {
+      "id": 123,
+      "name": "Гродно",
+      "country": "BY",
+      "smuziStorePartId": 449305147961
+    },
+    {
+      "id": 124,
+      "name": "Домодедово",
+      "country": "RU",
+      "smuziStorePartId": 228670581752
+    },
+    {
+      "id": 125,
+      "name": "Жлобин",
+      "country": "BY",
+      "smuziStorePartId": 506759723462
+    },
+    {
+      "id": 126,
+      "name": "Караганда",
+      "country": "KZ",
+      "smuziStorePartId": 786086551121
+    },
+    {
+      "id": 127,
+      "name": "Кобрин",
+      "country": "BY",
+      "smuziStorePartId": 899893775182
+    },
+    {
+      "id": 128,
+      "name": "Минск",
+      "country": "BY",
+      "smuziStorePartId": 929414416391
+    },
+    {
+      "id": 129,
+      "name": "Могилёв",
+      "country": "BY",
+      "smuziStorePartId": 828707398281
+    },
+    {
+      "id": 130,
+      "name": "Омск",
+      "country": "RU",
+      "smuziStorePartId": 894866399202
+    },
+    {
+      "id": 131,
+      "name": "Полоцк",
+      "country": "BY",
+      "smuziStorePartId": 560394805391
+    },
+    {
+      "id": 132,
+      "name": "Солигорск",
+      "country": "BY",
+      "smuziStorePartId": 844369708112
+    },
+    {
+      "id": 133,
+      "name": "Ташкент",
+      "country": "UZ",
+      "smuziStorePartId": 136601224691
+    },
+    {
+      "id": 134,
+      "name": "Ульяновск",
+      "country": "RU",
+      "smuziStorePartId": 255291826012
+    },
+    {
+      "id": 135,
+      "name": "Бишкек",
+      "country": "KG",
+      "smuziStorePartId": 931220059841
+    },
+    {
+      "id": 136,
+      "name": "Усть-Каменогорск",
+      "country": "KZ",
+      "smuziStorePartId": 914705293211
+    },
+    {
+      "id": 137,
+      "name": "Волковыск",
+      "country": "BY",
+      "smuziStorePartId": 492365130062
     }
   ]
 }

@@ -5,4 +5,5 @@ sealed class Organization {
     data object ShakerQuiz : Organization()
     data object QuizPlease : Organization()
     data object RudaGames : Organization()
+    data object Smuzi : Organization()
 }

@@ -9,6 +9,7 @@ import ru.quizHub.quizList.mappers.QuizListUIMapper
 import ru.quizHub.quizList.mappers.QuizPleaseMapper
 import ru.quizHub.quizList.mappers.RudaGamesMapper
 import ru.quizHub.quizList.mappers.ShakerQuizMapper
+import ru.quizHub.quizList.mappers.SmuziMapper
 import ru.quizHub.quizList.mappers.SquizMapper
 import ru.quizHub.quizList.mappers.WowQuizMapper
 import ru.quizHub.quizList.presentation.QuizListViewModel
@@ -19,6 +20,7 @@ fun quizListModule() = module {
     factoryOf(::ShakerQuizMapper)
     factoryOf(::RudaGamesMapper)
     factoryOf(::WowQuizMapper)
+    factoryOf(::SmuziMapper)
     factoryOf(::QuizListUIMapper)
     factoryOf(::EventPieChartMapper)
     factoryOf(::CommonMapper)
