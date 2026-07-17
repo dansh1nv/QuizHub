@@ -3,7 +3,7 @@
     {
       "id": 1,
       "shakerQuizId": "ffce7808-11a6-4aa6-a02f-fab0c9893e99",
-      "quizPleaseId": 40,
+      "quizPleaseId": "34",
       "rudaGamesId": 333,
       "shakerTeamSize": {
         "maximum": 10,
@@ -15,7 +15,7 @@
     {
       "id": 2,
       "shakerQuizId": "ff21a38e-156f-41d2-90a0-924e23eae37c",
-      "quizPleaseId": 93,
+      "quizPleaseId": "87",
       "rudaGamesId": 404,
       "shakerTeamSize": {
         "maximum": 10,
@@ -39,7 +39,7 @@
     {
       "id": 4,
       "shakerQuizId": "a27fcc9e-41d4-4640-974a-92f7675707ae",
-      "quizPleaseId": 41,
+      "quizPleaseId": "35",
       "rudaGamesId": 286,
       "shakerTeamSize": {
         "maximum": 10,
@@ -58,7 +58,8 @@
       },
       "name": "Курск",
       "country": "RU",
-      "wowQuizDomain": "https://kursk.wowquiz.ru"
+      "wowQuizDomain": "https://kursk.wowquiz.ru",
+      "quizPleaseId": "66"
     },
     {
       "id": 6,
@@ -75,7 +76,7 @@
     {
       "id": 7,
       "shakerQuizId": "c5bb441a-e580-4ed0-afda-e79c2cab6181",
-      "quizPleaseId": 114,
+      "quizPleaseId": "108",
       "rudaGamesId": 90,
       "shakerTeamSize": {
         "maximum": 10,
@@ -98,7 +99,7 @@
     {
       "id": 9,
       "shakerQuizId": "6ad71cb8-38f6-427d-a4d4-170aa3ead97d",
-      "quizPleaseId": 138,
+      "quizPleaseId": "129",
       "rudaGamesId": 138,
       "shakerTeamSize": {
         "maximum": 10,
@@ -122,7 +123,7 @@
     {
       "id": 11,
       "shakerQuizId": "70607d29-d0ce-49f8-b39d-e11591747e1a",
-      "quizPleaseId": 189,
+      "quizPleaseId": "180",
       "rudaGamesId": 43,
       "shakerTeamSize": {
         "maximum": 12,
@@ -135,7 +136,7 @@
     {
       "id": 12,
       "shakerQuizId": "43494653-9da5-49c3-97ed-7c3d9ff4ad47",
-      "quizPleaseId": 63,
+      "quizPleaseId": "57",
       "rudaGamesId": 231,
       "shakerTeamSize": {
         "maximum": 12,
@@ -148,7 +149,7 @@
     {
       "id": 13,
       "shakerQuizId": "eb3a0841-921b-414a-9fb1-63748898c19d",
-      "quizPleaseId": 150,
+      "quizPleaseId": "141",
       "rudaGamesId": 230,
       "shakerTeamSize": {
         "maximum": 10,
@@ -161,7 +162,7 @@
     {
       "id": 14,
       "shakerQuizId": "89b65c82-ffc6-49d5-8ab6-b1346f0b1110",
-      "quizPleaseId": 51,
+      "quizPleaseId": "45",
       "rudaGamesId": 134,
       "shakerTeamSize": {
         "maximum": 12,
@@ -174,7 +175,7 @@
     {
       "id": 15,
       "shakerQuizId": "5f385c51-4458-4ce7-974b-8ea7c17f12f8",
-      "quizPleaseId": 214,
+      "quizPleaseId": "205",
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -208,7 +209,7 @@
     {
       "id": 18,
       "shakerQuizId": "c989e6b7-8b6c-4563-a24a-2ededde2f4cb",
-      "quizPleaseId": 36,
+      "quizPleaseId": "30",
       "rudaGamesId": 79,
       "shakerTeamSize": {
         "maximum": 10,
@@ -228,7 +229,8 @@
       },
       "name": "Вологда",
       "country": "RU",
-      "wowQuizDomain": "https://vologda.wowquiz.ru"
+      "wowQuizDomain": "https://vologda.wowquiz.ru",
+      "quizPleaseId": "135"
     },
     {
       "id": 20,
@@ -255,7 +257,7 @@
     {
       "id": 22,
       "shakerQuizId": "38425bd4-4163-4d81-984c-430be012d1f1",
-      "quizPleaseId": 112,
+      "quizPleaseId": "106",
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 4
@@ -267,7 +269,7 @@
     {
       "id": 23,
       "shakerQuizId": "3abcd16c-00c8-4ce8-9c66-11dd0abc379c",
-      "quizPleaseId": 54,
+      "quizPleaseId": "48",
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -338,12 +340,13 @@
       },
       "name": "Абакан",
       "country": "RU",
-      "wowQuizDomain": "https://abk.wowquiz.ru"
+      "wowQuizDomain": "https://abk.wowquiz.ru",
+      "quizPleaseId": "142"
     },
     {
       "id": 30,
       "shakerQuizId": "3fdfd82b-3e8b-4682-b3fc-c00bbb1c3d34",
-      "quizPleaseId": 83,
+      "quizPleaseId": "77",
       "rudaGamesId": 52,
       "shakerTeamSize": {
         "maximum": 10,
@@ -356,7 +359,7 @@
     {
       "id": 31,
       "shakerQuizId": "378cb268-c6db-46f5-a8a0-db5139a03ee0",
-      "quizPleaseId": 69,
+      "quizPleaseId": "63",
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -368,7 +371,7 @@
     {
       "id": 32,
       "shakerQuizId": "8e62826e-ca67-49b3-ae2e-86ef5d877c3e",
-      "quizPleaseId": 28,
+      "quizPleaseId": "22",
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 2
@@ -423,7 +426,7 @@
     {
       "id": 37,
       "shakerQuizId": "e7494174-fe3e-4a95-8c7d-90ae0ddafc61",
-      "quizPleaseId": 195,
+      "quizPleaseId": "186",
       "rudaGamesId": 56,
       "shakerTeamSize": {
         "maximum": 12,
@@ -479,7 +482,7 @@
     {
       "id": 42,
       "shakerQuizId": "bd5e24eb-b10d-4d43-81be-0fece6fe8144",
-      "quizPleaseId": 38,
+      "quizPleaseId": "32",
       "rudaGamesId": 155,
       "shakerTeamSize": {
         "maximum": 10,
@@ -492,7 +495,7 @@
     {
       "id": 43,
       "shakerQuizId": "0ab20995-5135-46a2-a702-276b035b3c18",
-      "quizPleaseId": 94,
+      "quizPleaseId": "88",
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -514,7 +517,7 @@
     {
       "id": 45,
       "shakerQuizId": "aa3efe39-c38d-44d2-a236-cb0761be1e20",
-      "quizPleaseId": 100,
+      "quizPleaseId": "94",
       "rudaGamesId": 244,
       "shakerTeamSize": {
         "maximum": 12,
@@ -538,7 +541,7 @@
     {
       "id": 47,
       "shakerQuizId": "4f59141d-8169-4bc7-a21a-cf247d4de9f6",
-      "quizPleaseId": 110,
+      "quizPleaseId": "104",
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -561,7 +564,7 @@
     {
       "id": 49,
       "shakerQuizId": "d98a0d11-536e-4e3f-bd0e-5c35343a9c6d",
-      "quizPleaseId": 37,
+      "quizPleaseId": "31",
       "rudaGamesId": 199,
       "shakerTeamSize": {
         "maximum": 10,
@@ -574,7 +577,7 @@
     {
       "id": 50,
       "shakerQuizId": "bd55d875-8e42-4eed-94e7-f133d1c8b802",
-      "quizPleaseId": 24,
+      "quizPleaseId": "18",
       "rudaGamesId": 15,
       "shakerTeamSize": {
         "maximum": 10,
@@ -587,7 +590,7 @@
     {
       "id": 51,
       "shakerQuizId": "543bc12f-8923-4e13-a47f-88a3e17c7e5a",
-      "quizPleaseId": 43,
+      "quizPleaseId": "37",
       "rudaGamesId": 9,
       "shakerTeamSize": {
         "maximum": 10,
@@ -600,7 +603,7 @@
     {
       "id": 52,
       "shakerQuizId": "cf3128df-91bc-4d1e-a586-bd50db7477ce",
-      "quizPleaseId": 59,
+      "quizPleaseId": "53",
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -618,7 +621,8 @@
       },
       "name": "Ковров",
       "country": "RU",
-      "wowQuizDomain": "https://kvrv.wowquiz.ru"
+      "wowQuizDomain": "https://kvrv.wowquiz.ru",
+      "quizPleaseId": "42"
     },
     {
       "id": 54,
@@ -628,7 +632,8 @@
         "minimum": 1
       },
       "name": "Озёрск",
-      "country": "RU"
+      "country": "RU",
+      "quizPleaseId": "231"
     },
     {
       "id": 55,
@@ -644,7 +649,7 @@
     {
       "id": 56,
       "shakerQuizId": "40ced34c-1442-4524-9878-039a3af052d9",
-      "quizPleaseId": 99,
+      "quizPleaseId": "93",
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -667,7 +672,7 @@
     {
       "id": 58,
       "shakerQuizId": "8f892804-9963-450a-b6a8-966c404aa102",
-      "quizPleaseId": 117,
+      "quizPleaseId": "111",
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -688,7 +693,7 @@
     {
       "id": 60,
       "shakerQuizId": "8fe57e5d-0a26-45f6-99d5-07009891ebe0",
-      "quizPleaseId": 23,
+      "quizPleaseId": "17",
       "rudaGamesId": 229,
       "shakerTeamSize": {
         "maximum": 10,
@@ -754,7 +759,7 @@
     {
       "id": 66,
       "shakerQuizId": "a50dd3c8-8ba7-4bb2-a4b2-eb6c9a6f7f9f",
-      "quizPleaseId": 13,
+      "quizPleaseId": "7",
       "rudaGamesId": 5,
       "shakerTeamSize": {
         "maximum": 10,
@@ -767,7 +772,7 @@
     {
       "id": 67,
       "shakerQuizId": "0864fe86-7064-471d-9293-ab891654471b",
-      "quizPleaseId": 33,
+      "quizPleaseId": "27",
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -789,7 +794,7 @@
     {
       "id": 69,
       "shakerQuizId": "311c78c1-b345-4549-bee5-c5d07b4ae505",
-      "quizPleaseId": 71,
+      "quizPleaseId": "65",
       "rudaGamesId": 99,
       "shakerTeamSize": {
         "maximum": 10,
@@ -840,12 +845,13 @@
       },
       "name": "Чайковский",
       "country": "RU",
-      "wowQuizDomain": "https://chaik.wowquiz.ru"
+      "wowQuizDomain": "https://chaik.wowquiz.ru",
+      "quizPleaseId": "249"
     },
     {
       "id": 74,
       "shakerQuizId": "3fe2fbff-b96a-4069-9270-48312eb912d8",
-      "quizPleaseId": 21,
+      "quizPleaseId": "15",
       "rudaGamesId": 74,
       "shakerTeamSize": {
         "maximum": 10,
@@ -858,7 +864,7 @@
     {
       "id": 75,
       "shakerQuizId": "94d1b410-de85-426d-a132-22bb46bc355d",
-      "quizPleaseId": 12,
+      "quizPleaseId": "6",
       "rudaGamesId": 146,
       "shakerTeamSize": {
         "maximum": 12,
@@ -871,7 +877,7 @@
     {
       "id": 76,
       "shakerQuizId": "f9931e7e-e30f-4cd9-a718-b38cbb855384",
-      "quizPleaseId": 15,
+      "quizPleaseId": "9",
       "rudaGamesId": 13,
       "shakerTeamSize": {
         "maximum": 10,
@@ -894,7 +900,7 @@
     {
       "id": 78,
       "shakerQuizId": "742d033b-3c5c-4842-a622-0cfe746b4bf0",
-      "quizPleaseId": 10,
+      "quizPleaseId": "5",
       "rudaGamesId": 28,
       "shakerTeamSize": {
         "maximum": 10,
@@ -917,7 +923,7 @@
     {
       "id": 80,
       "shakerQuizId": "ae8c95fc-3334-4cf6-8cd3-29627863b857",
-      "quizPleaseId": 16,
+      "quizPleaseId": "10",
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -929,7 +935,7 @@
     {
       "id": 81,
       "shakerQuizId": "84eab758-598d-42ea-adec-2e084a5a7a70",
-      "quizPleaseId": 182,
+      "quizPleaseId": "173",
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -952,7 +958,7 @@
     {
       "id": 83,
       "shakerQuizId": "4ec678ba-3ae7-4b74-90ca-8613cb812c13",
-      "quizPleaseId": 25,
+      "quizPleaseId": "19",
       "rudaGamesId": 83,
       "shakerTeamSize": {
         "maximum": 10,
@@ -965,7 +971,7 @@
     {
       "id": 84,
       "shakerQuizId": "628af56c-ec9c-4413-aa8c-780a82c0c605",
-      "quizPleaseId": 4,
+      "quizPleaseId": "1",
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -987,7 +993,7 @@
     {
       "id": 86,
       "shakerQuizId": "5d611558-bc61-4c5e-9847-c58c5c7cabb3",
-      "quizPleaseId": 133,
+      "quizPleaseId": "124",
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -1027,7 +1033,8 @@
       },
       "name": "Нижневартовск",
       "country": "RU",
-      "wowQuizDomain": "https://nv.wowquiz.ru"
+      "wowQuizDomain": "https://nv.wowquiz.ru",
+      "quizPleaseId": "153"
     },
     {
       "id": 90,
@@ -1038,7 +1045,8 @@
         "minimum": 1
       },
       "name": "Улан-Удэ",
-      "country": "RU"
+      "country": "RU",
+      "quizPleaseId": "41"
     },
     {
       "id": 91,
@@ -1053,7 +1061,7 @@
     {
       "id": 92,
       "shakerQuizId": "4b6d2a6b-bb34-467e-9882-bbf9abb6fb21",
-      "quizPleaseId": 168,
+      "quizPleaseId": "159",
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -1088,7 +1096,7 @@
     {
       "id": 95,
       "shakerQuizId": "95856429-c342-4f19-9f50-1a1d8f18540f",
-      "quizPleaseId": 5,
+      "quizPleaseId": "2",
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -1100,7 +1108,7 @@
     {
       "id": 96,
       "shakerQuizId": "468b6ad5-7c53-495f-aea7-b90589168367",
-      "quizPleaseId": 14,
+      "quizPleaseId": "8",
       "shakerTeamSize": {
         "maximum": 10,
         "minimum": 1
@@ -1112,7 +1120,7 @@
     {
       "id": 97,
       "shakerQuizId": "5b44513d-4bfd-43d2-b898-9ee273d0d9c3",
-      "quizPleaseId": 19,
+      "quizPleaseId": "13",
       "rudaGamesId": 66,
       "shakerTeamSize": {
         "maximum": 10,
@@ -1125,7 +1133,7 @@
     {
       "id": 98,
       "shakerQuizId": "70421d50-14e9-4f1d-93d3-31290ab3c953",
-      "quizPleaseId": 53,
+      "quizPleaseId": "47",
       "shakerTeamSize": {
         "maximum": 12,
         "minimum": 1
@@ -1137,7 +1145,7 @@
     {
       "id": 99,
       "shakerQuizId": "7ff67747-17b6-4dbb-8c97-ac0a817df2b3",
-      "quizPleaseId": 68,
+      "quizPleaseId": "62",
       "rudaGamesId": 47,
       "shakerTeamSize": {
         "maximum": 10,
@@ -1150,7 +1158,7 @@
     {
       "id": 100,
       "shakerQuizId": "5242cc9c-2f68-4edb-a68c-6a06cfbdc236",
-      "quizPleaseId": 75,
+      "quizPleaseId": "69",
       "rudaGamesId": 261,
       "shakerTeamSize": {
         "maximum": 10,
@@ -1163,7 +1171,7 @@
     {
       "id": 101,
       "shakerQuizId": "c2e2affb-8719-42bb-880b-8678bbe04f03",
-      "quizPleaseId": 9,
+      "quizPleaseId": "4",
       "rudaGamesId": 14,
       "shakerTeamSize": {
         "maximum": 10,
@@ -1176,7 +1184,7 @@
     {
       "id": 102,
       "shakerQuizId": "e67b2476-0532-427c-89c4-a511971eaacb",
-      "quizPleaseId": 34,
+      "quizPleaseId": "28",
       "rudaGamesId": 29,
       "shakerTeamSize": {
         "maximum": 10,
@@ -1199,7 +1207,7 @@
     {
       "id": 104,
       "shakerQuizId": "b1016912-fd48-4b6c-a5fb-5f8647a84a17",
-      "quizPleaseId": 235,
+      "quizPleaseId": "226",
       "rudaGamesId": 125,
       "shakerTeamSize": {
         "maximum": 10,
@@ -1232,7 +1240,7 @@
     {
       "id": 107,
       "shakerQuizId": "423b726c-4258-43c9-98ff-101bd290c3c8",
-      "quizPleaseId": 92,
+      "quizPleaseId": "86",
       "rudaGamesId": 39,
       "shakerTeamSize": {
         "maximum": 12,
@@ -1265,7 +1273,7 @@
     {
       "id": 110,
       "shakerQuizId": "96ccc86f-5b54-46ac-b127-8299d5efb62c",
-      "quizPleaseId": 77,
+      "quizPleaseId": "71",
       "rudaGamesId": 41,
       "shakerTeamSize": {
         "maximum": 10,
@@ -1278,7 +1286,7 @@
     {
       "id": 111,
       "shakerQuizId": "b489621b-cfb2-4aef-8c22-02daf19fa08f",
-      "quizPleaseId": 17,
+      "quizPleaseId": "11",
       "squizId": 111979372401,
       "rudaGamesId": 8,
       "shakerTeamSize": {
