@@ -62,7 +62,7 @@ fun apiModule() = module {
             }
             defaultRequest {
                 url {
-                    protocol = URLProtocol.HTTP
+                    protocol = URLProtocol.HTTPS
                     host = BASE_SQUIZ_URL
                 }
             }

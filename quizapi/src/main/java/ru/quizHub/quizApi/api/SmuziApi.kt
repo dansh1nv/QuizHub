@@ -50,7 +50,7 @@ class SmuziApi(
 
     companion object {
         private val logger = Logger.getLogger(SmuziApi::class.java.name)
-        const val PATH = "/api/getproductslist"
+        const val PATH = "/api/getproductslist/"
         const val STORE_PART_UID = "storepartuid"
         const val SLICE = "slice"
         const val SIZE = "size"

@@ -43,8 +43,7 @@ class SquizApi(
 
 
     companion object {
-        const val PATH =
-            "/api/getproductslist"
+        const val PATH = "/api/getproductslist/"
         const val PAGE_NUMBER = "slice"
         const val PAGE_SIZE = "size"
         const val CITY = "storepartuid"

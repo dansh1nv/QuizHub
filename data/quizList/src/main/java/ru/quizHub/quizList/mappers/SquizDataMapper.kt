@@ -29,7 +29,7 @@ class SquizDataMapper {
         val gameType = getGameType((quiz.characteristics as List<Characteristic>))
         val text = quiz.text.orEmpty()
         val (date, time) = quiz.title?.split("::") ?: return null
-        val (dayWithMonth, dayOfTheWeek) = date.trim().split(",", limit = 2)
+        val (dayWithMonth, _) = date.trim().split(",", limit = 2)
         val (day, month) = dayWithMonth.trim().split(" ", limit = 2)
         val price = quiz.price?.split(".")?.first()?.toBigDecimal()
         val address = Regex(""";">(.*?)</a>""").findAll(text)
@@ -39,31 +39,40 @@ class SquizDataMapper {
                     .replace("ул. ", "")
             }
             .toList()
+        val coordinates = COORDINATES_REGEX.find(text)
+        val latitude = coordinates?.groupValues?.getOrNull(1)?.toDoubleOrNull()
+        val longitude = coordinates?.groupValues?.getOrNull(2)?.toDoubleOrNull()
         val theme = Regex("""Описание: "(.*?)"""").find(text)?.groupValues?.getOrNull(1)
         val description = Regex("""Текст карточки: "(.*?)"""").find(text)?.groupValues?.getOrNull(1)
         val additionDescription =
             Regex("""Дополнение описания: "(.*?)"""").find(text)?.groupValues?.getOrNull(1)
 
         val packageNumber = quiz.packageNumber.orEmpty()
-        val status = Regex("""SMS: "(.*?)"""").find(text)?.groupValues?.getOrNull(1)
-        val difficult = Regex("""Сложность:"(.*?)"""").find(text)?.groupValues?.getOrNull(1)
+        val buttonLabel = Regex("""Кнопка: "(.*?)"""").find(text)?.groupValues?.getOrNull(1)
+        val smsStatus = Regex("""SMS: "(.*?)"""").find(text)?.groupValues?.getOrNull(1)
+        val difficult = Regex("""Сложность: "(.*?)"""").find(text)?.groupValues?.getOrNull(1)
+        val year = Regex("""Дата: "(.*?)"""").find(text)
+            ?.groupValues
+            ?.getOrNull(1)
+            ?.let { runCatching { LocalDate.parse(it).year }.getOrNull() }
         val img = quiz.galleryImage
             ?.substringAfter(":\"")
             ?.dropLast(3)
             ?.replace("\\/", "\\")
-        return ru.quizHub.quizlist.models.SQuiz(
+        return SQuiz(
             id = quiz.id.toString(),
             location = Location(
                 name = address.getOrNull(0),
                 city = quiz.cityId.orEmpty(),
                 address = address.getOrNull(1).orEmpty(),
-                latitude = null,
-                longitude = null,
+                latitude = latitude,
+                longitude = longitude,
             ),
             gameDate = mapGameDate(
                 day = day,
                 month = month,
                 time = time,
+                year = year,
             ),
             type = gameType,
             format = gameFormat,
@@ -73,7 +82,7 @@ class SquizDataMapper {
             additionDescription = additionDescription,
             image = img,
             price = price?.toString(),
-            status = mapToStatus(status),
+            status = mapToStatus(buttonLabel) ?: mapToStatus(smsStatus),
             difficult = difficult
         )
     }
@@ -95,26 +104,23 @@ class SquizDataMapper {
     }
 
     private fun mapToStatus(status: String?): Status? {
-        return Status.entries.firstOrNull { it.squizId == status }
+        return when (status) {
+            "Запись на игру", "Записаться" -> Status.WRITE_TO_GAME
+            "Запись в резерв", "Попасть в резерв" -> Status.WRITE_TO_RESERVE
+            "Регистрация закрыта" -> Status.RESERVATION_CLOSE
+            else -> Status.entries.firstOrNull { it.squizId == status }
+        }
     }
 
     private fun mapGameDate(
         day: String,
         month: String,
         time: String,
+        year: Int?,
     ): GameDate {
         val timeArray = time.trim().split(":", limit = 2)
-        //TODO: Подумать откуда взять бы год
-        val currentDate = OffsetDateTime.now()
-        val currentMonth = currentDate.month
-        val quizMonth = MonthConverter.getMonthByName(month)
-        val year = if (currentMonth.name.lowercase() == "december" && quizMonth == 1) {
-            currentDate.year + 1
-        } else {
-            currentDate.year
-        }
         val localDate = LocalDate(
-            year = year,
+            year = year ?: OffsetDateTime.now().year,
             monthNumber = MonthConverter.getMonthByName(month),
             dayOfMonth = day.toInt()
         )
@@ -131,6 +137,10 @@ class SquizDataMapper {
             month = month,
             time = time.trim(),
         )
+    }
+
+    private companion object {
+        val COORDINATES_REGEX = Regex(""",\s*"(\d+\.\d+),\s*(\d+\.\d+)"""")
     }
 
 }
