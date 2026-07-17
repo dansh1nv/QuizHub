@@ -186,8 +186,11 @@ class MainActivity : ComponentActivity() {
                 NavigationAppBarItem.Settings.route,
             )
         }
+        val featureToggle = remember { FeatureToggle() }
         val showsActivityTopBar = currentRoute == ThemeSettingsDestination.route
-        val showsBottomBar = currentRoute != null && currentRoute in mainTabRoutes
+        val showsBottomBar = featureToggle.bottomNavigationEnabled &&
+            currentRoute != null &&
+            currentRoute in mainTabRoutes
 
         QuizHubTheme(
             appTheme = currentTheme,
@@ -201,7 +204,9 @@ class MainActivity : ComponentActivity() {
                     TopAppBar(navController, scrollBehavior, currentRoute)
                 },
                 bottomBar = {
-                    NavigationAppBar(navController, currentRoute)
+                    if (featureToggle.bottomNavigationEnabled) {
+                        NavigationAppBar(navController, currentRoute)
+                    }
                 },
                 snackbarHost = {
                     QuizHubSnackbar(
