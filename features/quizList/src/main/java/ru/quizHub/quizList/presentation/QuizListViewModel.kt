@@ -159,6 +159,7 @@ internal class QuizListViewModel(
 
             is ScreenEvent.OnScrollPositionChanged -> updateScrollUp(event.isScrollUpVisible)
             is ScreenEvent.OnShareEventClick -> handleShareEventClick(event.quiz)
+            is ScreenEvent.OnAddToCalendarClick -> handleAddToCalendarClick(event.quiz)
             is ScreenEvent.OnShowLocationEventClick -> handleShowLocationEventClick(event.quiz)
             is ScreenEvent.ResetFilters -> {
                 resetFilters()
@@ -266,6 +267,12 @@ internal class QuizListViewModel(
         actionEventsListener.onActionEvent(
             ActionEvents.ShareEvent(shareText)
         )
+    }
+
+    private fun handleAddToCalendarClick(quiz: QuizUI) {
+        actionEventsMapper.mapToAddToCalendarEvent(quiz)?.let { event ->
+            actionEventsListener.onActionEvent(event)
+        }
     }
 
     private fun handleCalendarClick() {
@@ -412,6 +419,7 @@ internal class QuizListViewModel(
     }
 
     private fun navigateToQuizDetails(quizId: String) {
+        if (!container.stateFlow.value.featureToggle.cardDetails) return
         postSideEffect(QuizListSideEffect.NavigateQuizDetails(quizId))
     }
 
@@ -446,5 +454,6 @@ internal data class FeatureToggle(
     val isFavouriteFeatureEnabled: Boolean = false,
     val isFiltersFeatureEnabled: Boolean = true,
     val isSortFeatureEnabled: Boolean = true,
-    val isCalendarFeatureEnable: Boolean = true
+    val isCalendarFeatureEnable: Boolean = true,
+    val cardDetails: Boolean = false,
 )

@@ -16,6 +16,7 @@ import ru.quizHub.quizList.presentation.composable.card.QuizCard
 @Composable
 internal fun QuizListContent(
     quizList: List<QuizUI>,
+    isCardDetailsEnabled: Boolean,
     onUIEvent: (QuizListEvent) -> Unit,
     listState: LazyListState,
 ) {
@@ -29,6 +30,7 @@ internal fun QuizListContent(
         items(quizList.filter { it.isVisible }) { quiz ->
             QuizCard(
                 quizGame = quiz,
+                isCardDetailsEnabled = isCardDetailsEnabled,
                 onUIEvent = onUIEvent,
             )
         }

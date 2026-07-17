@@ -1,8 +1,11 @@
 package ru.quizHub.quizList.mappers
 
 import android.net.Uri
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toInstant
 import ru.quizHub.common.StringDividerType
 import ru.quizHub.common.formatStringsWithDividerPoints
+import ru.quizHub.core.presentation.model.ActionEvents
 import ru.quizHub.core.resourceManager.IResourceManager
 import ru.quizHub.quizList.R
 import ru.quizHub.quizList.models.item.LocationUI
@@ -63,6 +66,24 @@ class ActionEventsMapper(
         return buildQueryWithoutCoordinates(location)
     }
 
+    fun mapToAddToCalendarEvent(quiz: QuizUI): ActionEvents.AddToCalendarEvent? {
+        val dateTime = quiz.formattedDate?.date ?: return null
+        val beginTimeMillis = dateTime
+            .toInstant(TimeZone.currentSystemDefault())
+            .toEpochMilliseconds()
+        val location = formatStringsWithDividerPoints(
+            arrayOf(quiz.location?.place, quiz.location?.address),
+            StringDividerType.CommaSpace
+        )
+        return ActionEvents.AddToCalendarEvent(
+            title = quiz.theme,
+            description = mapToShareText(quiz),
+            location = location,
+            beginTimeMillis = beginTimeMillis,
+            endTimeMillis = beginTimeMillis + DEFAULT_EVENT_DURATION_MILLIS,
+        )
+    }
+
     fun buildGeoQuery(quiz: QuizUI): String {
         return formatStringsWithDividerPoints(
             arrayOf(quiz.location?.city, quiz.location?.address),
@@ -80,5 +101,6 @@ class ActionEventsMapper(
     companion object {
         const val GEO_URI_PREFIX = "geo:0,0?q="
         const val GEO_URI_WITH_COORDINATES = "geo:%s,%s?q=%s, %s"
+        private const val DEFAULT_EVENT_DURATION_MILLIS = (2 * 60 + 30) * 60 * 1000L
     }
 }

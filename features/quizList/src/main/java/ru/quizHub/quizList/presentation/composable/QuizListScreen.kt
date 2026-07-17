@@ -150,6 +150,7 @@ internal fun BaseScreen(
                         content = {
                             QuizListContent(
                                 quizList = screenState.quizList,
+                                isCardDetailsEnabled = screenState.featureToggle.cardDetails,
                                 onUIEvent = onUIEvent,
                                 listState = listState,
                             )

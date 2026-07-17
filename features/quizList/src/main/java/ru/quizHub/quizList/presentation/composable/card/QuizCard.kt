@@ -22,6 +22,7 @@ import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
 import ru.quizHub.quizList.models.item.QuizUI
 import ru.quizHub.quizList.presentation.QuizListEvent
 import ru.quizHub.quizList.presentation.ScreenEvent
+import ru.quizHub.quizList.presentation.composable.elements.QuizAddToCalendarElement
 import ru.quizHub.quizList.presentation.composable.elements.QuizDateElement
 import ru.quizHub.quizList.presentation.composable.elements.QuizDifficultElement
 import ru.quizHub.quizList.presentation.composable.elements.QuizLocationElement
@@ -36,6 +37,7 @@ import ru.quizHub.quizList.presentation.composable.elements.QuizTitleElement
 @Composable
 internal fun QuizCard(
     quizGame: QuizUI,
+    isCardDetailsEnabled: Boolean,
     onUIEvent: (QuizListEvent) -> Unit,
 ) {
     Column(
@@ -51,7 +53,15 @@ internal fun QuizCard(
                 color = QuizHubTheme.colorScheme.surfaceContainer
             )
             .padding(12.dp)
-            .clickable { onUIEvent(ScreenEvent.OnCardItemClicked("test_id")) }
+            .then(
+                if (isCardDetailsEnabled) {
+                    Modifier.clickable {
+                        onUIEvent(ScreenEvent.OnCardItemClicked(quizGame.id))
+                    }
+                } else {
+                    Modifier
+                }
+            )
     ) {
         val modifier = Modifier.padding(start = 8.dp, top = 4.dp, end = 8.dp)
         Box(
@@ -87,13 +97,25 @@ internal fun QuizCard(
                     modifier = modifier
                 )
             }
-            QuizShareElement(
-                quiz = quizGame,
-                onShareClicked = { quiz ->
-                    onUIEvent(ScreenEvent.OnShareEventClick(quiz))
-                },
-                modifier = modifier.align(Alignment.CenterVertically)
-            )
+            Row(
+                modifier = modifier,
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+            ) {
+                QuizAddToCalendarElement(
+                    quiz = quizGame,
+                    onAddToCalendarClicked = { quiz ->
+                        onUIEvent(ScreenEvent.OnAddToCalendarClick(quiz))
+                    },
+                )
+                QuizShareElement(
+                    quiz = quizGame,
+                    onShareClicked = { quiz ->
+                        onUIEvent(ScreenEvent.OnShareEventClick(quiz))
+                    },
+                    modifier = Modifier,
+                )
+            }
         }
         quizGame.takeIf { it.additionDescription.isNotBlank() }?.let {
             QuizReplyElement(

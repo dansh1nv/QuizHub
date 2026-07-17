@@ -2,6 +2,7 @@ package ru.quizHub.quizhub
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.CalendarContract
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -11,11 +12,9 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBars
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -43,10 +42,10 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import ru.quizHub.core.navigation.destinations.ThemeSettingsDestination
 import ru.quizHub.core.presentation.ActionEventsListener
 import ru.quizHub.core.presentation.IntentErrorMapper
 import ru.quizHub.core.presentation.SnackbarListener
-import ru.quizHub.core.navigation.destinations.ThemeSettingsDestination
 import ru.quizHub.core.presentation.model.ActionEvents
 import ru.quizHub.core.presentation.model.SnackbarEvents
 import ru.quizHub.core.startIntentSafe
@@ -85,6 +84,7 @@ class MainActivity : ComponentActivity() {
                     when (event) {
                         is ActionEvents.ShareEvent -> handleShareEvent(event.shareText)
                         is ActionEvents.ShowLocationEvent -> handleLocationEvent(event.locationText)
+                        is ActionEvents.AddToCalendarEvent -> handleAddToCalendarEvent(event)
                     }
                 }
             }
@@ -116,6 +116,24 @@ class MainActivity : ComponentActivity() {
                 shareIntent,
                 getString(R.string.share_chooser_title)
             ),
+            intentErrorMapper,
+            onFailure = { errorMessage ->
+                snackbarListener.showSnackbar(SnackbarEvents.ShowErrorSnackbar(errorMessage))
+            }
+        )
+    }
+
+    private fun handleAddToCalendarEvent(event: ActionEvents.AddToCalendarEvent) {
+        val calendarIntent = Intent(Intent.ACTION_INSERT).apply {
+            data = CalendarContract.Events.CONTENT_URI
+            putExtra(CalendarContract.Events.TITLE, event.title)
+            putExtra(CalendarContract.Events.DESCRIPTION, event.description)
+            putExtra(CalendarContract.Events.EVENT_LOCATION, event.location)
+            putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, event.beginTimeMillis)
+            putExtra(CalendarContract.EXTRA_EVENT_END_TIME, event.endTimeMillis)
+        }
+        startIntentSafe(
+            calendarIntent,
             intentErrorMapper,
             onFailure = { errorMessage ->
                 snackbarListener.showSnackbar(SnackbarEvents.ShowErrorSnackbar(errorMessage))
