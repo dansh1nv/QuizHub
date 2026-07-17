@@ -4,8 +4,8 @@ import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.LocalTime
 import ru.quizHub.quizApi.model.quizplease.QuizPleaseDTO
-import ru.quizHub.quizApi.model.quizplease.StatusDTO
 import ru.quizHub.quizList.utils.MonthConverter
+import ru.quizHub.quizlist.models.Difficulty
 import ru.quizHub.quizlist.models.QuizPlease
 import ru.quizHub.quizlist.models.Status
 import ru.quizHub.quizlist.models.common.GameDate
@@ -15,50 +15,42 @@ import ru.quizHub.quizlist.models.common.PaymentMethod
 
 class QuizPleaseDataMapper {
 
-    companion object {
-        private const val DIFFICULTY_TAG =
-            """<div class="badge-difficulty__title badge-difficulty__title_registration">"""
-        private const val CLOSE_TAG = "</div>"
-        private const val BASE_URL = "https://quizplease.ru"
-    }
-
     fun mapToQuiz(dtos: List<QuizPleaseDTO>): List<QuizPlease> {
         return dtos.map(::map)
     }
 
     fun map(dto: QuizPleaseDTO) = QuizPlease(
-        id = dto.id?.toString().orEmpty(),
+        id = dto.id.orEmpty(),
         title = dto.title,
-        packageNumber = dto.packageNumber,
-        description = dto.description,
-        image = dto.image?.let(::mapImageURL),
-        gameFormat = dto.gameFormat?.let { mapGameFormat(it) },
-        datetime = dto.datetime,
-        formatDate = mapGameDate(
-            dto.datetime.orEmpty(),
-            dto.formatTime,
-        ),
+        packageNumber = "#${dto.gameNumber}",
+        description = dto.quote ?: dto.description,
+        image = dto.template?.gameUnderlay
+            ?: dto.template?.backgroundPhone
+            ?: dto.place?.images?.firstOrNull()?.image,
+        gameFormat = dto.gameType?.let(::mapGameFormat),
+        datetime = dto.date,
+        formatDate = mapGameDate(dto.date.orEmpty()),
         price = dto.price,
-        formatPrice = dto.formatPrice,
+        formatPrice = dto.currentPrice,
         location = Location(
-            city = dto.city,
-            latitude = dto.latitude?.toDouble(),
-            longitude = dto.longitude?.toDouble(),
-            address = dto.address,
-            name = dto.location,
+            city = dto.place?.city?.title,
+            latitude = dto.place?.lat,
+            longitude = dto.place?.lon,
+            address = dto.place?.address,
+            name = dto.place?.title,
         ),
-        difficulty = dto.difficulty?.let { mapDifficulty(it) },
+        difficulty = mapDifficulty(dto.level ?: dto.template?.gameLevel),
         status = mapStatus(dto.status),
-        paymentMethod = dto.paymentMethod?.let { mapPaymentMethod(it) },
+        paymentMethod = dto.payMethod?.let(::mapPaymentMethod),
     )
 
-    private fun mapImageURL(path: String): String {
-        val secondPartUrl = if (path.startsWith("/")) path else "/$path"
-        return BASE_URL + secondPartUrl
+    private fun mapDifficulty(level: String?): Difficulty? {
+        val normalizedLevel = level?.lowercase() ?: return null
+        return Difficulty.entries.firstOrNull { it.name.lowercase() == normalizedLevel }
     }
 
-    private fun mapStatus(status: StatusDTO?): Status? {
-        return Status.entries.firstOrNull { it.quizPleaseId == status?.id }
+    private fun mapStatus(status: Int?): Status? {
+        return Status.entries.firstOrNull { it.quizPleaseId.contains(status) }
     }
 
     private fun mapGameFormat(gameFormat: Int): GameFormat? {
@@ -69,29 +61,23 @@ class QuizPleaseDataMapper {
         return PaymentMethod.entries.firstOrNull { it.id == paymentMethod }
     }
 
-    private fun mapDifficulty(difficulty: String): String {
-        return difficulty.substringAfter(DIFFICULTY_TAG)
-            .substringBefore(CLOSE_TAG)
-            .trim()
-    }
-
-    private fun mapGameDate(
-        datetime: String,
-        formatTime: String?,
-    ): GameDate {
+    private fun mapGameDate(datetime: String): GameDate {
         val (date, time) = datetime.split(" ", limit = 2)
-        val timeWithLocale = formatTime ?: time
-        val timeArray = timeWithLocale.split(":", limit = 2)
+        val timeArray = time.split(":", limit = 2)
         val dateArray = date.split(".", limit = 3)
         val day = dateArray.getOrNull(0)?.toInt() ?: 1
         val month = dateArray.getOrNull(1)?.toInt() ?: 1
+        val yearRaw = dateArray.getOrNull(2).orEmpty()
+        val year = when (yearRaw.length) {
+            2 -> "20$yearRaw".toInt()
+            else -> yearRaw.toIntOrNull() ?: 1970
+        }
         val localTime = LocalTime(
-            hour = timeArray[0].toInt(),
-            minute = timeArray[1].toInt(),
+            hour = timeArray.getOrNull(0)?.toInt() ?: 0,
+            minute = timeArray.getOrNull(1)?.toInt() ?: 0,
         )
         val localDate = LocalDate(
-            //TODO: Поправить подсчет даты
-            year = "20${dateArray[2]}".toInt(),
+            year = year,
             monthNumber = month,
             dayOfMonth = day,
         )
@@ -103,7 +89,7 @@ class QuizPleaseDataMapper {
             dateTime = localDateTime,
             day = day.toString(),
             month = MonthConverter.getMonthNameByNumber(month),
-            time = timeWithLocale,
+            time = time,
         )
     }
 }

@@ -5,6 +5,7 @@ import ru.quizHub.common.formatStringsWithDividerPoints
 import ru.quizHub.quizList.models.TagModel
 import ru.quizHub.quizList.models.item.Organization
 import ru.quizHub.quizList.models.item.QuizUI
+import ru.quizHub.quizlist.models.Difficulty
 import ru.quizHub.quizlist.models.QuizPlease
 import ru.quizHub.quizlist.models.common.GameFormat
 import ru.quizHub.quizlist.models.common.GameType
@@ -34,7 +35,7 @@ internal class QuizPleaseMapper(private val commonMapper: CommonMapper) {
             formatPrice = entity.formatPrice.orEmpty(),
             description = entity.description?.substringBefore(SUBSTRING_TEXT)?.trim().orEmpty(),
             image = entity.image.orEmpty(),
-            difficulty = entity.difficulty.orEmpty(),
+            difficulty = entity.difficulty?.let(::mapDifficulty).orEmpty(),
             location = entity.location?.let { model ->
                 commonMapper.mapLocationUI(model, gameFormat)
             },
@@ -52,5 +53,13 @@ internal class QuizPleaseMapper(private val commonMapper: CommonMapper) {
                 ?.let(commonMapper::mapPriceAdditionalText).orEmpty(),
             type = GameType.CLASSIC,
         )
+    }
+
+    private fun mapDifficulty(difficulty: Difficulty): String {
+        return when (difficulty) {
+            Difficulty.LIGHT -> "легкая"
+            Difficulty.MEDIUM -> "нормальная"
+            Difficulty.HARD -> "сложная"
+        }
     }
 }

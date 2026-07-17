@@ -26,10 +26,10 @@ class QuizPleaseApi(
         }
         val httpRequest = httpClient.get {
             url {
-                path(PATH)
-                parameter(PARAM_CITY_ID, cityId)
-                parameter(PARAM_PAGE_NUMBER, pageNumber)
+                path(PATH, cityId.toString())
+                parameter(PARAM_ORDER, ORDER_BY_DATE)
                 parameter(PARAM_PAGE_SIZE, pageSize)
+                parameter(PARAM_PAGE_NUMBER, pageNumber)
             }
         }
         val data = httpRequest.body<QuizPleaseResponse>()
@@ -39,9 +39,10 @@ class QuizPleaseApi(
     }.flowOn(Dispatchers.IO)
 
     companion object {
-        const val PATH = "/api/game"
-        const val PARAM_CITY_ID = "city_id"
+        const val PATH = "api/games/schedule"
+        const val PARAM_ORDER = "order"
+        const val PARAM_PAGE_SIZE = "per_page"
         const val PARAM_PAGE_NUMBER = "page"
-        const val PARAM_PAGE_SIZE = "per-page"
+        const val ORDER_BY_DATE = "date"
     }
 }

@@ -17,7 +17,7 @@ data class QuizPlease(
     val price: Int?,
     val formatPrice: String?,
     val location: Location?,
-    val difficulty: String?,
+    val difficulty: Difficulty?,
     val status: Status?,
     val paymentMethod: PaymentMethod?,
 ) : Quiz()
