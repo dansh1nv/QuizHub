@@ -6,6 +6,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import ru.quizHub.core.navigation.destinations.DevToolsDestination
 import ru.quizHub.core.navigation.destinations.ProfileDestination
 import ru.quizHub.core.navigation.destinations.QuizDetailsDestination
 import ru.quizHub.core.navigation.destinations.QuizListDestination
@@ -14,6 +15,7 @@ import ru.quizHub.core.navigation.destinations.ThemeSettingsDestination
 import ru.quizHub.profile.presentation.composable.ProfileScreen
 import ru.quizHub.quiz.details.presentation.presentation.composable.QuizDetailsScreen
 import ru.quizHub.quizList.presentation.composable.QuizListScreen
+import ru.quizHub.quizhub.devtools.DevToolsScreen
 import ru.quizHub.settings.presentation.composable.SettingsScreen
 import ru.quizHub.settings.presentation.composable.ThemeSettingsScreen
 
@@ -35,6 +37,7 @@ fun AppNavGraph(
         quizDetails(navController)
         settings(navController)
         profile(navController)
+        devTools()
     }
 }
 
@@ -62,5 +65,11 @@ fun NavGraphBuilder.settings(navController: NavHostController) {
     }
     composable(ThemeSettingsDestination.route) {
         ThemeSettingsScreen()
+    }
+}
+
+fun NavGraphBuilder.devTools() {
+    composable(DevToolsDestination.route) {
+        DevToolsScreen()
     }
 }

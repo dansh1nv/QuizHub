@@ -42,6 +42,8 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import ru.quizHub.core.featureToggle.FeatureToggleManager
+import ru.quizHub.core.navigation.destinations.DevToolsDestination
 import ru.quizHub.core.navigation.destinations.ThemeSettingsDestination
 import ru.quizHub.core.presentation.ActionEventsListener
 import ru.quizHub.core.presentation.IntentErrorMapper
@@ -51,6 +53,7 @@ import ru.quizHub.core.presentation.model.SnackbarEvents
 import ru.quizHub.core.startIntentSafe
 import ru.quizHub.designsystem.theme.elements.QuizHubSnackbar
 import ru.quizHub.designsystem.theme.uiKit.QuizHubTheme
+import ru.quizHub.quizhub.devtools.DraggableDevToolsFab
 import ru.quizHub.quizhub.navigation.AppNavGraph
 import ru.quizHub.quizhub.navigation.navigationBar.NavigationAppBar
 import ru.quizHub.quizhub.navigation.navigationBar.NavigationAppBarItem
@@ -67,6 +70,7 @@ class MainActivity : ComponentActivity() {
     private val snackbarListener by inject<SnackbarListener>()
     private val intentErrorMapper by inject<IntentErrorMapper>()
     private val themeManager by inject<ThemeManager>()
+    private val featureToggleManager by inject<FeatureToggleManager>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -186,62 +190,72 @@ class MainActivity : ComponentActivity() {
                 NavigationAppBarItem.Settings.route,
             )
         }
-        val featureToggle = remember { FeatureToggle() }
-        val showsActivityTopBar = currentRoute == ThemeSettingsDestination.route
+        val featureToggle by featureToggleManager.state.collectAsState()
+        val showsActivityTopBar = currentRoute == ThemeSettingsDestination.route ||
+            currentRoute == DevToolsDestination.route
         val showsBottomBar = featureToggle.bottomNavigationEnabled &&
             currentRoute != null &&
             currentRoute in mainTabRoutes
+        val showsDevToolsFab = BuildConfig.DEBUG && currentRoute != DevToolsDestination.route
 
         QuizHubTheme(
             appTheme = currentTheme,
         ) {
-            Scaffold(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .nestedScroll(scrollBehavior.nestedScrollConnection),
-                contentWindowInsets = WindowInsets(0.dp, 0.dp, 0.dp, 0.dp),
-                topBar = {
-                    TopAppBar(navController, scrollBehavior, currentRoute)
-                },
-                bottomBar = {
-                    if (featureToggle.bottomNavigationEnabled) {
-                        NavigationAppBar(navController, currentRoute)
-                    }
-                },
-                snackbarHost = {
-                    QuizHubSnackbar(
-                        hostState = snackbarHostState,
-                        modifier = Modifier
-                    )
-                },
-                containerColor = QuizHubTheme.colorScheme.surface
-            ) { paddingValues ->
-                Box(
+            Box(modifier = Modifier.fillMaxSize()) {
+                Scaffold(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(paddingValues)
-                        .then(
-                            if (!showsActivityTopBar) {
-                                Modifier.windowInsetsPadding(
-                                    WindowInsets.statusBars.only(WindowInsetsSides.Top)
-                                )
-                            } else {
-                                Modifier
-                            }
+                        .nestedScroll(scrollBehavior.nestedScrollConnection),
+                    contentWindowInsets = WindowInsets(0.dp, 0.dp, 0.dp, 0.dp),
+                    topBar = {
+                        TopAppBar(navController, scrollBehavior, currentRoute)
+                    },
+                    bottomBar = {
+                        if (featureToggle.bottomNavigationEnabled) {
+                            NavigationAppBar(navController, currentRoute)
+                        }
+                    },
+                    snackbarHost = {
+                        QuizHubSnackbar(
+                            hostState = snackbarHostState,
+                            modifier = Modifier
                         )
-                        .then(
-                            if (!showsBottomBar) {
-                                Modifier.windowInsetsPadding(
-                                    WindowInsets.navigationBars.only(WindowInsetsSides.Bottom)
-                                )
-                            } else {
-                                Modifier
-                            }
+                    },
+                    containerColor = QuizHubTheme.colorScheme.surface
+                ) { paddingValues ->
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(paddingValues)
+                            .then(
+                                if (!showsActivityTopBar) {
+                                    Modifier.windowInsetsPadding(
+                                        WindowInsets.statusBars.only(WindowInsetsSides.Top)
+                                    )
+                                } else {
+                                    Modifier
+                                }
+                            )
+                            .then(
+                                if (!showsBottomBar) {
+                                    Modifier.windowInsetsPadding(
+                                        WindowInsets.navigationBars.only(WindowInsetsSides.Bottom)
+                                    )
+                                } else {
+                                    Modifier
+                                }
+                            )
+                    ) {
+                        AppNavGraph(
+                            navController = navController,
+                            onCloseApp = { this@MainActivity.finish() }
                         )
-                ) {
-                    AppNavGraph(
-                        navController = navController,
-                        onCloseApp = { this@MainActivity.finish() }
+                    }
+                }
+
+                if (showsDevToolsFab) {
+                    DraggableDevToolsFab(
+                        onClick = { navController.navigate(DevToolsDestination.route) },
                     )
                 }
             }

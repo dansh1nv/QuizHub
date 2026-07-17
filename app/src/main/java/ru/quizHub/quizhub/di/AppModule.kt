@@ -5,6 +5,7 @@ import org.koin.dsl.module
 import ru.quizHub.core.resourceManager.IResourceManager
 import ru.quizHub.core.resourceManager.ResourceManager
 import ru.quizHub.quizhub.MainActivityViewModel
+import ru.quizHub.quizhub.devtools.DevToolsViewModel
 
 fun appModule() = module {
 
@@ -13,4 +14,5 @@ fun appModule() = module {
     }
 
     viewModelOf(::MainActivityViewModel)
+    viewModelOf(::DevToolsViewModel)
 }

@@ -15,6 +15,8 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import ru.quizHub.common.orTrue
+import ru.quizHub.core.featureToggle.FeatureToggleManager
+import ru.quizHub.core.featureToggle.FeatureToggleState
 import ru.quizHub.core.presentation.ActionEventsListener
 import ru.quizHub.core.presentation.IntentErrorMapper
 import ru.quizHub.core.presentation.ScreenState
@@ -54,7 +56,8 @@ internal class QuizListViewModel(
     private val resourceManager: IResourceManager,
     private val bottomSheetController: BottomSheetController,
     private val actionEventsListener: ActionEventsListener,
-    private val snackbarListener: SnackbarListener
+    private val snackbarListener: SnackbarListener,
+    private val featureToggleManager: FeatureToggleManager,
 ) : BaseMviViewModel<QuizListState, QuizListSideEffect, QuizListEvent>(
     initialState = QuizListState()
 ), BottomSheetController by bottomSheetController {
@@ -63,8 +66,17 @@ internal class QuizListViewModel(
     private var geoInfoFetchJob: Job? = null
 
     override suspend fun onLaunch() {
+        observeFeatureToggles()
         fetchCities()
         observeCurrentCity()
+    }
+
+    private fun observeFeatureToggles() {
+        featureToggleManager.state
+            .onEach { toggles ->
+                updateState { copy(featureToggle = toggles) }
+            }
+            .launchIn(viewModelScope)
     }
 
     override fun handleEvent(event: QuizListEvent) {
@@ -442,18 +454,10 @@ internal data class QuizListState(
     val uiStatus: UIStatus = UIStatus.Loading,
     val selectedTabIndex: Int = 0,
     val quizList: List<QuizUI> = emptyList(),
-    val featureToggle: FeatureToggle = FeatureToggle(),
+    val featureToggle: FeatureToggleState = FeatureToggleState(),
     val filtersState: FiltersState = FiltersState(),
     val currentCity: CityModel = CityModel.UNKNOWN,
     val cities: List<CityModel> = emptyList(),
     val sort: Sort = Sort.ASC_DATE,
     val isScrollUpVisible: Boolean = false,
 ) : ScreenState
-
-internal data class FeatureToggle(
-    val isFavouriteFeatureEnabled: Boolean = false,
-    val isFiltersFeatureEnabled: Boolean = true,
-    val isSortFeatureEnabled: Boolean = true,
-    val isCalendarFeatureEnable: Boolean = true,
-    val cardDetails: Boolean = false,
-)

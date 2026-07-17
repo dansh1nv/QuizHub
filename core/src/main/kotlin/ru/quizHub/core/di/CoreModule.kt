@@ -11,6 +11,7 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 import ru.quizHub.core.datastore.AppDataStore
 import ru.quizHub.core.datastore.AppPreferences
+import ru.quizHub.core.featureToggle.FeatureToggleManager
 import ru.quizHub.core.presentation.ActionEventsListener
 import ru.quizHub.core.presentation.IntentErrorMapper
 import ru.quizHub.core.presentation.SnackbarListener
@@ -22,6 +23,7 @@ fun coreModule() = module {
     singleOf(::ActionEventsListener)
     singleOf(::SnackbarListener)
     singleOf(::IntentErrorMapper)
+    singleOf(::FeatureToggleManager)
     single<AppDataStore> {
         val dataStore = DataStoreFactory.create(
             serializer = AppPreferences.Serializer(Json),

@@ -14,7 +14,8 @@ fun TopAppBar(
     currentRoute: String?
 ) {
     val items = listOf(
-        TopBarItem.ThemeSettings
+        TopBarItem.ThemeSettings,
+        TopBarItem.DevTools,
     )
     val currentItem = items.find { it.route == currentRoute }
 

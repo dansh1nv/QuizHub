@@ -7,6 +7,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
 import kotlinx.serialization.json.encodeToStream
+import ru.quizHub.core.featureToggle.FeatureToggleState
 import java.io.InputStream
 import java.io.OutputStream
 import androidx.datastore.core.Serializer as DataStoreSerializer
@@ -15,7 +16,8 @@ import androidx.datastore.core.Serializer as DataStoreSerializer
 data class AppPreferences(
     val currentCity: String = "",
     val themeMode: String = "SYSTEM",
-    val highContrast: Boolean = false
+    val highContrast: Boolean = false,
+    val featureToggles: FeatureToggleState = FeatureToggleState(),
 ) {
     class Serializer(private val json: Json) : DataStoreSerializer<AppPreferences> {
         override val defaultValue: AppPreferences = AppPreferences()
