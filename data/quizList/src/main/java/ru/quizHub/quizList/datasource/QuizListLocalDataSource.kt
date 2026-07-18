@@ -12,12 +12,23 @@ class QuizListLocalDataSource(
     private val database: QuizDatabase,
 ) {
 
-    fun getQuizzes(): Flow<List<QuizDBO>> {
-        return database.quizDao.getAll()
+    fun getQuizzesByCity(city: String): Flow<List<QuizDBO>> {
+        return database.quizDao.getByCity(city)
     }
 
-    suspend fun saveQuizzes(quizzes: List<QuizDBO>) {
-        database.quizDao.clean()
+    suspend fun saveQuizzes(city: String, quizzes: List<QuizDBO>) {
+        database.quizDao.deleteByCity(city)
+        if (quizzes.isNotEmpty()) {
+            database.quizDao.insert(quizzes)
+        }
+    }
+
+    suspend fun replaceByCityAndOrganization(
+        city: String,
+        organization: String,
+        quizzes: List<QuizDBO>,
+    ) {
+        database.quizDao.deleteByCityAndOrganization(city, organization)
         if (quizzes.isNotEmpty()) {
             database.quizDao.insert(quizzes)
         }

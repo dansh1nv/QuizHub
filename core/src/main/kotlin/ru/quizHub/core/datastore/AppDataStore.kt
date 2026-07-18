@@ -18,6 +18,8 @@ data class AppPreferences(
     val themeMode: String = "SYSTEM",
     val highContrast: Boolean = false,
     val featureToggles: FeatureToggleState = FeatureToggleState(),
+    val citiesJson: String = "",
+    val citiesCachedAt: Long = 0L,
 ) {
     class Serializer(private val json: Json) : DataStoreSerializer<AppPreferences> {
         override val defaultValue: AppPreferences = AppPreferences()

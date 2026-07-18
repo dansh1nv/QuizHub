@@ -31,6 +31,7 @@ material3 = "1.4.0"
 leak-canary = "2.14"
 location = "21.3.0"
 material-version = "1.13.0"
+work = "2.10.5"
 detekt = "1.23.8"
 
 [libraries]
@@ -103,6 +104,8 @@ leak-canary = { module = "com.squareup.leakcanary:leakcanary-android", version.r
 
 location = { module = "com.google.android.gms:play-services-location", version.ref = "location" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material-version" }
+
+androidx-work-runtime = { module = "androidx.work:work-runtime-ktx", version.ref = "work" }
 
 detekt_formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
 gradlePlugin_detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }

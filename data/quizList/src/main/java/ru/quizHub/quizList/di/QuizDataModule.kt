@@ -10,7 +10,6 @@ import ru.quizHub.quizList.datasource.quizPlease.QuizPleaseRemoteDataSource
 import ru.quizHub.quizList.datasource.rudaGames.RudaGamesRemoteDataSource
 import ru.quizHub.quizList.datasource.shakerQuiz.ShakerQuizRemoteDataSource
 import ru.quizHub.quizList.datasource.smuzi.SmuziRemoteDataSource
-import ru.quizHub.quizList.datasource.squiz.LocalDataSource
 import ru.quizHub.quizList.datasource.squiz.SquizRemoteDataSource
 import ru.quizHub.quizList.datasource.wowQuiz.WowQuizRemoteDataSource
 import ru.quizHub.quizList.mappers.CommonDataMapper
@@ -41,7 +40,6 @@ import ru.quizHub.quizlist.repository.IWowQuizRepository
 fun quizDataModule() = module {
 
     factoryOf(::SquizDataMapper)
-    factoryOf(::LocalDataSource)
     factoryOf(::SquizRemoteDataSource)
     singleOf(::SquizRepository) bind ISQuizRepository::class
 

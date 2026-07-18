@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "quizzes")
 data class QuizDBO(
-    @PrimaryKey(autoGenerate = true) val id: Long,
+    @PrimaryKey val id: String,
     @ColumnInfo("organization") val organization: String,
     @ColumnInfo("city") val city: String,
     @ColumnInfo("date") val date: String,
@@ -21,4 +21,6 @@ data class QuizDBO(
     @ColumnInfo("address") val address: String,
     @ColumnInfo("price") val price: String,
     @ColumnInfo("image") val image: String,
+    @ColumnInfo("cachedAt") val cachedAt: Long,
+    @ColumnInfo("payload") val payload: String = "",
 )

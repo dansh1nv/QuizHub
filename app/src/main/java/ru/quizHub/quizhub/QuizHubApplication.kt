@@ -9,6 +9,7 @@ import ru.quizHub.database.di.databaseModule
 import ru.quizHub.quizApi.di.apiModule
 import ru.quizHub.quizList.di.quizDataModule
 import ru.quizHub.quizList.di.quizListModule
+import ru.quizHub.quizList.work.QuizCacheScheduler
 import ru.quizHub.quizhub.di.appModule
 import ru.quizHub.quizhub.utils.TimberLogger
 import ru.quizHub.quizlist.di.quizListDomainModule
@@ -21,8 +22,9 @@ class QuizHubApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        initKoin()
         initTimber()
+        initKoin()
+        QuizCacheScheduler.schedule(this)
     }
 
     override fun onTerminate() {

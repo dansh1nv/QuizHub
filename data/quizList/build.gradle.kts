@@ -45,4 +45,6 @@ dependencies {
     implementation(project(":database"))
     implementation(project(":quizapi"))
     implementation(project(":domain:quizList"))
+    implementation(libs.androidx.work.runtime)
+    implementation(libs.koin.android)
 }

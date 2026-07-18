@@ -110,7 +110,8 @@ internal class QuizListViewModel(
         quizListFetchJob?.cancel()
         quizListFetchJob = viewModelScope.launch {
             updateState {
-                if (forceRefresh || quizList.isEmpty()) {
+                // SWR: Loading только когда нечего показать; при наличии списка не мигаем.
+                if (quizList.isEmpty()) {
                     copy(uiStatus = UIStatus.Loading)
                 } else {
                     this
@@ -189,12 +190,14 @@ internal class QuizListViewModel(
 
     private fun updateCurrentCity(city: CityModel) {
         updateState {
-            val cities = cities.map { city ->
-                city.copy(isSearchVisible = true)
+            val cities = cities.map { cityItem ->
+                cityItem.copy(isSearchVisible = true)
             }
             copy(
                 currentCity = city,
                 cities = cities,
+                quizList = emptyList(),
+                uiStatus = UIStatus.Loading,
             )
         }
 

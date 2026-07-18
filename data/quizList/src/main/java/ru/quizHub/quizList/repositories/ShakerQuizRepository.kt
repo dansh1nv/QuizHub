@@ -10,7 +10,6 @@ import ru.quizHub.quizlist.repository.IShakerQuizRepository
 
 class ShakerQuizRepository(
     private val remoteDataSource: ShakerQuizRemoteDataSource,
-//    private val localDataSource: ShakerQuizLocalDataSource,
     private val mapper: ShakerQuizDataMapper,
 ): IShakerQuizRepository {
     override fun fetchQuizzes(city: City): Flow<List<ShakerQuiz>> {

@@ -9,7 +9,6 @@ import ru.quizHub.quizlist.models.common.City
 import ru.quizHub.quizlist.repository.ISQuizRepository
 
 class SquizRepository(
-//    private val localDataSource: LocalDataSource,
     private val remoteDataSource: SquizRemoteDataSource,
     private val quizMapper: SquizDataMapper,
 ) : ISQuizRepository {
