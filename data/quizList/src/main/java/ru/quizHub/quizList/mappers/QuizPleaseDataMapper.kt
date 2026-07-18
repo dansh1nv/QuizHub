@@ -24,9 +24,7 @@ class QuizPleaseDataMapper {
         title = dto.title,
         packageNumber = "#${dto.gameNumber}",
         description = dto.quote ?: dto.description,
-        image = dto.template?.gameUnderlay
-            ?: dto.template?.backgroundPhone
-            ?: dto.place?.images?.firstOrNull()?.image,
+        image = dto.template?.backgroundTablet,
         gameFormat = dto.gameType?.let(::mapGameFormat),
         datetime = dto.date,
         formatDate = mapGameDate(dto.date.orEmpty()),
